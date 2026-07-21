@@ -1,52 +1,65 @@
-// =======================
+// =====================
 // CUORI ANIMATI ❤️😍
-// =======================
+// =====================
+
 
 const hearts = document.getElementById("hearts");
+
 
 const simboli = [
     "❤️",
     "🤍",
     "😍",
     "💕",
-    "💗",
-    "🦁"
+    "💗"
 ];
+
 
 
 function creaCuore() {
 
+
     const cuore = document.createElement("div");
+
 
     cuore.className = "heart";
 
 
     cuore.innerHTML =
-        simboli[Math.floor(Math.random() * simboli.length)];
+    simboli[
+        Math.floor(Math.random() * simboli.length)
+    ];
+
 
 
     cuore.style.left =
-        Math.random() * 100 + "vw";
+    Math.random() * 100 + "vw";
+
 
 
     cuore.style.fontSize =
-        (15 + Math.random() * 25) + "px";
+    (15 + Math.random() * 25) + "px";
+
 
 
     cuore.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
+    (4 + Math.random() * 6) + "s";
+
 
 
     hearts.appendChild(cuore);
+
 
 
     setTimeout(() => {
 
         cuore.remove();
 
-    }, 9000);
+    }, 10000);
+
 
 }
+
 
 
 setInterval(creaCuore, 250);
@@ -56,48 +69,62 @@ setInterval(creaCuore, 250);
 
 
 
-// =======================
+
+// =====================
 // CARICAMENTO ⏳
-// =======================
+// =====================
 
 
-const bar = document.getElementById("bar");
-const percent = document.getElementById("percent");
-const start = document.getElementById("start");
+const bar =
+document.getElementById("bar");
 
 
-let valore = 0;
+const percent =
+document.getElementById("percent");
 
 
-const caricamento = setInterval(() => {
-
-
-    valore++;
-
-
-    bar.style.width = valore + "%";
-
-
-    percent.innerHTML = valore + "%";
+const start =
+document.getElementById("start");
 
 
 
-    if (valore >= 100) {
+let progresso = 0;
 
 
-        clearInterval(caricamento);
+
+const loading = setInterval(() => {
+
+
+    progresso++;
+
+
+    bar.style.width =
+    progresso + "%";
+
+
+    percent.innerHTML =
+    progresso + "%";
+
+
+
+    if(progresso >= 100) {
+
+
+        clearInterval(loading);
 
 
         percent.innerHTML =
-            "È pronto per te ❤️";
+        "È pronto per te ❤️";
 
 
         start.hidden = false;
 
+
     }
 
 
-}, 50);
+
+},50);
 
 
 
@@ -105,24 +132,48 @@ const caricamento = setInterval(() => {
 
 
 
-// =======================
-// BIGLIETTINO 💌
-// =======================
+
+// =====================
+// CAMBIO PAGINE
+// =====================
 
 
-const ticket = document.getElementById("ticket");
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-const success = document.getElementById("success");
+const pagine =
+document.querySelectorAll(".page");
 
 
 
-// apre il bigliettino
+function mostraPagina(id) {
+
+
+    pagine.forEach(p => {
+
+        p.classList.remove("active");
+
+    });
+
+
+    document.getElementById(id)
+    .classList.add("active");
+
+}
+
+
+
+
+
+
+
+
+// =====================
+// INIZIA ❤️
+// =====================
+
 
 start.addEventListener("click", () => {
 
 
-    ticket.style.display = "flex";
+    mostraPagina("ticket");
 
 
 });
@@ -134,29 +185,28 @@ start.addEventListener("click", () => {
 
 
 
-// =======================
-// IL NO SCAPPA 😂
-// =======================
+// =====================
+// NO SCAPPA 😂
+// =====================
+
+
+const no =
+document.getElementById("no");
+
 
 
 function scappaNo() {
 
 
-    const larghezza =
-        window.innerWidth - no.offsetWidth - 20;
-
-
-    const altezza =
-        window.innerHeight - no.offsetHeight - 20;
+    const x =
+    Math.random() *
+    (window.innerWidth - no.offsetWidth);
 
 
 
-    const nuovoX =
-        Math.random() * larghezza;
-
-
-    const nuovoY =
-        Math.random() * altezza;
+    const y =
+    Math.random() *
+    (window.innerHeight - no.offsetHeight);
 
 
 
@@ -164,43 +214,32 @@ function scappaNo() {
 
 
     no.style.left =
-        nuovoX + "px";
+    x + "px";
 
 
     no.style.top =
-        nuovoY + "px";
-
-
-    no.style.transition =
-        "all 0.3s ease";
-
+    y + "px";
 
 }
 
 
 
-// PC: passa sopra con il mouse
-
 no.addEventListener(
-    "mouseenter",
-    scappaNo
+"mouseenter",
+scappaNo
 );
 
 
 
-// Telefono: prova a toccarlo
-
 no.addEventListener(
-    "touchstart",
-    function(e) {
+"touchstart",
+(e)=>{
 
-        e.preventDefault();
+    e.preventDefault();
 
-        scappaNo();
+    scappaNo();
 
-    }
-);
-
+});
 
 
 
@@ -208,35 +247,93 @@ no.addEventListener(
 
 
 
-// =======================
+
+// =====================
 // CONFERMA ❤️
-// =======================
+// =====================
 
 
-yes.addEventListener("click", () => {
-
-
-    ticket.style.display = "none";
+const yes =
+document.getElementById("yes");
 
 
 
-    // esplosione di cuori
+yes.addEventListener("click",()=>{
 
-    for(let i = 0; i < 60; i++) {
 
-        creaCuore();
+    mostraPagina("birthday");
+
+
+});
+
+
+
+
+
+
+
+
+// =====================
+// CANDELINE 🎂
+// =====================
+
+
+const cake =
+document.querySelector(".cake");
+
+const candlesText =
+document.getElementById("candlesText");
+
+
+let candeline = 3;
+
+
+
+cake.addEventListener("click",()=>{
+
+
+    if(candeline > 0) {
+
+
+        candeline--;
+
+
+        candlesText.innerHTML =
+        "Candeline rimaste: "
+        + candeline;
+
+
+
+        if(candeline === 0) {
+
+
+            candlesText.innerHTML =
+            "🎉 Desiderio espresso ❤️";
+
+
+
+            for(let i=0;i<80;i++){
+
+                creaCuore();
+
+            }
+
+
+
+            setTimeout(()=>{
+
+
+                mostraPagina("final");
+
+
+            },2000);
+
+
+
+        }
+
 
     }
-
-
-
-    setTimeout(() => {
-
-
-        success.style.display = "flex";
-
-
-    }, 800);
 
 
 });
