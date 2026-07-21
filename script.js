@@ -1,91 +1,97 @@
-// CAMBIO SCENA
-
-const scenes =
-document.querySelectorAll(".scene");
-
-
-function cambiaScena(id){
-
-scenes.forEach(s=>{
-
-s.classList.remove("active");
-
-});
-
-
-document.getElementById(id)
-.classList.add("active");
-
-
-}
+/* =====================================
+   PROJECT AURORA
+   SCRIPT v1.0
+===================================== */
 
 
 
+// ==========================
+// EMOJI CADENTI ❤️🤍😍
+// ==========================
+
+
+const hearts =
+document.getElementById("hearts");
 
 
 
+const simboli = [
 
-// CUORI
+    "❤️",
+    "🤍",
+    "😍",
+    "💕",
+    "💗",
+    "✨",
+    "🦁"
 
-const background =
-document.getElementById("background");
-
-
-const simboli=[
-"❤️",
-"🤍",
-"😍",
-"✨",
-"💗"
 ];
+
 
 
 function creaCuore(){
 
 
-let cuore=document.createElement("div");
-
-
-cuore.className="heart";
-
-
-cuore.innerHTML=
-simboli[
-Math.floor(Math.random()*simboli.length)
-];
+    const cuore =
+    document.createElement("div");
 
 
 
-cuore.style.left=
-Math.random()*100+"vw";
+    cuore.className =
+    "heart";
 
 
 
-cuore.style.fontSize=
-(15+Math.random()*25)+"px";
+    cuore.innerHTML =
+    simboli[
+        Math.floor(
+            Math.random()
+            *
+            simboli.length
+        )
+    ];
 
 
 
-cuore.style.animationDuration=
-(4+Math.random()*6)+"s";
+    cuore.style.left =
+    Math.random()*100 + "vw";
 
 
 
-background.appendChild(cuore);
+    cuore.style.fontSize =
+    (15 + Math.random()*30)
+    + "px";
 
 
 
-setTimeout(()=>{
+    cuore.style.animationDuration =
+    (4 + Math.random()*6)
+    + "s";
 
-cuore.remove();
 
-},10000);
+
+    hearts.appendChild(cuore);
+
+
+
+    setTimeout(()=>{
+
+
+        cuore.remove();
+
+
+    },10000);
+
 
 
 }
 
 
-setInterval(creaCuore,250);
+
+setInterval(
+    creaCuore,
+    250
+);
 
 
 
@@ -93,12 +99,13 @@ setInterval(creaCuore,250);
 
 
 
+// ==========================
+// CARICAMENTO ⏳
+// ==========================
 
-// CARICAMENTO
 
-
-const progress =
-document.getElementById("progress");
+const bar =
+document.getElementById("bar");
 
 
 const percent =
@@ -109,48 +116,47 @@ const start =
 document.getElementById("start");
 
 
-const loadingText =
-document.getElementById("loadingText");
+
+let valore = 0;
 
 
 
-let valore=0;
+const caricamento =
+setInterval(()=>{
+
+
+    valore++;
+
+
+    bar.style.width =
+    valore + "%";
 
 
 
-let timer=setInterval(()=>{
-
-
-valore++;
-
-
-progress.style.width=
-valore+"%";
-
-
-percent.innerHTML=
-valore+"%";
+    percent.innerHTML =
+    valore + "%";
 
 
 
-if(valore>=100){
+
+    if(valore >= 100){
 
 
-clearInterval(timer);
+        clearInterval(caricamento);
 
 
-loadingText.innerHTML=
-"È tutto pronto per te ❤️";
+
+        percent.innerHTML =
+        "✨ È pronto per te ❤️";
 
 
-percent.innerHTML=
-"✨ 100% ✨";
+
+        start.hidden =
+        false;
 
 
-start.hidden=false;
+    }
 
-
-}
 
 
 },50);
@@ -161,42 +167,48 @@ start.hidden=false;
 
 
 
-// INIZIO
 
 
-start.onclick=()=>{
-
-
-cambiaScena("question");
-
-
-};
+// ==========================
+// APERTURA BIGLIETTINO 💌
+// ==========================
 
 
 
+const home =
+document.getElementById("home");
+
+
+const ticket =
+document.getElementById("ticket");
+
+
+
+start.addEventListener(
+"click",
+()=>{
+
+
+    home.classList.add("hidden");
+
+
+    ticket.classList.remove("hidden");
+
+
+});
 
 
 
 
-// SI
-
-
-document.getElementById("yes")
-.onclick=()=>{
-
-
-cambiaScena("birthday");
-
-
-};
 
 
 
 
+// ==========================
+// NO CHE SCAPPA 😂
+// ==========================
 
 
-
-// NO SCAPPA
 
 const no =
 document.getElementById("no");
@@ -206,19 +218,29 @@ document.getElementById("no");
 function scappa(){
 
 
-no.style.position="fixed";
+
+    no.style.position =
+    "fixed";
 
 
-no.style.left=
-Math.random()*
-(window.innerWidth-100)
-+"px";
+
+    no.style.left =
+
+    Math.random()
+    *
+    (window.innerWidth - 100)
+    +
+    "px";
 
 
-no.style.top=
-Math.random()*
-(window.innerHeight-50)
-+"px";
+
+    no.style.top =
+
+    Math.random()
+    *
+    (window.innerHeight - 50)
+    +
+    "px";
 
 
 }
@@ -234,12 +256,44 @@ scappa
 
 no.addEventListener(
 "touchstart",
-(e)=>{
+(event)=>{
 
-e.preventDefault();
 
-scappa();
+    event.preventDefault();
 
-}
 
-);
+    scappa();
+
+
+});
+
+
+
+
+
+
+
+
+
+// ==========================
+// SI ❤️
+// ==========================
+
+
+
+const yes =
+document.getElementById("yes");
+
+
+
+yes.addEventListener(
+"click",
+()=>{
+
+
+    alert(
+    "Preparati... la sorpresa continua ❤️"
+    );
+
+
+});
