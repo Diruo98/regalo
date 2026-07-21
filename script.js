@@ -110,5 +110,6 @@ start.addEventListener("click", () => {
 
     alert("Il viaggio sta iniziando 🤍");
 
+    console.log("Script caricato ❤️");
 
 });
