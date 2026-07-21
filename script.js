@@ -1,12 +1,12 @@
 /* =====================================
    PROJECT AURORA
-   SCRIPT COMPLETO v3.0
+   SCRIPT v4.0
 ===================================== */
 
 
 
 // =====================================
-// SFONDO EMOJI CADENTI ❤️✨
+// SFONDO CUORI ❤️✨
 // =====================================
 
 
@@ -31,6 +31,7 @@ function creaCuore(){
     if(!hearts) return;
 
 
+
     const cuore = document.createElement("div");
 
 
@@ -39,23 +40,23 @@ function creaCuore(){
 
     cuore.innerHTML =
     simboli[
-        Math.floor(Math.random()*simboli.length)
+        Math.floor(Math.random() * simboli.length)
     ];
 
 
 
     cuore.style.left =
-    Math.random()*100 + "vw";
+    Math.random() * 100 + "vw";
 
 
 
     cuore.style.fontSize =
-    (15 + Math.random()*30) + "px";
+    (15 + Math.random() * 30) + "px";
 
 
 
     cuore.style.animationDuration =
-    (4 + Math.random()*6) + "s";
+    (4 + Math.random() * 6) + "s";
 
 
 
@@ -85,12 +86,14 @@ setInterval(creaCuore,250);
 
 
 // =====================================
-// CARICAMENTO ⏳
+// BARRA CARICAMENTO ⏳
 // =====================================
 
 
 const bar = document.getElementById("bar");
+
 const percent = document.getElementById("percent");
+
 const start = document.getElementById("start");
 
 
@@ -102,8 +105,7 @@ let valore = 0;
 if(bar && percent && start){
 
 
-    const caricamento =
-    setInterval(()=>{
+    const caricamento = setInterval(()=>{
 
 
         valore++;
@@ -136,7 +138,6 @@ if(bar && percent && start){
         }
 
 
-
     },50);
 
 
@@ -151,25 +152,43 @@ if(bar && percent && start){
 
 
 // =====================================
-// CAMBIO PAGINE 💌
+// PAGINE 💌
 // =====================================
 
 
-const home = document.getElementById("home");
-
-const ticket = document.getElementById("ticket");
-
-const birthday = document.getElementById("birthday");
-
-const yes = document.getElementById("yes");
-
-const no = document.getElementById("no");
+const home =
+document.getElementById("home");
 
 
+const ticket =
+document.getElementById("ticket");
+
+
+const birthday =
+document.getElementById("birthday");
+
+
+const yes =
+document.getElementById("yes");
+
+
+const no =
+document.getElementById("no");
 
 
 
-if(start && ticket && home){
+
+
+
+
+
+
+// =====================================
+// INIZIA VIAGGIO ✨
+// =====================================
+
+
+if(start){
 
 
     start.addEventListener("click",()=>{
@@ -205,7 +224,10 @@ function scappa(){
     if(!no) return;
 
 
-    no.style.position = "fixed";
+
+    no.style.position =
+    "fixed";
+
 
 
     no.style.left =
@@ -239,9 +261,12 @@ if(no){
         "touchstart",
         (e)=>{
 
+
             e.preventDefault();
 
+
             scappa();
+
 
         }
     );
@@ -262,10 +287,6 @@ if(no){
 // =====================================
 
 
-const cake =
-document.getElementById("cake");
-
-
 const candlesBox =
 document.getElementById("candles");
 
@@ -278,43 +299,61 @@ document.getElementById("counter");
 let candeline = 19;
 
 
+let tortaCreata = false;
+
+
+
+
 
 
 
 function creaTorta(){
 
 
-    if(!candlesBox || !counter)
+    if(
+        !candlesBox ||
+        !counter ||
+        tortaCreata
+    )
     return;
+
+
+
+    tortaCreata = true;
 
 
 
     const posizioni = [
 
-        [90,150],
-        [140,150],
-        [190,150],
-        [240,150],
 
-        [60,110],
-        [110,110],
-        [160,110],
-        [210,110],
+        [100,150],
+        [150,150],
+        [200,150],
+        [250,150],
+
+
+        [80,110],
+        [125,110],
+        [170,110],
+        [215,110],
         [260,110],
 
-        [80,70],
-        [130,70],
-        [180,70],
-        [230,70],
-        [280,70],
+
+        [70,70],
+        [115,70],
+        [160,70],
+        [205,70],
+        [250,70],
+
 
         [120,35],
-        [170,35],
-        [220,35],
-        [270,35],
-        [320,35]
+        [165,35],
+        [210,35],
+        [255,35],
+        [300,35]
 
     ];
+
 
 
 
@@ -334,11 +373,12 @@ function creaTorta(){
 
 
         candela.style.left =
-        pos[0]+"px";
+        pos[0] + "px";
+
 
 
         candela.style.bottom =
-        pos[1]+"px";
+        pos[1] + "px";
 
 
 
@@ -367,99 +407,83 @@ function creaTorta(){
 
 
         candela.addEventListener(
-            "click",
-            ()=>{
+        "click",
+        ()=>{
 
 
-                if(
+            if(
                 fiamma.classList.contains("off")
-                )
-                return;
+            )
+            return;
 
 
 
-                fiamma.classList.add("off");
+            fiamma.classList.add("off");
 
 
 
-                const fumo =
-                document.createElement("span");
+            const fumo =
+            document.createElement("span");
 
 
 
-                fumo.className =
-                "smoke";
+            fumo.className =
+            "smoke";
 
 
-                fumo.innerHTML =
-                "💨";
-
-
-
-                candela.appendChild(fumo);
+            fumo.innerHTML =
+            "💨";
 
 
 
-
-                candeline--;
-
-
-
-                counter.innerHTML =
-                "Candeline rimaste: "
-                +
-                candeline;
+            candela.appendChild(fumo);
 
 
 
 
-                if(candeline === 0){
+
+            candeline--;
 
 
-                    birthdaySuccess();
+
+            counter.innerHTML =
+            "Candeline rimaste: "
+            +
+            candeline;
 
 
-                }
+
+
+
+
+            if(candeline === 0){
+
+
+                setTimeout(()=>{
+
+
+                    alert(
+                    "✨ Esprimi un desiderio 🤍"
+                    );
+
+
+                },700);
 
 
             }
-        );
+
+
+        });
 
 
 
         candlesBox.appendChild(candela);
 
 
-
     });
 
 
-
 }
-
-
-
-
-
-function birthdaySuccess(){
-
-
-    setTimeout(()=>{
-
-
-        alert(
-        "✨ Esprimi un desiderio 🤍"
-        );
-
-
-    },700);
-
-
-}
-
-
-
-creaTorta();
 
 
 
@@ -470,26 +494,28 @@ creaTorta();
 
 
 // =====================================
-// SI ❤️
+// RISPOSTA SI ❤️
 // =====================================
 
 
-if(yes && ticket && birthday){
+if(yes){
 
 
     yes.addEventListener(
-        "click",
-        ()=>{
+    "click",
+    ()=>{
 
 
-            ticket.classList.add("hidden");
+        ticket.classList.add("hidden");
 
 
-            birthday.classList.remove("hidden");
+        birthday.classList.remove("hidden");
 
 
-        }
-    );
+        creaTorta();
+
+
+    });
 
 
 }
