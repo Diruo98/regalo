@@ -1,84 +1,46 @@
-*{
-box-sizing:border-box;
-}
+/* =====================================
+   PROJECT AURORA
+   STYLE v1.0
+===================================== */
 
 
 
-body{
+* {
 
-margin:0;
-
-height:100vh;
-
-overflow:hidden;
-
-font-family:"Poppins",sans-serif;
-
-color:white;
-
-
-background:
-
-linear-gradient(
-135deg,
-#1a001f,
-#6c5ce7
-);
-
+    box-sizing: border-box;
 
 }
 
 
 
+body {
 
-#background{
+    margin: 0;
 
-position:fixed;
+    height: 100vh;
 
-inset:0;
-
-overflow:hidden;
-
-z-index:0;
-
-}
+    overflow: hidden;
 
 
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
 
 
+    font-family: Georgia, serif;
 
-.scene{
-
-position:absolute;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
+    color: white;
 
 
-opacity:0;
+    background:
 
-pointer-events:none;
-
-
-transition:1s;
-
-
-}
-
-
-
-.scene.active{
-
-opacity:1;
-
-pointer-events:auto;
+    linear-gradient(
+        135deg,
+        #1a001f,
+        #6b1d5c
+    );
 
 }
 
@@ -86,208 +48,92 @@ pointer-events:auto;
 
 
 
-.glass-box{
+/* ==========================
+   SFONDO EMOJI
+========================== */
 
 
-width:90%;
+#hearts {
 
-max-width:600px;
+    position: fixed;
 
+    inset: 0;
 
-padding:40px;
+    overflow: hidden;
 
+    pointer-events: none;
 
-border-radius:30px;
+    z-index: 0;
 
-
-background:
-
-rgba(255,255,255,.12);
-
-
-backdrop-filter:blur(15px);
+}
 
 
-box-shadow:
 
-0 20px 60px rgba(0,0,0,.4);
+.heart {
 
+    position: absolute;
+
+    top: -60px;
+
+
+    animation-name: caduta;
+
+    animation-timing-function: linear;
+
+    animation-fill-mode: forwards;
+
+
+    filter:
+
+    drop-shadow(
+        0 0 8px rgba(255,255,255,.5)
+    );
 
 }
 
 
 
 
+@keyframes caduta {
 
-h1{
 
-font-family:"Playfair Display",serif;
+    0% {
 
-font-size:40px;
+        transform:
 
-}
+        translateY(-10vh)
 
+        rotate(0deg);
 
 
-.chapter{
+        opacity: 0;
 
-letter-spacing:4px;
+    }
 
-font-size:13px;
 
-opacity:.8;
 
-}
+    20% {
 
+        opacity: 1;
 
+    }
 
 
 
-button{
+    100% {
 
 
-border:none;
+        transform:
 
-padding:15px 35px;
+        translateY(110vh)
 
-margin:10px;
+        rotate(360deg);
 
 
-border-radius:40px;
+        opacity: 0;
 
 
-background:
-
-linear-gradient(
-135deg,
-#fd79a8,
-#e84393
-);
-
-
-color:white;
-
-font-size:18px;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
-
-}
-
-
-
-button:hover{
-
-transform:scale(1.08);
-
-}
-
-
-
-
-/* BARRA */
-
-
-.loading-bar{
-
-
-width:320px;
-
-height:25px;
-
-
-background:
-
-rgba(255,255,255,.25);
-
-
-border-radius:30px;
-
-
-overflow:hidden;
-
-
-margin:30px auto;
-
-
-}
-
-
-
-#progress{
-
-
-width:0%;
-
-
-height:100%;
-
-
-background:
-
-linear-gradient(
-90deg,
-#ff9ff3,
-#ffeaa7
-);
-
-
-transition:.3s;
-
-
-}
-
-
-
-
-
-/* CUORI */
-
-
-.heart{
-
-
-position:absolute;
-
-top:-50px;
-
-
-animation:caduta linear forwards;
-
-
-}
-
-
-
-@keyframes caduta{
-
-
-from{
-
-transform:
-translateY(-10vh)
-rotate(0deg);
-
-opacity:1;
-
-}
-
-
-to{
-
-transform:
-
-translateY(110vh)
-rotate(360deg);
-
-
-opacity:0;
-
-}
+    }
 
 
 }
@@ -298,33 +144,287 @@ opacity:0;
 
 
 
-/* BIGLIETTO */
+/* ==========================
+   PAGINE
+========================== */
 
 
-.ticket{
+.page {
 
 
-background:#fff3c4;
+    position: relative;
 
 
-color:#6b1d5c;
+    z-index: 2;
 
 
-padding:40px;
+    text-align: center;
 
 
-width:350px;
+}
 
 
-border-radius:15px;
 
 
-box-shadow:
 
-0 20px 50px rgba(0,0,0,.5);
+.hidden {
 
 
-transform:rotate(-3deg);
+    display: none !important;
+
+
+}
+
+
+
+
+
+/* ==========================
+   HOME
+========================== */
+
+
+h1 {
+
+
+    font-size: 35px;
+
+
+}
+
+
+
+p {
+
+
+    font-size: 20px;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+   BARRA
+========================== */
+
+
+.loading {
+
+
+    width: 350px;
+
+
+    height: 30px;
+
+
+    background:
+
+    rgba(255,255,255,.25);
+
+
+
+    border-radius: 30px;
+
+
+    overflow: hidden;
+
+
+    margin: 35px auto;
+
+
+
+}
+
+
+
+#bar {
+
+
+    width: 0%;
+
+
+    height: 100%;
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        #ff4d88,
+
+        #ffd1e3
+
+    );
+
+
+    border-radius: 30px;
+
+
+    transition: .3s;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================
+   BOTTONI
+========================== */
+
+
+button {
+
+
+    border: none;
+
+
+    padding: 15px 35px;
+
+
+    margin: 10px;
+
+
+    border-radius: 30px;
+
+
+    cursor: pointer;
+
+
+
+    color: white;
+
+
+    font-size: 18px;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #ff4d88,
+
+        #ff8fab
+
+    );
+
+
+
+    transition: .3s;
+
+
+}
+
+
+
+
+button:hover {
+
+
+    transform: scale(1.08);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================
+   BIGLIETTINO
+========================== */
+
+
+#ticket {
+
+
+    position: fixed;
+
+
+    inset: 0;
+
+
+    display: flex;
+
+
+    justify-content: center;
+
+
+    align-items: center;
+
+
+    background:
+
+    rgba(0,0,0,.5);
+
+
+
+}
+
+
+
+.ticket-card {
+
+
+    background:
+
+    #fff3c4;
+
+
+
+    color:
+
+    #6b1d5c;
+
+
+
+    width:
+
+    330px;
+
+
+
+    padding:
+
+    35px;
+
+
+
+    border-radius:
+
+    15px;
+
+
+
+    transform:
+
+    rotate(-3deg);
+
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(0,0,0,.5);
+
 
 
 }
