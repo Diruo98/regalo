@@ -1,5 +1,264 @@
+/* =====================================
+   PROJECT AURORA
+   SCRIPT COMPLETO v3.0
+===================================== */
+
+
+
 // =====================================
-// TORTA 🎂
+// SFONDO EMOJI CADENTI ❤️✨
+// =====================================
+
+
+const hearts = document.getElementById("hearts");
+
+
+const simboli = [
+    "❤️",
+    "🤍",
+    "😍",
+    "💕",
+    "💗",
+    "✨",
+    "🦁"
+];
+
+
+
+function creaCuore(){
+
+
+    if(!hearts) return;
+
+
+    const cuore = document.createElement("div");
+
+
+    cuore.className = "heart";
+
+
+    cuore.innerHTML =
+    simboli[
+        Math.floor(Math.random()*simboli.length)
+    ];
+
+
+
+    cuore.style.left =
+    Math.random()*100 + "vw";
+
+
+
+    cuore.style.fontSize =
+    (15 + Math.random()*30) + "px";
+
+
+
+    cuore.style.animationDuration =
+    (4 + Math.random()*6) + "s";
+
+
+
+    hearts.appendChild(cuore);
+
+
+
+    setTimeout(()=>{
+
+        cuore.remove();
+
+    },10000);
+
+
+}
+
+
+
+setInterval(creaCuore,250);
+
+
+
+
+
+
+
+
+
+// =====================================
+// CARICAMENTO ⏳
+// =====================================
+
+
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
+const start = document.getElementById("start");
+
+
+
+let valore = 0;
+
+
+
+if(bar && percent && start){
+
+
+    const caricamento =
+    setInterval(()=>{
+
+
+        valore++;
+
+
+        bar.style.width =
+        valore + "%";
+
+
+        percent.innerHTML =
+        valore + "%";
+
+
+
+        if(valore >= 100){
+
+
+            clearInterval(caricamento);
+
+
+
+            percent.innerHTML =
+            "✨ È pronto per te 🤍";
+
+
+
+            start.hidden = false;
+
+
+        }
+
+
+
+    },50);
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// CAMBIO PAGINE 💌
+// =====================================
+
+
+const home = document.getElementById("home");
+
+const ticket = document.getElementById("ticket");
+
+const birthday = document.getElementById("birthday");
+
+const yes = document.getElementById("yes");
+
+const no = document.getElementById("no");
+
+
+
+
+
+if(start && ticket && home){
+
+
+    start.addEventListener("click",()=>{
+
+
+        home.classList.add("hidden");
+
+
+        ticket.classList.remove("hidden");
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// NO CHE SCAPPA 😂
+// =====================================
+
+
+function scappa(){
+
+
+    if(!no) return;
+
+
+    no.style.position = "fixed";
+
+
+    no.style.left =
+    Math.random() *
+    (window.innerWidth - 120)
+    + "px";
+
+
+
+    no.style.top =
+    Math.random() *
+    (window.innerHeight - 80)
+    + "px";
+
+
+}
+
+
+
+if(no){
+
+
+    no.addEventListener(
+        "mouseenter",
+        scappa
+    );
+
+
+
+    no.addEventListener(
+        "touchstart",
+        (e)=>{
+
+            e.preventDefault();
+
+            scappa();
+
+        }
+    );
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// TORTA COMPLEANNO 🎂
 // =====================================
 
 
@@ -25,75 +284,35 @@ let candeline = 19;
 function creaTorta(){
 
 
-    if(!cake || !candlesBox)
+    if(!candlesBox || !counter)
     return;
 
 
 
-    const base =
-    document.createElement("div");
-
-
-    base.className =
-    "cake-base";
-
-
-    cake.appendChild(base);
-
-
-
-
-
-    const cream =
-    document.createElement("div");
-
-
-    cream.className =
-    "cake-cream";
-
-
-    cake.appendChild(cream);
-
-
-
-
-
-
-
-    // POSIZIONI 19 CANDELINE 🎂
-    // più ordinate e distanziate
-
-
     const posizioni = [
 
-        // fila dietro (4)
-        [90,155],
-        [145,155],
-        [200,155],
-        [255,155],
+        [90,150],
+        [140,150],
+        [190,150],
+        [240,150],
 
+        [60,110],
+        [110,110],
+        [160,110],
+        [210,110],
+        [260,110],
 
+        [80,70],
+        [130,70],
+        [180,70],
+        [230,70],
+        [280,70],
 
-        // fila centrale (7)
-        [55,120],
-        [95,120],
-        [135,120],
-        [175,120],
-        [215,120],
-        [255,120],
-        [295,120],
-
-
-
-        // fila davanti (8)
-        [45,85],
-        [85,85],
-        [125,85],
-        [165,85],
-        [205,85],
-        [245,85],
-        [285,85],
-        [325,85]
+        [120,35],
+        [170,35],
+        [220,35],
+        [270,35],
+        [320,35]
 
     ];
 
@@ -101,10 +320,7 @@ function creaTorta(){
 
 
 
-
-
     posizioni.forEach((pos)=>{
-
 
 
         const candela =
@@ -118,14 +334,11 @@ function creaTorta(){
 
 
         candela.style.left =
-        pos[0] + "px";
-
+        pos[0]+"px";
 
 
         candela.style.bottom =
-        pos[1] + "px";
-
-
+        pos[1]+"px";
 
 
 
@@ -153,79 +366,64 @@ function creaTorta(){
 
 
 
-
         candela.addEventListener(
-        "click",
-        ()=>{
+            "click",
+            ()=>{
 
 
-            if(
-            fiamma.classList.contains("off")
-            )
-            return;
-
-
-
-            fiamma.classList.add("off");
+                if(
+                fiamma.classList.contains("off")
+                )
+                return;
 
 
 
-
-            const fumo =
-            document.createElement("span");
+                fiamma.classList.add("off");
 
 
 
-            fumo.className =
-            "smoke";
-
-
-            fumo.innerHTML =
-            "💨";
+                const fumo =
+                document.createElement("span");
 
 
 
-            candela.appendChild(fumo);
+                fumo.className =
+                "smoke";
+
+
+                fumo.innerHTML =
+                "💨";
 
 
 
-
-
-            candeline--;
-
-
-
-            counter.innerHTML =
-            "Candeline rimaste: "
-            +
-            candeline;
+                candela.appendChild(fumo);
 
 
 
 
+                candeline--;
 
 
 
-            if(candeline === 0){
+                counter.innerHTML =
+                "Candeline rimaste: "
+                +
+                candeline;
 
 
-                setTimeout(()=>{
 
 
-                    alert(
-                    "✨ Esprimi un desiderio ❤️"
-                    );
+                if(candeline === 0){
 
 
-                },800);
+                    birthdaySuccess();
+
+
+                }
 
 
             }
-
-
-        });
-
-
+        );
 
 
 
@@ -241,4 +439,57 @@ function creaTorta(){
 
 
 
+
+
+function birthdaySuccess(){
+
+
+    setTimeout(()=>{
+
+
+        alert(
+        "✨ Esprimi un desiderio 🤍"
+        );
+
+
+    },700);
+
+
+}
+
+
+
 creaTorta();
+
+
+
+
+
+
+
+
+
+// =====================================
+// SI ❤️
+// =====================================
+
+
+if(yes && ticket && birthday){
+
+
+    yes.addEventListener(
+        "click",
+        ()=>{
+
+
+            ticket.classList.add("hidden");
+
+
+            birthday.classList.remove("hidden");
+
+
+        }
+    );
+
+
+}
