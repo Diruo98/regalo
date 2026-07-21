@@ -1,4 +1,6 @@
-/* RESET */
+/* =====================
+   RESET
+===================== */
 
 * {
     box-sizing: border-box;
@@ -13,29 +15,62 @@ body {
 
     overflow: hidden;
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-
-    background: linear-gradient(
-        135deg,
-        #1a001f,
-        #6b1d5c
-    );
-
-
-    font-family: Georgia, serif;
+    font-family: "Georgia", serif;
 
     color: white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #2b0033,
+        #8b245c
+    );
 
 }
 
 
 
-/* CUORI SFONDO */
+/* =====================
+   PAGINE
+===================== */
+
+
+.page {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    z-index: 2;
+
+}
+
+
+
+.page.active {
+
+    display: flex;
+
+}
+
+
+
+
+
+/* =====================
+   CUORI SFONDO
+===================== */
+
 
 #hearts {
 
@@ -47,7 +82,7 @@ body {
 
     pointer-events: none;
 
-    z-index: 0;
+    z-index: 1;
 
 }
 
@@ -59,39 +94,32 @@ body {
 
     top: -50px;
 
-    animation: caduta linear forwards;
-
-    opacity: 0.8;
+    animation: fall linear forwards;
 
     filter:
-    drop-shadow(0 0 8px rgba(255,255,255,0.5));
+    drop-shadow(
+        0 0 8px rgba(255,255,255,0.7)
+    );
 
 }
 
 
 
-@keyframes caduta {
+@keyframes fall {
 
 
-    0% {
+    from {
 
         transform:
-        translateY(-10vh)
+        translateY(-50px)
         rotate(0deg);
-
-        opacity: 0;
-
-    }
-
-
-    20% {
 
         opacity: 1;
 
     }
 
 
-    100% {
+    to {
 
         transform:
         translateY(110vh)
@@ -106,49 +134,34 @@ body {
 
 
 
-/* PAGINA PRINCIPALE */
+
+/* =====================
+   HOME
+===================== */
 
 
-.container {
+#home h1 {
 
-    position: relative;
-
-    z-index: 2;
-
-    text-align: center;
-
-    width: 80%;
-
-    max-width: 500px;
+    font-size: 35px;
 
 }
 
 
-
-h1 {
-
-    font-size: 32px;
-
-}
-
-
-
-/* BARRA */
 
 .loading {
 
-    width: 100%;
+    width: 320px;
 
     height: 35px;
 
     background:
-    rgba(255,255,255,0.25);
+    rgba(255,255,255,0.3);
 
     border-radius: 30px;
 
     overflow: hidden;
 
-    margin-top: 40px;
+    margin-top: 30px;
 
 }
 
@@ -156,46 +169,32 @@ h1 {
 
 #bar {
 
-    width: 0%;
-
     height: 100%;
 
-    background:
+    width: 0%;
 
+    background:
     linear-gradient(
         90deg,
         #ff4d88,
-        #ffd1e3
+        #fff
     );
 
-
-    border-radius: 30px;
-
-    transition: 0.3s;
+    transition: .3s;
 
 }
 
 
 
-/* TESTO PERCENTUALE */
 
-#percent {
-
-    font-size: 22px;
-
-}
-
-
-
-/* BOTTONI */
 
 button {
-
-    border: none;
 
     padding: 15px 35px;
 
     margin: 10px;
+
+    border: none;
 
     border-radius: 30px;
 
@@ -207,79 +206,67 @@ button {
 
     cursor: pointer;
 
+    transition: .3s;
+
 }
 
 
 
 button:hover {
 
-    transform: scale(1.05);
+    transform: scale(1.08);
 
 }
 
 
 
-/* BIGLIETTINO */
 
 
-.ticket {
 
-    display: none;
+/* =====================
+   BIGLIETTINO
+===================== */
 
 
-    position: fixed;
-
-    inset: 0;
-
+#ticket {
 
     background:
-    rgba(0,0,0,0.6);
-
-
-    justify-content: center;
-
-    align-items: center;
-
-
-    z-index: 10;
+    rgba(0,0,0,.6);
 
 }
-
 
 
 
 .ticket-card {
 
 
-    background: #fff3c4;
+    background:
+    #fff2b8;
 
 
-    color: #6b1d5c;
-
-
-    width: 320px;
+    color:
+    #7a245b;
 
 
     padding: 35px;
 
 
-    border-radius: 10px;
+    width: 320px;
 
 
-    text-align: center;
+    border-radius: 12px;
+
+
+    transform:
+    rotate(-3deg);
 
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,0.4);
+    0 20px 40px rgba(0,0,0,.4);
 
-
-    transform: rotate(-3deg);
-
-
-    animation:
-    entrata 0.5s ease;
 
 }
+
 
 
 
@@ -294,27 +281,60 @@ button:hover {
 
 
 
-@keyframes entrata {
+
+/* =====================
+   COMPLEANNO
+===================== */
+
+
+#birthday {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #ff8fab,
+        #ffc2d1
+    );
+
+
+}
+
+
+
+.cake {
+
+
+    font-size: 90px;
+
+    margin-top: 30px;
+
+
+    animation:
+
+    float 2s infinite alternate;
+
+
+}
+
+
+
+@keyframes float {
 
 
     from {
 
-        opacity:0;
-
         transform:
-        translateY(-100px)
-        rotate(-10deg);
+        translateY(0);
 
     }
 
 
     to {
 
-        opacity:1;
-
         transform:
-        translateY(0)
-        rotate(-3deg);
+        translateY(-15px);
 
     }
 
@@ -323,39 +343,22 @@ button:hover {
 
 
 
-/* SCHERMATA SUCCESSO */
+
+/* =====================
+   FINALE
+===================== */
 
 
-.success {
-
-
-    display: none;
-
-
-    position: fixed;
-
-    inset: 0;
+#final {
 
 
     background:
 
     linear-gradient(
         135deg,
-        #ff9a9e,
-        #fad0c4
+        #ff758c,
+        #ff7eb3
     );
 
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-direction: column;
-
-
-    text-align: center;
-
-
-    z-index: 20;
 
 }
