@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Per te ❤️</title>
@@ -16,104 +17,138 @@
 <body>
 
 
-    <!-- SFONDO CUORI -->
-    <div id="hearts"></div>
+<div id="hearts"></div>
 
 
 
-    <!-- PAGINA INIZIALE -->
+<!-- CAPITOLO 1 -->
 
-    <div class="container" id="home">
-
-        <h1>
-            Sto preparando qualcosa per te ❤️
-        </h1>
+<section id="home" class="page active">
 
 
-        <div class="loading">
-
-            <div id="bar"></div>
-
-        </div>
+    <h1>
+        Sto preparando qualcosa per te ❤️
+    </h1>
 
 
-        <p id="percent">
-            0%
+    <div class="loading">
+
+        <div id="bar"></div>
+
+    </div>
+
+
+    <p id="percent">
+        0%
+    </p>
+
+
+    <button id="start" hidden>
+        INIZIA ❤️
+    </button>
+
+
+</section>
+
+
+
+
+
+<!-- CAPITOLO 2 -->
+
+<section id="ticket" class="page">
+
+
+    <div class="ticket-card">
+
+
+        <h2>
+            💌 Domanda importante
+        </h2>
+
+
+        <p>
+            Vuoi essere la mia fidanzata? ❤️
         </p>
 
 
-        <button id="start" hidden>
-            INIZIA ❤️
+        <button id="yes">
+            Confermo ❤️
         </button>
 
-    </div>
 
-
-
-
-    <!-- BIGLIETTINO -->
-
-   <div id="ticket" class="ticket" style="display:none;">
-
-
-        <div class="ticket-card">
-
-
-            <h2>
-                💌 Domanda importante
-            </h2>
-
-
-            <p>
-                Vuoi essere la mia fidanzata? ❤️
-            </p>
-
-
-            <button id="yes">
-                Confermo ❤️
-            </button>
-
-
-            <button id="no">
-                No 😢
-            </button>
-
-
-        </div>
+        <button id="no">
+            No 😢
+        </button>
 
 
     </div>
 
 
+</section>
 
 
 
-    <!-- FINALE DELLA PRIMA PARTE -->
-
-    <div id="success" class="success" style="display:none;">
 
 
-        <h1>
-            😍 Risposta corretta!
-        </h1>
+<!-- CAPITOLO 3 -->
+
+<section id="birthday" class="page">
 
 
-        <p>
-            Sapevo che avresti scelto così ❤️
-        </p>
+    <h1>
+        🎂 Buon compleanno amore mio ❤️
+    </h1>
 
 
-        <p>
-            Il nostro viaggio sta iniziando...
-        </p>
+    <p>
+        Spegni tutte le candeline ✨
+    </p>
 
+
+    <div class="cake">
+
+        🕯️ 🕯️ 🕯️
+
+        <br>
+
+        🎂
 
     </div>
 
 
+    <p id="candlesText">
+        Candeline rimaste: 3
+    </p>
 
 
-    <script src="script.js"></script>
+</section>
+
+
+
+
+
+<!-- CAPITOLO FINALE -->
+
+
+<section id="final" class="page">
+
+
+    <h1>
+        ❤️ Per te
+    </h1>
+
+
+    <p>
+        Questo è solo l'inizio della nostra storia...
+    </p>
+
+
+</section>
+
+
+
+<script src="script.js"></script>
 
 
 </body>
