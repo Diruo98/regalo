@@ -1,35 +1,20 @@
-/* =====================================
-   PROJECT AURORA
-   SCRIPT v1.0
-===================================== */
+// CAMBIO SCENA
+
+const scenes =
+document.querySelectorAll(".scene");
 
 
+function cambiaScena(id){
 
-// =====================================
-// CAMBIO SCENE
-// =====================================
+scenes.forEach(s=>{
 
+s.classList.remove("active");
 
-const scenes = document.querySelectorAll(".scene");
-
-
-
-function cambiaScena(id) {
+});
 
 
-    scenes.forEach(scene => {
-
-
-        scene.classList.remove("active");
-
-
-    });
-
-
-
-    document
-    .getElementById(id)
-    .classList.add("active");
+document.getElementById(id)
+.classList.add("active");
 
 
 }
@@ -40,98 +25,67 @@ function cambiaScena(id) {
 
 
 
-
-// =====================================
-// CUORI ANIMATI ❤️
-// =====================================
-
+// CUORI
 
 const background =
 document.getElementById("background");
 
 
+const simboli=[
+"❤️",
+"🤍",
+"😍",
+"✨",
+"💗"
+];
 
-const simboli = [
 
-    "❤️",
-    "🤍",
-    "✨",
-    "💗",
-    "⭐"
+function creaCuore(){
 
+
+let cuore=document.createElement("div");
+
+
+cuore.className="heart";
+
+
+cuore.innerHTML=
+simboli[
+Math.floor(Math.random()*simboli.length)
 ];
 
 
 
-function creaElemento() {
-
-
-    const elemento =
-    document.createElement("div");
+cuore.style.left=
+Math.random()*100+"vw";
 
 
 
-    elemento.innerHTML =
-    simboli[
-        Math.floor(
-            Math.random()
-            *
-            simboli.length
-        )
-    ];
+cuore.style.fontSize=
+(15+Math.random()*25)+"px";
 
 
 
-    elemento.style.position =
-    "absolute";
+cuore.style.animationDuration=
+(4+Math.random()*6)+"s";
 
 
 
-    elemento.style.left =
-    Math.random()*100+"vw";
+background.appendChild(cuore);
 
 
 
-    elemento.style.top =
-    "-50px";
+setTimeout(()=>{
 
+cuore.remove();
 
-
-    elemento.style.fontSize =
-    (15+Math.random()*30)+"px";
-
-
-
-    elemento.style.animation =
-    "caduta "
-    +
-    (5+Math.random()*5)
-    +
-    "s linear";
-
-
-
-    background.appendChild(elemento);
-
-
-
-    setTimeout(()=>{
-
-
-        elemento.remove();
-
-
-    },10000);
+},10000);
 
 
 }
 
 
-
-setInterval(
-    creaElemento,
-    300
-);
+setInterval(creaCuore,250);
 
 
 
@@ -140,100 +94,131 @@ setInterval(
 
 
 
+// CARICAMENTO
 
-// =====================================
-// INTRO
-// =====================================
+
+const progress =
+document.getElementById("progress");
+
+
+const percent =
+document.getElementById("percent");
 
 
 const start =
 document.getElementById("start");
 
 
-
-start.addEventListener(
-"click",
-()=>{
-
-
-    cambiaScena("question");
-
-
-});
+const loadingText =
+document.getElementById("loadingText");
 
 
 
+let valore=0;
+
+
+
+let timer=setInterval(()=>{
+
+
+valore++;
+
+
+progress.style.width=
+valore+"%";
+
+
+percent.innerHTML=
+valore+"%";
+
+
+
+if(valore>=100){
+
+
+clearInterval(timer);
+
+
+loadingText.innerHTML=
+"È tutto pronto per te ❤️";
+
+
+percent.innerHTML=
+"✨ 100% ✨";
+
+
+start.hidden=false;
+
+
+}
+
+
+},50);
 
 
 
 
 
-// =====================================
-// BIGLIETTINO
-// =====================================
 
 
-const yes =
-document.getElementById("yes");
+// INIZIO
 
 
+start.onclick=()=>{
+
+
+cambiaScena("question");
+
+
+};
+
+
+
+
+
+
+
+// SI
+
+
+document.getElementById("yes")
+.onclick=()=>{
+
+
+cambiaScena("birthday");
+
+
+};
+
+
+
+
+
+
+
+// NO SCAPPA
 
 const no =
 document.getElementById("no");
 
 
 
-
-yes.addEventListener(
-"click",
-()=>{
+function scappa(){
 
 
-    cambiaScena("birthday");
+no.style.position="fixed";
 
 
-});
+no.style.left=
+Math.random()*
+(window.innerWidth-100)
++"px";
 
 
-
-
-
-
-
-// NO CHE SCAPPA 😂
-
-
-function scappa() {
-
-
-    no.style.position =
-    "fixed";
-
-
-
-    no.style.left =
-    Math.random()
-    *
-    (
-        window.innerWidth
-        -
-        100
-    )
-    +
-    "px";
-
-
-
-    no.style.top =
-    Math.random()
-    *
-    (
-        window.innerHeight
-        -
-        50
-    )
-    +
-    "px";
+no.style.top=
+Math.random()*
+(window.innerHeight-50)
++"px";
 
 
 }
@@ -251,11 +236,10 @@ no.addEventListener(
 "touchstart",
 (e)=>{
 
+e.preventDefault();
 
-    e.preventDefault();
+scappa();
 
+}
 
-    scappa();
-
-
-});
+);
