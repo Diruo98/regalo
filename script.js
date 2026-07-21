@@ -1,9 +1,7 @@
-console.log("Script caricato ❤️");
+// =======================
+// CUORI ANIMATI ❤️😍
+// =======================
 
-
-// ==========================
-// CUORI E FACCINE ANIMATE ❤️😍
-// ==========================
 
 const hearts = document.getElementById("hearts");
 
@@ -19,63 +17,72 @@ const simboli = [
 
 function creaCuore() {
 
+
     const cuore = document.createElement("div");
+
 
     cuore.className = "heart";
 
 
-    // sceglie un simbolo casuale
     cuore.innerHTML =
-        simboli[Math.floor(Math.random() * simboli.length)];
+        simboli[
+            Math.floor(Math.random() * simboli.length)
+        ];
 
 
-    // posizione casuale
+
     cuore.style.left =
         Math.random() * 100 + "vw";
 
 
-    // velocità casuale
-    cuore.style.animationDuration =
-        (3 + Math.random() * 6) + "s";
 
-
-    // dimensione casuale
     cuore.style.fontSize =
         (15 + Math.random() * 25) + "px";
+
+
+
+    cuore.style.animationDuration =
+        (4 + Math.random() * 5) + "s";
+
 
 
     hearts.appendChild(cuore);
 
 
 
-    // elimina dopo la caduta
     setTimeout(() => {
 
         cuore.remove();
 
     }, 9000);
 
+
 }
 
 
-// crea nuovi cuori
+
 setInterval(creaCuore, 250);
 
 
 
 
 
-// ==========================
-// BARRA DI CARICAMENTO
-// ==========================
+
+
+// =======================
+// CARICAMENTO ⏳
+// =======================
 
 
 const bar = document.getElementById("bar");
+
 const percent = document.getElementById("percent");
+
 const start = document.getElementById("start");
 
 
 let valore = 0;
+
 
 
 const caricamento = setInterval(() => {
@@ -84,9 +91,12 @@ const caricamento = setInterval(() => {
     valore++;
 
 
-    bar.style.width = valore + "%";
+    bar.style.width =
+        valore + "%";
 
-    percent.innerHTML = valore + "%";
+
+    percent.innerHTML =
+        valore + "%";
 
 
 
@@ -96,8 +106,10 @@ const caricamento = setInterval(() => {
         clearInterval(caricamento);
 
 
+
         percent.innerHTML =
             "È pronto per te ❤️";
+
 
 
         start.hidden = false;
@@ -106,49 +118,119 @@ const caricamento = setInterval(() => {
     }
 
 
+
 }, 50);
 
 
 
 
 
-// ==========================
-// PULSANTE
-// ==========================
+
+
+
+// =======================
+// BIGLIETTINO 💌
+// =======================
+
+
+const ticket = document.getElementById("ticket");
+
+const yes = document.getElementById("yes");
+
+const no = document.getElementById("no");
+
+const success = document.getElementById("success");
+
+
+
+
 
 start.onclick = function() {
 
-    alert("Il viaggio sta iniziando ❤️");
 
-    const chapter1 = document.getElementById("chapter1");
-
-
-confirm.onclick = function() {
+    ticket.style.display = "flex";
 
 
-    ticket.classList.add("esci");
+};
+
+
+
+
+
+
+
+// =======================
+// IL NO SCAPPA 😂
+// =======================
+
+
+no.addEventListener("mouseover", function() {
+
+
+
+    const x =
+        Math.random() *
+        (window.innerWidth - 100);
+
+
+
+    const y =
+        Math.random() *
+        (window.innerHeight - 50);
+
+
+
+    no.style.position = "fixed";
+
+
+    no.style.left =
+        x + "px";
+
+
+    no.style.top =
+        y + "px";
+
+
+
+});
+
+
+
+
+
+
+
+// =======================
+// CONFERMA ❤️
+// =======================
+
+
+yes.onclick = function() {
+
+
+
+    ticket.style.display = "none";
+
 
 
     // esplosione cuori
-    for(let i = 0; i < 40; i++) {
+
+    for(let i = 0; i < 50; i++) {
 
         creaCuore();
 
     }
 
 
+
     setTimeout(() => {
 
 
-        ticket.style.display = "none";
+        success.style.display = "flex";
 
 
-        chapter1.style.display = "flex";
+    }, 700);
 
 
-    }, 800);
-
-
-};
 
 };
