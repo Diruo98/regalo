@@ -57,7 +57,44 @@ button {
 button:hover {
     background: #ff7aaa;
 }
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
 
+.heart {
+    position: absolute;
+    color: #ff7eb3;
+    font-size: 20px;
+    animation: caduta linear infinite;
+    opacity: 0.7;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes caduta {
+
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+
+}
 @keyframes apparizione {
     from {
         opacity: 0;
