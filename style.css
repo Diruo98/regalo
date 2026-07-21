@@ -1,133 +1,136 @@
-/* =====================
-   RESET
-===================== */
+/* =====================================
+   PROJECT AURORA
+   STYLE v1.0
+===================================== */
+
+
+
+/* RESET */
 
 * {
+
     box-sizing: border-box;
+
 }
+
 
 
 body {
 
     margin: 0;
 
+    width: 100%;
+
     height: 100vh;
 
     overflow: hidden;
 
-    font-family: "Georgia", serif;
+
+    font-family: "Poppins", sans-serif;
+
 
     color: white;
 
+
     background:
-    linear-gradient(
-        135deg,
-        #2b0033,
-        #8b245c
+
+    radial-gradient(
+        circle at top,
+        #6c5ce7,
+        #2d3436
     );
 
+
 }
 
 
 
-/* =====================
-   PAGINE
-===================== */
 
 
-.page {
+/* =====================================
+   SFONDO
+===================================== */
 
-    display: none;
+
+#background {
 
     position: fixed;
 
     inset: 0;
 
-    justify-content: center;
-
-    align-items: center;
-
-    flex-direction: column;
-
-    text-align: center;
-
-    z-index: 2;
-
-}
-
-
-
-.page.active {
-
-    display: flex;
-
-}
-
-
-
-
-
-/* =====================
-   CUORI SFONDO
-===================== */
-
-
-#hearts {
-
-    position: fixed;
-
-    inset: 0;
 
     overflow: hidden;
 
-    pointer-events: none;
 
-    z-index: 1;
+    z-index: 0;
+
 
 }
 
 
 
-.heart {
+
+
+/* =====================================
+   SCENE
+===================================== */
+
+
+.scene {
+
 
     position: absolute;
 
-    top: -50px;
 
-    animation: fall linear forwards;
+    inset: 0;
 
-    filter:
-    drop-shadow(
-        0 0 8px rgba(255,255,255,0.7)
-    );
+
+    display: flex;
+
+
+    justify-content: center;
+
+
+    align-items: center;
+
+
+    text-align: center;
+
+
+
+    opacity: 0;
+
+
+    pointer-events: none;
+
+
+    transform: scale(1.05);
+
+
+    transition:
+
+    opacity 1s ease,
+
+    transform 1s ease;
+
+
 
 }
 
 
 
-@keyframes fall {
+.scene.active {
 
 
-    from {
-
-        transform:
-        translateY(-50px)
-        rotate(0deg);
-
-        opacity: 1;
-
-    }
+    opacity: 1;
 
 
-    to {
+    pointer-events: auto;
 
-        transform:
-        translateY(110vh)
-        rotate(360deg);
 
-        opacity: 0;
+    transform: scale(1);
 
-    }
+
 
 }
 
@@ -135,78 +138,187 @@ body {
 
 
 
-/* =====================
-   HOME
-===================== */
+
+/* =====================================
+   BOX VETRO
+===================================== */
 
 
-#home h1 {
-
-    font-size: 35px;
-
-}
+.glass-box {
 
 
+    width: 90%;
 
-.loading {
 
-    width: 320px;
+    max-width: 600px;
 
-    height: 35px;
+
+    padding: 40px;
+
+
+    border-radius: 25px;
+
+
 
     background:
-    rgba(255,255,255,0.3);
 
-    border-radius: 30px;
+    rgba(255,255,255,0.12);
 
-    overflow: hidden;
 
-    margin-top: 30px;
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+
+    box-shadow:
+
+    0 20px 50px
+
+    rgba(0,0,0,0.3);
+
+
 
 }
 
 
 
-#bar {
 
-    height: 100%;
 
-    width: 0%;
 
-    background:
-    linear-gradient(
-        90deg,
-        #ff4d88,
-        #fff
-    );
+/* =====================================
+   TITOLI
+===================================== */
 
-    transition: .3s;
+
+h1 {
+
+
+    font-family:
+
+    "Playfair Display", serif;
+
+
+    font-size:
+
+    42px;
+
 
 }
 
 
 
+h2 {
+
+
+    font-family:
+
+    "Playfair Display", serif;
+
+
+}
+
+
+
+.chapter {
+
+
+    font-size: 14px;
+
+
+    letter-spacing: 3px;
+
+
+    text-transform: uppercase;
+
+
+    opacity: .8;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   BOTTONI
+===================================== */
 
 
 button {
 
-    padding: 15px 35px;
 
-    margin: 10px;
+    margin-top: 25px;
 
-    border: none;
 
-    border-radius: 30px;
+    padding:
 
-    background: #ff4d88;
+    15px 35px;
 
-    color: white;
 
-    font-size: 18px;
 
-    cursor: pointer;
+    border:
 
-    transition: .3s;
+    none;
+
+
+
+    border-radius:
+
+    50px;
+
+
+
+    cursor:
+
+    pointer;
+
+
+
+    color:
+
+    white;
+
+
+
+    font-size:
+
+    18px;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #fd79a8,
+
+        #e84393
+
+    );
+
+
+
+    box-shadow:
+
+    0 10px 25px
+
+    rgba(253,121,168,.4);
+
+
+
+    transition:
+
+    .3s;
+
+
 
 }
 
@@ -214,7 +326,13 @@ button {
 
 button:hover {
 
-    transform: scale(1.08);
+
+    transform:
+
+    translateY(-5px)
+
+    scale(1.05);
+
 
 }
 
@@ -223,46 +341,55 @@ button:hover {
 
 
 
-/* =====================
+/* =====================================
    BIGLIETTINO
-===================== */
+===================================== */
 
 
-#ticket {
-
-    background:
-    rgba(0,0,0,.6);
-
-}
-
-
-
-.ticket-card {
+.ticket {
 
 
     background:
+
     #fff2b8;
 
 
     color:
-    #7a245b;
+
+    #6c3483;
 
 
-    padding: 35px;
+
+    padding:
+
+    40px;
 
 
-    width: 320px;
+
+    width:
+
+    350px;
 
 
-    border-radius: 12px;
+
+    border-radius:
+
+    15px;
+
 
 
     transform:
+
     rotate(-3deg);
 
 
+
     box-shadow:
-    0 20px 40px rgba(0,0,0,.4);
+
+    0 20px 50px
+
+    rgba(0,0,0,.4);
+
 
 
 }
@@ -270,50 +397,33 @@ button:hover {
 
 
 
-.ticket-card h2 {
-
-    font-family:
-    "Comic Sans MS",
-    cursive;
-
-}
 
 
 
+/* =====================================
+   TORTA
+===================================== */
 
 
-/* =====================
-   COMPLEANNO
-===================== */
+#cake {
 
 
-#birthday {
+    font-size:
 
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #ff8fab,
-        #ffc2d1
-    );
-
-
-}
+    100px;
 
 
 
-.cake {
+    margin:
 
+    30px;
 
-    font-size: 90px;
-
-    margin-top: 30px;
 
 
     animation:
 
     float 2s infinite alternate;
+
 
 
 }
@@ -325,18 +435,26 @@ button:hover {
 
     from {
 
+
         transform:
+
         translateY(0);
 
+
     }
+
 
 
     to {
 
+
         transform:
+
         translateY(-15px);
 
+
     }
+
 
 }
 
@@ -344,21 +462,166 @@ button:hover {
 
 
 
-/* =====================
-   FINALE
-===================== */
 
 
-#final {
+
+/* =====================================
+   DESIDERIO
+===================================== */
+
+
+textarea {
+
+
+    width:
+
+    100%;
+
+
+
+    height:
+
+    150px;
+
+
+
+    border-radius:
+
+    15px;
+
+
+
+    border:
+
+    none;
+
+
+
+    padding:
+
+    20px;
+
+
+
+    font-size:
+
+    16px;
+
+
+
+    resize:
+
+    none;
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   LETTERA
+===================================== */
+
+
+.paper {
+
+
+    width:
+
+    80%;
+
+
+
+    max-width:
+
+    600px;
+
+
+
+    min-height:
+
+    400px;
+
+
+
+    padding:
+
+    50px;
+
+
+
+    color:
+
+    #4b2e39;
+
 
 
     background:
 
-    linear-gradient(
-        135deg,
-        #ff758c,
-        #ff7eb3
-    );
+    #fff8e7;
+
+
+
+    border-radius:
+
+    10px;
+
+
+
+    font-family:
+
+    "Dancing Script", cursive;
+
+
+
+    font-size:
+
+    28px;
+
+
+
+}
+
+
+
+
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+
+@media(max-width:600px){
+
+
+    h1 {
+
+
+        font-size:
+
+        32px;
+
+
+    }
+
+
+
+    .glass-box {
+
+
+        padding:
+
+        25px;
+
+
+    }
 
 
 }
