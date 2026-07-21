@@ -7,45 +7,74 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Per te ❤️</title>
+    <title>Per Noi ❤️</title>
 
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
+
 </head>
+
 
 
 <body>
 
 
-<div id="hearts"></div>
+<!-- SFONDO ANIMATO -->
+
+<div id="background">
+
+</div>
 
 
 
-<!-- CAPITOLO 1 -->
-
-<section id="home" class="page active">
 
 
-    <h1>
-        Sto preparando qualcosa per te ❤️
-    </h1>
+<!-- =====================
+     CAPITOLO 1
+     L'INIZIO
+===================== -->
 
 
-    <div class="loading">
+<section id="intro" class="scene active">
 
-        <div id="bar"></div>
+
+    <div class="glass-box">
+
+
+        <p class="chapter">
+            Capitolo I
+        </p>
+
+
+        <h1>
+            Ho preparato qualcosa per te ❤️
+        </h1>
+
+
+        <p>
+            Una piccola sorpresa,
+            fatta con amore.
+        </p>
+
+
+
+        <button id="start">
+
+            Inizia il viaggio ✨
+
+        </button>
+
 
     </div>
-
-
-    <p id="percent">
-        0%
-    </p>
-
-
-    <button id="start" hidden>
-        INIZIA ❤️
-    </button>
 
 
 </section>
@@ -54,12 +83,23 @@
 
 
 
-<!-- CAPITOLO 2 -->
-
-<section id="ticket" class="page">
 
 
-    <div class="ticket-card">
+<!-- =====================
+     CAPITOLO 2
+     BIGLIETTINO
+===================== -->
+
+
+<section id="question" class="scene">
+
+
+    <div class="ticket">
+
+
+        <p class="chapter">
+            Capitolo II
+        </p>
 
 
         <h2>
@@ -68,17 +108,22 @@
 
 
         <p>
-            Vuoi essere la mia fidanzata? ❤️
+            Vuoi continuare questo viaggio con me? ❤️
         </p>
 
 
+
         <button id="yes">
-            Confermo ❤️
+
+            Sì ❤️
+
         </button>
 
 
         <button id="no">
+
             No 😢
+
         </button>
 
 
@@ -91,35 +136,99 @@
 
 
 
-<!-- CAPITOLO 3 -->
-
-<section id="birthday" class="page">
 
 
-    <h1>
-        🎂 Buon compleanno amore mio ❤️
-    </h1>
+<!-- =====================
+     CAPITOLO 3
+     COMPLEANNO
+===================== -->
 
 
-    <p>
-        Spegni tutte le candeline ✨
-    </p>
+<section id="birthday" class="scene">
 
 
-    <div class="cake">
+    <div class="glass-box">
 
-        🕯️ 🕯️ 🕯️
 
-        <br>
+        <p class="chapter">
+            Capitolo III
+        </p>
 
-        🎂
+
+        <h1>
+            🎂 Buon compleanno amore mio
+        </h1>
+
+
+        <p>
+            Preparati ad esprimere un desiderio...
+        </p>
+
+
+        <div id="cake">
+
+            🎂
+
+        </div>
+
+
+
+        <p id="candles">
+
+            Candeline: 19
+
+        </p>
+
 
     </div>
 
 
-    <p id="candlesText">
-        Candeline rimaste: 3
-    </p>
+</section>
+
+
+
+
+
+
+
+
+<!-- =====================
+     CAPITOLO 4
+     DESIDERIO
+===================== -->
+
+
+<section id="wish" class="scene">
+
+
+    <div class="glass-box">
+
+
+        <p class="chapter">
+            Capitolo IV
+        </p>
+
+
+        <h1>
+            ✨ Esprimi un desiderio
+        </h1>
+
+
+        <textarea
+        id="wishText"
+        placeholder="Scrivi qui il tuo desiderio...">
+        </textarea>
+
+
+
+        <button id="saveWish">
+
+            Custodiscilo ✨
+
+        </button>
+
+
+    </div>
 
 
 </section>
@@ -128,29 +237,140 @@
 
 
 
-<!-- CAPITOLO FINALE -->
 
 
-<section id="final" class="page">
+
+<!-- =====================
+     CAPITOLO 5
+     ALBUM
+===================== -->
 
 
-    <h1>
-        ❤️ Per te
-    </h1>
+<section id="album" class="scene">
 
 
-    <p>
-        Questo è solo l'inizio della nostra storia...
-    </p>
+    <div class="glass-box">
+
+
+        <p class="chapter">
+            Capitolo V
+        </p>
+
+
+        <h1>
+            📸 I nostri ricordi
+        </h1>
+
+
+        <div id="photos">
+
+            <!-- Inseriremo qui le Polaroid -->
+
+
+        </div>
+
+
+    </div>
 
 
 </section>
 
 
+
+
+
+
+
+
+<!-- =====================
+     CAPITOLO 6
+     LETTERA
+===================== -->
+
+
+<section id="letter" class="scene">
+
+
+    <div class="paper">
+
+
+        <p class="chapter">
+            Capitolo VI
+        </p>
+
+
+        <h1>
+            ✉️ Per te
+        </h1>
+
+
+        <p id="letterText">
+
+            <!-- Qui arriverà la lettera -->
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- =====================
+     CAPITOLO FINALE
+===================== -->
+
+
+<section id="final" class="scene">
+
+
+    <div class="glass-box">
+
+
+        <h1>
+
+            ❤️
+
+        </h1>
+
+
+        <h2>
+
+            Buon compleanno amore mio
+
+        </h2>
+
+
+        <p>
+
+            Grazie per essere nella mia vita.
+
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+<!-- JAVASCRIPT -->
 
 <script src="script.js"></script>
 
 
 </body>
+
 
 </html>
