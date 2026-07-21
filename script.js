@@ -1,4 +1,4 @@
-console.log("Script caricato ❤️");
+console.log("Script caricato 🤍");
 
 
 // CUORI
@@ -11,7 +11,7 @@ function creaCuore() {
 
     cuore.className = "heart";
 
-    cuore.innerHTML = "❤️";
+    cuore.innerHTML = "🤍";
 
     cuore.style.left = Math.random() * 100 + "vw";
 
@@ -59,7 +59,7 @@ let timer = setInterval(() => {
 
         clearInterval(timer);
 
-        percent.innerHTML = "È pronto per te ❤️";
+        percent.innerHTML = "È pronto per te 🤍";
 
         start.hidden = false;
 
@@ -74,6 +74,6 @@ let timer = setInterval(() => {
 
 start.onclick = function() {
 
-    alert("Il viaggio inizia ❤️");
+    alert("Il viaggio inizia 🤍");
 
 };
