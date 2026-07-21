@@ -1,28 +1,25 @@
 /* =====================================
    PROJECT AURORA
-   SCRIPT COMPLETO v1.1
+   SCRIPT PULITO v2.0
 ===================================== */
 
 
 
-// ==========================
-// EMOJI CADENTI ❤️🤍😍✨
-// ==========================
+// =====================================
+// CUORI CADENTI ❤️🤍😍✨
+// =====================================
 
 
 const hearts = document.getElementById("hearts");
 
 
 const simboli = [
-
     "❤️",
     "🤍",
     "😍",
     "💕",
     "💗",
-    "✨",
-    "🦁"
-
+    "✨"
 ];
 
 
@@ -81,9 +78,9 @@ setInterval(creaCuore,250);
 
 
 
-// ==========================
+// =====================================
 // CARICAMENTO ⏳
-// ==========================
+// =====================================
 
 
 const bar =
@@ -103,7 +100,8 @@ let valore = 0;
 
 
 
-const caricamento = setInterval(()=>{
+const caricamento =
+setInterval(()=>{
 
 
     valore++;
@@ -124,17 +122,14 @@ const caricamento = setInterval(()=>{
         clearInterval(caricamento);
 
 
-
         percent.innerHTML =
         "✨ È pronto per te ❤️";
-
 
 
         start.hidden = false;
 
 
     }
-
 
 
 },50);
@@ -147,9 +142,9 @@ const caricamento = setInterval(()=>{
 
 
 
-// ==========================
-// ELEMENTI PAGINA
-// ==========================
+// =====================================
+// PAGINE
+// =====================================
 
 
 const home =
@@ -178,9 +173,9 @@ document.getElementById("no");
 
 
 
-// ==========================
-// APERTURA BIGLIETTINO 💌
-// ==========================
+// =====================================
+// INIZIO VIAGGIO 💌
+// =====================================
 
 
 start.addEventListener(
@@ -202,9 +197,10 @@ start.addEventListener(
 
 
 
-// ==========================
-// NO CHE SCAPPA 😂
-// ==========================
+
+// =====================================
+// NO SCAPPA 😂
+// =====================================
 
 
 function scappa(){
@@ -216,7 +212,7 @@ function scappa(){
     no.style.left =
     Math.random()
     *
-    (window.innerWidth - no.offsetWidth)
+    (window.innerWidth - 120)
     + "px";
 
 
@@ -224,7 +220,7 @@ function scappa(){
     no.style.top =
     Math.random()
     *
-    (window.innerHeight - no.offsetHeight)
+    (window.innerHeight - 80)
     + "px";
 
 
@@ -259,13 +255,18 @@ no.addEventListener(
 
 
 
-// ==========================
-// TORTA 19 CANDELINE 🎂
-// ==========================
+
+// =====================================
+// TORTA 🎂
+// =====================================
 
 
 const cake =
 document.getElementById("cake");
+
+
+const candlesBox =
+document.getElementById("candles");
 
 
 const counter =
@@ -277,7 +278,16 @@ let candeline = 19;
 
 
 
+
+
+
 function creaTorta(){
+
+
+
+    if(!cake || !candlesBox)
+    return;
+
 
 
     const base =
@@ -293,25 +303,61 @@ function creaTorta(){
 
 
 
-    const top =
+
+    const cream =
     document.createElement("div");
 
 
-    top.className =
-    "cake-top";
+    cream.className =
+    "cake-cream";
 
 
-    cake.appendChild(top);
+    cake.appendChild(cream);
 
 
 
 
 
-    for(let i = 0; i < 19; i++){
+
+
+    const posizioni = [
+
+        [90,125],
+        [135,125],
+        [180,125],
+        [225,125],
+
+        [65,150],
+        [110,150],
+        [155,150],
+        [200,150],
+        [245,150],
+
+        [45,175],
+        [90,175],
+        [135,175],
+        [180,175],
+        [225,175],
+        [270,175],
+
+        [90,200],
+        [135,200],
+        [180,200],
+        [225,200]
+
+    ];
+
+
+
+
+
+
+    posizioni.forEach((pos)=>{
 
 
         const candela =
         document.createElement("div");
+
 
 
         candela.className =
@@ -320,7 +366,14 @@ function creaTorta(){
 
 
         candela.style.left =
-        (25 + i * 11) + "px";
+        pos[0] + "px";
+
+
+        candela.style.bottom =
+        pos[1] + "px";
+
+
+
 
 
 
@@ -341,6 +394,10 @@ function creaTorta(){
 
 
 
+
+
+
+
         candela.addEventListener(
         "click",
         ()=>{
@@ -357,13 +414,34 @@ function creaTorta(){
 
 
 
+            const fumo =
+            document.createElement("span");
+
+
+            fumo.className =
+            "smoke";
+
+
+            fumo.innerHTML =
+            "💨";
+
+
+            candela.appendChild(fumo);
+
+
+
+
             candeline--;
 
 
 
             counter.innerHTML =
             "Candeline rimaste: "
-            + candeline;
+            +
+            candeline;
+
+
+
 
 
 
@@ -378,7 +456,7 @@ function creaTorta(){
                     );
 
 
-                },500);
+                },800);
 
 
             }
@@ -388,10 +466,12 @@ function creaTorta(){
 
 
 
-        cake.appendChild(candela);
+        candlesBox.appendChild(candela);
 
 
-    }
+
+    });
+
 
 
 }
@@ -407,9 +487,10 @@ creaTorta();
 
 
 
-// ==========================
-// CONFERMA ❤️
-// ==========================
+
+// =====================================
+// SI ❤️
+// =====================================
 
 
 yes.addEventListener(
