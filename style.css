@@ -1,15 +1,13 @@
 /* =====================================
    PROJECT AURORA
-   STYLE COMPLETO
+   STYLE COMPLETO v3.0
 ===================================== */
 
 
 /* RESET */
 
 * {
-
-    box-sizing: border-box;
-
+    box-sizing:border-box;
 }
 
 
@@ -47,9 +45,8 @@ body {
 
 
 
-
 /* =====================================
-   EMOJI CADENTI ❤️
+   CUORI CADENTI ❤️✨
 ===================================== */
 
 
@@ -75,12 +72,9 @@ body {
 
     top:-60px;
 
+    animation:
 
-    animation-name:caduta;
-
-    animation-timing-function:linear;
-
-    animation-fill-mode:forwards;
+    caduta linear forwards;
 
 
     filter:
@@ -120,19 +114,20 @@ body {
 
     100% {
 
+
         transform:
 
         translateY(110vh)
 
         rotate(360deg);
 
+
         opacity:0;
 
     }
 
+
 }
-
-
 
 
 
@@ -165,6 +160,7 @@ body {
 
 
 
+
 /* =====================================
    TESTI
 ===================================== */
@@ -189,13 +185,13 @@ p {
 
 
 
-
 /* =====================================
-   BARRA CARICAMENTO
+   CARICAMENTO
 ===================================== */
 
 
 .loading {
+
 
     width:350px;
 
@@ -221,7 +217,9 @@ p {
 
 #bar {
 
+
     width:0%;
+
 
     height:100%;
 
@@ -236,6 +234,7 @@ p {
 
 
     border-radius:30px;
+
 
     transition:.3s;
 
@@ -288,12 +287,12 @@ button {
 
     transition:.3s;
 
-
 }
 
 
 
 button:hover {
+
 
     transform:scale(1.08);
 
@@ -306,7 +305,7 @@ button:hover {
 
 
 /* =====================================
-   BIGLIETTINO 💌
+   BIGLIETTO 💌
 ===================================== */
 
 
@@ -396,10 +395,10 @@ button:hover {
     position:relative;
 
 
-    width:360px;
+    width:430px;
 
 
-    height:260px;
+    height:300px;
 
 
     margin:40px auto;
@@ -409,8 +408,6 @@ button:hover {
 
 
 
-
-/* BASE TORTA */
 
 
 .cake-base {
@@ -422,7 +419,7 @@ button:hover {
     bottom:0;
 
 
-    left:40px;
+    left:75px;
 
 
     width:280px;
@@ -441,6 +438,7 @@ button:hover {
     );
 
 
+
     border-radius:
 
     25px 25px 15px 15px;
@@ -457,7 +455,6 @@ button:hover {
 
 
 
-/* PANNA */
 
 
 .cake-cream {
@@ -469,7 +466,7 @@ button:hover {
     bottom:100px;
 
 
-    left:55px;
+    left:90px;
 
 
     width:250px;
@@ -478,12 +475,14 @@ button:hover {
     height:45px;
 
 
+
     background:
 
     linear-gradient(
         white,
         #ffe5ef
     );
+
 
 
     border-radius:50%;
@@ -496,14 +495,11 @@ button:hover {
 
 
 
-/* CONTENITORE CANDELE */
-
 
 #candles {
 
 
     position:absolute;
-
 
     inset:0;
 
@@ -515,22 +511,16 @@ button:hover {
 
 
 
-/* CANDELA */
-
-
 .candle {
 
 
     position:absolute;
 
 
-    bottom:125px;
+    width:22px;
 
 
-    width:18px;
-
-
-    height:70px;
+    height:75px;
 
 
     background:
@@ -555,26 +545,12 @@ button:hover {
     touch-action:manipulation;
 
 
-    transition:.3s;
-
-
-}
-
-
-
-.candle:hover {
-
-    transform:scale(1.1);
-
 }
 
 
 
 
 
-
-
-/* FIAMMA 🔥 */
 
 
 .flame {
@@ -583,13 +559,13 @@ button:hover {
     position:absolute;
 
 
-    top:-40px;
+    top:-45px;
 
 
-    left:-9px;
+    left:-8px;
 
 
-    font-size:38px;
+    font-size:42px;
 
 
     animation:
@@ -602,10 +578,10 @@ button:hover {
 
 .flame.off {
 
-
     display:none;
 
 }
+
 
 
 
@@ -643,8 +619,6 @@ button:hover {
 
 
 
-/* FUMO 💨 */
-
 
 .smoke {
 
@@ -658,7 +632,7 @@ button:hover {
     left:0;
 
 
-    font-size:25px;
+    font-size:28px;
 
 
     animation:
@@ -676,9 +650,7 @@ button:hover {
 
     from {
 
-
         opacity:1;
-
 
         transform:
 
@@ -690,14 +662,57 @@ button:hover {
 
     to {
 
-
         opacity:0;
-
 
         transform:
 
         translateY(-50px);
 
     }
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   TELEFONO 📱
+===================================== */
+
+
+@media(max-width:600px){
+
+
+    h1 {
+
+        font-size:28px;
+
+    }
+
+
+    p {
+
+        font-size:18px;
+
+    }
+
+
+    .loading {
+
+        width:280px;
+
+    }
+
+
+
+    #cake {
+
+        transform:scale(.75);
+
+    }
+
 
 }
