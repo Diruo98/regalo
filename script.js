@@ -2,9 +2,7 @@
 // CUORI ANIMATI ❤️😍
 // =======================
 
-
 const hearts = document.getElementById("hearts");
-
 
 const simboli = [
     "❤️",
@@ -17,37 +15,28 @@ const simboli = [
 
 function creaCuore() {
 
-
     const cuore = document.createElement("div");
-
 
     cuore.className = "heart";
 
 
     cuore.innerHTML =
-        simboli[
-            Math.floor(Math.random() * simboli.length)
-        ];
-
+        simboli[Math.floor(Math.random() * simboli.length)];
 
 
     cuore.style.left =
         Math.random() * 100 + "vw";
 
 
-
     cuore.style.fontSize =
         (15 + Math.random() * 25) + "px";
-
 
 
     cuore.style.animationDuration =
         (4 + Math.random() * 5) + "s";
 
 
-
     hearts.appendChild(cuore);
-
 
 
     setTimeout(() => {
@@ -56,13 +45,10 @@ function creaCuore() {
 
     }, 9000);
 
-
 }
 
 
-
 setInterval(creaCuore, 250);
-
 
 
 
@@ -75,14 +61,11 @@ setInterval(creaCuore, 250);
 
 
 const bar = document.getElementById("bar");
-
 const percent = document.getElementById("percent");
-
 const start = document.getElementById("start");
 
 
 let valore = 0;
-
 
 
 const caricamento = setInterval(() => {
@@ -91,12 +74,10 @@ const caricamento = setInterval(() => {
     valore++;
 
 
-    bar.style.width =
-        valore + "%";
+    bar.style.width = valore + "%";
 
 
-    percent.innerHTML =
-        valore + "%";
+    percent.innerHTML = valore + "%";
 
 
 
@@ -106,21 +87,16 @@ const caricamento = setInterval(() => {
         clearInterval(caricamento);
 
 
-
         percent.innerHTML =
             "È pronto per te ❤️";
 
 
-
         start.hidden = false;
-
 
     }
 
 
-
 }, 50);
-
 
 
 
@@ -134,24 +110,22 @@ const caricamento = setInterval(() => {
 
 
 const ticket = document.getElementById("ticket");
-
 const yes = document.getElementById("yes");
-
 const no = document.getElementById("no");
-
 const success = document.getElementById("success");
 
 
 
+// apre il bigliettino
 
-
-start.onclick = function() {
+start.addEventListener("click", () => {
 
 
     ticket.style.display = "flex";
 
 
-};
+});
+
 
 
 
@@ -164,19 +138,17 @@ start.onclick = function() {
 // =======================
 
 
-no.addEventListener("mouseover", function() {
-
+no.addEventListener("mouseover", () => {
 
 
     const x =
         Math.random() *
-        (window.innerWidth - 100);
-
+        (window.innerWidth - no.offsetWidth);
 
 
     const y =
         Math.random() *
-        (window.innerHeight - 50);
+        (window.innerHeight - no.offsetHeight);
 
 
 
@@ -191,8 +163,8 @@ no.addEventListener("mouseover", function() {
         y + "px";
 
 
-
 });
+
 
 
 
@@ -205,17 +177,16 @@ no.addEventListener("mouseover", function() {
 // =======================
 
 
-yes.onclick = function() {
-
+yes.addEventListener("click", () => {
 
 
     ticket.style.display = "none";
 
 
 
-    // esplosione cuori
+    // esplosione di cuori
 
-    for(let i = 0; i < 50; i++) {
+    for(let i = 0; i < 60; i++) {
 
         creaCuore();
 
@@ -229,8 +200,7 @@ yes.onclick = function() {
         success.style.display = "flex";
 
 
-    }, 700);
+    }, 800);
 
 
-
-};
+});
