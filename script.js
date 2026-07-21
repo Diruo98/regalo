@@ -1,68 +1,137 @@
-// =====================
-// CUORI ANIMATI ❤️😍
-// =====================
-
-
-const hearts = document.getElementById("hearts");
-
-
-const simboli = [
-    "❤️",
-    "🤍",
-    "😍",
-    "💕",
-    "💗"
-];
+/* =====================================
+   PROJECT AURORA
+   SCRIPT v1.0
+===================================== */
 
 
 
-function creaCuore() {
+// =====================================
+// CAMBIO SCENE
+// =====================================
 
 
-    const cuore = document.createElement("div");
-
-
-    cuore.className = "heart";
-
-
-    cuore.innerHTML =
-    simboli[
-        Math.floor(Math.random() * simboli.length)
-    ];
+const scenes = document.querySelectorAll(".scene");
 
 
 
-    cuore.style.left =
-    Math.random() * 100 + "vw";
+function cambiaScena(id) {
+
+
+    scenes.forEach(scene => {
+
+
+        scene.classList.remove("active");
+
+
+    });
 
 
 
-    cuore.style.fontSize =
-    (15 + Math.random() * 25) + "px";
-
-
-
-    cuore.style.animationDuration =
-    (4 + Math.random() * 6) + "s";
-
-
-
-    hearts.appendChild(cuore);
-
-
-
-    setTimeout(() => {
-
-        cuore.remove();
-
-    }, 10000);
+    document
+    .getElementById(id)
+    .classList.add("active");
 
 
 }
 
 
 
-setInterval(creaCuore, 250);
+
+
+
+
+
+// =====================================
+// CUORI ANIMATI ❤️
+// =====================================
+
+
+const background =
+document.getElementById("background");
+
+
+
+const simboli = [
+
+    "❤️",
+    "🤍",
+    "✨",
+    "💗",
+    "⭐"
+
+];
+
+
+
+function creaElemento() {
+
+
+    const elemento =
+    document.createElement("div");
+
+
+
+    elemento.innerHTML =
+    simboli[
+        Math.floor(
+            Math.random()
+            *
+            simboli.length
+        )
+    ];
+
+
+
+    elemento.style.position =
+    "absolute";
+
+
+
+    elemento.style.left =
+    Math.random()*100+"vw";
+
+
+
+    elemento.style.top =
+    "-50px";
+
+
+
+    elemento.style.fontSize =
+    (15+Math.random()*30)+"px";
+
+
+
+    elemento.style.animation =
+    "caduta "
+    +
+    (5+Math.random()*5)
+    +
+    "s linear";
+
+
+
+    background.appendChild(elemento);
+
+
+
+    setTimeout(()=>{
+
+
+        elemento.remove();
+
+
+    },10000);
+
+
+}
+
+
+
+setInterval(
+    creaElemento,
+    300
+);
 
 
 
@@ -70,17 +139,11 @@ setInterval(creaCuore, 250);
 
 
 
-// =====================
-// CARICAMENTO ⏳
-// =====================
 
 
-const bar =
-document.getElementById("bar");
-
-
-const percent =
-document.getElementById("percent");
+// =====================================
+// INTRO
+// =====================================
 
 
 const start =
@@ -88,92 +151,12 @@ document.getElementById("start");
 
 
 
-let progresso = 0;
+start.addEventListener(
+"click",
+()=>{
 
 
-
-const loading = setInterval(() => {
-
-
-    progresso++;
-
-
-    bar.style.width =
-    progresso + "%";
-
-
-    percent.innerHTML =
-    progresso + "%";
-
-
-
-    if(progresso >= 100) {
-
-
-        clearInterval(loading);
-
-
-        percent.innerHTML =
-        "È pronto per te ❤️";
-
-
-        start.hidden = false;
-
-
-    }
-
-
-
-},50);
-
-
-
-
-
-
-
-
-// =====================
-// CAMBIO PAGINE
-// =====================
-
-
-const pagine =
-document.querySelectorAll(".page");
-
-
-
-function mostraPagina(id) {
-
-
-    pagine.forEach(p => {
-
-        p.classList.remove("active");
-
-    });
-
-
-    document.getElementById(id)
-    .classList.add("active");
-
-}
-
-
-
-
-
-
-
-
-// =====================
-// INIZIA ❤️
-// =====================
-
-
-start.addEventListener("click", () => {
-
-
-    mostraPagina("ticket");
+    cambiaScena("question");
 
 
 });
@@ -185,9 +168,14 @@ start.addEventListener("click", () => {
 
 
 
-// =====================
-// NO SCAPPA 😂
-// =====================
+// =====================================
+// BIGLIETTINO
+// =====================================
+
+
+const yes =
+document.getElementById("yes");
+
 
 
 const no =
@@ -195,30 +183,58 @@ document.getElementById("no");
 
 
 
-function scappaNo() {
+
+yes.addEventListener(
+"click",
+()=>{
 
 
-    const x =
-    Math.random() *
-    (window.innerWidth - no.offsetWidth);
+    cambiaScena("birthday");
+
+
+});
 
 
 
-    const y =
-    Math.random() *
-    (window.innerHeight - no.offsetHeight);
 
 
 
-    no.style.position = "fixed";
+
+// NO CHE SCAPPA 😂
+
+
+function scappa() {
+
+
+    no.style.position =
+    "fixed";
+
 
 
     no.style.left =
-    x + "px";
+    Math.random()
+    *
+    (
+        window.innerWidth
+        -
+        100
+    )
+    +
+    "px";
+
 
 
     no.style.top =
-    y + "px";
+    Math.random()
+    *
+    (
+        window.innerHeight
+        -
+        50
+    )
+    +
+    "px";
+
 
 }
 
@@ -226,7 +242,7 @@ function scappaNo() {
 
 no.addEventListener(
 "mouseenter",
-scappaNo
+scappa
 );
 
 
@@ -235,105 +251,11 @@ no.addEventListener(
 "touchstart",
 (e)=>{
 
+
     e.preventDefault();
 
-    scappaNo();
 
-});
-
-
-
-
-
-
-
-
-// =====================
-// CONFERMA ❤️
-// =====================
-
-
-const yes =
-document.getElementById("yes");
-
-
-
-yes.addEventListener("click",()=>{
-
-
-    mostraPagina("birthday");
-
-
-});
-
-
-
-
-
-
-
-
-// =====================
-// CANDELINE 🎂
-// =====================
-
-
-const cake =
-document.querySelector(".cake");
-
-const candlesText =
-document.getElementById("candlesText");
-
-
-let candeline = 3;
-
-
-
-cake.addEventListener("click",()=>{
-
-
-    if(candeline > 0) {
-
-
-        candeline--;
-
-
-        candlesText.innerHTML =
-        "Candeline rimaste: "
-        + candeline;
-
-
-
-        if(candeline === 0) {
-
-
-            candlesText.innerHTML =
-            "🎉 Desiderio espresso ❤️";
-
-
-
-            for(let i=0;i<80;i++){
-
-                creaCuore();
-
-            }
-
-
-
-            setTimeout(()=>{
-
-
-                mostraPagina("final");
-
-
-            },2000);
-
-
-
-        }
-
-
-    }
+    scappa();
 
 
 });
