@@ -1,6 +1,7 @@
-// ==========================
-// CUORI CADENTI ❤️
-// ==========================
+console.log("Script caricato ❤️");
+
+
+// CUORI
 
 const hearts = document.getElementById("hearts");
 
@@ -8,88 +9,59 @@ function creaCuore() {
 
     const cuore = document.createElement("div");
 
-    cuore.classList.add("heart");
+    cuore.className = "heart";
 
-    cuore.innerHTML = "🤍";
+    cuore.innerHTML = "❤️";
 
-
-    // posizione casuale
     cuore.style.left = Math.random() * 100 + "vw";
 
-
-    // velocità casuale
     cuore.style.animationDuration =
         (3 + Math.random() * 5) + "s";
 
-
-    // dimensione casuale
     cuore.style.fontSize =
-        (10 + Math.random() * 25) + "px";
+        (15 + Math.random() * 20) + "px";
 
 
     hearts.appendChild(cuore);
 
 
-    // rimuove il cuore dopo l'animazione
     setTimeout(() => {
-
         cuore.remove();
-
     }, 8000);
 
 }
 
 
-// crea cuori continuamente
 setInterval(creaCuore, 300);
 
 
 
 
-
-// ==========================
-// BARRA DI CARICAMENTO ❤️
-// ==========================
-
-
-const bar = document.getElementById("bar");
-
-const percent = document.getElementById("percent");
-
-const start = document.getElementById("start");
-
+// CARICAMENTO
 
 let valore = 0;
 
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
+const start = document.getElementById("start");
 
 
-const caricamento = setInterval(() => {
-
+let timer = setInterval(() => {
 
     valore++;
 
-
     bar.style.width = valore + "%";
-
 
     percent.innerHTML = valore + "%";
 
 
-
     if (valore >= 100) {
 
+        clearInterval(timer);
 
-        clearInterval(caricamento);
-
-
-
-        percent.innerHTML =
-            "È tutto pronto per te 🤍";
-
-
+        percent.innerHTML = "È pronto per te ❤️";
 
         start.hidden = false;
-
 
     }
 
@@ -98,18 +70,10 @@ const caricamento = setInterval(() => {
 
 
 
+// PULSANTE
 
+start.onclick = function() {
 
-// ==========================
-// PULSANTE INIZIA ✨
-// ==========================
+    alert("Il viaggio inizia ❤️");
 
-
-start.addEventListener("click", () => {
-
-
-    alert("Il viaggio sta iniziando 🤍");
-
-    console.log("Script caricato ❤️");
-
-});
+};
