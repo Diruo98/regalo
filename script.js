@@ -120,4 +120,35 @@ start.onclick = function() {
 
     alert("Il viaggio sta iniziando ❤️");
 
+    const chapter1 = document.getElementById("chapter1");
+
+
+confirm.onclick = function() {
+
+
+    ticket.classList.add("esci");
+
+
+    // esplosione cuori
+    for(let i = 0; i < 40; i++) {
+
+        creaCuore();
+
+    }
+
+
+    setTimeout(() => {
+
+
+        ticket.style.display = "none";
+
+
+        chapter1.style.display = "flex";
+
+
+    }, 800);
+
+
+};
+
 };
