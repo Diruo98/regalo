@@ -1,18 +1,16 @@
 /* =====================================
    PROJECT AURORA
-   SCRIPT v1.0
+   SCRIPT COMPLETO v1.1
 ===================================== */
 
 
 
 // ==========================
-// EMOJI CADENTI ❤️🤍😍
+// EMOJI CADENTI ❤️🤍😍✨
 // ==========================
 
 
-const hearts =
-document.getElementById("hearts");
-
+const hearts = document.getElementById("hearts");
 
 
 const simboli = [
@@ -32,41 +30,31 @@ const simboli = [
 function creaCuore(){
 
 
-    const cuore =
-    document.createElement("div");
+    const cuore = document.createElement("div");
 
 
-
-    cuore.className =
-    "heart";
-
+    cuore.className = "heart";
 
 
     cuore.innerHTML =
     simboli[
-        Math.floor(
-            Math.random()
-            *
-            simboli.length
-        )
+        Math.floor(Math.random() * simboli.length)
     ];
 
 
 
     cuore.style.left =
-    Math.random()*100 + "vw";
+    Math.random() * 100 + "vw";
 
 
 
     cuore.style.fontSize =
-    (15 + Math.random()*30)
-    + "px";
+    (15 + Math.random() * 30) + "px";
 
 
 
     cuore.style.animationDuration =
-    (4 + Math.random()*6)
-    + "s";
+    (4 + Math.random() * 6) + "s";
 
 
 
@@ -76,22 +64,16 @@ function creaCuore(){
 
     setTimeout(()=>{
 
-
         cuore.remove();
 
-
     },10000);
-
 
 
 }
 
 
 
-setInterval(
-    creaCuore,
-    250
-);
+setInterval(creaCuore,250);
 
 
 
@@ -121,8 +103,7 @@ let valore = 0;
 
 
 
-const caricamento =
-setInterval(()=>{
+const caricamento = setInterval(()=>{
 
 
     valore++;
@@ -132,10 +113,8 @@ setInterval(()=>{
     valore + "%";
 
 
-
     percent.innerHTML =
     valore + "%";
-
 
 
 
@@ -151,8 +130,7 @@ setInterval(()=>{
 
 
 
-        start.hidden =
-        false;
+        start.hidden = false;
 
 
     }
@@ -170,9 +148,8 @@ setInterval(()=>{
 
 
 // ==========================
-// APERTURA BIGLIETTINO 💌
+// ELEMENTI PAGINA
 // ==========================
-
 
 
 const home =
@@ -182,6 +159,28 @@ document.getElementById("home");
 const ticket =
 document.getElementById("ticket");
 
+
+const birthday =
+document.getElementById("birthday");
+
+
+
+const yes =
+document.getElementById("yes");
+
+
+const no =
+document.getElementById("no");
+
+
+
+
+
+
+
+// ==========================
+// APERTURA BIGLIETTINO 💌
+// ==========================
 
 
 start.addEventListener(
@@ -203,44 +202,30 @@ start.addEventListener(
 
 
 
-
 // ==========================
 // NO CHE SCAPPA 😂
 // ==========================
 
 
-
-const no =
-document.getElementById("no");
-
-
-
 function scappa(){
 
 
-
-    no.style.position =
-    "fixed";
-
+    no.style.position = "fixed";
 
 
     no.style.left =
-
     Math.random()
     *
-    (window.innerWidth - 100)
-    +
-    "px";
+    (window.innerWidth - no.offsetWidth)
+    + "px";
 
 
 
     no.style.top =
-
     Math.random()
     *
-    (window.innerHeight - 50)
-    +
-    "px";
+    (window.innerHeight - no.offsetHeight)
+    + "px";
 
 
 }
@@ -256,10 +241,10 @@ scappa
 
 no.addEventListener(
 "touchstart",
-(event)=>{
+(e)=>{
 
 
-    event.preventDefault();
+    e.preventDefault();
 
 
     scappa();
@@ -274,37 +259,9 @@ no.addEventListener(
 
 
 
-
 // ==========================
-// SI ❤️
-// ==========================
-
-
-
-const yes =
-document.getElementById("yes");
-
-
-
-yes.addEventListener(
-"click",
-()=>{
-
-
-  home.classList.add("hidden");
-
-ticket.classList.add("hidden");
-
-birthday.classList.remove("hidden");
-    );
-
-   // ==========================
 // TORTA 19 CANDELINE 🎂
 // ==========================
-
-
-const birthday =
-document.getElementById("birthday");
 
 
 const cake =
@@ -320,12 +277,7 @@ let candeline = 19;
 
 
 
-
-
 function creaTorta(){
-
-
-    // base torta
 
 
     const base =
@@ -337,6 +289,7 @@ function creaTorta(){
 
 
     cake.appendChild(base);
+
 
 
 
@@ -354,54 +307,54 @@ function creaTorta(){
 
 
 
-    // crea 19 candeline
-
-
     for(let i = 0; i < 19; i++){
 
 
-        const candle =
+        const candela =
         document.createElement("div");
 
 
-        candle.className =
+        candela.className =
         "candle";
 
 
 
-        candle.style.left =
-        (25 + i*11) + "px";
+        candela.style.left =
+        (25 + i * 11) + "px";
 
 
 
-        const flame =
+        const fiamma =
         document.createElement("span");
 
 
-        flame.className =
+        fiamma.className =
         "flame";
 
 
-        flame.innerHTML =
+        fiamma.innerHTML =
         "🔥";
 
 
 
-        candle.appendChild(flame);
+        candela.appendChild(fiamma);
 
 
 
-        candle.addEventListener(
+        candela.addEventListener(
         "click",
         ()=>{
 
 
-            if(flame.classList.contains("off"))
+            if(
+            fiamma.classList.contains("off")
+            )
             return;
 
 
 
-            flame.classList.add("off");
+            fiamma.classList.add("off");
+
 
 
             candeline--;
@@ -410,8 +363,7 @@ function creaTorta(){
 
             counter.innerHTML =
             "Candeline rimaste: "
-            +
-            candeline;
+            + candeline;
 
 
 
@@ -436,7 +388,7 @@ function creaTorta(){
 
 
 
-        cake.appendChild(candle);
+        cake.appendChild(candela);
 
 
     }
@@ -447,6 +399,28 @@ function creaTorta(){
 
 
 creaTorta();
+
+
+
+
+
+
+
+
+// ==========================
+// CONFERMA ❤️
+// ==========================
+
+
+yes.addEventListener(
+"click",
+()=>{
+
+
+    ticket.classList.add("hidden");
+
+
+    birthday.classList.remove("hidden");
 
 
 });
