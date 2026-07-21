@@ -1,9 +1,21 @@
-console.log("Script caricato 🤍");
+console.log("Script caricato ❤️");
 
 
-// CUORI
+// ==========================
+// CUORI E FACCINE ANIMATE ❤️😍
+// ==========================
 
 const hearts = document.getElementById("hearts");
+
+
+const simboli = [
+    "❤️",
+    "🤍",
+    "😍",
+    "💕",
+    "💗"
+];
+
 
 function creaCuore() {
 
@@ -11,57 +23,85 @@ function creaCuore() {
 
     cuore.className = "heart";
 
-    cuore.innerHTML = "🤍";
 
-    cuore.style.left = Math.random() * 100 + "vw";
+    // sceglie un simbolo casuale
+    cuore.innerHTML =
+        simboli[Math.floor(Math.random() * simboli.length)];
 
+
+    // posizione casuale
+    cuore.style.left =
+        Math.random() * 100 + "vw";
+
+
+    // velocità casuale
     cuore.style.animationDuration =
-        (3 + Math.random() * 5) + "s";
+        (3 + Math.random() * 6) + "s";
 
+
+    // dimensione casuale
     cuore.style.fontSize =
-        (15 + Math.random() * 20) + "px";
+        (15 + Math.random() * 25) + "px";
 
 
     hearts.appendChild(cuore);
 
 
+
+    // elimina dopo la caduta
     setTimeout(() => {
+
         cuore.remove();
-    }, 8000);
+
+    }, 9000);
 
 }
 
 
-setInterval(creaCuore, 300);
+// crea nuovi cuori
+setInterval(creaCuore, 250);
 
 
 
 
-// CARICAMENTO
 
-let valore = 0;
+// ==========================
+// BARRA DI CARICAMENTO
+// ==========================
+
 
 const bar = document.getElementById("bar");
 const percent = document.getElementById("percent");
 const start = document.getElementById("start");
 
 
-let timer = setInterval(() => {
+let valore = 0;
+
+
+const caricamento = setInterval(() => {
+
 
     valore++;
+
 
     bar.style.width = valore + "%";
 
     percent.innerHTML = valore + "%";
 
 
+
     if (valore >= 100) {
 
-        clearInterval(timer);
 
-        percent.innerHTML = "È pronto per te 🤍";
+        clearInterval(caricamento);
+
+
+        percent.innerHTML =
+            "È pronto per te ❤️";
+
 
         start.hidden = false;
+
 
     }
 
@@ -70,10 +110,14 @@ let timer = setInterval(() => {
 
 
 
+
+
+// ==========================
 // PULSANTE
+// ==========================
 
 start.onclick = function() {
 
-    alert("Il viaggio inizia 🤍");
+    alert("Il viaggio sta iniziando ❤️");
 
 };
