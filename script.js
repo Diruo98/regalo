@@ -139,17 +139,24 @@ start.addEventListener("click", () => {
 // =======================
 
 
-no.addEventListener("mouseover", () => {
+function scappaNo() {
 
 
-    const x =
-        Math.random() *
-        (window.innerWidth - no.offsetWidth);
+    const larghezza =
+        window.innerWidth - no.offsetWidth - 20;
 
 
-    const y =
-        Math.random() *
-        (window.innerHeight - no.offsetHeight);
+    const altezza =
+        window.innerHeight - no.offsetHeight - 20;
+
+
+
+    const nuovoX =
+        Math.random() * larghezza;
+
+
+    const nuovoY =
+        Math.random() * altezza;
 
 
 
@@ -157,14 +164,42 @@ no.addEventListener("mouseover", () => {
 
 
     no.style.left =
-        x + "px";
+        nuovoX + "px";
 
 
     no.style.top =
-        y + "px";
+        nuovoY + "px";
 
 
-});
+    no.style.transition =
+        "all 0.3s ease";
+
+
+}
+
+
+
+// PC: passa sopra con il mouse
+
+no.addEventListener(
+    "mouseenter",
+    scappaNo
+);
+
+
+
+// Telefono: prova a toccarlo
+
+no.addEventListener(
+    "touchstart",
+    function(e) {
+
+        e.preventDefault();
+
+        scappaNo();
+
+    }
+);
 
 
 
