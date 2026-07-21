@@ -291,9 +291,162 @@ yes.addEventListener(
 ()=>{
 
 
-    alert(
-    "Preparati... la sorpresa continua ❤️"
+  home.classList.add("hidden");
+
+ticket.classList.add("hidden");
+
+birthday.classList.remove("hidden");
     );
+
+   // ==========================
+// TORTA 19 CANDELINE 🎂
+// ==========================
+
+
+const birthday =
+document.getElementById("birthday");
+
+
+const cake =
+document.getElementById("cake");
+
+
+const counter =
+document.getElementById("counter");
+
+
+
+let candeline = 19;
+
+
+
+
+
+function creaTorta(){
+
+
+    // base torta
+
+
+    const base =
+    document.createElement("div");
+
+
+    base.className =
+    "cake-base";
+
+
+    cake.appendChild(base);
+
+
+
+    const top =
+    document.createElement("div");
+
+
+    top.className =
+    "cake-top";
+
+
+    cake.appendChild(top);
+
+
+
+
+
+    // crea 19 candeline
+
+
+    for(let i = 0; i < 19; i++){
+
+
+        const candle =
+        document.createElement("div");
+
+
+        candle.className =
+        "candle";
+
+
+
+        candle.style.left =
+        (25 + i*11) + "px";
+
+
+
+        const flame =
+        document.createElement("span");
+
+
+        flame.className =
+        "flame";
+
+
+        flame.innerHTML =
+        "🔥";
+
+
+
+        candle.appendChild(flame);
+
+
+
+        candle.addEventListener(
+        "click",
+        ()=>{
+
+
+            if(flame.classList.contains("off"))
+            return;
+
+
+
+            flame.classList.add("off");
+
+
+            candeline--;
+
+
+
+            counter.innerHTML =
+            "Candeline rimaste: "
+            +
+            candeline;
+
+
+
+            if(candeline === 0){
+
+
+                setTimeout(()=>{
+
+
+                    alert(
+                    "✨ Esprimi un desiderio ❤️"
+                    );
+
+
+                },500);
+
+
+            }
+
+
+        });
+
+
+
+        cake.appendChild(candle);
+
+
+    }
+
+
+}
+
+
+
+creaTorta();
 
 
 });
