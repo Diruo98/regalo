@@ -1,8 +1,7 @@
 /* =====================================
-   PROJECT AURORA v5
+   PROJECT AURORA v6
    SCRIPT PARTE 1
 ===================================== */
-
 
 
 // =====================================
@@ -39,23 +38,23 @@ function creaCuore(){
 
     cuore.innerHTML =
     simboli[
-        Math.floor(Math.random()*simboli.length)
+        Math.floor(Math.random() * simboli.length)
     ];
 
 
 
     cuore.style.left =
-    Math.random()*100 + "vw";
+    Math.random() * 100 + "vw";
 
 
 
     cuore.style.fontSize =
-    (15 + Math.random()*30)+"px";
+    (15 + Math.random() * 30) + "px";
 
 
 
     cuore.style.animationDuration =
-    (4 + Math.random()*6)+"s";
+    (4 + Math.random() * 6) + "s";
 
 
 
@@ -117,11 +116,12 @@ if(bar && percent && start){
 
 
         bar.style.width =
-        valore+"%";
+        valore + "%";
+
 
 
         percent.innerHTML =
-        valore+"%";
+        valore + "%";
 
 
 
@@ -137,10 +137,11 @@ if(bar && percent && start){
 
 
 
-            start.hidden=false;
+            start.hidden = false;
 
 
         }
+
 
 
     },50);
@@ -173,7 +174,6 @@ const birthday =
 document.getElementById("birthday");
 
 
-
 const yes =
 document.getElementById("yes");
 
@@ -190,7 +190,7 @@ document.getElementById("no");
 
 
 // =====================================
-// INIZIO VIAGGIO
+// INIZIO VIAGGIO ✨
 // =====================================
 
 
@@ -227,23 +227,26 @@ if(start){
 function scappa(){
 
 
-    if(!no)return;
+    if(!no) return;
 
 
-    no.style.position="fixed";
+
+    no.style.position =
+    "fixed";
+
 
 
     no.style.left =
     Math.random() *
-    (window.innerWidth-no.offsetWidth)
-    +"px";
+    (window.innerWidth - no.offsetWidth)
+    + "px";
 
 
 
     no.style.top =
     Math.random() *
-    (window.innerHeight-no.offsetHeight)
-    +"px";
+    (window.innerHeight - no.offsetHeight)
+    + "px";
 
 
 }
@@ -286,7 +289,7 @@ if(no){
 
 
 // =====================================
-// 19 CANDELINE 🕯️
+// CANDELINE 19 🕯️
 // =====================================
 
 
@@ -303,21 +306,33 @@ let candeline = 19;
 
 
 
+let festaPartita = false;
+
+
+
+
+
+
+
+
 function creaCandeline(){
 
 
-    if(!candlesBox)return;
+    if(!candlesBox)
+    return;
 
 
 
-    for(let i=0;i<19;i++){
+    for(let i = 0; i < 19; i++){
 
 
         const candela =
         document.createElement("div");
 
 
-        candela.className="candle";
+
+        candela.className =
+        "candle";
 
 
 
@@ -325,10 +340,13 @@ function creaCandeline(){
         document.createElement("span");
 
 
-        fiamma.className="flame";
+
+        fiamma.className =
+        "flame";
 
 
-        fiamma.innerHTML="🔥";
+        fiamma.innerHTML =
+        "🔥";
 
 
 
@@ -337,10 +355,17 @@ function creaCandeline(){
 
 
 
-        candela.addEventListener("click",()=>{
 
 
-            if(fiamma.classList.contains("off"))
+
+        candela.addEventListener(
+        "click",
+        ()=>{
+
+
+            if(
+            fiamma.classList.contains("off")
+            )
             return;
 
 
@@ -349,17 +374,24 @@ function creaCandeline(){
 
 
 
+
             const fumo =
             document.createElement("span");
 
 
-            fumo.className="smoke";
+
+            fumo.className =
+            "smoke";
 
 
-            fumo.innerHTML="💨";
+            fumo.innerHTML =
+            "💨";
+
 
 
             candela.appendChild(fumo);
+
+
 
 
 
@@ -368,13 +400,29 @@ function creaCandeline(){
 
 
 
-            counter.innerHTML =
-            "Candeline rimaste: "
-            +candeline;
+
+
+            if(counter){
+
+                counter.innerHTML =
+                "Candeline rimaste: "
+                + candeline;
+
+            }
 
 
 
-            if(candeline===0){
+
+
+
+
+            if(
+            candeline === 0 &&
+            !festaPartita
+            ){
+
+
+                festaPartita = true;
 
 
                 festaFinita();
@@ -415,7 +463,9 @@ creaCandeline();
 if(yes){
 
 
-    yes.addEventListener("click",()=>{
+    yes.addEventListener(
+    "click",
+    ()=>{
 
 
         ticket.classList.add("hidden");
@@ -425,8 +475,12 @@ if(yes){
 
 
     });
-/* =====================================
-   PROJECT AURORA v5
+
+
+}
+
+ /* =====================================
+   PROJECT AURORA v6
    SCRIPT PARTE 2
 ===================================== */
 
@@ -466,7 +520,7 @@ function festaFinita(){
 
 
 
-    },2500);
+    },800);
 
 
 }
@@ -487,31 +541,16 @@ function festaFinita(){
 function creaConfetti(){
 
 
-    let area =
+    const area =
     document.getElementById("confetti");
 
 
-
-    if(!area){
-
-
-        area =
-        document.createElement("div");
-
-
-        area.id="confetti";
-
-
-        document.body.appendChild(area);
-
-
-    }
+    if(!area)
+    return;
 
 
 
-
-
-    const colori=[
+    const colori = [
 
         "#ff4d88",
         "#ffd166",
@@ -525,8 +564,7 @@ function creaConfetti(){
 
 
 
-
-    for(let i=0;i<120;i++){
+    for(let i = 0; i < 150; i++){
 
 
         const pezzo =
@@ -534,13 +572,13 @@ function creaConfetti(){
 
 
 
-        pezzo.className=
+        pezzo.className =
         "confetti-piece";
 
 
 
         pezzo.style.left =
-        Math.random()*100+"vw";
+        Math.random()*100 + "vw";
 
 
 
@@ -554,7 +592,7 @@ function creaConfetti(){
 
 
         pezzo.style.animationDuration =
-        (3+Math.random()*3)+"s";
+        (2 + Math.random()*3)+"s";
 
 
 
@@ -572,12 +610,9 @@ function creaConfetti(){
 
         setTimeout(()=>{
 
-
             pezzo.remove();
 
-
-        },6000);
-
+        },5000);
 
 
     }
@@ -606,7 +641,6 @@ const wishInput =
 document.getElementById("wishInput");
 
 
-
 const wishPage =
 document.getElementById("wishPage");
 
@@ -618,6 +652,9 @@ document.getElementById("starPage");
 const letterPage =
 document.getElementById("letterPage");
 
+
+const wishStar =
+document.getElementById("wishStar");
 
 
 const letterText =
@@ -633,7 +670,9 @@ document.getElementById("letterText");
 if(sendWish){
 
 
-    sendWish.addEventListener("click",()=>{
+    sendWish.addEventListener(
+    "click",
+    ()=>{
 
 
         let desiderio =
@@ -642,15 +681,14 @@ if(sendWish){
 
 
 
-        if(desiderio===""){
+        if(desiderio === ""){
 
 
             desiderio =
-            "Un desiderio pieno di amore ❤️";
+            "Un desiderio pieno d'amore 🤍";
 
 
         }
-
 
 
 
@@ -662,11 +700,34 @@ if(sendWish){
 
 
 
+
         wishPage.classList.add("hidden");
 
 
 
         starPage.classList.remove("hidden");
+
+
+
+
+        setTimeout(()=>{
+
+
+            if(wishStar){
+
+
+                wishStar.classList.add("fly");
+
+
+            }
+
+
+
+        },300);
+
+
+
+
 
 
 
@@ -676,7 +737,8 @@ if(sendWish){
             mostraLettera(desiderio);
 
 
-        },4000);
+
+        },2500);
 
 
 
@@ -701,55 +763,110 @@ if(sendWish){
 function mostraLettera(desiderio){
 
 
+    if(starPage)
 
     starPage.classList.add("hidden");
 
 
+
+    if(letterPage)
 
     letterPage.classList.remove("hidden");
 
 
 
 
+    const testo = `
+
+Amore mio 🤍
+
+Questo piccolo viaggio è nato
+per regalarti un sorriso.
+
+Hai spento tutte le candeline,
+hai affidato il tuo desiderio alle stelle
+e ora è arrivato il momento della sorpresa.
+
+Il tuo desiderio:
+
+✨ ${desiderio}
+
+Ti auguro tutta la felicità del mondo.
+
+Ti voglio bene 🤍
+
+`;
+
+
+
     if(letterText){
 
 
-        letterText.innerHTML = `
+        letterText.innerHTML = "";
 
 
-        <p>
-        Amore mio 🤍
-        </p>
+
+        scriviMacchina(
+            letterText,
+            testo,
+            45
+        );
 
 
-        <p>
-        Questo piccolo viaggio è stato creato
-        solo per vederti sorridere.
-        </p>
+    }
 
 
-        <p>
-        Il tuo desiderio:
-        </p>
+}
 
 
-        <p>
-        ✨ ${desiderio}
-        </p>
 
 
-        <p>
-        Ti auguro tutto il meglio del mondo 🤍
-        </p>
 
 
-        `;
+
+
+
+// =====================================
+// MACCHINA DA SCRIVERE ⌨️
+// =====================================
+
+
+function scriviMacchina(elemento,testo,velocita){
+
+
+    let indice = 0;
+
+
+
+    function scrivi(){
+
+
+        if(indice < testo.length){
+
+
+            elemento.innerHTML +=
+            testo.charAt(indice);
+
+
+
+            indice++;
+
+
+
+            setTimeout(
+                scrivi,
+                velocita
+            );
+
+
+        }
 
 
     }
 
 
 
-}
+    scrivi();
+
 
 }
