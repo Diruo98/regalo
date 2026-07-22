@@ -1,11 +1,11 @@
-/* ==========================================
-   PROJECT AURORA v8
-   STYLE.CSS - PARTE 1
-========================================== */
+/* =====================================================
+   PROJECT AURORA v10
+   STYLE.CSS
+===================================================== */
 
-/* ===========================
+/* ==========================
    RESET
-=========================== */
+========================== */
 
 *{
     margin:0;
@@ -13,21 +13,18 @@
     box-sizing:border-box;
 }
 
-html,
 body{
 
-    width:100%;
-    height:100%;
+    font-family:Georgia,serif;
+
     overflow:hidden;
 
-    font-family:Georgia, serif;
-
-}
-
-body{
+    height:100vh;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     color:white;
@@ -35,52 +32,77 @@ body{
     background:
     linear-gradient(
         135deg,
-        #16001f,
-        #5a1448,
-        #7a2b73
+        #18001f,
+        #42104b,
+        #6d1d62
     );
-
-    position:relative;
 
 }
 
-/* ===========================
+/* ==========================
    PAGINE
-=========================== */
+========================== */
 
 .page{
 
     position:absolute;
+
     inset:0;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
-    padding:25px;
+    padding:30px;
 
-    z-index:5;
+    z-index:2;
 
-    transition:.8s;
+    animation:fade .8s;
 
 }
 
 .hidden{
 
-    display:none !important;
+    display:none!important;
 
 }
 
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================
+   TITOLI
+========================== */
+
 h1{
 
-    font-size:38px;
+    font-size:42px;
+
     margin-bottom:20px;
 
     text-shadow:
-    0 0 15px rgba(255,255,255,.35);
+    0 0 18px rgba(255,255,255,.35);
 
 }
 
@@ -88,23 +110,68 @@ h2{
 
     margin-top:25px;
 
+    font-weight:normal;
+
 }
 
 p{
 
     font-size:20px;
-    line-height:1.7;
+
+    line-height:1.6;
 
 }
 
-/* ===========================
+/* ==========================
+   BOTTONI
+========================== */
+
+button{
+
+    margin-top:25px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff4d88,
+        #ff99bb
+    );
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:
+    scale(1.08);
+
+}
+
+/* ==========================
    SFONDO
-=========================== */
+========================== */
 
 #hearts,
 #confetti{
 
     position:fixed;
+
     inset:0;
 
     overflow:hidden;
@@ -113,33 +180,23 @@ p{
 
 }
 
-#hearts{
-
-    z-index:0;
-
-}
-
-#confetti{
-
-    z-index:100;
-
-}
-
 .heart{
 
     position:absolute;
 
-    top:-60px;
+    top:-80px;
 
     animation:
-    heartFall linear forwards;
+    fall linear forwards;
 
     filter:
-    drop-shadow(0 0 8px rgba(255,255,255,.4));
+    drop-shadow(
+        0 0 10px rgba(255,255,255,.5)
+    );
 
 }
 
-@keyframes heartFall{
+@keyframes fall{
 
     from{
 
@@ -151,7 +208,7 @@ p{
 
     }
 
-    15%{
+    20%{
 
         opacity:1;
 
@@ -169,73 +226,576 @@ p{
 
 }
 
-/* ===========================
-   INTRO
-=========================== */
+/* ==========================
+   CARICAMENTO
+========================== */
 
-#intro h1{
+.loading{
 
-    font-size:46px;
+    width:340px;
 
-}
+    height:28px;
 
-#intro p{
+    margin:35px auto;
 
-    max-width:420px;
-
-    margin-bottom:40px;
-
-}
-
-/* ===========================
-   BOTTONI
-=========================== */
-
-button{
-
-    border:none;
-
-    padding:16px 38px;
+    background:
+    rgba(255,255,255,.2);
 
     border-radius:40px;
 
-    cursor:pointer;
+    overflow:hidden;
 
-    color:white;
+}
 
-    font-size:18px;
+#bar{
 
-    font-weight:bold;
+    width:0;
+
+    height:100%;
+
+    border-radius:40px;
 
     background:
     linear-gradient(
-        135deg,
+        90deg,
         #ff4d88,
-        #ff8fab
+        #ffd5e5
     );
 
+}
+
+#percent{
+
+    margin-top:10px;
+
+    font-size:22px;
+
+}
+
+/* =====================================================
+   BIGLIETTO
+===================================================== */
+
+.ticket-card{
+
+    width:360px;
+
+    max-width:90%;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:#fff6dc;
+
+    color:#6b1d5c;
+
     box-shadow:
-    0 10px 25px rgba(255,77,136,.35);
+    0 20px 45px rgba(0,0,0,.35);
 
-    transition:.35s;
-
-}
-
-button:hover{
-
-    transform:
-    scale(1.08);
+    transform:rotate(-2deg);
 
 }
 
-#playButton{
+.buttons{
+
+    margin-top:25px;
+
+}
+
+/* =====================================================
+   COMPLEANNO
+===================================================== */
+
+.birthday-box{
+
+    width:100%;
+
+}
+
+#candles{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,50px);
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin:40px auto;
+
+}
+
+.candle{
+
+    position:relative;
+
+    width:20px;
+
+    height:75px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:
+    repeating-linear-gradient(
+        45deg,
+        white,
+        white 6px,
+        #ff8fab 6px,
+        #ff8fab 12px
+    );
+
+    transition:.3s;
+
+}
+
+.candle:hover{
+
+    transform:scale(1.1);
+
+}
+
+.flame{
+
+    position:absolute;
+
+    top:-36px;
+
+    left:-8px;
+
+    font-size:36px;
+
+    animation:flicker .8s infinite alternate;
+
+}
+
+.flame.off{
+
+    display:none;
+
+}
+
+@keyframes flicker{
+
+    from{
+
+        transform:
+        scale(1)
+        rotate(-5deg);
+
+    }
+
+    to{
+
+        transform:
+        scale(1.15)
+        rotate(5deg);
+
+    }
+
+}
+
+.smoke{
+
+    position:absolute;
+
+    top:-55px;
+
+    left:-4px;
+
+    font-size:26px;
+
+    animation:smoke 1s forwards;
+
+}
+
+@keyframes smoke{
+
+    from{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:translateY(-50px);
+
+    }
+
+}
+
+/* =====================================================
+   DESIDERIO
+===================================================== */
+
+.wish-card{
+
+    width:420px;
+
+    max-width:90%;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    backdrop-filter:blur(8px);
+
+}
+
+#wishInput{
+
+    width:100%;
+
+    height:140px;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    resize:none;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    font-size:16px;
+
+    font-family:Georgia,serif;
+
+}
+
+/* =====================================================
+   STELLA
+===================================================== */
+
+#wishStar{
+
+    font-size:120px;
 
     animation:
-    pulseButton 2s infinite;
+    floating 2s infinite alternate;
 
 }
 
-@keyframes pulseButton{
+@keyframes floating{
+
+    from{
+
+        transform:
+        translateY(20px)
+        scale(1);
+
+    }
+
+    to{
+
+        transform:
+        translateY(-25px)
+        scale(1.15);
+
+    }
+
+}
+
+/* =====================================================
+   CUORE
+===================================================== */
+
+#heartFill{
+
+    font-size:130px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.3s;
+
+    margin-top:20px;
+
+}
+
+#heartFill.full{
+
+    animation:
+    heartbeat .8s infinite;
+
+}
+
+@keyframes heartbeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    25%{
+
+        transform:scale(1.15);
+
+    }
+
+    50%{
+
+        transform:scale(1);
+
+    }
+
+    75%{
+
+        transform:scale(1.12);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+#heartPercent{
+
+    margin-top:15px;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#ffdce8;
+
+}
+
+/* =====================================================
+   LETTERA
+===================================================== */
+
+.letter-container{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ==========================
+   BUSTA
+========================== */
+
+#envelope{
+
+    position:absolute;
+
+    width:300px;
+
+    height:190px;
+
+    border-radius:18px;
+
+    background:#ff8fab;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.35);
+
+    transition:
+    opacity .8s,
+    transform .8s;
+
+}
+
+.envelope-body{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#ff8fab;
+
+}
+
+.flap{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#ffc2d6;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 65%
+    );
+
+    transform-origin:top;
+
+    transition:1s;
+
+}
+
+#envelope.open .flap{
+
+    transform:rotateX(180deg);
+
+}
+
+#envelope.hide{
+
+    opacity:0;
+
+    transform:scale(.8);
+
+}
+
+.heart-seal{
+
+    position:absolute;
+
+    left:50%;
+
+    top:65px;
+
+    transform:translateX(-50%);
+
+    font-size:42px;
+
+}
+
+/* ==========================
+   FOGLIO
+========================== */
+
+#paper{
+
+    width:330px;
+
+    max-width:90%;
+
+    min-height:520px;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    background:#fffdf7;
+
+    color:#6b1d5c;
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.35);
+
+    position:absolute;
+
+    opacity:0;
+
+    transform:
+    translateY(180px);
+
+    transition:
+    transform 1.4s,
+    opacity 1.4s;
+
+}
+
+#paper.show{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+#paper.center{
+
+    transform:
+    translateY(-70px);
+
+}
+
+#letterText{
+
+    margin-top:20px;
+
+    white-space:pre-line;
+
+    text-align:left;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+/* ==========================
+   POLAROID
+========================== */
+
+.polaroid{
+
+    width:220px;
+
+    margin:0 auto 25px;
+
+    padding:10px;
+
+    background:white;
+
+    transform:rotate(-4deg);
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.polaroid img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+/* =====================================================
+   FINALE
+===================================================== */
+
+#loveButton{
+
+    font-size:24px;
+
+    padding:18px 45px;
+
+    animation:
+    pulse 2s infinite;
+
+}
+
+@keyframes pulse{
 
     0%{
 
@@ -257,618 +817,33 @@ button:hover{
 
 }
 
-/* ===========================
-   CARICAMENTO
-=========================== */
-
-.loading{
-
-    width:340px;
-    height:26px;
-
-    margin:35px auto;
-
-    border-radius:30px;
-
-    overflow:hidden;
+#endingPage{
 
     background:
-    rgba(255,255,255,.20);
+    rgba(0,0,0,.9);
 
 }
 
-#bar{
+.ending-text{
 
-    width:0%;
-
-    height:100%;
-
-    border-radius:30px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #ff4d88,
-        #ffd1e3
-    );
-
-    transition:.2s;
-
-}
-
-/* ===========================
-   BIGLIETTO
-=========================== */
-
-.ticket-card{
-
-    width:340px;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    color:#6b1d5c;
-
-    background:#fff6d9;
-
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.4);
-
-    transform:
-    rotate(-2deg);
-
-}
-
-.buttons{
-
-    margin-top:30px;
-
-}
-
-/* ===========================
-   TORTA
-=========================== */
-
-#candles{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(5,48px);
-
-    gap:16px;
-
-    justify-content:center;
-
-    margin:35px auto;
-
-}
-
-.candle{
-
-    position:relative;
-
-    width:20px;
-    height:70px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    background:
-    repeating-linear-gradient(
-        45deg,
-        white,
-        white 6px,
-        #ff8fab 6px,
-        #ff8fab 12px
-    );
-
-    transition:.3s;
-
-}
-
-.candle:hover{
-
-    transform:
-    scale(1.1);
-
-}
-
-.flame{
-
-    position:absolute;
-
-    top:-38px;
-    left:-9px;
-
-    font-size:34px;
+    max-width:700px;
 
     animation:
-    flame 0.7s infinite alternate;
+    fade 2s;
 
 }
 
-.flame.off{
+#endingMessage{
 
-    display:none;
+    margin-top:40px;
 
-}
-
-@keyframes flame{
-
-    from{
-
-        transform:
-        rotate(-6deg)
-        scale(1);
-
-    }
-
-    to{
-
-        transform:
-        rotate(6deg)
-        scale(1.18);
-
-    }
+    font-size:28px;
 
 }
 
-.smoke{
-
-    position:absolute;
-
-    top:-55px;
-
-    font-size:26px;
-
-    animation:
-    smokeUp 1s forwards;
-
-}
-
-@keyframes smokeUp{
-
-    from{
-
-        opacity:1;
-
-        transform:
-        translateY(0);
-
-    }
-
-    to{
-
-        opacity:0;
-
-        transform:
-        translateY(-60px);
-
-    }
-
-}
-
-/* ===========================
-   DESIDERIO
-=========================== */
-
-.wish-card{
-
-    width:360px;
-
-    padding:35px;
-
-    border-radius:25px;
-
-    backdrop-filter:blur(10px);
-
-    background:
-    rgba(255,255,255,.12);
-
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.35);
-
-}
-
-#wishInput{
-
-    width:100%;
-
-    height:130px;
-
-    margin:20px 0;
-
-    padding:18px;
-
-    resize:none;
-
-    border:none;
-
-    outline:none;
-
-    border-radius:18px;
-
-    font-family:Georgia, serif;
-
-    font-size:16px;
-
-}
-
-/* ==========================================
-   PROJECT AURORA v8
-   STYLE.CSS - PARTE 2
-========================================== */
-
-/* ===========================
-   STELLA
-=========================== */
-
-#wishStar{
-
-    font-size:110px;
-
-    animation:starFloat 2s ease-in-out infinite alternate;
-
-}
-
-@keyframes starFloat{
-
-    from{
-
-        transform:
-        translateY(15px)
-        scale(1);
-
-    }
-
-    to{
-
-        transform:
-        translateY(-30px)
-        scale(1.15);
-
-    }
-
-}
-
-/* ===========================
-   CUORE
-=========================== */
-
-#heartPage h1{
-
-    margin-bottom:10px;
-
-}
-
-#heartFill{
-
-    font-size:150px;
-
-    cursor:pointer;
-
-    user-select:none;
-
-    transition:.35s;
-
-    margin:35px 0;
-
-}
-
-#heartFill:hover{
-
-    transform:scale(1.08);
-
-}
-
-#heartFill.complete{
-
-    animation:
-    heartbeat .8s infinite;
-
-    filter:
-    drop-shadow(0 0 25px #ff5d9e);
-
-}
-
-@keyframes heartbeat{
-
-    0%{
-
-        transform:scale(1);
-
-    }
-
-    25%{
-
-        transform:scale(1.18);
-
-    }
-
-    40%{
-
-        transform:scale(.95);
-
-    }
-
-    60%{
-
-        transform:scale(1.20);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
-
-}
-
-/* ===========================
-   BUSTA
-=========================== */
-
-.letter-container{
-
-    position:relative;
-
-    width:320px;
-
-    height:520px;
-
-}
-
-#envelope{
-
-    position:absolute;
-
-    bottom:0;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:290px;
-
-    height:190px;
-
-    border-radius:18px;
-
-    background:#ff8fab;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.4);
-
-}
-
-.envelope-body{
-
-    position:absolute;
-
-    inset:0;
-
-    background:#ff8fab;
-
-}
-
-.flap{
-
-    position:absolute;
-
-    inset:0;
-
-    background:#ffc3d8;
-
-    clip-path:
-    polygon(
-        0 0,
-        100% 0,
-        50% 58%
-    );
-
-    transform-origin:top;
-
-    transition:1s;
-
-}
-
-#envelope.open .flap{
-
-    transform:rotateX(180deg);
-
-}
-
-.heart-seal{
-
-    position:absolute;
-
-    left:50%;
-
-    top:68px;
-
-    transform:translateX(-50%);
-
-    font-size:45px;
-
-}
-
-/* ===========================
-   LETTERA
-=========================== */
-
-#paper{
-
-    position:absolute;
-
-    left:50%;
-
-    bottom:80px;
-
-    transform:
-    translateX(-50%)
-    translateY(180px);
-
-    width:270px;
-
-    min-height:370px;
-
-    background:#fffdf8;
-
-    color:#5f274f;
-
-    padding:25px;
-
-    border-radius:10px;
-
-    opacity:0;
-
-    transition:1.5s;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.35);
-
-}
-
-#envelope.open + #paper{
-
-    transform:
-    translateX(-50%)
-    translateY(-70px);
-
-    opacity:1;
-
-}
-
-#letterText{
-
-    white-space:pre-line;
-
-    line-height:1.7;
-
-    text-align:left;
-
-    font-size:17px;
-
-}
-
-/* ===========================
-   POLAROID
-=========================== */
-
-.polaroid{
-
-    width:210px;
-
-    margin:10px auto 25px;
-
-    padding:10px;
-
-    background:white;
-
-    transform:rotate(-4deg);
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
-
-}
-
-.polaroid img{
-
-    width:100%;
-
-    display:block;
-
-}
-
-/* ===========================
-   FINALE
-=========================== */
-
-#finalPage{
-
-    background:
-    rgba(0,0,0,.45);
-
-    backdrop-filter:blur(5px);
-
-}
-
-#finalPage h1{
-
-    animation:fadeText 2s ease;
-
-}
-
-@keyframes fadeText{
-
-    from{
-
-        opacity:0;
-
-        transform:
-        translateY(25px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-        translateY(0);
-
-    }
-
-}
-
-/* ===========================
-   CONFETTI
-=========================== */
-
-.confetti-piece{
-
-    position:absolute;
-
-    top:-20px;
-
-    width:10px;
-
-    height:18px;
-
-    animation:
-    confettiFall linear forwards;
-
-}
-
-@keyframes confettiFall{
-
-    from{
-
-        transform:
-        translateY(-10vh)
-        rotate(0deg);
-
-    }
-
-    to{
-
-        transform:
-        translateY(110vh)
-        rotate(720deg);
-
-    }
-
-}
-
-/* ===========================
+/* =====================================================
    RESPONSIVE
-=========================== */
+===================================================== */
 
 @media(max-width:600px){
 
@@ -890,45 +865,46 @@ button:hover{
 
     }
 
-    .wish-card{
+    #candles{
 
-        width:90%;
+        grid-template-columns:
+        repeat(5,42px);
+
+        gap:12px;
+
+    }
+
+    #wishStar{
+
+        font-size:90px;
 
     }
 
     #heartFill{
 
-        font-size:120px;
-
-    }
-
-    .letter-container{
-
-        width:100%;
-
-    }
-
-    #envelope{
-
-        width:240px;
-
-        height:160px;
+        font-size:100px;
 
     }
 
     #paper{
 
-        width:220px;
+        width:92%;
 
-        min-height:320px;
+        min-height:430px;
 
-        padding:18px;
+        padding:20px;
 
     }
 
     .polaroid{
 
-        width:170px;
+        width:180px;
+
+    }
+
+    #endingMessage{
+
+        font-size:22px;
 
     }
 
