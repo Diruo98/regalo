@@ -896,4 +896,173 @@ Con tutto il mio affetto,
 
 Eddi 🤍`;
 
+/* =====================================
+   VOCALE
+===================================== */
+
+function showVoiceButton(){
+
+    let button = document.getElementById("playVoice");
+
+    if(button) return;
+
+    button = document.createElement("button");
+
+    button.id = "playVoice";
+
+    button.className = "romantic-button";
+
+    button.innerHTML = "🎙️ Ascolta la mia voce";
+
+    paper.appendChild(button);
+
+    button.addEventListener("click",()=>{
+
+        button.disabled = true;
+
+        playVoice();
+
+    });
+
+}
+
+function playVoice(){
+
+    if(!voiceMessage){
+
+        showFinal();
+
+        return;
+
+    }
+
+    if(bgMusic){
+
+        fadeMusic(0.08);
+
+    }
+
+    voiceMessage.play();
+
+    voiceMessage.onended = ()=>{
+
+        if(bgMusic){
+
+            fadeMusic(0.35);
+
+        }
+
+        setTimeout(()=>{
+
+            showFinal();
+
+        },1000);
+
+    };
+
+}
+
+function fadeMusic(target){
+
+    if(!bgMusic) return;
+
+    const timer = setInterval(()=>{
+
+        if(bgMusic.volume > target){
+
+            bgMusic.volume -= 0.01;
+
+        }else if(bgMusic.volume < target){
+
+            bgMusic.volume += 0.01;
+
+        }
+
+        if(Math.abs(bgMusic.volume-target)<0.02){
+
+            bgMusic.volume = target;
+
+            clearInterval(timer);
+
+        }
+
+    },70);
+
+}
+
+/* =====================================
+   FINALE
+===================================== */
+
+function showFinal(){
+
+    showPage(finalPage);
+
+    createConfetti();
+
+    createFinalHearts();
+
+}
+
+/* =====================================
+   CUORI FINALI
+===================================== */
+
+function createFinalHearts(){
+
+    const symbols = [
+
+        "❤️",
+        "🤍",
+        "✨",
+        "⭐",
+        "💕"
+
+    ];
+
+    for(let i=0;i<50;i++){
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML =
+            symbols[
+                Math.floor(Math.random()*symbols.length)
+            ];
+
+        heart.style.left =
+            Math.random()*100 + "vw";
+
+        heart.style.fontSize =
+            (18 + Math.random()*22) + "px";
+
+        heart.style.animationDuration =
+            (4 + Math.random()*4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+
+            heart.remove();
+
+        },8000);
+
+    }
+
+}
+
+/* =====================================
+   RICOMINCIA
+===================================== */
+
+if(restart){
+
+    restart.addEventListener("click",()=>{
+
+        location.reload();
+
+    });
+
+}
 
