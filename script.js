@@ -86,19 +86,17 @@ if(playButton){
 
         if(bgMusic){
 
-            bgMusic.volume = 0.35;
+    bgMusic.volume = 0.35;
 
-            bgMusic.play().catch(()=>{});
+    bgMusic.play()
+        .then(() => {
+            console.log("Musica partita!");
+        })
+        .catch((err) => {
+            console.error("Errore audio:", err);
+        });
 
-        }
-
-        introPage.classList.add("hidden");
-
-        home.classList.remove("hidden");
-
-        avviaCaricamento();
-
-    });
+}
 
 }
 
