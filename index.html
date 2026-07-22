@@ -12,440 +12,255 @@
 
 </head>
 
-
 <body>
 
+<!-- =========================
+     AUDIO
+========================= -->
 
-<!-- SFONDO CUORI ❤️ -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="voiceMessage">
+    <source src="vocale.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================
+     SFONDO
+========================= -->
 
 <div id="hearts"></div>
-
-
-<!-- CORIANDOLI 🎉 -->
-
 <div id="confetti"></div>
 
-
-
-
-
-
-
-
 <!-- =========================
-     HOME ⏳
+     INTRO 🎧
 ========================= -->
 
+<div id="intro" class="page">
 
-<div id="home" class="page">
+    <h1>Per te, Sofi 🤍</h1>
 
+    <p>
+        Prima di iniziare...
+        <br><br>
+        Ti consiglio di indossare le cuffiette 🎧
+        <br>
+        Ho preparato una piccola sorpresa.
+    </p>
 
-<h1>
-Sto preparando qualcosa per te 🤍
-</h1>
-
-
-<p>
-Un piccolo regalo sta prendendo forma...
-</p>
-
-
-
-<div class="loading">
-
-<div id="bar"></div>
+    <button id="playButton">
+        ▶️ Fammi partire
+    </button>
 
 </div>
 
+<!-- =========================
+     CARICAMENTO
+========================= -->
 
+<div id="home" class="page hidden">
 
-<p id="percent">
-0%
-</p>
+    <h1>
+        Sto preparando qualcosa per te 🤍
+    </h1>
 
+    <p>
+        Un piccolo regalo sta prendendo forma...
+    </p>
 
+    <div class="loading">
+        <div id="bar"></div>
+    </div>
 
-<button id="start" hidden>
-
-INIZIA IL VIAGGIO ✨🤍
-
-</button>
-
+    <p id="percent">
+        0%
+    </p>
 
 </div>
 
-
-
-
-
-
-
-
-
 <!-- =========================
-     BIGLIETTINO 💌
+     BIGLIETTO
 ========================= -->
-
 
 <div id="ticket" class="page hidden">
 
+    <div class="ticket-card">
 
-<div class="ticket-card">
+        <h2>💌 Domanda importante</h2>
 
+        <p>
+            Vuoi continuare questo viaggio con me? 🤍
+        </p>
 
-<h2>
-💌 Domanda importante
-</h2>
+        <div class="buttons">
 
+            <button id="yes">
+                Sì 🤍
+            </button>
 
-<p>
-Vuoi continuare questo viaggio con me? 🤍
-</p>
+            <button id="no">
+                No 😢
+            </button>
 
+        </div>
 
-
-<div class="buttons">
-
-
-<button id="yes">
-Sì 🤍
-</button>
-
-
-
-<button id="no">
-No 😢
-</button>
-
+    </div>
 
 </div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
 
 <!-- =========================
-     CANDELINE 🕯️
+     TORTA
 ========================= -->
-
 
 <div id="birthday" class="page hidden">
 
+    <div class="birthday-box">
 
-<div class="birthday-box">
+        <h1>
+            🎂 Buon compleanno amore mio 🤍
+        </h1>
 
+        <p>
+            Spegni tutte le 19 candeline
+            ed esprimi un desiderio ✨
+        </p>
 
-<h1>
-🎂 Buon compleanno amore mio 🤍
-</h1>
+        <div id="candles"></div>
 
+        <p id="counter">
+            Candeline rimaste: 19
+        </p>
 
-
-<p>
-Spegni tutte le 19 candeline
-ed esprimi un desiderio ✨
-</p>
-
-
-
-
-<div id="candles">
-
-</div>
-
-
-
-<p id="counter">
-Candeline rimaste: 19
-</p>
-
+    </div>
 
 </div>
-
-
-</div>
-
-
-
-
-
-
-
-
 
 <!-- =========================
-     DESIDERIO ✨
+     DESIDERIO
 ========================= -->
-
 
 <div id="wishPage" class="page hidden">
 
+    <div class="wish-card">
 
-<div class="wish-card">
+        <h1>
+            ✨ Esprimi un desiderio
+        </h1>
 
+        <p>
+            Scrivilo e affidalo alle stelle 🤍
+        </p>
 
-<h1>
-✨ Esprimi un desiderio
-</h1>
+        <textarea
+            id="wishInput"
+            placeholder="Scrivi qui il tuo desiderio..."
+        ></textarea>
 
+        <button id="sendWish">
+            💌 Invia alle stelle
+        </button>
 
-
-<p>
-Scrivilo e affidalo alle stelle 🤍
-</p>
-
-
-
-<textarea
-id="wishInput"
-placeholder="Scrivi qui il tuo desiderio..."
-></textarea>
-
-
-
-
-<button id="sendWish">
-
-💌 Invia alle stelle
-
-</button>
-
-
+    </div>
 
 </div>
-
-
-</div>
-
-
-
-
-
-
-
-
 
 <!-- =========================
-     STELLE ⭐
+     STELLA
 ========================= -->
-
 
 <div id="starPage" class="page hidden">
 
+    <div id="wishStar">
+        ⭐
+    </div>
 
-<div id="wishStar">
-
-⭐
-
-</div>
-
-
-
-<h2>
-
-Il tuo desiderio sta volando nel cielo... ✨
-
-</h2>
-
+    <h2>
+        Il tuo desiderio sta volando nel cielo... ✨
+    </h2>
 
 </div>
-
 
 <!-- =========================
-     CUORE ❤️
+     CUORE
 ========================= -->
 
 <div id="heartPage" class="page hidden">
-
 
     <h1>
         Riempi il mio cuore 🤍
     </h1>
 
-
     <div id="heartFill">
-
         🤍
-
     </div>
-
 
     <p>
         Toccalo piano piano ✨
     </p>
 
-
 </div>
-
-
-
-
-
 
 <!-- =========================
-     CUORE DA RIEMPIRE ❤️
+     LETTERA
 ========================= -->
-
-
-<div id="heartPage" class="page hidden">
-
-
-<h1>
-
-Riempilo con il tuo amore 🤍
-
-</h1>
-
-
-
-<p>
-
-Tocca il cuore finché sarà pieno ✨
-
-</p>
-
-
-
-<div id="bigHeart">
-
-♡
-
-
-</div>
-
-
-
-<p id="heartPercent">
-
-0%
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- =========================
-     LETTERA FINALE 💌
-========================= -->
-
 
 <div id="letterPage" class="page hidden">
 
+    <div class="letter-container">
 
-<div class="letter-container">
+        <div id="envelope">
 
+            <div class="envelope-body"></div>
 
+            <div class="flap"></div>
 
+            <div class="heart-seal">
+                ❤️
+            </div>
 
+        </div>
 
-<!-- BUSTA ROSA -->
+        <div id="paper">
 
-<div id="envelope">
+            <div class="polaroid">
 
+                <img
+                    src="foto.jpg"
+                    alt="La nostra foto"
+                >
 
-<div class="envelope-body">
+            </div>
 
+            <h2>
+                Per te 🤍
+            </h2>
 
-</div>
+            <p id="letterText"></p>
 
+        </div>
 
-
-<div class="flap">
-
-
-</div>
-
-
-
-<div class="heart-seal">
-
-❤️
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- FOGLIO -->
-
-<div id="paper">
-
-
-<div class="polaroid">
-
-
-<img 
-src="foto.jpg"
-alt="La nostra foto"
->
-
+    </div>
 
 </div>
 
+<!-- =========================
+     FINALE
+========================= -->
 
+<div id="finalPage" class="page hidden">
 
+    <h1>
+        Grazie per essere entrata nella mia vita 🤍
+    </h1>
 
-<h2>
-
-Per te 🤍
-
-</h2>
-
-
-
-<p id="letterText">
-
-</p>
-
-
+    <p>
+        Buon compleanno amore mio ❤️
+    </p>
 
 </div>
-
-
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
 
 <script src="script.js"></script>
 
-
 </body>
-
 </html>
