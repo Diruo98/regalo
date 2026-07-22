@@ -15,6 +15,8 @@ const starPage = document.getElementById("starPage");
 const heartPage = document.getElementById("heartPage");
 const letterPage = document.getElementById("letterPage");
 const finalPage = document.getElementById("finalPage");
+const constellationPage = document.getElementById("constellationPage");
+const constellationSky = document.getElementById("constellationSky");
 
 const playButton = document.getElementById("playButton");
 const start = document.getElementById("start");
