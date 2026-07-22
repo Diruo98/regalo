@@ -3,189 +3,186 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Per Sofi 🤍</title>
+    <title>Per Sofi 🤍</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
+    <!-- SFONDO EMOJI -->
+    <div id="hearts"></div>
 
-<div id="hearts"></div>
+    <!-- CORIANDOLI -->
+    <div id="confetti"></div>
 
 
 
 
 
-<!-- INTRO -->
+    <!-- HOME -->
 
-<div id="home" class="page">
+    <div id="home" class="page">
 
+        <h1>Sto preparando qualcosa per te 🤍</h1>
 
-<h1>
-Sto preparando qualcosa per te 🤍
-</h1>
+        <p>Un piccolo regalo sta prendendo forma...</p>
 
+        <div class="loading">
+            <div id="bar"></div>
+        </div>
 
-<p>
-Un piccolo regalo sta prendendo forma...
-</p>
+        <p id="percent">0%</p>
 
-
-
-<div class="loading">
-
-<div id="bar"></div>
-
-</div>
-
-
-<p id="percent">
-0%
-</p>
-
-
-
-<button id="start" hidden>
-
-INIZIA IL VIAGGIO ✨🤍
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- BIGLIETTINO -->
-
-<div id="ticket" class="page hidden">
-
-
-<div class="ticket-card">
-
-
-<h2>
-💌 Domanda importante
-</h2>
-
-
-<p>
-Vuoi continuare questo viaggio con me? 🤍
-</p>
-
-
-
-<button id="yes">
-
-Sì 🤍
-
-</button>
-
-
-
-<button id="no">
-
-No 😢
-
-</button>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- COMPLEANNO 🎂 -->
-
-
-<div id="birthday" class="page hidden">
-
-
-<div class="birthday-box">
-
-
-<h1>
-🎂 Buon compleanno amore mio 🤍
-</h1>
-
-
-
-<p>
-Spegni tutte le candeline cliccandole ed esprimi un desiderio! ✨
-</p>
-
-
-
-
-
-<div id="cake">
-
-
-    <div class="cake-base">
+        <button id="start" hidden>
+            INIZIA IL VIAGGIO ✨🤍
+        </button>
 
     </div>
 
 
 
-    <div class="cake-cream">
+
+
+    <!-- BIGLIETTINO -->
+
+    <div id="ticket" class="page hidden">
+
+        <div class="ticket-card">
+
+            <h2>💌 Domanda importante</h2>
+
+            <p>
+                Vuoi continuare questo viaggio con me? 🤍
+            </p>
+
+            <div class="buttons">
+
+                <button id="yes">
+                    Sì 🤍
+                </button>
+
+                <button id="no">
+                    No 😢
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
 
 
-    <div id="candles">
+
+
+    <!-- COMPLEANNO -->
+
+    <div id="birthday" class="page hidden">
+
+        <div class="birthday-box">
+
+            <h1>🎂 Buon compleanno amore mio 🤍</h1>
+
+            <p>
+                Spegni tutte le 19 candeline
+                ed esprimi un desiderio ✨
+            </p>
+
+            <div id="candles"></div>
+
+            <p id="counter">
+                Candeline rimaste: 19
+            </p>
+
+        </div>
 
     </div>
 
 
 
-</div>
+
+
+    <!-- DESIDERIO -->
+
+    <div id="wishPage" class="page hidden">
+
+        <div class="wish-card">
+
+            <h2>✨ Hai espresso il tuo desiderio ✨</h2>
+
+            <p>
+                Adesso puoi scriverlo qui sotto.
+            </p>
+
+            <textarea
+                id="wishInput"
+                placeholder="Scrivi qui il tuo desiderio..."
+            ></textarea>
+
+            <button id="sendWish">
+                💌 Invia il desiderio
+            </button>
+
+        </div>
+
+    </div>
 
 
 
 
 
-<p id="counter">
+    <!-- STELLA -->
 
-Candeline rimaste: 19
+    <div id="starPage" class="page hidden">
 
-</p>
+        <div id="wishStar">
+            ⭐
+        </div>
 
+        <h2>
+            Il tuo desiderio sta volando nel cielo...
+        </h2>
 
-
-</div>
-
-
-</div>
-
-
-
+    </div>
 
 
 
 
 
-<script src="script.js"></script>
+    <!-- LETTERA -->
 
+    <div id="letterPage" class="page hidden">
+
+        <div class="letter">
+
+            <img
+                src="foto.jpg"
+                class="polaroid"
+                alt="Noi"
+            >
+
+            <h2>Per te 🤍</h2>
+
+            <p id="letterText">
+
+                Qui metteremo tutta la lettera romantica ❤️
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="script.js"></script>
 
 </body>
 
