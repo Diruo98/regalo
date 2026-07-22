@@ -1,11 +1,10 @@
-/* =====================================================
-   PROJECT AURORA v10
-   SCRIPT.JS
-===================================================== */
+/* =====================================
+   PROJECT AURORA v11
+===================================== */
 
-/* ==========================
+/* =====================================
    ELEMENTI
-========================== */
+===================================== */
 
 const introPage = document.getElementById("introPage");
 const home = document.getElementById("home");
@@ -16,36 +15,38 @@ const starPage = document.getElementById("starPage");
 const heartPage = document.getElementById("heartPage");
 const letterPage = document.getElementById("letterPage");
 const finalPage = document.getElementById("finalPage");
-const endingPage = document.getElementById("endingPage");
 
 const playButton = document.getElementById("playButton");
 const start = document.getElementById("start");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
 
 const bgMusic = document.getElementById("bgMusic");
 const voiceMessage = document.getElementById("voiceMessage");
 
-const hearts = document.getElementById("hearts");
-const confetti = document.getElementById("confetti");
+/* =====================================
+   SFONDO CUORI
+===================================== */
 
-/* ==========================
-   SFONDO
-========================== */
+const hearts = document.getElementById("hearts");
 
 const simboli = [
     "❤️",
     "🤍",
     "💕",
     "💖",
-    "💗",
     "✨",
     "⭐",
     "🌹",
     "🦁"
 ];
 
-function creaEmoji() {
+function creaCuore(){
 
-    if (!hearts) return;
+    if(!hearts) return;
 
     const cuore = document.createElement("div");
 
@@ -53,45 +54,41 @@ function creaEmoji() {
 
     cuore.innerHTML =
         simboli[
-            Math.floor(
-                Math.random() * simboli.length
-            )
+            Math.floor(Math.random()*simboli.length)
         ];
 
     cuore.style.left =
-        Math.random() * 100 + "vw";
+        Math.random()*100+"vw";
 
     cuore.style.fontSize =
-        (15 + Math.random() * 35) + "px";
+        (18+Math.random()*38)+"px";
 
     cuore.style.animationDuration =
-        (4 + Math.random() * 5) + "s";
+        (4+Math.random()*5)+"s";
 
     hearts.appendChild(cuore);
 
-    setTimeout(() => {
-
+    setTimeout(()=>{
         cuore.remove();
-
-    }, 9000);
+    },9000);
 
 }
 
-setInterval(creaEmoji, 150);
+setInterval(creaCuore,150);
 
-/* ==========================
+/* =====================================
    PLAY
-========================== */
+===================================== */
 
-if (playButton) {
+if(playButton){
 
-    playButton.addEventListener("click", () => {
+    playButton.addEventListener("click",()=>{
 
-        if (bgMusic) {
+        if(bgMusic){
 
             bgMusic.volume = 0.35;
 
-            bgMusic.play().catch(() => {});
+            bgMusic.play().catch(()=>{});
 
         }
 
@@ -105,50 +102,110 @@ if (playButton) {
 
 }
 
-/* ==========================
+/* =====================================
    CARICAMENTO
-========================== */
+===================================== */
 
-const bar = document.getElementById("bar");
-const percent = document.getElementById("percent");
-
-function avviaCaricamento() {
+function avviaCaricamento(){
 
     let valore = 0;
 
-    const timer = setInterval(() => {
+    const timer = setInterval(()=>{
 
         valore++;
 
-        if (bar)
+        if(bar)
             bar.style.width = valore + "%";
 
-        if (percent)
+        if(percent)
             percent.innerHTML = valore + "%";
 
-        if (valore >= 100) {
+        if(valore >= 100){
 
             clearInterval(timer);
 
-            if (percent)
-                percent.innerHTML =
-                    "✨ È tutto pronto 🤍";
+            percent.innerHTML =
+            "✨ È tutto pronto 🤍";
 
-            if (start)
-                start.hidden = false;
+            start.hidden = false;
 
         }
 
-    }, 45);
+    },45);
 
 }
 
-/* =====================================================
-   BIGLIETTO + CANDELINE
-===================================================== */
+/* =====================================
+   INIZIA IL VIAGGIO
+===================================== */
 
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
+if(start){
+
+    start.addEventListener("click",()=>{
+
+        home.classList.add("hidden");
+
+        ticket.classList.remove("hidden");
+
+    });
+
+}
+
+/* =====================================
+   PULSANTE NO 😂
+===================================== */
+
+function scappa(){
+
+    if(!no) return;
+
+    no.style.position = "fixed";
+
+    no.style.left =
+    Math.random() *
+    (window.innerWidth - no.offsetWidth)
+    + "px";
+
+    no.style.top =
+    Math.random() *
+    (window.innerHeight - no.offsetHeight)
+    + "px";
+
+}
+
+if(no){
+
+    no.addEventListener("mouseenter",scappa);
+
+    no.addEventListener("touchstart",(e)=>{
+
+        e.preventDefault();
+
+        scappa();
+
+    });
+
+}
+
+/* =====================================
+   PULSANTE SI ❤️
+===================================== */
+
+if(yes){
+
+    yes.addEventListener("click",()=>{
+
+        ticket.classList.add("hidden");
+
+        birthday.classList.remove("hidden");
+
+    });
+
+}
+
+/* =====================================
+   CANDELINE
+===================================== */
 
 const candlesBox = document.getElementById("candles");
 const counter = document.getElementById("counter");
@@ -156,80 +213,13 @@ const counter = document.getElementById("counter");
 let candeline = 19;
 let festaPartita = false;
 
-/* ==========================
-   INIZIA IL VIAGGIO
-========================== */
+function creaCandeline(){
 
-if (start) {
-
-    start.addEventListener("click", () => {
-
-        home.classList.add("hidden");
-        ticket.classList.remove("hidden");
-
-    });
-
-}
-
-/* ==========================
-   BOTTONE NO
-========================== */
-
-function scappa() {
-
-    if (!no) return;
-
-    no.style.position = "fixed";
-
-    no.style.left =
-        Math.random() *
-        (window.innerWidth - no.offsetWidth) + "px";
-
-    no.style.top =
-        Math.random() *
-        (window.innerHeight - no.offsetHeight) + "px";
-
-}
-
-if (no) {
-
-    no.addEventListener("mouseenter", scappa);
-
-    no.addEventListener("touchstart", (e) => {
-
-        e.preventDefault();
-        scappa();
-
-    });
-
-}
-
-/* ==========================
-   BOTTONE SI
-========================== */
-
-if (yes) {
-
-    yes.addEventListener("click", () => {
-
-        ticket.classList.add("hidden");
-        birthday.classList.remove("hidden");
-
-    });
-
-}
-
-/* ==========================
-   CREAZIONE CANDELINE
-========================== */
-
-function creaCandeline() {
-
-    if (!candlesBox) return;
+    if(!candlesBox) return;
 
     candlesBox.innerHTML = "";
 
-    for (let i = 0; i < 19; i++) {
+    for(let i=0; i<19; i++){
 
         const candela = document.createElement("div");
         candela.className = "candle";
@@ -240,9 +230,9 @@ function creaCandeline() {
 
         candela.appendChild(fiamma);
 
-        candela.addEventListener("click", () => {
+        candela.addEventListener("click",()=>{
 
-            if (fiamma.classList.contains("off"))
+            if(fiamma.classList.contains("off"))
                 return;
 
             fiamma.classList.add("off");
@@ -255,14 +245,14 @@ function creaCandeline() {
 
             candeline--;
 
-            if (counter) {
+            if(counter){
 
                 counter.innerHTML =
-                    "Candeline rimaste: " + candeline;
+                "Candeline rimaste: " + candeline;
 
             }
 
-            if (candeline === 0 && !festaPartita) {
+            if(candeline === 0 && !festaPartita){
 
                 festaPartita = true;
 
@@ -280,45 +270,37 @@ function creaCandeline() {
 
 creaCandeline();
 
-/* =====================================================
-   DESIDERIO + STELLA + CUORE
-===================================================== */
-
-const sendWish = document.getElementById("sendWish");
-const wishInput = document.getElementById("wishInput");
-
-const heartFill = document.getElementById("heartFill");
-const heartPercent = document.getElementById("heartPercent");
-
-let desiderioSalvato = "";
-let percentualeCuore = 0;
-
-/* ==========================
+/* =====================================
    FINE CANDELINE
-========================== */
+===================================== */
 
-function festaFinita() {
+function festaFinita(){
 
     creaConfetti();
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         birthday.classList.add("hidden");
+
         wishPage.classList.remove("hidden");
 
-    }, 1200);
+    },1200);
 
 }
 
-/* ==========================
+/* =====================================
    CORIANDOLI
-========================== */
+===================================== */
 
-function creaConfetti() {
+function creaConfetti(){
 
-    if (!confetti) return;
+    const area =
+    document.getElementById("confetti");
+
+    if(!area) return;
 
     const colori = [
+
         "#ff4d88",
         "#ffd166",
         "#06d6a0",
@@ -326,119 +308,108 @@ function creaConfetti() {
         "#ffffff",
         "#ff8fab",
         "#c77dff"
+
     ];
 
-    for (let i = 0; i < 180; i++) {
+    for(let i=0; i<180; i++){
 
-        const pezzo = document.createElement("div");
+        const pezzo =
+        document.createElement("div");
 
-        pezzo.className = "heart";
-
-        pezzo.innerHTML = "🎉";
+        pezzo.className =
+        "confetti-piece";
 
         pezzo.style.left =
-            Math.random() * 100 + "vw";
+        Math.random()*100 + "vw";
 
-        pezzo.style.fontSize =
-            (10 + Math.random() * 18) + "px";
-
-        pezzo.style.color =
-            colori[
-                Math.floor(Math.random() * colori.length)
-            ];
+        pezzo.style.background =
+        colori[
+            Math.floor(
+                Math.random()*colori.length
+            )
+        ];
 
         pezzo.style.animationDuration =
-            (2 + Math.random() * 3) + "s";
+        (2 + Math.random()*3) + "s";
 
-        confetti.appendChild(pezzo);
+        area.appendChild(pezzo);
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
             pezzo.remove();
 
-        }, 5000);
+        },6000);
 
     }
 
 }
 
-/* ==========================
+/* =====================================
    DESIDERIO
-========================== */
+===================================== */
 
-if (sendWish) {
+const wishInput = document.getElementById("wishInput");
+const sendWish = document.getElementById("sendWish");
+const wishStar = document.getElementById("wishStar");
 
-    sendWish.addEventListener("click", () => {
+if(sendWish){
 
-        desiderioSalvato =
-            wishInput.value.trim();
+    sendWish.addEventListener("click",()=>{
 
-        if (desiderioSalvato === "") {
+        if(wishInput.value.trim()===""){
 
-            desiderioSalvato =
-                "Un desiderio pieno d'amore 🤍";
-
-        }
-
-        localStorage.setItem(
-            "auroraWish",
-            desiderioSalvato
-        );
-
-        wishPage.classList.add("hidden");
-
-        starPage.classList.remove("hidden");
-
-        setTimeout(() => {
-
-            starPage.classList.add("hidden");
-
-            heartPage.classList.remove("hidden");
-
-        }, 2500);
-
-    });
-
-}
-
-/* ==========================
-   CUORE
-========================== */
-
-if (heartFill) {
-
-    heartFill.addEventListener("click", () => {
-
-        if (percentualeCuore >= 100)
+            alert("Scrivi prima un desiderio 🤍");
             return;
 
-        percentualeCuore += 20;
+        }
 
-        heartPercent.innerHTML =
-            percentualeCuore + "%";
+        wishPage.classList.add("hidden");
+        starPage.classList.remove("hidden");
 
-        heartFill.style.transform = "scale(1.15)";
+        setTimeout(()=>{
 
-        setTimeout(() => {
+            starPage.classList.add("hidden");
+            heartPage.classList.remove("hidden");
 
-            heartFill.style.transform = "scale(1)";
+        },3000);
 
-        }, 150);
+    });
 
-        if (percentualeCuore >= 100) {
+}
 
-            heartFill.innerHTML = "❤️";
+/* =====================================
+   CUORE
+===================================== */
 
-            heartFill.classList.add("full");
+const heart = document.getElementById("heartFill");
+const heartPercent = document.getElementById("heartPercent");
 
-            heartPercent.innerHTML =
-                "100% 🤍";
+let love = 0;
 
-            setTimeout(() => {
+if(heart){
 
-                mostraBusta();
+    heart.addEventListener("click",()=>{
 
-            }, 1500);
+        if(love>=100) return;
+
+        love += 2;
+
+        if(love>100) love=100;
+
+        heartPercent.innerHTML = love + "%";
+
+        if(love===100){
+
+            heart.classList.add("complete");
+
+            setTimeout(()=>{
+
+                heartPage.classList.add("hidden");
+                letterPage.classList.remove("hidden");
+
+                apriLettera();
+
+            },1200);
 
         }
 
@@ -446,323 +417,158 @@ if (heartFill) {
 
 }
 
-/* =====================================================
-   LETTERA + BUSTA + VOCALE
-===================================================== */
+/* =====================================
+   LETTERA
+===================================== */
 
 const envelope = document.getElementById("envelope");
 const paper = document.getElementById("paper");
 const letterText = document.getElementById("letterText");
 
-/* ==========================
-   APRE LA BUSTA
-========================== */
+const testoLettera = `Cara Aurora,
 
-function mostraBusta() {
+Qui scriverai tutta la tua lettera.
 
-    if (heartPage)
-        heartPage.classList.add("hidden");
+Ogni frase comparirà lentamente,
+come se fosse scritta in quel momento.
 
-    if (letterPage)
-        letterPage.classList.remove("hidden");
+Ti voglio bene. ❤️`;
 
-    setTimeout(() => {
+function apriLettera(){
 
-        if (envelope)
-            envelope.classList.add("open");
+    if(envelope){
 
-    }, 700);
+        envelope.classList.add("open");
 
-    setTimeout(() => {
+    }
 
-        if (paper)
+    setTimeout(()=>{
+
+        if(envelope){
+
+            envelope.style.opacity="0";
+
+            envelope.style.transform="scale(.8)";
+
+        }
+
+        if(paper){
+
             paper.classList.add("show");
 
-    }, 1700);
-
-    /* la busta scompare */
-
-    setTimeout(() => {
-
-        if (envelope)
-            envelope.classList.add("hide");
-
-        if (paper)
-            paper.classList.add("center");
-
-    }, 3200);
-
-    /* abbassa la musica */
-
-    if (bgMusic) {
-
-        bgMusic.volume = 0.12;
-
-    }
-
-    /* parte il vocale */
-
-    if (voiceMessage) {
-
-        setTimeout(() => {
-
-            voiceMessage.play().catch(() => {});
-
-        }, 3500);
-
-    }
-
-    /* scrittura */
-
-    setTimeout(() => {
+        }
 
         scriviLettera();
 
-    }, 3800);
+    },1200);
 
 }
 
-/* ==========================
-   LETTERA
-========================== */
+/* =====================================
+   EFFETTO MACCHINA DA SCRIVERE
+===================================== */
 
-function scriviLettera() {
+function scriviLettera(){
 
-    if (!letterText)
-        return;
+    let i=0;
 
-    const desiderio =
-        localStorage.getItem("auroraWish") ||
-        "Un desiderio pieno d'amore 🤍";
+    letterText.innerHTML="";
 
-    const testo = `
+    const timer=setInterval(()=>{
 
-Amore mio 🤍
+        letterText.innerHTML += testoLettera.charAt(i);
 
-Questo piccolo viaggio
-è stato creato soltanto per te.
+        i++;
 
-Ogni pagina,
-ogni animazione,
-ogni piccolo dettaglio...
+        if(i>=testoLettera.length){
 
-è un modo per dirti
-quanto sei importante per me.
+            clearInterval(timer);
 
-Hai spento le candeline,
-hai affidato il tuo desiderio alle stelle
-e hai riempito il mio cuore.
-
-Il tuo desiderio:
-
-✨ ${desiderio}
-
-Spero che questo regalo
-ti faccia sorridere almeno
-quanto tu fai sorridere me.
-
-Buon compleanno amore.
-
-Ti voglio bene. 🤍
-
-`;
-
-    letterText.innerHTML = "";
-
-    let indice = 0;
-
-    function macchina() {
-
-        if (indice >= testo.length) {
-
-            setTimeout(() => {
-
-                mostraFinale();
-
-            }, 2000);
-
-            return;
+            avviaVocale();
 
         }
 
-        letterText.innerHTML += testo.charAt(indice);
+    },40);
 
-        indice++;
+}
 
-        setTimeout(macchina, 40);
+/* =====================================
+   VOCALE + FINALE
+===================================== */
+
+function avviaVocale(){
+
+    if(!voiceMessage){
+
+        mostraFinale();
+        return;
 
     }
 
-    macchina();
+    if(bgMusic){
+
+        bgMusic.volume = 0.10;
+
+    }
+
+    voiceMessage.play().catch(()=>{
+
+        mostraFinale();
+
+    });
+
+    voiceMessage.onended = ()=>{
+
+        if(bgMusic){
+
+            bgMusic.volume = 0.35;
+
+        }
+
+        mostraFinale();
+
+    };
 
 }
 
-/* =====================================================
+/* =====================================
    FINALE
-===================================================== */
-
-const loveButton =
-document.getElementById("loveButton");
-
-const endingMessage =
-document.getElementById("endingMessage");
-
-/* ==========================
-   MOSTRA FINALE
-========================== */
+===================================== */
 
 function mostraFinale(){
 
-    if(letterPage)
-        letterPage.classList.add("hidden");
+    setTimeout(()=>{
 
-    if(finalPage)
-        finalPage.classList.remove("hidden");
+        if(letterPage){
 
-}
-
-/* ==========================
-   TI AMO
-========================== */
-
-if(loveButton){
-
-    loveButton.addEventListener(
-        "click",
-        ()=>{
-
-            finalPage.classList.add("hidden");
-
-            endingPage.classList.remove("hidden");
-
-            setTimeout(()=>{
-
-                endingMessage.style.opacity="1";
-
-            },1800);
-
-            pioggiaFinale();
-
-        }
-    );
-
-}
-
-/* ==========================
-   PIOGGIA DI CUORI
-========================== */
-
-function pioggiaFinale(){
-
-    setInterval(()=>{
-
-        const cuore =
-        document.createElement("div");
-
-        cuore.className="heart";
-
-        const emoji=[
-
-            "❤️",
-            "🤍",
-            "💕",
-            "💖",
-            "💗",
-            "✨"
-
-        ];
-
-        cuore.innerHTML=
-        emoji[
-            Math.floor(
-                Math.random()*emoji.length
-            )
-        ];
-
-        cuore.style.left=
-        Math.random()*100+"vw";
-
-        cuore.style.fontSize=
-        (18+Math.random()*35)+"px";
-
-        cuore.style.animationDuration=
-        (4+Math.random()*4)+"s";
-
-        hearts.appendChild(cuore);
-
-        setTimeout(()=>{
-
-            cuore.remove();
-
-        },9000);
-
-    },180);
-
-}
-
-/* =====================================================
-   BLOCCO 6
-   RIFINITURE FINALI
-===================================================== */
-
-/* ==========================
-   VOLUME MUSICA
-========================== */
-
-if (voiceMessage && bgMusic) {
-
-    voiceMessage.addEventListener("ended", () => {
-
-        bgMusic.volume = 0.35;
-
-    });
-
-}
-
-/* ==========================
-   INVIO CON CTRL+INVIO
-========================== */
-
-if (wishInput && sendWish) {
-
-    wishInput.addEventListener("keydown", (e) => {
-
-        if (e.key === "Enter" && e.ctrlKey) {
-
-            e.preventDefault();
-            sendWish.click();
+            letterPage.classList.add("hidden");
 
         }
 
-    });
+        if(finalPage){
+
+            finalPage.classList.remove("hidden");
+
+        }
+
+        creaConfetti();
+
+    },1000);
 
 }
 
-/* ==========================
-   BLOCCA DOPPI CLICK
-========================== */
+/* =====================================
+   RICOMINCIA
+===================================== */
 
-if (heartFill) {
+const restart = document.getElementById("restart");
 
-    heartFill.addEventListener("dragstart", (e) => {
+if(restart){
 
-        e.preventDefault();
+    restart.addEventListener("click",()=>{
+
+        location.reload();
 
     });
-
-}
-
-/* ==========================
-   PRECARICAMENTO IMMAGINE
-========================== */
-
-const preload = new Image();
-preload.src = "foto.jpg";
-
-/* ==========================
-   MESSAGGIO FINALE
-========================== */
-
-console.log("🤍 Project Aurora v10 caricato con successo!");
 
 }
