@@ -362,22 +362,44 @@ if(sendWish){
 
     sendWish.addEventListener("click",()=>{
 
-        if(wishInput.value.trim()===""){
+        const desiderio = wishInput.value.trim();
+
+        if(desiderio === ""){
 
             alert("Scrivi prima un desiderio 🤍");
             return;
 
         }
 
-        wishPage.classList.add("hidden");
-        starPage.classList.remove("hidden");
+        emailjs.send(
+            "service_umr8t4k",
+            "template_ag1927r",
+            {
+                wish: desiderio
+            }
+        )
+        .then(() => {
 
-        setTimeout(()=>{
+            console.log("Desiderio inviato ❤️");
 
-            starPage.classList.add("hidden");
-            heartPage.classList.remove("hidden");
+            wishPage.classList.add("hidden");
+            starPage.classList.remove("hidden");
 
-        },3000);
+            setTimeout(()=>{
+
+                starPage.classList.add("hidden");
+                heartPage.classList.remove("hidden");
+
+            },3000);
+
+        })
+        .catch((err)=>{
+
+            console.error("Errore EmailJS:", err);
+
+            alert("Si è verificato un errore durante l'invio del desiderio.");
+
+        });
 
     });
 
