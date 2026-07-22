@@ -1,6 +1,7 @@
 /* =====================================
-   PROJECT AURORA v5
-   STYLE PARTE 1
+   PROJECT AURORA v6
+   STYLE COMPLETO
+   PARTE 1
 ===================================== */
 
 
@@ -8,11 +9,13 @@
    RESET
 ===================================== */
 
+
 * {
 
-    box-sizing: border-box;
+    box-sizing:border-box;
 
 }
+
 
 
 body {
@@ -50,12 +53,14 @@ body {
 
 
 
+
 /* =====================================
    SFONDO CUORI ❤️✨
 ===================================== */
 
 
 #hearts {
+
 
     position:fixed;
 
@@ -67,11 +72,15 @@ body {
 
     z-index:0;
 
+
 }
 
 
 
+
+
 .heart {
+
 
     position:absolute;
 
@@ -85,6 +94,7 @@ body {
     animation-fill-mode:forwards;
 
 
+
     filter:
 
     drop-shadow(
@@ -96,10 +106,12 @@ body {
 
 
 
+
 @keyframes caduta {
 
 
     0% {
+
 
         transform:
 
@@ -107,7 +119,9 @@ body {
 
         rotate(0deg);
 
+
         opacity:0;
+
 
     }
 
@@ -115,7 +129,9 @@ body {
 
     20% {
 
+
         opacity:1;
+
 
     }
 
@@ -126,17 +142,22 @@ body {
 
         transform:
 
+
         translateY(110vh)
 
         rotate(360deg);
 
 
+
         opacity:0;
+
 
     }
 
 
 }
+
+
 
 
 
@@ -151,21 +172,31 @@ body {
 
 .page {
 
+
     position:relative;
+
 
     z-index:2;
 
+
     text-align:center;
 
+
 }
+
+
 
 
 
 .hidden {
 
+
     display:none !important;
 
+
 }
+
+
 
 
 
@@ -180,21 +211,29 @@ body {
 
 h1 {
 
+
     font-size:35px;
+
 
     text-shadow:
 
+
     0 0 15px rgba(255,255,255,.3);
 
+
 }
+
 
 
 
 p {
 
+
     font-size:20px;
 
+
 }
+
 
 
 
@@ -210,14 +249,18 @@ p {
 
 .loading {
 
+
     width:350px;
+
 
     height:30px;
 
 
     background:
 
+
     rgba(255,255,255,.25);
+
 
 
     border-radius:30px;
@@ -233,28 +276,42 @@ p {
 
 
 
+
 #bar {
 
+
     width:0%;
+
 
     height:100%;
 
 
+
     background:
 
+
     linear-gradient(
+
         90deg,
+
         #ff4d88,
+
         #ffd1e3
+
     );
+
 
 
     border-radius:30px;
 
 
+
     transition:.3s;
 
+
 }
+
+
 
 
 
@@ -294,17 +351,25 @@ button {
 
     background:
 
+
     linear-gradient(
+
         135deg,
+
         #ff4d88,
+
         #ff8fab
+
     );
+
 
 
     transition:.3s;
 
 
 }
+
+
 
 
 
@@ -315,6 +380,8 @@ button:hover {
 
 
 }
+
+
 
 
 
@@ -345,12 +412,16 @@ button:hover {
     align-items:center;
 
 
+
     background:
+
 
     rgba(0,0,0,.5);
 
 
+
     z-index:10;
+
 
 }
 
@@ -376,20 +447,18 @@ button:hover {
     border-radius:15px;
 
 
+
     transform:rotate(-3deg);
 
 
 
     box-shadow:
 
+
     0 20px 50px rgba(0,0,0,.5);
 
 
 }
-
-
-
-
 
 /* =====================================
    COMPLEANNO 🎂
@@ -415,10 +484,12 @@ button:hover {
 
     grid-template-columns:
 
-    repeat(5,60px);
+    repeat(5,45px);
 
 
-    gap:35px;
+
+    gap:18px;
+
 
 
     justify-content:center;
@@ -427,10 +498,12 @@ button:hover {
     align-items:end;
 
 
-    margin:50px auto 30px;
+
+    margin:40px auto 25px;
 
 
-    padding:20px;
+
+    padding:10px;
 
 
 }
@@ -441,7 +514,10 @@ button:hover {
 
 
 
-/* SINGOLA CANDELA 🕯️ */
+
+/* =====================================
+   CANDELA 🕯️
+===================================== */
 
 
 .candle {
@@ -450,32 +526,45 @@ button:hover {
     position:relative;
 
 
+
     width:22px;
 
 
+
     height:75px;
+
 
 
     background:
 
 
     repeating-linear-gradient(
+
         45deg,
+
         white,
+
         white 6px,
+
         #ff8fab 6px,
+
         #ff8fab 12px
+
     );
+
 
 
 
     border-radius:8px;
 
 
+
     cursor:pointer;
 
 
+
     touch-action:manipulation;
+
 
 
     transition:.3s;
@@ -485,12 +574,12 @@ button:hover {
 
 
 
+
+
 .candle:hover {
 
 
-    transform:
-
-    scale(1.15);
+    transform:scale(1.15);
 
 
 }
@@ -501,7 +590,11 @@ button:hover {
 
 
 
-/* FIAMMA 🔥 */
+
+
+/* =====================================
+   FIAMMA 🔥
+===================================== */
 
 
 .flame {
@@ -510,16 +603,21 @@ button:hover {
     position:absolute;
 
 
+
     top:-45px;
+
 
 
     left:-10px;
 
 
+
     font-size:42px;
 
 
+
     animation:
+
 
     flicker .7s infinite alternate;
 
@@ -528,12 +626,16 @@ button:hover {
 
 
 
+
+
 .flame.off {
 
 
     display:none;
 
+
 }
+
 
 
 
@@ -544,14 +646,17 @@ button:hover {
 @keyframes flicker {
 
 
+
     from {
 
 
         transform:
 
+
         scale(1)
 
         rotate(-5deg);
+
 
     }
 
@@ -561,6 +666,7 @@ button:hover {
 
 
         transform:
+
 
         scale(1.2)
 
@@ -578,7 +684,11 @@ button:hover {
 
 
 
-/* FUMO 💨 */
+
+
+/* =====================================
+   FUMO 💨
+===================================== */
 
 
 .smoke {
@@ -587,16 +697,21 @@ button:hover {
     position:absolute;
 
 
+
     top:-70px;
+
 
 
     left:-3px;
 
 
+
     font-size:28px;
 
 
+
     animation:
+
 
     smokeUp 1s forwards;
 
@@ -607,7 +722,10 @@ button:hover {
 
 
 
+
+
 @keyframes smokeUp {
+
 
 
     from {
@@ -616,12 +734,16 @@ button:hover {
         opacity:1;
 
 
+
         transform:
+
 
         translateY(0);
 
 
     }
+
+
 
 
 
@@ -631,7 +753,9 @@ button:hover {
         opacity:0;
 
 
+
         transform:
+
 
         translateY(-60px);
 
@@ -641,142 +765,44 @@ button:hover {
 
 }
 
-/* =====================================
-   PROJECT AURORA v5
-   STYLE PARTE 1
-===================================== */
+
+
+
+
+
+
 
 
 /* =====================================
-   RESET
+   DESIDERIO ✨
 ===================================== */
 
-* {
 
-    box-sizing: border-box;
-
-}
-
-
-body {
-
-    margin:0;
-
-    height:100vh;
-
-    overflow:hidden;
-
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    font-family:Georgia, serif;
-
-    color:white;
+.wish-card {
 
 
     background:
 
-    linear-gradient(
-        135deg,
-        #1a001f,
-        #6b1d5c
-    );
-
-}
+    rgba(255,255,255,.15);
 
 
 
-
-
-/* =====================================
-   SFONDO CUORI ❤️✨
-===================================== */
-
-
-#hearts {
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:0;
-
-}
+    padding:35px;
 
 
 
-.heart {
-
-    position:absolute;
-
-    top:-60px;
-
-
-    animation-name:caduta;
-
-    animation-timing-function:linear;
-
-    animation-fill-mode:forwards;
-
-
-    filter:
-
-    drop-shadow(
-        0 0 8px rgba(255,255,255,.5)
-    );
-
-}
+    border-radius:25px;
 
 
 
-
-@keyframes caduta {
-
-
-    0% {
-
-        transform:
-
-        translateY(-10vh)
-
-        rotate(0deg);
-
-        opacity:0;
-
-    }
+    backdrop-filter:blur(8px);
 
 
 
-    20% {
-
-        opacity:1;
-
-    }
+    box-shadow:
 
 
-
-    100% {
-
-
-        transform:
-
-        translateY(110vh)
-
-        rotate(360deg);
-
-
-        opacity:0;
-
-    }
+    0 20px 50px rgba(0,0,0,.3);
 
 
 }
@@ -785,406 +811,76 @@ body {
 
 
 
+#wishInput {
 
 
-/* =====================================
-   PAGINE
-===================================== */
+    width:300px;
 
 
-.page {
 
-    position:relative;
+    height:120px;
 
-    z-index:2;
 
-    text-align:center;
 
-}
+    padding:15px;
 
-
-
-.hidden {
-
-    display:none !important;
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   TESTI
-===================================== */
-
-
-h1 {
-
-    font-size:35px;
-
-    text-shadow:
-
-    0 0 15px rgba(255,255,255,.3);
-
-}
-
-
-
-p {
-
-    font-size:20px;
-
-}
-
-
-
-
-
-
-
-
-/* =====================================
-   CARICAMENTO ⏳
-===================================== */
-
-
-.loading {
-
-    width:350px;
-
-    height:30px;
-
-
-    background:
-
-    rgba(255,255,255,.25);
-
-
-    border-radius:30px;
-
-
-    overflow:hidden;
-
-
-    margin:35px auto;
-
-
-}
-
-
-
-#bar {
-
-    width:0%;
-
-    height:100%;
-
-
-    background:
-
-    linear-gradient(
-        90deg,
-        #ff4d88,
-        #ffd1e3
-    );
-
-
-    border-radius:30px;
-
-
-    transition:.3s;
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   BOTTONI
-===================================== */
-
-
-button {
 
 
     border:none;
 
 
-    padding:15px 35px;
-
-
-    margin:10px;
-
-
-    border-radius:30px;
-
-
-    cursor:pointer;
-
-
-    color:white;
-
-
-    font-size:18px;
-
-
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #ff4d88,
-        #ff8fab
-    );
-
-
-    transition:.3s;
-
-
-}
-
-
-
-button:hover {
-
-
-    transform:scale(1.08);
-
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   BIGLIETTO 💌
-===================================== */
-
-
-#ticket {
-
-
-    position:fixed;
-
-
-    inset:0;
-
-
-    display:flex;
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-
-    background:
-
-    rgba(0,0,0,.5);
-
-
-    z-index:10;
-
-}
-
-
-
-
-
-.ticket-card {
-
-
-    background:#fff3c4;
-
-
-    color:#6b1d5c;
-
-
-    width:330px;
-
-
-    padding:35px;
-
 
     border-radius:15px;
 
 
-    transform:rotate(-3deg);
+
+    resize:none;
 
 
 
-    box-shadow:
+    font-size:16px;
 
-    0 20px 50px rgba(0,0,0,.5);
+
+
+    font-family:Georgia,serif;
 
 
 }
+
+
+
+
 
 
 
 
 
 /* =====================================
-   COMPLEANNO 🎂
-   CANDELINE
+   STELLA ⭐
 ===================================== */
 
 
-.birthday-box {
+#wishStar {
 
-    text-align:center;
 
-}
+    font-size:90px;
 
-
-
-
-
-#candles {
-
-
-    display:grid;
-
-
-    grid-template-columns:
-
-    repeat(5,60px);
-
-
-    gap:35px;
-
-
-    justify-content:center;
-
-
-    align-items:end;
-
-
-    margin:50px auto 30px;
-
-
-    padding:20px;
-
-
-}
-
-
-
-
-
-
-
-/* SINGOLA CANDELA 🕯️ */
-
-
-.candle {
-
-
-    position:relative;
-
-
-    width:22px;
-
-
-    height:75px;
-
-
-    background:
-
-
-    repeating-linear-gradient(
-        45deg,
-        white,
-        white 6px,
-        #ff8fab 6px,
-        #ff8fab 12px
-    );
-
-
-
-    border-radius:8px;
-
-
-    cursor:pointer;
-
-
-    touch-action:manipulation;
-
-
-    transition:.3s;
-
-
-}
-
-
-
-.candle:hover {
-
-
-    transform:
-
-    scale(1.15);
-
-
-}
-
-
-
-
-
-
-
-/* FIAMMA 🔥 */
-
-
-.flame {
-
-
-    position:absolute;
-
-
-    top:-45px;
-
-
-    left:-10px;
-
-
-    font-size:42px;
 
 
     animation:
 
-    flicker .7s infinite alternate;
+
+    volaStella 3s infinite alternate;
 
 
 }
 
 
 
-.flame.off {
 
 
-    display:none;
+@keyframes volaStella {
 
-}
-
-
-
-
-
-
-
-@keyframes flicker {
 
 
     from {
@@ -1192,9 +888,11 @@ button:hover {
 
         transform:
 
-        scale(1)
 
-        rotate(-5deg);
+        translateY(20px)
+
+        scale(1);
+
 
     }
 
@@ -1205,9 +903,10 @@ button:hover {
 
         transform:
 
-        scale(1.2)
 
-        rotate(5deg);
+        translateY(-40px)
+
+        scale(1.2);
 
 
     }
@@ -1221,65 +920,133 @@ button:hover {
 
 
 
-/* FUMO 💨 */
 
 
-.smoke {
+/* =====================================
+   TELEFONO 📱
+===================================== */
 
 
-    position:absolute;
-
-
-    top:-70px;
-
-
-    left:-3px;
-
-
-    font-size:28px;
-
-
-    animation:
-
-    smokeUp 1s forwards;
-
-
-}
+@media(max-width:600px){
 
 
 
+    h1 {
 
 
-@keyframes smokeUp {
-
-
-    from {
-
-
-        opacity:1;
-
-
-        transform:
-
-        translateY(0);
+        font-size:28px;
 
 
     }
 
 
 
-    to {
+
+    p {
 
 
-        opacity:0;
-
-
-        transform:
-
-        translateY(-60px);
+        font-size:18px;
 
 
     }
+
+
+
+
+
+    .loading {
+
+
+        width:280px;
+
+
+    }
+
+
+
+
+
+    #candles {
+
+
+
+        grid-template-columns:
+
+
+        repeat(5,38px);
+
+
+
+        gap:12px;
+
+
+
+        transform:scale(.9);
+
+
+
+    }
+
+
+
+
+
+
+
+    .candle {
+
+
+        width:18px;
+
+
+
+        height:65px;
+
+
+    }
+
+
+
+
+
+    .flame {
+
+
+        font-size:36px;
+
+
+
+        top:-40px;
+
+
+
+        left:-9px;
+
+
+    }
+
+
+
+
+    .wish-card {
+
+
+        width:90%;
+
+
+    }
+
+
+
+
+    #wishInput {
+
+
+        width:100%;
+
+
+    }
+
 
 
 }
