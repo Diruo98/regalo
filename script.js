@@ -597,4 +597,59 @@ if(restart){
     });
 
 }
+/* =====================================
+   COSTELLAZIONE
+===================================== */
+
+function avviaCostellazione(){
+
+    constellationPage.classList.remove("hidden");
+
+    constellationSky.innerHTML = "";
+
+    for(let i=0;i<30;i++){
+
+        const star=document.createElement("div");
+
+        star.className="star";
+
+        star.style.left=Math.random()*95+"%";
+        star.style.top=Math.random()*90+"%";
+
+        star.addEventListener("click",()=>{
+
+            scegliStella(star);
+
+        });
+
+        constellationSky.appendChild(star);
+
+    }
+
+}
+
+function scegliStella(stella){
+
+    document
+        .querySelectorAll(".star")
+        .forEach(s=>{
+
+            s.style.pointerEvents="none";
+
+        });
+
+    stella.classList.add("selected");
+
+    setTimeout(()=>{
+
+        alert("✨ Qualunque stella tu scelga... per me sarà sempre la più bella. ❤️");
+
+        constellationPage.classList.add("hidden");
+
+        heartPage.classList.remove("hidden");
+
+    },2200);
+
+}
+
 console.log("SCRIPT NUOVO CARICATO");
