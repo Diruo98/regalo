@@ -1,11 +1,7 @@
-/* =====================================================
-   PROJECT AURORA v10
-   STYLE.CSS
-===================================================== */
-
-/* ==========================
+/* =====================================
+   PROJECT AURORA v11
    RESET
-========================== */
+===================================== */
 
 *{
     margin:0;
@@ -15,17 +11,9 @@
 
 body{
 
-    font-family:Georgia,serif;
+    font-family:Georgia, serif;
 
     overflow:hidden;
-
-    height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
 
     color:white;
 
@@ -33,15 +21,17 @@ body{
     linear-gradient(
         135deg,
         #18001f,
-        #42104b,
-        #6d1d62
+        #5e184f,
+        #8b3d6d
     );
+
+    height:100vh;
 
 }
 
-/* ==========================
+/* =====================================
    PAGINE
-========================== */
+===================================== */
 
 .page{
 
@@ -63,37 +53,17 @@ body{
 
     z-index:2;
 
-    animation:fade .8s;
-
 }
 
 .hidden{
 
-    display:none!important;
+    display:none !important;
 
 }
 
-@keyframes fade{
-
-    from{
-
-        opacity:0;
-        transform:translateY(20px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-}
-
-/* ==========================
-   TITOLI
-========================== */
+/* =====================================
+   TESTI
+===================================== */
 
 h1{
 
@@ -102,15 +72,15 @@ h1{
     margin-bottom:20px;
 
     text-shadow:
-    0 0 18px rgba(255,255,255,.35);
+    0 0 20px rgba(255,255,255,.35);
 
 }
 
 h2{
 
-    margin-top:25px;
+    font-size:30px;
 
-    font-weight:normal;
+    margin-bottom:20px;
 
 }
 
@@ -120,55 +90,15 @@ p{
 
     line-height:1.6;
 
-}
-
-/* ==========================
-   BOTTONI
-========================== */
-
-button{
-
-    margin-top:25px;
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:40px;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    color:white;
-
-    background:
-    linear-gradient(
-        135deg,
-        #ff4d88,
-        #ff99bb
-    );
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.25);
-
-    transition:.3s;
+    margin-bottom:20px;
 
 }
 
-button:hover{
+/* =====================================
+   SFONDO CUORI
+===================================== */
 
-    transform:
-    scale(1.08);
-
-}
-
-/* ==========================
-   SFONDO
-========================== */
-
-#hearts,
-#confetti{
+#hearts{
 
     position:fixed;
 
@@ -178,134 +108,205 @@ button:hover{
 
     pointer-events:none;
 
+    z-index:0;
+
 }
 
 .heart{
 
     position:absolute;
 
-    top:-80px;
+    top:-60px;
 
     animation:
-    fall linear forwards;
+    caduta linear forwards;
 
     filter:
     drop-shadow(
-        0 0 10px rgba(255,255,255,.5)
+    0 0 12px rgba(255,255,255,.5)
     );
 
 }
 
-@keyframes fall{
+@keyframes caduta{
 
-    from{
+0%{
 
-        transform:
-        translateY(-10vh)
-        rotate(0deg);
+transform:
+translateY(-10vh)
+rotate(0deg);
 
-        opacity:0;
-
-    }
-
-    20%{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        transform:
-        translateY(110vh)
-        rotate(360deg);
-
-        opacity:0;
-
-    }
+opacity:0;
 
 }
 
-/* ==========================
+15%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* =====================================
+   BOTTONI
+===================================== */
+
+button{
+
+    border:none;
+
+    padding:16px 38px;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ff4d88,
+    #ff8fab
+    );
+
+    transition:.35s;
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.25);
+
+}
+
+button:hover{
+
+    transform:
+
+    scale(1.08);
+
+}
+
+/* =====================================
    CARICAMENTO
-========================== */
+===================================== */
 
 .loading{
 
-    width:340px;
+    width:380px;
+
+    max-width:90%;
 
     height:28px;
 
-    margin:35px auto;
-
     background:
-    rgba(255,255,255,.2);
+
+    rgba(255,255,255,.18);
 
     border-radius:40px;
 
     overflow:hidden;
 
+    margin:30px auto;
+
+    box-shadow:
+
+    inset 0 0 15px rgba(255,255,255,.15);
+
 }
 
 #bar{
 
-    width:0;
+    width:0%;
 
     height:100%;
 
     border-radius:40px;
 
     background:
+
     linear-gradient(
         90deg,
         #ff4d88,
-        #ffd5e5
+        #ff8fab,
+        #ffd6e7
     );
+
+    transition:
+    width .15s linear;
 
 }
 
 #percent{
 
-    margin-top:10px;
+    font-size:24px;
 
-    font-size:22px;
+    font-weight:bold;
+
+    margin-top:15px;
+
+    text-shadow:
+
+    0 0 12px rgba(255,255,255,.5);
 
 }
 
-/* =====================================================
+/* =====================================
    BIGLIETTO
-===================================================== */
+===================================== */
 
 .ticket-card{
 
-    width:360px;
+    width:340px;
 
     max-width:90%;
 
     padding:35px;
 
-    border-radius:20px;
-
-    background:#fff6dc;
+    background:#fff7df;
 
     color:#6b1d5c;
 
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.35);
+    border-radius:20px;
 
     transform:rotate(-2deg);
 
-}
+    box-shadow:
 
-.buttons{
-
-    margin-top:25px;
+    0 20px 45px rgba(0,0,0,.35);
 
 }
 
-/* =====================================================
-   COMPLEANNO
-===================================================== */
+.ticket-card h2{
+
+    margin:20px 0;
+
+}
+
+.ticket-card button{
+
+    margin:10px;
+
+}
+
+/* =====================================
+   CANDELINE
+===================================== */
 
 .birthday-box{
 
@@ -318,11 +319,12 @@ button:hover{
     display:grid;
 
     grid-template-columns:
+
     repeat(5,50px);
 
-    justify-content:center;
-
     gap:18px;
+
+    justify-content:center;
 
     margin:40px auto;
 
@@ -334,19 +336,28 @@ button:hover{
 
     width:20px;
 
-    height:75px;
+    height:70px;
 
-    border-radius:8px;
+    margin:auto;
 
     cursor:pointer;
 
+    border-radius:8px;
+
     background:
+
     repeating-linear-gradient(
+
         45deg,
+
         white,
+
         white 6px,
+
         #ff8fab 6px,
+
         #ff8fab 12px
+
     );
 
     transition:.3s;
@@ -363,13 +374,15 @@ button:hover{
 
     position:absolute;
 
-    top:-36px;
+    top:-40px;
 
-    left:-8px;
+    left:-10px;
 
     font-size:36px;
 
-    animation:flicker .8s infinite alternate;
+    animation:
+
+    flicker .7s infinite alternate;
 
 }
 
@@ -381,21 +394,23 @@ button:hover{
 
 @keyframes flicker{
 
-    from{
+from{
 
-        transform:
-        scale(1)
-        rotate(-5deg);
+transform:
 
-    }
+scale(1)
+rotate(-5deg);
 
-    to{
+}
 
-        transform:
-        scale(1.15)
-        rotate(5deg);
+to{
 
-    }
+transform:
+
+scale(1.15)
+rotate(5deg);
+
+}
 
 }
 
@@ -407,33 +422,41 @@ button:hover{
 
     left:-4px;
 
-    font-size:26px;
+    font-size:24px;
 
-    animation:smoke 1s forwards;
+    animation:
 
-}
-
-@keyframes smoke{
-
-    from{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-    to{
-
-        opacity:0;
-        transform:translateY(-50px);
-
-    }
+    smokeUp 1s forwards;
 
 }
 
-/* =====================================================
+@keyframes smokeUp{
+
+from{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+to{
+
+opacity:0;
+
+transform:
+
+translateY(-50px);
+
+}
+
+}
+
+/* =====================================
    DESIDERIO
-===================================================== */
+===================================== */
 
 .wish-card{
 
@@ -446,9 +469,14 @@ button:hover{
     border-radius:25px;
 
     background:
-    rgba(255,255,255,.12);
 
-    backdrop-filter:blur(8px);
+    rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.35);
 
 }
 
@@ -458,131 +486,179 @@ button:hover{
 
     height:140px;
 
-    margin-top:20px;
-
     padding:15px;
-
-    resize:none;
 
     border:none;
 
     outline:none;
 
+    resize:none;
+
     border-radius:15px;
 
-    font-size:16px;
+    font-size:17px;
 
-    font-family:Georgia,serif;
+    font-family:Georgia, serif;
 
 }
 
-/* =====================================================
+/* =====================================
    STELLA
-===================================================== */
+===================================== */
 
 #wishStar{
 
     font-size:120px;
 
     animation:
-    floating 2s infinite alternate;
+
+    starFloat 2s infinite alternate;
 
 }
 
-@keyframes floating{
+@keyframes starFloat{
 
-    from{
+from{
 
-        transform:
-        translateY(20px)
-        scale(1);
+transform:
 
-    }
-
-    to{
-
-        transform:
-        translateY(-25px)
-        scale(1.15);
-
-    }
+translateY(20px)
+scale(1);
 
 }
 
-/* =====================================================
+to{
+
+transform:
+
+translateY(-30px)
+scale(1.2);
+
+}
+
+}
+
+/* =====================================
    CUORE
-===================================================== */
+===================================== */
 
 #heartFill{
 
-    font-size:130px;
+    width:190px;
+
+    height:190px;
+
+    position:relative;
 
     cursor:pointer;
 
-    user-select:none;
-
-    transition:.3s;
-
-    margin-top:20px;
+    margin-top:30px;
 
 }
 
-#heartFill.full{
+#heartFill::before{
+
+    content:"🤍";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:170px;
+
+}
+
+#heartFill::after{
+
+    content:"❤️";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:170px;
+
+    opacity:0;
+
+    transition:.4s;
+
+}
+
+#heartFill.complete::after{
+
+    opacity:1;
 
     animation:
-    heartbeat .8s infinite;
 
-}
-
-@keyframes heartbeat{
-
-    0%{
-
-        transform:scale(1);
-
-    }
-
-    25%{
-
-        transform:scale(1.15);
-
-    }
-
-    50%{
-
-        transform:scale(1);
-
-    }
-
-    75%{
-
-        transform:scale(1.12);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
+    heartPulse 1s infinite alternate;
 
 }
 
 #heartPercent{
 
-    margin-top:15px;
+    position:absolute;
 
-    font-size:32px;
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-size:28px;
 
     font-weight:bold;
 
-    color:#ffdce8;
+    z-index:5;
+
+    text-shadow:
+
+    0 0 15px rgba(255,255,255,.7);
 
 }
 
-/* =====================================================
-   LETTERA
-===================================================== */
+@keyframes heartPulse{
+
+from{
+
+transform:
+
+scale(1);
+
+filter:
+
+drop-shadow(0 0 10px #ff4d88);
+
+}
+
+to{
+
+transform:
+
+scale(1.08);
+
+filter:
+
+drop-shadow(0 0 28px #ff8fab);
+
+}
+
+}
+
+/* =====================================
+   BUSTA E LETTERA
+===================================== */
 
 .letter-container{
 
@@ -600,40 +676,27 @@ button:hover{
 
 }
 
-/* ==========================
-   BUSTA
-========================== */
-
 #envelope{
 
-    position:absolute;
+    position:relative;
 
     width:300px;
 
-    height:190px;
-
-    border-radius:18px;
+    height:200px;
 
     background:#ff8fab;
+
+    border-radius:15px;
 
     overflow:hidden;
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,.35);
+
+    0 20px 50px rgba(0,0,0,.4);
 
     transition:
     opacity .8s,
     transform .8s;
-
-}
-
-.envelope-body{
-
-    position:absolute;
-
-    inset:0;
-
-    background:#ff8fab;
 
 }
 
@@ -643,12 +706,14 @@ button:hover{
 
     inset:0;
 
-    background:#ffc2d6;
+    background:#ffc1d6;
 
-    clip-path:polygon(
+    clip-path:
+
+    polygon(
         0 0,
         100% 0,
-        50% 65%
+        50% 60%
     );
 
     transform-origin:top;
@@ -659,15 +724,9 @@ button:hover{
 
 #envelope.open .flap{
 
-    transform:rotateX(180deg);
+    transform:
 
-}
-
-#envelope.hide{
-
-    opacity:0;
-
-    transform:scale(.8);
+    rotateX(180deg);
 
 }
 
@@ -677,98 +736,99 @@ button:hover{
 
     left:50%;
 
-    top:65px;
+    top:60px;
 
-    transform:translateX(-50%);
+    transform:
+
+    translateX(-50%);
 
     font-size:42px;
 
 }
 
-/* ==========================
-   FOGLIO
-========================== */
+/* =====================================
+   LETTERA
+===================================== */
 
 #paper{
 
-    width:330px;
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+
+    translate(-50%,120px);
+
+    width:320px;
 
     max-width:90%;
 
-    min-height:520px;
+    min-height:420px;
 
     padding:30px;
 
-    border-radius:12px;
-
-    background:#fffdf7;
+    background:#fffdf8;
 
     color:#6b1d5c;
 
-    box-shadow:
-    0 20px 45px rgba(0,0,0,.35);
-
-    position:absolute;
+    border-radius:15px;
 
     opacity:0;
 
-    transform:
-    translateY(180px);
-
     transition:
-    transform 1.4s,
-    opacity 1.4s;
+
+    1.2s;
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.35);
 
 }
 
 #paper.show{
 
+    transform:
+
+    translate(-50%,-50%);
+
     opacity:1;
-
-    transform:
-    translateY(0);
-
-}
-
-#paper.center{
-
-    transform:
-    translateY(-70px);
 
 }
 
 #letterText{
 
-    margin-top:20px;
-
     white-space:pre-line;
-
-    text-align:left;
 
     line-height:1.8;
 
     font-size:17px;
 
+    margin-top:20px;
+
 }
 
-/* ==========================
+/* =====================================
    POLAROID
-========================== */
+===================================== */
 
 .polaroid{
 
     width:220px;
 
-    margin:0 auto 25px;
-
-    padding:10px;
+    margin:30px auto 0;
 
     background:white;
+
+    padding:12px;
 
     transform:rotate(-4deg);
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,.25);
+
+    0 15px 35px rgba(0,0,0,.3);
 
 }
 
@@ -780,132 +840,143 @@ button:hover{
 
 }
 
-/* =====================================================
-   FINALE
-===================================================== */
+/* =====================================
+   CORIANDOLI
+===================================== */
 
-#loveButton{
+#confetti{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:100;
+
+}
+
+.confetti-piece{
+
+    position:absolute;
+
+    top:-20px;
+
+    width:12px;
+
+    height:18px;
+
+    animation:
+
+    confettiFall linear forwards;
+
+}
+
+@keyframes confettiFall{
+
+from{
+
+transform:
+
+translateY(-10vh)
+rotate(0deg);
+
+}
+
+to{
+
+transform:
+
+translateY(110vh)
+rotate(720deg);
+
+}
+
+}
+
+/* =====================================
+   TELEFONO
+===================================== */
+
+@media(max-width:700px){
+
+h1{
+
+    font-size:30px;
+
+}
+
+h2{
 
     font-size:24px;
 
-    padding:18px 45px;
+}
 
-    animation:
-    pulse 2s infinite;
+p{
+
+    font-size:18px;
 
 }
 
-@keyframes pulse{
+.loading{
 
-    0%{
-
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        transform:scale(1.08);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
+    width:280px;
 
 }
 
-#endingPage{
+.ticket-card{
 
-    background:
-    rgba(0,0,0,.9);
-
-}
-
-.ending-text{
-
-    max-width:700px;
-
-    animation:
-    fade 2s;
+    width:90%;
 
 }
 
-#endingMessage{
+#wishInput{
 
-    margin-top:40px;
-
-    font-size:28px;
+    height:120px;
 
 }
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+#heartFill{
 
-@media(max-width:600px){
+    width:150px;
 
-    h1{
-
-        font-size:30px;
-
-    }
-
-    p{
-
-        font-size:18px;
-
-    }
-
-    .loading{
-
-        width:280px;
-
-    }
-
-    #candles{
-
-        grid-template-columns:
-        repeat(5,42px);
-
-        gap:12px;
-
-    }
-
-    #wishStar{
-
-        font-size:90px;
-
-    }
-
-    #heartFill{
-
-        font-size:100px;
-
-    }
-
-    #paper{
-
-        width:92%;
-
-        min-height:430px;
-
-        padding:20px;
-
-    }
-
-    .polaroid{
-
-        width:180px;
-
-    }
-
-    #endingMessage{
-
-        font-size:22px;
-
-    }
+    height:150px;
 
 }
+
+#heartFill::before,
+
+#heartFill::after{
+
+    font-size:135px;
+
+}
+
+#envelope{
+
+    width:240px;
+
+    height:160px;
+
+}
+
+#paper{
+
+    width:260px;
+
+    min-height:360px;
+
+    padding:20px;
+
+}
+
+.polaroid{
+
+    width:180px;
+
+}
+
+}
+
