@@ -980,3 +980,81 @@ p{
 
 }
 
+/* ==========================
+   COSTELLAZIONE
+========================== */
+
+#constellationPage{
+
+    background:
+        radial-gradient(circle at top,#1b2a52,#060b18 70%);
+
+    overflow:hidden;
+
+}
+
+#constellationSky{
+
+    position:relative;
+
+    width:100%;
+
+    height:65vh;
+
+    margin-top:30px;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:8px;
+
+    height:8px;
+
+    background:white;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    box-shadow:0 0 12px rgba(255,255,255,.8);
+
+    transition:.4s;
+
+    animation:twinkle 2s infinite alternate;
+
+}
+
+.star:hover{
+
+    transform:scale(1.8);
+
+}
+
+.star.selected{
+
+    transform:scale(2.5);
+
+    background:#ffe27a;
+
+    box-shadow:0 0 25px #ffe27a;
+
+}
+
+@keyframes twinkle{
+
+    from{
+
+        opacity:.4;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
