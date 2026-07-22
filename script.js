@@ -1,9 +1,10 @@
 /* =====================================
-   PROJECT SOFIA ❤️
+   PROJECT SOFI ❤️
+   SCRIPT V2
 ===================================== */
 
 /* =====================================
-   ELEMENTI DEL DOM
+   ELEMENTI
 ===================================== */
 
 const introPage = document.getElementById("introPage");
@@ -18,80 +19,45 @@ const letterPage = document.getElementById("letterPage");
 const finalPage = document.getElementById("finalPage");
 
 const playButton = document.getElementById("playButton");
-const startButton = document.getElementById("start");
-const yesButton = document.getElementById("yes");
-const noButton = document.getElementById("no");
-
-const loadingBar = document.getElementById("bar");
-const loadingPercent = document.getElementById("percent");
+const start = document.getElementById("start");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 
 const bgMusic = document.getElementById("bgMusic");
 const voiceMessage = document.getElementById("voiceMessage");
 
-const candlesBox = document.getElementById("candles");
-const counter = document.getElementById("counter");
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
 
-const wishInput = document.getElementById("wishInput");
-const sendWish = document.getElementById("sendWish");
-
-const constellationSky = document.getElementById("constellationSky");
-
-const heart = document.getElementById("heartFill");
-const heartPercent = document.getElementById("heartPercent");
-
-const envelope = document.getElementById("envelope");
-const paper = document.getElementById("paper");
-const letterText = document.getElementById("letterText");
-
-const restart = document.getElementById("restart");
+const hearts = document.getElementById("hearts");
+const confetti = document.getElementById("confetti");
 
 /* =====================================
    VARIABILI
 ===================================== */
 
-let loadingValue = 0;
-let candlesLeft = 19;
+let typingTimer = null;
 let heartValue = 0;
-
-const letterContent = `Cara Sofia,
-
-Qui andrà la lettera definitiva. ❤️`;
+let candlesLeft = 19;
 
 /* =====================================
-   GESTIONE PAGINE
+   FUNZIONE CAMBIO PAGINA
 ===================================== */
-
-const pages = [
-    introPage,
-    home,
-    ticket,
-    birthday,
-    wishPage,
-    starPage,
-    constellationPage,
-    heartPage,
-    letterPage,
-    finalPage
-];
 
 function showPage(page){
 
-    pages.forEach(p=>{
+    document.querySelectorAll(".page").forEach(p=>{
 
-        if(p){
-            p.classList.add("hidden");
-        }
+        p.classList.add("hidden");
 
     });
 
-    if(page){
-        page.classList.remove("hidden");
-    }
+    page.classList.remove("hidden");
 
 }
 
 /* =====================================
-   PLAY + MUSICA
+   INTRO
 ===================================== */
 
 if(playButton){
@@ -104,7 +70,7 @@ if(playButton){
 
             bgMusic.play().catch(err=>{
 
-                console.error(err);
+                console.log(err);
 
             });
 
@@ -124,43 +90,23 @@ if(playButton){
 
 function startLoading(){
 
-    loadingValue = 0;
-
-    if(loadingBar){
-        loadingBar.style.width = "0%";
-    }
-
-    if(loadingPercent){
-        loadingPercent.textContent = "0%";
-    }
-
-    if(startButton){
-        startButton.hidden = true;
-    }
+    let value = 0;
 
     const timer = setInterval(()=>{
 
-        loadingValue++;
+        value++;
 
-        if(loadingBar){
-            loadingBar.style.width = loadingValue + "%";
-        }
+        bar.style.width = value + "%";
 
-        if(loadingPercent){
-            loadingPercent.textContent = loadingValue + "%";
-        }
+        percent.textContent = value + "%";
 
-        if(loadingValue >= 100){
+        if(value >= 100){
 
             clearInterval(timer);
 
-            if(loadingPercent){
-                loadingPercent.textContent = "✨ È tutto pronto 🤍";
-            }
+            percent.innerHTML = "✨ È tutto pronto...";
 
-            if(startButton){
-                startButton.hidden = false;
-            }
+            start.hidden = false;
 
         }
 
@@ -172,9 +118,9 @@ function startLoading(){
    INIZIA IL VIAGGIO
 ===================================== */
 
-if(startButton){
+if(start){
 
-    startButton.addEventListener("click",()=>{
+    start.addEventListener("click",()=>{
 
         showPage(ticket);
 
@@ -183,28 +129,32 @@ if(startButton){
 }
 
 /* =====================================
-   BIGLIETTO
+   PULSANTE NO
 ===================================== */
 
 function moveNoButton(){
 
-    if(!noButton) return;
+    if(!no) return;
 
-    noButton.style.position = "fixed";
+    no.style.position = "fixed";
 
-    noButton.style.left =
-        Math.random() * (window.innerWidth - noButton.offsetWidth) + "px";
+    no.style.left =
+        Math.random() *
+        (window.innerWidth - no.offsetWidth)
+        + "px";
 
-    noButton.style.top =
-        Math.random() * (window.innerHeight - noButton.offsetHeight) + "px";
+    no.style.top =
+        Math.random() *
+        (window.innerHeight - no.offsetHeight)
+        + "px";
 
 }
 
-if(noButton){
+if(no){
 
-    noButton.addEventListener("mouseenter",moveNoButton);
+    no.addEventListener("mouseenter",moveNoButton);
 
-    noButton.addEventListener("touchstart",(e)=>{
+    no.addEventListener("touchstart",(e)=>{
 
         e.preventDefault();
 
@@ -214,9 +164,13 @@ if(noButton){
 
 }
 
-if(yesButton){
+/* =====================================
+   PULSANTE SI
+===================================== */
 
-    yesButton.addEventListener("click",()=>{
+if(yes){
+
+    yes.addEventListener("click",()=>{
 
         showPage(birthday);
 
@@ -227,52 +181,108 @@ if(yesButton){
 }
 
 /* =====================================
+   SFONDO CUORI
+===================================== */
+
+const symbols = [
+
+    "❤️",
+    "🤍",
+    "💕",
+    "💖",
+    "✨",
+    "⭐",
+    "🌹",
+    "🦁"
+
+];
+
+function createFloatingHeart(){
+
+    if(!hearts) return;
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(Math.random()*symbols.length)
+        ];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.fontSize =
+        (18 + Math.random()*35) + "px";
+
+    heart.style.animationDuration =
+        (4 + Math.random()*5) + "s";
+
+    hearts.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },9000);
+
+}
+
+setInterval(createFloatingHeart,180);
+
+/* =====================================
    CANDELINE
 ===================================== */
 
-function createCandles(){
+const candlesBox = document.getElementById("candles");
+const counter = document.getElementById("counter");
 
-    if(!candlesBox) return;
+function createCandles(){
 
     candlesLeft = 19;
 
     candlesBox.innerHTML = "";
 
-    if(counter){
-        counter.textContent = "Candeline rimaste: 19";
-    }
+    counter.textContent =
+        "Candeline rimaste: " + candlesLeft;
 
-    for(let i = 0; i < 19; i++){
+    for(let i=0;i<19;i++){
 
         const candle = document.createElement("div");
+
         candle.className = "candle";
 
         const flame = document.createElement("span");
+
         flame.className = "flame";
-        flame.textContent = "🔥";
+
+        flame.innerHTML = "🔥";
 
         candle.appendChild(flame);
 
         candle.addEventListener("click",()=>{
 
-            if(flame.classList.contains("off")) return;
+            if(flame.classList.contains("off"))
+                return;
 
             flame.classList.add("off");
 
-            const smoke = document.createElement("span");
+            const smoke =
+                document.createElement("span");
+
             smoke.className = "smoke";
-            smoke.textContent = "💨";
+
+            smoke.innerHTML = "💨";
 
             candle.appendChild(smoke);
 
             candlesLeft--;
 
-            if(counter){
-                counter.textContent =
-                    "Candeline rimaste: " + candlesLeft;
-            }
+            counter.textContent =
+                "Candeline rimaste: " + candlesLeft;
 
-            if(candlesLeft === 0){
+            if(candlesLeft===0){
 
                 createConfetti();
 
@@ -298,11 +308,8 @@ function createCandles(){
 
 function createConfetti(){
 
-    const area = document.getElementById("confetti");
-
-    if(!area) return;
-
     const colors = [
+
         "#ff4d88",
         "#ffd166",
         "#06d6a0",
@@ -310,23 +317,31 @@ function createConfetti(){
         "#ffffff",
         "#ff8fab",
         "#c77dff"
+
     ];
 
-    for(let i = 0; i < 180; i++){
+    for(let i=0;i<180;i++){
 
-        const piece = document.createElement("div");
+        const piece =
+            document.createElement("div");
 
-        piece.className = "confetti-piece";
+        piece.className =
+            "confetti-piece";
 
-        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.left =
+            Math.random()*100 + "vw";
 
         piece.style.background =
-            colors[Math.floor(Math.random() * colors.length)];
+            colors[
+                Math.floor(
+                    Math.random()*colors.length
+                )
+            ];
 
         piece.style.animationDuration =
-            (2 + Math.random() * 3) + "s";
+            (2+Math.random()*3)+"s";
 
-        area.appendChild(piece);
+        confetti.appendChild(piece);
 
         setTimeout(()=>{
 
@@ -342,13 +357,20 @@ function createConfetti(){
    DESIDERIO
 ===================================== */
 
+const wishInput =
+document.getElementById("wishInput");
+
+const sendWish =
+document.getElementById("sendWish");
+
 if(sendWish){
 
     sendWish.addEventListener("click",()=>{
 
-        const wish = wishInput.value.trim();
+        const wish =
+            wishInput.value.trim();
 
-        if(wish === ""){
+        if(wish===""){
 
             alert("Scrivi prima un desiderio 🤍");
 
@@ -357,22 +379,32 @@ if(sendWish){
         }
 
         emailjs.send(
+
             "service_umr8t4k",
+
             "template_ag1927r",
+
             {
+
                 wish: wish
+
             }
-        )
-        .then(()=>{
 
-            startWishAnimation();
+        ).then(()=>{
 
-        })
-        .catch((error)=>{
+            showPage(starPage);
 
-            console.error(error);
+            setTimeout(()=>{
 
-            alert("Errore durante l'invio del desiderio.");
+                showPage(constellationPage);
+
+                startConstellation();
+
+            },3000);
+
+        }).catch(()=>{
+
+            alert("Errore nell'invio del desiderio.");
 
         });
 
@@ -381,26 +413,11 @@ if(sendWish){
 }
 
 /* =====================================
-   STELLA
-===================================== */
-
-function startWishAnimation(){
-
-    showPage(starPage);
-
-    setTimeout(()=>{
-
-        showPage(constellationPage);
-
-        startConstellation();
-
-    },3000);
-
-}
-
-/* =====================================
    COSTELLAZIONE
 ===================================== */
+
+const constellationSky =
+document.getElementById("constellationSky");
 
 const constellationMessage =
 document.getElementById("constellationMessage");
@@ -419,95 +436,16 @@ function startConstellation(){
 
     for(let i=0;i<30;i++){
 
-        const star = document.createElement("div");
+        const star =
+        document.createElement("div");
 
         star.className = "star";
 
-        star.style.left = Math.random()*95 + "%";
+        star.style.left =
+            Math.random()*95 + "%";
 
-        star.style.top = Math.random()*90 + "%";
-
-        star.style.animationDelay =
-            Math.random()*2 + "s";
-
-        star.addEventListener("click",()=>{
-
-            selectStar(star);
-
-        });
-
-        constellationSky.appendChild(star);
-
-    }
-
-}
-
-function selectStar(selectedStar){
-
-    document
-    .querySelectorAll(".star")
-    .forEach(star=>{
-
-        star.style.pointerEvents = "none";
-
-        if(star !== selectedStar){
-
-            star.style.opacity = ".35";
-
-        }
-
-    });
-
-    selectedStar.classList.add("selected");
-
-    setTimeout(()=>{
-
-        if(constellationMessage){
-
-            constellationMessage.classList.remove("hidden");
-
-        }
-
-    },800);
-
-    setTimeout(()=>{
-
-        showPage(heartPage);
-
-    },3200);
-
-}
-
-/* =====================================
-   COSTELLAZIONE
-===================================== */
-
-const constellationMessage =
-document.getElementById("constellationMessage");
-
-function startConstellation(){
-
-    if(!constellationSky) return;
-
-    constellationSky.innerHTML = "";
-
-    if(constellationMessage){
-
-        constellationMessage.classList.remove("show");
-
-    }
-
-    for(let i=0;i<30;i++){
-
-        const star = document.createElement("div");
-
-        star.className = "star";
-
-        star.style.left = Math.random()*95 + "%";
-        star.style.top = Math.random()*90 + "%";
-
-        star.style.animationDelay =
-            (Math.random()*2)+"s";
+        star.style.top =
+            Math.random()*90 + "%";
 
         star.addEventListener("click",()=>{
 
@@ -519,33 +457,23 @@ function startConstellation(){
 
     }
 
-    createShootingStar();
-
 }
 
 function chooseStar(selectedStar){
 
-    document.querySelectorAll(".star").forEach(star=>{
+    document
+        .querySelectorAll(".star")
+        .forEach(star=>{
 
-        star.style.pointerEvents = "none";
+            star.style.pointerEvents="none";
 
-        if(star !== selectedStar){
-
-            star.style.opacity = ".25";
-
-        }
-
-    });
+        });
 
     selectedStar.classList.add("selected");
 
     if(constellationMessage){
 
-        setTimeout(()=>{
-
-            constellationMessage.classList.add("show");
-
-        },800);
+        constellationMessage.classList.remove("hidden");
 
     }
 
@@ -553,35 +481,9 @@ function chooseStar(selectedStar){
 
         showPage(heartPage);
 
-    },3500);
+        startHeart();
 
-}
-
-/* =====================================
-   STELLA CADENTE
-===================================== */
-
-function createShootingStar(){
-
-    if(!constellationSky) return;
-
-    const shooting = document.createElement("div");
-
-    shooting.className = "shooting-star";
-
-    shooting.style.left =
-        Math.random()*30 + "%";
-
-    shooting.style.top =
-        Math.random()*20 + "%";
-
-    constellationSky.appendChild(shooting);
-
-    setTimeout(()=>{
-
-        shooting.remove();
-
-    },2000);
+    },2500);
 
 }
 
@@ -589,19 +491,25 @@ function createShootingStar(){
    CUORE
 ===================================== */
 
+const heart =
+document.getElementById("heartFill");
+
+const heartPercent =
+document.getElementById("heartPercent");
+
 function startHeart(){
 
     heartValue = 0;
 
-    if(heartPercent){
-
-        heartPercent.textContent = "0%";
-
-    }
-
     if(heart){
 
         heart.classList.remove("complete");
+
+    }
+
+    if(heartPercent){
+
+        heartPercent.textContent = "0%";
 
     }
 
@@ -611,29 +519,30 @@ if(heart){
 
     heart.addEventListener("click",()=>{
 
-        if(heartValue >= 100) return;
+        if(heartValue>=100) return;
 
         heartValue += 2;
 
-        if(heartValue > 100){
+        if(heartValue>100){
 
             heartValue = 100;
 
         }
 
-        heartPercent.textContent = heartValue + "%";
+        heartPercent.textContent =
+            heartValue + "%";
 
-        heart.style.transform = "scale(1.08)";
+        heart.style.transform="scale(1.08)";
 
         setTimeout(()=>{
 
-            heart.style.transform = "scale(1)";
+            heart.style.transform="scale(1)";
 
         },120);
 
         createHeartSparkles();
 
-        if(heartValue === 100){
+        if(heartValue===100){
 
             heart.classList.add("complete");
 
@@ -659,30 +568,35 @@ function createHeartSparkles(){
 
     for(let i=0;i<8;i++){
 
-        const sparkle = document.createElement("span");
+        const sparkle =
+        document.createElement("span");
 
-        sparkle.innerHTML = "✨";
+        sparkle.innerHTML="✨";
 
-        sparkle.style.position = "absolute";
+        sparkle.style.position="absolute";
 
-        sparkle.style.left = (40 + Math.random()*20) + "%";
+        sparkle.style.left=
+            (40+Math.random()*20)+"%";
 
-        sparkle.style.top = (40 + Math.random()*20) + "%";
+        sparkle.style.top=
+            (40+Math.random()*20)+"%";
 
-        sparkle.style.fontSize = (12 + Math.random()*12) + "px";
+        sparkle.style.fontSize=
+            (12+Math.random()*12)+"px";
 
-        sparkle.style.pointerEvents = "none";
+        sparkle.style.pointerEvents="none";
 
-        sparkle.style.transition = "all .8s ease";
+        sparkle.style.transition=
+            "all .8s ease";
 
         heart.appendChild(sparkle);
 
         setTimeout(()=>{
 
-            sparkle.style.transform =
-                `translate(${Math.random()*120-60}px,${Math.random()*120-60}px) scale(0)`;
+            sparkle.style.transform=
+            `translate(${Math.random()*120-60}px,${Math.random()*120-60}px) scale(0)`;
 
-            sparkle.style.opacity = "0";
+            sparkle.style.opacity="0";
 
         },20);
 
@@ -697,8 +611,30 @@ function createHeartSparkles(){
 }
 
 /* =====================================
-   APERTURA LETTERA
+   LETTERA
 ===================================== */
+
+const envelope = document.getElementById("envelope");
+const paper = document.getElementById("paper");
+const letterText = document.getElementById("letterText");
+
+const letterContent = `Cara Sofia,
+
+se stai leggendo queste parole significa che sei arrivata fino alla fine di questo piccolo viaggio.
+
+Ogni pagina è stata realizzata pensando a te.
+
+Ogni dettaglio è stato creato con il cuore.
+
+Spero che questo compleanno possa regalarti tanti sorrisi e che tutti i tuoi sogni possano realizzarsi.
+
+Grazie per essere una persona speciale.
+
+Buon compleanno amore mio. ❤️
+
+Con affetto,
+
+Eddi 🤍`;
 
 function openLetter(){
 
@@ -732,18 +668,14 @@ function openLetter(){
 }
 
 /* =====================================
-   LETTERA
+   MACCHINA DA SCRIVERE
 ===================================== */
 
 function writeLetter(){
 
-    if(letterText){
-
-        letterText.innerHTML = "";
-
-    }
-
     let index = 0;
+
+    letterText.innerHTML = "";
 
     clearInterval(typingTimer);
 
@@ -775,138 +707,9 @@ function writeLetter(){
 
 function showVoiceButton(){
 
-    let button = document.getElementById("playVoice");
+    if(document.getElementById("playVoice")) return;
 
-    if(button) return;
-
-    button = document.createElement("button");
-
-    button.id = "playVoice";
-
-    button.className = "romantic-button";
-
-    button.innerHTML = "🎙️ Ascolta la mia voce";
-
-    paper.appendChild(button);
-
-    button.addEventListener("click",()=>{
-
-        button.disabled = true;
-
-        playVoiceMessage();
-
-    });
-
-}
-
-/* =====================================
-   VOCALE
-===================================== */
-
-function playVoiceMessage(){
-
-    if(!voiceMessage){
-
-        showFinal();
-
-        return;
-
-    }
-
-    fadeMusic(0.08);
-
-    voiceMessage.play().catch(()=>{
-
-        showFinal();
-
-    });
-
-    voiceMessage.onended = ()=>{
-
-        fadeMusic(0.35);
-
-        setTimeout(()=>{
-
-            showFinal();
-
-        },1200);
-
-    };
-
-}
-
-/* =====================================
-   FADE MUSICA
-===================================== */
-
-function fadeMusic(targetVolume){
-
-    if(!bgMusic) return;
-
-    const step = targetVolume > bgMusic.volume ? 0.01 : -0.01;
-
-    const timer = setInterval(()=>{
-
-        bgMusic.volume += step;
-
-        if(
-            (step > 0 && bgMusic.volume >= targetVolume) ||
-            (step < 0 && bgMusic.volume <= targetVolume)
-        ){
-
-            bgMusic.volume = targetVolume;
-
-            clearInterval(timer);
-
-        }
-
-    },80);
-
-}
-
-/* =====================================
-   LETTERA
-===================================== */
-
-const letterContent = `Cara Sofia,
-
-se stai leggendo queste parole significa che sei arrivata fino alla fine di questo piccolo viaggio.
-
-Ho cercato di racchiudere qui dentro un po' di noi, un po' dei sorrisi che mi hai regalato e dei momenti che porterò sempre con me.
-
-Forse questo sito non sarà perfetto...
-
-ma ogni singola pagina è stata pensata e realizzata con il cuore.
-
-Perché quando una persona diventa importante, anche il tempo dedicato a renderla felice diventa un regalo.
-
-Spero che questo compleanno possa regalarti tutto ciò che desideri.
-
-Che ogni tuo sogno trovi il coraggio di diventare realtà.
-
-Che tu possa continuare a sorridere come fai sempre, perché quel sorriso riesce a migliorare le giornate di chi ti sta vicino.
-
-Grazie per essere la persona che sei.
-
-E grazie per aver condiviso con me un pezzetto del tuo cammino.
-
-Buon compleanno amore mio. ❤️
-
-Con tutto il mio affetto,
-
-Eddi 🤍`;
-
-/* =====================================
-   VOCALE
-===================================== */
-
-function showVoiceButton(){
-
-    let button = document.getElementById("playVoice");
-
-    if(button) return;
-
-    button = document.createElement("button");
+    const button = document.createElement("button");
 
     button.id = "playVoice";
 
@@ -926,6 +729,10 @@ function showVoiceButton(){
 
 }
 
+/* =====================================
+   VOCALE
+===================================== */
+
 function playVoice(){
 
     if(!voiceMessage){
@@ -936,21 +743,13 @@ function playVoice(){
 
     }
 
-    if(bgMusic){
-
-        fadeMusic(0.08);
-
-    }
+    fadeMusic(0.08);
 
     voiceMessage.play();
 
     voiceMessage.onended = ()=>{
 
-        if(bgMusic){
-
-            fadeMusic(0.35);
-
-        }
+        fadeMusic(0.35);
 
         setTimeout(()=>{
 
@@ -961,6 +760,10 @@ function playVoice(){
     };
 
 }
+
+/* =====================================
+   FADE MUSICA
+===================================== */
 
 function fadeMusic(target){
 
@@ -978,7 +781,7 @@ function fadeMusic(target){
 
         }
 
-        if(Math.abs(bgMusic.volume-target)<0.02){
+        if(Math.abs(bgMusic.volume-target) < 0.02){
 
             bgMusic.volume = target;
 
@@ -1010,7 +813,7 @@ function showFinal(){
 
 function createFinalHearts(){
 
-    const symbols = [
+    const list = [
 
         "❤️",
         "🤍",
@@ -1020,25 +823,23 @@ function createFinalHearts(){
 
     ];
 
-    for(let i=0;i<50;i++){
+    for(let i=0;i<60;i++){
 
         const heart = document.createElement("div");
 
         heart.className = "heart";
 
         heart.innerHTML =
-            symbols[
-                Math.floor(Math.random()*symbols.length)
-            ];
+            list[Math.floor(Math.random()*list.length)];
 
         heart.style.left =
             Math.random()*100 + "vw";
 
         heart.style.fontSize =
-            (18 + Math.random()*22) + "px";
+            (20+Math.random()*20)+"px";
 
         heart.style.animationDuration =
-            (4 + Math.random()*4) + "s";
+            (4+Math.random()*4)+"s";
 
         document.body.appendChild(heart);
 
@@ -1056,6 +857,8 @@ function createFinalHearts(){
    RICOMINCIA
 ===================================== */
 
+const restart = document.getElementById("restart");
+
 if(restart){
 
     restart.addEventListener("click",()=>{
@@ -1065,4 +868,6 @@ if(restart){
     });
 
 }
+
+console.log("PROJECT SOFI ❤️ caricato correttamente");
 
