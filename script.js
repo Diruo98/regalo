@@ -570,3 +570,4 @@ if(restart){
     });
 
 }
+console.log("SCRIPT NUOVO CARICATO");
