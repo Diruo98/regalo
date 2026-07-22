@@ -640,3 +640,646 @@ button:hover {
 
 
 }
+
+/* =====================================
+   PROJECT AURORA v5
+   STYLE PARTE 1
+===================================== */
+
+
+/* =====================================
+   RESET
+===================================== */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    margin:0;
+
+    height:100vh;
+
+    overflow:hidden;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    font-family:Georgia, serif;
+
+    color:white;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #1a001f,
+        #6b1d5c
+    );
+
+}
+
+
+
+
+
+/* =====================================
+   SFONDO CUORI ❤️✨
+===================================== */
+
+
+#hearts {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+
+
+.heart {
+
+    position:absolute;
+
+    top:-60px;
+
+
+    animation-name:caduta;
+
+    animation-timing-function:linear;
+
+    animation-fill-mode:forwards;
+
+
+    filter:
+
+    drop-shadow(
+        0 0 8px rgba(255,255,255,.5)
+    );
+
+}
+
+
+
+
+@keyframes caduta {
+
+
+    0% {
+
+        transform:
+
+        translateY(-10vh)
+
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+
+
+    20% {
+
+        opacity:1;
+
+    }
+
+
+
+    100% {
+
+
+        transform:
+
+        translateY(110vh)
+
+        rotate(360deg);
+
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   PAGINE
+===================================== */
+
+
+.page {
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+}
+
+
+
+.hidden {
+
+    display:none !important;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   TESTI
+===================================== */
+
+
+h1 {
+
+    font-size:35px;
+
+    text-shadow:
+
+    0 0 15px rgba(255,255,255,.3);
+
+}
+
+
+
+p {
+
+    font-size:20px;
+
+}
+
+
+
+
+
+
+
+
+/* =====================================
+   CARICAMENTO ⏳
+===================================== */
+
+
+.loading {
+
+    width:350px;
+
+    height:30px;
+
+
+    background:
+
+    rgba(255,255,255,.25);
+
+
+    border-radius:30px;
+
+
+    overflow:hidden;
+
+
+    margin:35px auto;
+
+
+}
+
+
+
+#bar {
+
+    width:0%;
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #ff4d88,
+        #ffd1e3
+    );
+
+
+    border-radius:30px;
+
+
+    transition:.3s;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   BOTTONI
+===================================== */
+
+
+button {
+
+
+    border:none;
+
+
+    padding:15px 35px;
+
+
+    margin:10px;
+
+
+    border-radius:30px;
+
+
+    cursor:pointer;
+
+
+    color:white;
+
+
+    font-size:18px;
+
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #ff4d88,
+        #ff8fab
+    );
+
+
+    transition:.3s;
+
+
+}
+
+
+
+button:hover {
+
+
+    transform:scale(1.08);
+
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   BIGLIETTO 💌
+===================================== */
+
+
+#ticket {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    background:
+
+    rgba(0,0,0,.5);
+
+
+    z-index:10;
+
+}
+
+
+
+
+
+.ticket-card {
+
+
+    background:#fff3c4;
+
+
+    color:#6b1d5c;
+
+
+    width:330px;
+
+
+    padding:35px;
+
+
+    border-radius:15px;
+
+
+    transform:rotate(-3deg);
+
+
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.5);
+
+
+}
+
+
+
+
+
+/* =====================================
+   COMPLEANNO 🎂
+   CANDELINE
+===================================== */
+
+
+.birthday-box {
+
+    text-align:center;
+
+}
+
+
+
+
+
+#candles {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(5,60px);
+
+
+    gap:35px;
+
+
+    justify-content:center;
+
+
+    align-items:end;
+
+
+    margin:50px auto 30px;
+
+
+    padding:20px;
+
+
+}
+
+
+
+
+
+
+
+/* SINGOLA CANDELA 🕯️ */
+
+
+.candle {
+
+
+    position:relative;
+
+
+    width:22px;
+
+
+    height:75px;
+
+
+    background:
+
+
+    repeating-linear-gradient(
+        45deg,
+        white,
+        white 6px,
+        #ff8fab 6px,
+        #ff8fab 12px
+    );
+
+
+
+    border-radius:8px;
+
+
+    cursor:pointer;
+
+
+    touch-action:manipulation;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.candle:hover {
+
+
+    transform:
+
+    scale(1.15);
+
+
+}
+
+
+
+
+
+
+
+/* FIAMMA 🔥 */
+
+
+.flame {
+
+
+    position:absolute;
+
+
+    top:-45px;
+
+
+    left:-10px;
+
+
+    font-size:42px;
+
+
+    animation:
+
+    flicker .7s infinite alternate;
+
+
+}
+
+
+
+.flame.off {
+
+
+    display:none;
+
+}
+
+
+
+
+
+
+
+@keyframes flicker {
+
+
+    from {
+
+
+        transform:
+
+        scale(1)
+
+        rotate(-5deg);
+
+    }
+
+
+
+    to {
+
+
+        transform:
+
+        scale(1.2)
+
+        rotate(5deg);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* FUMO 💨 */
+
+
+.smoke {
+
+
+    position:absolute;
+
+
+    top:-70px;
+
+
+    left:-3px;
+
+
+    font-size:28px;
+
+
+    animation:
+
+    smokeUp 1s forwards;
+
+
+}
+
+
+
+
+
+@keyframes smokeUp {
+
+
+    from {
+
+
+        opacity:1;
+
+
+        transform:
+
+        translateY(0);
+
+
+    }
+
+
+
+    to {
+
+
+        opacity:0;
+
+
+        transform:
+
+        translateY(-60px);
+
+
+    }
+
+
+}
