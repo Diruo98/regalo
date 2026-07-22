@@ -1,12 +1,12 @@
 /* =====================================
-   PROJECT AURORA
-   SCRIPT v4.0
+   PROJECT AURORA v5
+   SCRIPT PARTE 1
 ===================================== */
 
 
 
 // =====================================
-// SFONDO CUORI ❤️✨
+// CUORI CADENTI ❤️✨
 // =====================================
 
 
@@ -31,7 +31,6 @@ function creaCuore(){
     if(!hearts) return;
 
 
-
     const cuore = document.createElement("div");
 
 
@@ -40,23 +39,23 @@ function creaCuore(){
 
     cuore.innerHTML =
     simboli[
-        Math.floor(Math.random() * simboli.length)
+        Math.floor(Math.random()*simboli.length)
     ];
 
 
 
     cuore.style.left =
-    Math.random() * 100 + "vw";
+    Math.random()*100 + "vw";
 
 
 
     cuore.style.fontSize =
-    (15 + Math.random() * 30) + "px";
+    (15 + Math.random()*30)+"px";
 
 
 
     cuore.style.animationDuration =
-    (4 + Math.random() * 6) + "s";
+    (4 + Math.random()*6)+"s";
 
 
 
@@ -86,15 +85,20 @@ setInterval(creaCuore,250);
 
 
 // =====================================
-// BARRA CARICAMENTO ⏳
+// CARICAMENTO ⏳
 // =====================================
 
 
-const bar = document.getElementById("bar");
+const bar =
+document.getElementById("bar");
 
-const percent = document.getElementById("percent");
 
-const start = document.getElementById("start");
+const percent =
+document.getElementById("percent");
+
+
+const start =
+document.getElementById("start");
 
 
 
@@ -105,18 +109,19 @@ let valore = 0;
 if(bar && percent && start){
 
 
-    const caricamento = setInterval(()=>{
+    const caricamento =
+    setInterval(()=>{
 
 
         valore++;
 
 
         bar.style.width =
-        valore + "%";
+        valore+"%";
 
 
         percent.innerHTML =
-        valore + "%";
+        valore+"%";
 
 
 
@@ -132,7 +137,7 @@ if(bar && percent && start){
 
 
 
-            start.hidden = false;
+            start.hidden=false;
 
 
         }
@@ -168,6 +173,7 @@ const birthday =
 document.getElementById("birthday");
 
 
+
 const yes =
 document.getElementById("yes");
 
@@ -184,7 +190,7 @@ document.getElementById("no");
 
 
 // =====================================
-// INIZIA VIAGGIO ✨
+// INIZIO VIAGGIO
 // =====================================
 
 
@@ -221,26 +227,23 @@ if(start){
 function scappa(){
 
 
-    if(!no) return;
+    if(!no)return;
 
 
-
-    no.style.position =
-    "fixed";
-
+    no.style.position="fixed";
 
 
     no.style.left =
     Math.random() *
-    (window.innerWidth - 120)
-    + "px";
+    (window.innerWidth-no.offsetWidth)
+    +"px";
 
 
 
     no.style.top =
     Math.random() *
-    (window.innerHeight - 80)
-    + "px";
+    (window.innerHeight-no.offsetHeight)
+    +"px";
 
 
 }
@@ -283,7 +286,7 @@ if(no){
 
 
 // =====================================
-// TORTA COMPLEANNO 🎂
+// 19 CANDELINE 🕯️
 // =====================================
 
 
@@ -299,88 +302,22 @@ document.getElementById("counter");
 let candeline = 19;
 
 
-let tortaCreata = false;
+
+function creaCandeline(){
+
+
+    if(!candlesBox)return;
 
 
 
-
-
-
-
-function creaTorta(){
-
-
-    if(
-        !candlesBox ||
-        !counter ||
-        tortaCreata
-    )
-    return;
-
-
-
-    tortaCreata = true;
-
-
-
-    const posizioni = [
-
-
-        [100,150],
-        [150,150],
-        [200,150],
-        [250,150],
-
-
-        [80,110],
-        [125,110],
-        [170,110],
-        [215,110],
-        [260,110],
-
-
-        [70,70],
-        [115,70],
-        [160,70],
-        [205,70],
-        [250,70],
-
-
-        [120,35],
-        [165,35],
-        [210,35],
-        [255,35],
-        [300,35]
-
-    ];
-
-
-
-
-
-
-    posizioni.forEach((pos)=>{
+    for(let i=0;i<19;i++){
 
 
         const candela =
         document.createElement("div");
 
 
-
-        candela.className =
-        "candle";
-
-
-
-        candela.style.left =
-        pos[0] + "px";
-
-
-
-        candela.style.bottom =
-        pos[1] + "px";
-
-
+        candela.className="candle";
 
 
 
@@ -388,13 +325,10 @@ function creaTorta(){
         document.createElement("span");
 
 
-
-        fiamma.className =
-        "flame";
+        fiamma.className="flame";
 
 
-        fiamma.innerHTML =
-        "🔥";
+        fiamma.innerHTML="🔥";
 
 
 
@@ -403,17 +337,10 @@ function creaTorta(){
 
 
 
+        candela.addEventListener("click",()=>{
 
 
-
-        candela.addEventListener(
-        "click",
-        ()=>{
-
-
-            if(
-                fiamma.classList.contains("off")
-            )
+            if(fiamma.classList.contains("off"))
             return;
 
 
@@ -426,18 +353,13 @@ function creaTorta(){
             document.createElement("span");
 
 
-
-            fumo.className =
-            "smoke";
+            fumo.className="smoke";
 
 
-            fumo.innerHTML =
-            "💨";
-
+            fumo.innerHTML="💨";
 
 
             candela.appendChild(fumo);
-
 
 
 
@@ -448,26 +370,14 @@ function creaTorta(){
 
             counter.innerHTML =
             "Candeline rimaste: "
-            +
-            candeline;
+            +candeline;
 
 
 
+            if(candeline===0){
 
 
-
-            if(candeline === 0){
-
-
-                setTimeout(()=>{
-
-
-                    alert(
-                    "✨ Esprimi un desiderio 🤍"
-                    );
-
-
-                },700);
+                festaFinita();
 
 
             }
@@ -478,6 +388,296 @@ function creaTorta(){
 
 
         candlesBox.appendChild(candela);
+
+
+    }
+
+
+}
+
+
+
+creaCandeline();
+
+
+
+
+
+
+
+
+
+// =====================================
+// APERTURA COMPLEANNO
+// =====================================
+
+
+if(yes){
+
+
+    yes.addEventListener("click",()=>{
+
+
+        ticket.classList.add("hidden");
+
+
+        birthday.classList.remove("hidden");
+
+
+    });
+/* =====================================
+   PROJECT AURORA v5
+   SCRIPT PARTE 2
+===================================== */
+
+
+
+// =====================================
+// FESTA FINITA 🎉
+// =====================================
+
+
+function festaFinita(){
+
+
+    creaConfetti();
+
+
+
+    setTimeout(()=>{
+
+
+        const birthday =
+        document.getElementById("birthday");
+
+
+        const wishPage =
+        document.getElementById("wishPage");
+
+
+
+        if(birthday)
+        birthday.classList.add("hidden");
+
+
+
+        if(wishPage)
+        wishPage.classList.remove("hidden");
+
+
+
+    },2500);
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// CORIANDOLI 🎉
+// =====================================
+
+
+function creaConfetti(){
+
+
+    let area =
+    document.getElementById("confetti");
+
+
+
+    if(!area){
+
+
+        area =
+        document.createElement("div");
+
+
+        area.id="confetti";
+
+
+        document.body.appendChild(area);
+
+
+    }
+
+
+
+
+
+    const colori=[
+
+        "#ff4d88",
+        "#ffd166",
+        "#06d6a0",
+        "#118ab2",
+        "#ffffff",
+        "#ff8fab"
+
+    ];
+
+
+
+
+
+    for(let i=0;i<120;i++){
+
+
+        const pezzo =
+        document.createElement("div");
+
+
+
+        pezzo.className=
+        "confetti-piece";
+
+
+
+        pezzo.style.left =
+        Math.random()*100+"vw";
+
+
+
+        pezzo.style.background =
+        colori[
+            Math.floor(
+                Math.random()*colori.length
+            )
+        ];
+
+
+
+        pezzo.style.animationDuration =
+        (3+Math.random()*3)+"s";
+
+
+
+        pezzo.style.transform =
+        "rotate("+
+        Math.random()*360+
+        "deg)";
+
+
+
+        area.appendChild(pezzo);
+
+
+
+
+        setTimeout(()=>{
+
+
+            pezzo.remove();
+
+
+        },6000);
+
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// DESIDERIO ✨
+// =====================================
+
+
+const sendWish =
+document.getElementById("sendWish");
+
+
+const wishInput =
+document.getElementById("wishInput");
+
+
+
+const wishPage =
+document.getElementById("wishPage");
+
+
+const starPage =
+document.getElementById("starPage");
+
+
+const letterPage =
+document.getElementById("letterPage");
+
+
+
+const letterText =
+document.getElementById("letterText");
+
+
+
+
+
+
+
+
+if(sendWish){
+
+
+    sendWish.addEventListener("click",()=>{
+
+
+        let desiderio =
+        wishInput.value.trim();
+
+
+
+
+        if(desiderio===""){
+
+
+            desiderio =
+            "Un desiderio pieno di amore ❤️";
+
+
+        }
+
+
+
+
+
+        localStorage.setItem(
+            "auroraWish",
+            desiderio
+        );
+
+
+
+        wishPage.classList.add("hidden");
+
+
+
+        starPage.classList.remove("hidden");
+
+
+
+        setTimeout(()=>{
+
+
+            mostraLettera(desiderio);
+
+
+        },4000);
+
 
 
     });
@@ -494,28 +694,62 @@ function creaTorta(){
 
 
 // =====================================
-// RISPOSTA SI ❤️
+// LETTERA FINALE 💌
 // =====================================
 
 
-if(yes){
+function mostraLettera(desiderio){
 
 
-    yes.addEventListener(
-    "click",
-    ()=>{
+
+    starPage.classList.add("hidden");
 
 
-        ticket.classList.add("hidden");
+
+    letterPage.classList.remove("hidden");
 
 
-        birthday.classList.remove("hidden");
 
 
-        creaTorta();
+    if(letterText){
 
 
-    });
+        letterText.innerHTML = `
 
+
+        <p>
+        Amore mio 🤍
+        </p>
+
+
+        <p>
+        Questo piccolo viaggio è stato creato
+        solo per vederti sorridere.
+        </p>
+
+
+        <p>
+        Il tuo desiderio:
+        </p>
+
+
+        <p>
+        ✨ ${desiderio}
+        </p>
+
+
+        <p>
+        Ti auguro tutto il meglio del mondo 🤍
+        </p>
+
+
+        `;
+
+
+    }
+
+
+
+}
 
 }
