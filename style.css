@@ -1,510 +1,394 @@
-/* =====================================
-   PROJECT AURORA v7
-   STYLE COMPLETO
-   PARTE 1
-===================================== */
+/* ==========================================
+   PROJECT AURORA v8
+   STYLE.CSS - PARTE 1
+========================================== */
 
-
-/* =====================================
+/* ===========================
    RESET
-===================================== */
+=========================== */
 
 *{
-
+    margin:0;
+    padding:0;
     box-sizing:border-box;
-
 }
 
-
-
+html,
 body{
 
-    margin:0;
-
-    height:100vh;
-
+    width:100%;
+    height:100%;
     overflow:hidden;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
 
     font-family:Georgia, serif;
 
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     color:white;
 
-
     background:
-
     linear-gradient(
         135deg,
-        #1a001f,
-        #6b1d5c
+        #16001f,
+        #5a1448,
+        #7a2b73
     );
+
+    position:relative;
 
 }
 
+/* ===========================
+   PAGINE
+=========================== */
 
+.page{
 
+    position:absolute;
+    inset:0;
 
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-/* =====================================
-   SFONDO EMOJI ❤️✨
-===================================== */
+    text-align:center;
 
+    padding:25px;
 
-#hearts{
+    z-index:5;
+
+    transition:.8s;
+
+}
+
+.hidden{
+
+    display:none !important;
+
+}
+
+h1{
+
+    font-size:38px;
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 15px rgba(255,255,255,.35);
+
+}
+
+h2{
+
+    margin-top:25px;
+
+}
+
+p{
+
+    font-size:20px;
+    line-height:1.7;
+
+}
+
+/* ===========================
+   SFONDO
+=========================== */
+
+#hearts,
+#confetti{
 
     position:fixed;
-
     inset:0;
 
     overflow:hidden;
 
     pointer-events:none;
 
+}
+
+#hearts{
+
     z-index:0;
 
 }
 
+#confetti{
 
+    z-index:100;
+
+}
 
 .heart{
 
     position:absolute;
 
-    top:-70px;
-
+    top:-60px;
 
     animation:
-
-    caduta linear forwards;
-
+    heartFall linear forwards;
 
     filter:
-
-    drop-shadow(
-        0 0 10px rgba(255,255,255,.6)
-    );
+    drop-shadow(0 0 8px rgba(255,255,255,.4));
 
 }
 
+@keyframes heartFall{
 
+    from{
 
+        transform:
+        translateY(-10vh)
+        rotate(0deg);
 
+        opacity:0;
 
-@keyframes caduta{
+    }
 
+    15%{
 
-0%{
+        opacity:1;
 
-    transform:
+    }
 
-    translateY(-10vh)
+    to{
 
-    rotate(0deg);
+        transform:
+        translateY(110vh)
+        rotate(360deg);
 
-    opacity:0;
+        opacity:0;
 
-}
-
-
-
-20%{
-
-    opacity:1;
-
-}
-
-
-
-100%{
-
-    transform:
-
-    translateY(110vh)
-
-    rotate(360deg);
-
-    opacity:0;
+    }
 
 }
 
+/* ===========================
+   INTRO
+=========================== */
+
+#intro h1{
+
+    font-size:46px;
 
 }
 
+#intro p{
 
+    max-width:420px;
 
-
-
-
-
-/* =====================================
-   PAGINE
-===================================== */
-
-
-.page{
-
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
+    margin-bottom:40px;
 
 }
 
-
-
-.hidden{
-
-    display:none!important;
-
-}
-
-
-
-
-
-h1{
-
-    font-size:35px;
-
-    text-shadow:
-
-    0 0 15px rgba(255,255,255,.4);
-
-}
-
-
-
-p{
-
-    font-size:20px;
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   CARICAMENTO ⏳
-===================================== */
-
-
-.loading{
-
-
-    width:350px;
-
-    height:30px;
-
-
-    background:
-
-    rgba(255,255,255,.25);
-
-
-    border-radius:30px;
-
-
-    overflow:hidden;
-
-
-    margin:35px auto;
-
-}
-
-
-
-
-#bar{
-
-
-    width:0%;
-
-    height:100%;
-
-
-    background:
-
-    linear-gradient(
-        90deg,
-        #ff4d88,
-        #ffd1e3
-    );
-
-
-    border-radius:30px;
-
-
-    transition:.3s;
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
+/* ===========================
    BOTTONI
-===================================== */
-
+=========================== */
 
 button{
 
-
     border:none;
 
+    padding:16px 38px;
 
-    padding:15px 35px;
-
-
-    margin:10px;
-
-
-    border-radius:30px;
-
+    border-radius:40px;
 
     cursor:pointer;
 
-
     color:white;
-
 
     font-size:18px;
 
+    font-weight:bold;
 
     background:
-
     linear-gradient(
         135deg,
         #ff4d88,
         #ff8fab
     );
 
+    box-shadow:
+    0 10px 25px rgba(255,77,136,.35);
 
-    transition:.3s;
+    transition:.35s;
 
 }
-
-
 
 button:hover{
 
-
-    transform:scale(1.08);
+    transform:
+    scale(1.08);
 
 }
 
+#playButton{
 
+    animation:
+    pulseButton 2s infinite;
 
+}
 
+@keyframes pulseButton{
 
+    0%{
 
+        transform:scale(1);
 
+    }
 
+    50%{
 
-/* =====================================
-   BIGLIETTO 💌
-===================================== */
+        transform:scale(1.08);
 
+    }
 
-#ticket{
+    100%{
 
+        transform:scale(1);
 
-    position:fixed;
+    }
 
+}
 
-    inset:0;
+/* ===========================
+   CARICAMENTO
+=========================== */
 
+.loading{
 
-    display:flex;
+    width:340px;
+    height:26px;
 
+    margin:35px auto;
 
-    justify-content:center;
+    border-radius:30px;
 
-
-    align-items:center;
-
+    overflow:hidden;
 
     background:
-
-    rgba(0,0,0,.5);
-
-
-    z-index:10;
+    rgba(255,255,255,.20);
 
 }
 
+#bar{
 
+    width:0%;
 
+    height:100%;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ff4d88,
+        #ffd1e3
+    );
+
+    transition:.2s;
+
+}
+
+/* ===========================
+   BIGLIETTO
+=========================== */
 
 .ticket-card{
 
-
-    background:#fff3c4;
-
-
-    color:#6b1d5c;
-
-
-    width:330px;
-
+    width:340px;
 
     padding:35px;
 
+    border-radius:20px;
 
-    border-radius:15px;
+    color:#6b1d5c;
 
-
-    transform:rotate(-3deg);
-
+    background:#fff6d9;
 
     box-shadow:
+    0 20px 45px rgba(0,0,0,.4);
 
-    0 20px 50px rgba(0,0,0,.5);
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   CANDELINE 🕯️
-===================================== */
-
-
-.birthday-box{
-
-    text-align:center;
+    transform:
+    rotate(-2deg);
 
 }
 
+.buttons{
 
+    margin-top:30px;
 
+}
+
+/* ===========================
+   TORTA
+=========================== */
 
 #candles{
 
-
     display:grid;
 
-
     grid-template-columns:
+    repeat(5,48px);
 
-    repeat(5,45px);
-
-
-    gap:18px;
-
+    gap:16px;
 
     justify-content:center;
 
-
-    align-items:end;
-
-
-    margin:40px auto 25px;
-
+    margin:35px auto;
 
 }
 
-
-
 .candle{
-
 
     position:relative;
 
-
     width:20px;
-
-
     height:70px;
-
-
-    background:
-
-    repeating-linear-gradient(
-
-    45deg,
-
-    white,
-
-    white 6px,
-
-    #ff8fab 6px,
-
-    #ff8fab 12px
-
-    );
-
 
     border-radius:8px;
 
-
     cursor:pointer;
 
-
-    touch-action:manipulation;
-
+    background:
+    repeating-linear-gradient(
+        45deg,
+        white,
+        white 6px,
+        #ff8fab 6px,
+        #ff8fab 12px
+    );
 
     transition:.3s;
 
 }
 
-
-
 .candle:hover{
 
-    transform:scale(1.15);
+    transform:
+    scale(1.1);
 
 }
-
-
-
-
 
 .flame{
 
-
     position:absolute;
 
+    top:-38px;
+    left:-9px;
 
-    top:-42px;
-
-
-    left:-10px;
-
-
-    font-size:38px;
-
+    font-size:34px;
 
     animation:
-
-    flicker .7s infinite alternate;
+    flame 0.7s infinite alternate;
 
 }
-
-
-
 
 .flame.off{
 
@@ -512,899 +396,540 @@ button:hover{
 
 }
 
+@keyframes flame{
 
+    from{
 
-@keyframes flicker{
+        transform:
+        rotate(-6deg)
+        scale(1);
 
+    }
 
-from{
+    to{
 
-transform:
+        transform:
+        rotate(6deg)
+        scale(1.18);
 
-scale(1)
-
-rotate(-5deg);
-
-}
-
-
-
-to{
-
-transform:
-
-scale(1.2)
-
-rotate(5deg);
+    }
 
 }
-
-
-}
-
-
-
 
 .smoke{
 
-
     position:absolute;
 
+    top:-55px;
 
-    top:-65px;
-
-
-    font-size:28px;
-
+    font-size:26px;
 
     animation:
-
     smokeUp 1s forwards;
 
 }
 
-
-
 @keyframes smokeUp{
 
+    from{
 
-from{
+        opacity:1;
 
-opacity:1;
+        transform:
+        translateY(0);
 
-transform:
+    }
 
-translateY(0);
+    to{
 
-}
+        opacity:0;
 
+        transform:
+        translateY(-60px);
 
-
-to{
-
-opacity:0;
-
-transform:
-
-translateY(-60px);
+    }
 
 }
 
-
-}
-
-/* =====================================
-   DESIDERIO ✨
-===================================== */
-
+/* ===========================
+   DESIDERIO
+=========================== */
 
 .wish-card{
 
-
-    background:
-
-    rgba(255,255,255,.15);
-
+    width:360px;
 
     padding:35px;
 
-
     border-radius:25px;
 
+    backdrop-filter:blur(10px);
 
-    backdrop-filter:blur(8px);
-
+    background:
+    rgba(255,255,255,.12);
 
     box-shadow:
-
-    0 20px 50px rgba(0,0,0,.35);
-
+    0 20px 45px rgba(0,0,0,.35);
 
 }
 
-
-
-
-
 #wishInput{
 
+    width:100%;
 
-    width:300px;
+    height:130px;
 
+    margin:20px 0;
 
-    height:120px;
-
-
-    padding:15px;
-
-
-    border:none;
-
-
-    outline:none;
-
-
-    border-radius:15px;
-
+    padding:18px;
 
     resize:none;
 
+    border:none;
 
-    font-family:Georgia,serif;
+    outline:none;
 
+    border-radius:18px;
+
+    font-family:Georgia, serif;
 
     font-size:16px;
 
 }
 
+/* ==========================================
+   PROJECT AURORA v8
+   STYLE.CSS - PARTE 2
+========================================== */
 
-
-
-
-
-
-
-
-/* =====================================
-   STELLA ⭐
-===================================== */
-
+/* ===========================
+   STELLA
+=========================== */
 
 #wishStar{
 
+    font-size:110px;
 
-    font-size:100px;
-
-
-    animation:
-
-    volaStella 2s infinite alternate;
+    animation:starFloat 2s ease-in-out infinite alternate;
 
 }
 
+@keyframes starFloat{
 
+    from{
 
-@keyframes volaStella{
+        transform:
+        translateY(15px)
+        scale(1);
 
+    }
 
-from{
+    to{
 
+        transform:
+        translateY(-30px)
+        scale(1.15);
 
-    transform:
-
-    translateY(20px)
-
-    scale(1);
-
-
-}
-
-
-
-to{
-
-
-    transform:
-
-    translateY(-40px)
-
-    scale(1.2);
-
+    }
 
 }
 
+/* ===========================
+   CUORE
+=========================== */
+
+#heartPage h1{
+
+    margin-bottom:10px;
 
 }
-
-
-
-
-
-
-
-
-
-/* =====================================
-   CUORE DA RIEMPIRE ❤️
-===================================== */
-
-
-#heartPage{
-
-
-    display:flex;
-
-
-    flex-direction:column;
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-}
-
-
-
 
 #heartFill{
 
-
-    position:relative;
-
-
-    width:170px;
-
-
-    height:170px;
-
+    font-size:150px;
 
     cursor:pointer;
 
+    user-select:none;
 
-    margin:30px auto;
+    transition:.35s;
 
-}
-
-
-
-
-
-#heartFill::before{
-
-
-    content:"🤍";
-
-
-    position:absolute;
-
-
-    inset:0;
-
-
-    display:flex;
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-
-    font-size:150px;
+    margin:35px 0;
 
 }
 
+#heartFill:hover{
 
-
-
-
-#heartFill::after{
-
-
-    content:"❤️";
-
-
-    position:absolute;
-
-
-    inset:0;
-
-
-    display:flex;
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-
-    font-size:150px;
-
-
-    clip-path:
-
-    inset(100% 0 0 0);
-
-
-    transition:.2s;
+    transform:scale(1.08);
 
 }
 
-
-
-
-#heartFill.complete::after{
-
-
-    clip-path:
-
-    inset(0 0 0 0);
-
+#heartFill.complete{
 
     animation:
+    heartbeat .8s infinite;
 
-    cuoreGlow 1s infinite alternate;
-
-}
-
-
-
-
-
-@keyframes cuoreGlow{
-
-
-from{
-
-
-filter:
-
-drop-shadow(
-0 0 5px #ff4d88
-);
-
+    filter:
+    drop-shadow(0 0 25px #ff5d9e);
 
 }
 
+@keyframes heartbeat{
 
+    0%{
 
-to{
+        transform:scale(1);
 
+    }
 
-filter:
+    25%{
 
-drop-shadow(
-0 0 25px #ff8fab
-);
+        transform:scale(1.18);
 
+    }
 
-}
+    40%{
 
+        transform:scale(.95);
 
-}
+    }
 
+    60%{
 
+        transform:scale(1.20);
 
+    }
 
+    100%{
 
+        transform:scale(1);
 
-
-
-
-/* =====================================
-   CORIANDOLI 🎉
-===================================== */
-
-
-#confetti{
-
-
-    position:fixed;
-
-
-    inset:0;
-
-
-    overflow:hidden;
-
-
-    pointer-events:none;
-
-
-    z-index:20;
+    }
 
 }
 
+/* ===========================
+   BUSTA
+=========================== */
 
-
-
-
-.confetti-piece{
-
-
-    position:absolute;
-
-
-    top:-20px;
-
-
-    width:12px;
-
-
-    height:18px;
-
-
-    animation:
-
-    confettiFall linear forwards;
-
-}
-
-
-
-
-@keyframes confettiFall{
-
-
-from{
-
-
-transform:
-
-translateY(-10vh)
-
-rotate(0deg);
-
-
-}
-
-
-
-to{
-
-
-transform:
-
-translateY(110vh)
-
-rotate(720deg);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   BUSTA ROSA 💌
-===================================== */
-
-
-#envelope{
-
-
-    width:280px;
-
-
-    height:180px;
-
-
-    background:#ff8fab;
-
-
-    border-radius:15px;
-
+.letter-container{
 
     position:relative;
 
+    width:320px;
 
-    margin:auto;
-
-
-    overflow:hidden;
-
-
-    box-shadow:
-
-    0 20px 50px rgba(0,0,0,.45);
+    height:520px;
 
 }
 
-
-
-
-.flap{
-
+#envelope{
 
     position:absolute;
 
+    bottom:0;
 
-    top:0;
+    left:50%;
 
+    transform:translateX(-50%);
 
-    left:0;
+    width:290px;
 
+    height:190px;
 
-    width:100%;
+    border-radius:18px;
 
+    background:#ff8fab;
 
-    height:100%;
+    overflow:hidden;
 
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.4);
 
-    background:#ffc1d6;
+}
 
+.envelope-body{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#ff8fab;
+
+}
+
+.flap{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#ffc3d8;
 
     clip-path:
-
     polygon(
-
-    0 0,
-
-    100% 0,
-
-    50% 60%
-
+        0 0,
+        100% 0,
+        50% 58%
     );
 
-
     transform-origin:top;
-
 
     transition:1s;
 
 }
 
-
-
-
-
 #envelope.open .flap{
 
-
-    transform:
-
-    rotateX(180deg);
+    transform:rotateX(180deg);
 
 }
 
-
-
-
-
 .heart-seal{
-
 
     position:absolute;
 
-
-    top:65px;
-
-
     left:50%;
 
+    top:68px;
 
-    transform:
-
-    translateX(-50%);
-
+    transform:translateX(-50%);
 
     font-size:45px;
 
 }
 
-
-
-
-
-
-
-
-
-/* =====================================
-   FOGLIO DELLA LETTERA 📜
-===================================== */
-
+/* ===========================
+   LETTERA
+=========================== */
 
 #paper{
 
-
-    width:260px;
-
-
-    min-height:350px;
-
-
-    background:#fffdf5;
-
-
-    color:#6b1d5c;
-
-
-    padding:30px;
-
-
     position:absolute;
-
 
     left:50%;
 
+    bottom:80px;
 
     transform:
+    translateX(-50%)
+    translateY(180px);
 
-    translate(-50%,120px);
+    width:270px;
 
+    min-height:370px;
+
+    background:#fffdf8;
+
+    color:#5f274f;
+
+    padding:25px;
+
+    border-radius:10px;
 
     opacity:0;
 
-
-    transition:
-
-    1.5s;
-
+    transition:1.5s;
 
     box-shadow:
-
-    0 20px 40px rgba(0,0,0,.4);
+    0 20px 40px rgba(0,0,0,.35);
 
 }
 
-
-
-
-
 #envelope.open + #paper{
 
-
     transform:
-
-    translate(-50%,-130px);
-
+    translateX(-50%)
+    translateY(-70px);
 
     opacity:1;
 
 }
 
-
-
-
-
 #letterText{
-
 
     white-space:pre-line;
 
+    line-height:1.7;
 
     text-align:left;
-
-
-    line-height:1.6;
-
 
     font-size:17px;
 
 }
 
-
-
-
-
-
-
-
-
-/* =====================================
-   POLAROID 📸
-===================================== */
-
+/* ===========================
+   POLAROID
+=========================== */
 
 .polaroid{
 
+    width:210px;
+
+    margin:10px auto 25px;
+
+    padding:10px;
 
     background:white;
 
-
-    width:220px;
-
-
-    padding:12px;
-
-
-    margin:30px auto;
-
+    transform:rotate(-4deg);
 
     box-shadow:
-
-    0 20px 40px rgba(0,0,0,.5);
-
-
-    transform:
-
-    rotate(-5deg);
+    0 10px 30px rgba(0,0,0,.35);
 
 }
 
-
-
-
-
 .polaroid img{
 
-
     width:100%;
-
 
     display:block;
 
 }
 
+/* ===========================
+   FINALE
+=========================== */
 
+#finalPage{
 
+    background:
+    rgba(0,0,0,.45);
 
+    backdrop-filter:blur(5px);
 
+}
 
+#finalPage h1{
 
+    animation:fadeText 2s ease;
 
+}
 
-/* =====================================
-   TELEFONO 📱
-===================================== */
+@keyframes fadeText{
 
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   CONFETTI
+=========================== */
+
+.confetti-piece{
+
+    position:absolute;
+
+    top:-20px;
+
+    width:10px;
+
+    height:18px;
+
+    animation:
+    confettiFall linear forwards;
+
+}
+
+@keyframes confettiFall{
+
+    from{
+
+        transform:
+        translateY(-10vh)
+        rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
 
 @media(max-width:600px){
 
+    h1{
 
+        font-size:30px;
 
-h1{
+    }
 
+    p{
 
-    font-size:28px;
+        font-size:18px;
 
-}
+    }
 
+    .loading{
 
+        width:280px;
 
-p{
+    }
 
+    .wish-card{
 
-    font-size:18px;
+        width:90%;
 
-}
+    }
 
+    #heartFill{
 
+        font-size:120px;
 
-.loading{
+    }
 
+    .letter-container{
 
-    width:280px;
+        width:100%;
 
-}
+    }
 
+    #envelope{
 
+        width:240px;
 
+        height:160px;
 
-#candles{
+    }
 
+    #paper{
 
-    grid-template-columns:
+        width:220px;
 
-    repeat(5,38px);
+        min-height:320px;
 
+        padding:18px;
 
-    gap:12px;
+    }
 
+    .polaroid{
 
-}
+        width:170px;
 
-
-
-.candle{
-
-
-    width:18px;
-
-
-    height:65px;
-
-}
-
-
-
-
-.flame{
-
-
-    font-size:34px;
-
-
-    top:-38px;
-
-}
-
-
-
-
-.wish-card{
-
-
-    width:90%;
-
-}
-
-
-
-
-#wishInput{
-
-
-    width:100%;
-
-}
-
-
-
-
-#heartFill{
-
-
-    width:140px;
-
-
-    height:140px;
-
-}
-
-
-
-
-#heartFill::before,
-
-#heartFill::after{
-
-
-    font-size:120px;
-
-}
-
-
-
-
-#envelope{
-
-
-    width:230px;
-
-
-    height:150px;
-
-}
-
-
-
-
-#paper{
-
-
-    width:220px;
-
-
-    min-height:300px;
-
-
-    padding:20px;
-
-}
-
-
+    }
 
 }
