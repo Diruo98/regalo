@@ -398,3 +398,84 @@ function startWishAnimation(){
 
 }
 
+/* =====================================
+   COSTELLAZIONE
+===================================== */
+
+const constellationMessage =
+document.getElementById("constellationMessage");
+
+function startConstellation(){
+
+    if(!constellationSky) return;
+
+    constellationSky.innerHTML = "";
+
+    if(constellationMessage){
+
+        constellationMessage.classList.add("hidden");
+
+    }
+
+    for(let i=0;i<30;i++){
+
+        const star = document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left = Math.random()*95 + "%";
+
+        star.style.top = Math.random()*90 + "%";
+
+        star.style.animationDelay =
+            Math.random()*2 + "s";
+
+        star.addEventListener("click",()=>{
+
+            selectStar(star);
+
+        });
+
+        constellationSky.appendChild(star);
+
+    }
+
+}
+
+function selectStar(selectedStar){
+
+    document
+    .querySelectorAll(".star")
+    .forEach(star=>{
+
+        star.style.pointerEvents = "none";
+
+        if(star !== selectedStar){
+
+            star.style.opacity = ".35";
+
+        }
+
+    });
+
+    selectedStar.classList.add("selected");
+
+    setTimeout(()=>{
+
+        if(constellationMessage){
+
+            constellationMessage.classList.remove("hidden");
+
+        }
+
+    },800);
+
+    setTimeout(()=>{
+
+        showPage(heartPage);
+
+    },3200);
+
+}
+
+
