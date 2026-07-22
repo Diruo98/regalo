@@ -431,14 +431,9 @@ const envelope = document.getElementById("envelope");
 const paper = document.getElementById("paper");
 const letterText = document.getElementById("letterText");
 
-const testoLettera = `Cara Aurora,
+const testoLettera = `Cara Sofia,
 
-Qui scriverai tutta la tua lettera.
-
-Ogni frase comparirà lentamente,
-come se fosse scritta in quel momento.
-
-Ti voglio bene. ❤️`;
+Qui dopo aggiungo la lettera con calma ahhaahah`;
 
 function apriLettera(){
 
