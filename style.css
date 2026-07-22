@@ -1,15 +1,18 @@
 /* =====================================
-   PROJECT AURORA
-   STYLE COMPLETO v3.0
+   PROJECT AURORA v5
+   STYLE PARTE 1
 ===================================== */
 
 
-/* RESET */
+/* =====================================
+   RESET
+===================================== */
 
 * {
-    box-sizing:border-box;
-}
 
+    box-sizing: border-box;
+
+}
 
 
 body {
@@ -45,8 +48,10 @@ body {
 
 
 
+
+
 /* =====================================
-   CUORI CADENTI ❤️✨
+   SFONDO CUORI ❤️✨
 ===================================== */
 
 
@@ -72,9 +77,12 @@ body {
 
     top:-60px;
 
-    animation:
 
-    caduta linear forwards;
+    animation-name:caduta;
+
+    animation-timing-function:linear;
+
+    animation-fill-mode:forwards;
 
 
     filter:
@@ -84,6 +92,7 @@ body {
     );
 
 }
+
 
 
 
@@ -133,6 +142,8 @@ body {
 
 
 
+
+
 /* =====================================
    PAGINE
 ===================================== */
@@ -161,6 +172,7 @@ body {
 
 
 
+
 /* =====================================
    TESTI
 ===================================== */
@@ -169,6 +181,10 @@ body {
 h1 {
 
     font-size:35px;
+
+    text-shadow:
+
+    0 0 15px rgba(255,255,255,.3);
 
 }
 
@@ -185,13 +201,14 @@ p {
 
 
 
+
+
 /* =====================================
-   CARICAMENTO
+   CARICAMENTO ⏳
 ===================================== */
 
 
 .loading {
-
 
     width:350px;
 
@@ -211,15 +228,14 @@ p {
 
     margin:35px auto;
 
+
 }
 
 
 
 #bar {
 
-
     width:0%;
-
 
     height:100%;
 
@@ -287,6 +303,7 @@ button {
 
     transition:.3s;
 
+
 }
 
 
@@ -295,6 +312,7 @@ button:hover {
 
 
     transform:scale(1.08);
+
 
 }
 
@@ -366,9 +384,8 @@ button:hover {
 
     0 20px 50px rgba(0,0,0,.5);
 
+
 }
-
-
 
 
 
@@ -376,6 +393,7 @@ button:hover {
 
 /* =====================================
    COMPLEANNO 🎂
+   CANDELINE
 ===================================== */
 
 
@@ -389,119 +407,31 @@ button:hover {
 
 
 
-#cake {
-
-
-    position:relative;
-
-
-    width:430px;
-
-
-    height:300px;
-
-
-    margin:40px auto;
-
-}
-
-
-
-
-
-
-.cake-base {
-
-
-    position:absolute;
-
-
-    bottom:0;
-
-
-    left:75px;
-
-
-    width:280px;
-
-
-    height:120px;
-
-
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #ff9eb5,
-        #ff5c8a
-    );
-
-
-
-    border-radius:
-
-    25px 25px 15px 15px;
-
-
-
-    box-shadow:
-
-    0 20px 40px rgba(0,0,0,.35);
-
-}
-
-
-
-
-
-
-
-.cake-cream {
-
-
-    position:absolute;
-
-
-    bottom:100px;
-
-
-    left:90px;
-
-
-    width:250px;
-
-
-    height:45px;
-
-
-
-    background:
-
-    linear-gradient(
-        white,
-        #ffe5ef
-    );
-
-
-
-    border-radius:50%;
-
-}
-
-
-
-
-
-
-
-
 #candles {
 
 
-    position:absolute;
+    display:grid;
 
-    inset:0;
+
+    grid-template-columns:
+
+    repeat(5,60px);
+
+
+    gap:35px;
+
+
+    justify-content:center;
+
+
+    align-items:end;
+
+
+    margin:50px auto 30px;
+
+
+    padding:20px;
+
 
 }
 
@@ -509,12 +439,15 @@ button:hover {
 
 
 
+
+
+/* SINGOLA CANDELA 🕯️ */
 
 
 .candle {
 
 
-    position:absolute;
+    position:relative;
 
 
     width:22px;
@@ -545,12 +478,30 @@ button:hover {
     touch-action:manipulation;
 
 
+    transition:.3s;
+
+
+}
+
+
+
+.candle:hover {
+
+
+    transform:
+
+    scale(1.15);
+
+
 }
 
 
 
 
 
+
+
+/* FIAMMA 🔥 */
 
 
 .flame {
@@ -562,7 +513,7 @@ button:hover {
     top:-45px;
 
 
-    left:-8px;
+    left:-10px;
 
 
     font-size:42px;
@@ -572,15 +523,18 @@ button:hover {
 
     flicker .7s infinite alternate;
 
+
 }
 
 
 
 .flame.off {
 
+
     display:none;
 
 }
+
 
 
 
@@ -592,6 +546,7 @@ button:hover {
 
     from {
 
+
         transform:
 
         scale(1)
@@ -601,7 +556,9 @@ button:hover {
     }
 
 
+
     to {
+
 
         transform:
 
@@ -609,7 +566,9 @@ button:hover {
 
         rotate(5deg);
 
+
     }
+
 
 }
 
@@ -618,6 +577,8 @@ button:hover {
 
 
 
+
+/* FUMO 💨 */
 
 
 .smoke {
@@ -629,7 +590,7 @@ button:hover {
     top:-70px;
 
 
-    left:0;
+    left:-3px;
 
 
     font-size:28px;
@@ -638,6 +599,7 @@ button:hover {
     animation:
 
     smokeUp 1s forwards;
+
 
 }
 
@@ -650,11 +612,14 @@ button:hover {
 
     from {
 
+
         opacity:1;
+
 
         transform:
 
         translateY(0);
+
 
     }
 
@@ -662,55 +627,14 @@ button:hover {
 
     to {
 
+
         opacity:0;
+
 
         transform:
 
-        translateY(-50px);
+        translateY(-60px);
 
-    }
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   TELEFONO 📱
-===================================== */
-
-
-@media(max-width:600px){
-
-
-    h1 {
-
-        font-size:28px;
-
-    }
-
-
-    p {
-
-        font-size:18px;
-
-    }
-
-
-    .loading {
-
-        width:280px;
-
-    }
-
-
-
-    #cake {
-
-        transform:scale(.75);
 
     }
 
