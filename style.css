@@ -104,6 +104,28 @@ body{
 
 }
 
+/* =====================================
+   CORIANDOLI
+===================================== */
+
+.confetto{
+
+    position:absolute;
+
+    top:-20px;
+
+    width:8px;
+
+    height:18px;
+
+    border-radius:2px;
+
+    pointer-events:none;
+
+    will-change:transform;
+
+}
+
 
 /* =====================================
    CARD
