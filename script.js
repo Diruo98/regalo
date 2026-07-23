@@ -403,6 +403,48 @@ function animateStar(){
 
 }
 
+/* =====================================
+   NUOVA COSTELLAZIONE
+===================================== */
+
+const constellationPoints = [
+
+    {x:15,y:22},
+    {x:28,y:17},
+    {x:42,y:30},
+    {x:56,y:23},
+    {x:70,y:37},
+    {x:82,y:26},
+    {x:72,y:54},
+    {x:52,y:67},
+    {x:30,y:56},
+    {x:18,y:40}
+
+];
+
+const constellationMessages = [
+
+    "Da quando sei entrata nella mia vita, ogni giorno ha una luce diversa. ❤️",
+
+    "Ci sono miliardi di stelle... ma io continuo a scegliere te.",
+
+    "Sei il posto in cui il mio cuore si sente finalmente a casa.",
+
+    "Ogni tuo sorriso illumina più del cielo intero.",
+
+    "Con te ogni istante diventa un ricordo bellissimo.",
+
+    "Se dovessi ricominciare da capo, sceglierei ancora te.",
+
+    "Il mio desiderio più bello sei sempre tu.",
+
+    "Ogni battito del mio cuore parla di te.",
+
+    "Ogni stella racconta un motivo per cui ti amo.",
+
+    "E il motivo più grande... sei semplicemente tu. 🤍"
+
+];
 
 /* =====================================
    COSTELLAZIONE
