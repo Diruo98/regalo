@@ -634,7 +634,13 @@ button:hover{
 
     position:absolute;
 
-    inset:0;
+    left:50%;
+    top:50%;
+
+    width:90vmin;
+    height:90vmin;
+
+    transform:translate(-50%,-50%);
 
 }
 
@@ -688,11 +694,13 @@ button:hover{
 
     position:absolute;
 
-    inset:0;
+    left:50%;
+    top:50%;
 
-    width:100%;
+    width:90vmin;
+    height:90vmin;
 
-    height:100%;
+    transform:translate(-50%,-50%);
 
     pointer-events:none;
 
