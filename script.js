@@ -742,3 +742,191 @@ continueButton.addEventListener("click",()=>{
 
 });
 
+/*==================================================
+    IMPRONTA
+==================================================*/
+
+const fingerprint = document.getElementById("fingerprint");
+const fingerprintText = document.getElementById("fingerprintText");
+
+let fingerprintTimer = null;
+let fingerprintUnlocked = false;
+
+fingerprint.addEventListener("pointerdown", startFingerprint);
+fingerprint.addEventListener("pointerup", stopFingerprint);
+fingerprint.addEventListener("pointerleave", stopFingerprint);
+fingerprint.addEventListener("pointercancel", stopFingerprint);
+
+function startFingerprint(){
+
+    if(fingerprintUnlocked) return;
+
+    fingerprint.classList.add("active");
+
+    fingerprintTimer = setTimeout(()=>{
+
+        fingerprintUnlocked = true;
+
+        if(navigator.vibrate){
+
+            navigator.vibrate(120);
+
+        }
+
+        fingerprintText.classList.remove("hidden");
+
+        setTimeout(()=>{
+
+            showPage("voicePage");
+
+            prepareVoicePlayer();
+
+        },900);
+
+    },1000);
+
+}
+
+function stopFingerprint(){
+
+    fingerprint.classList.remove("active");
+
+    clearTimeout(fingerprintTimer);
+
+}
+
+
+/*==================================================
+    VOCALE
+==================================================*/
+
+const playVoiceButton = document.getElementById("playVoice");
+
+function prepareVoicePlayer(){
+
+    voicePlayer.currentTime = 0;
+
+}
+
+playVoiceButton.addEventListener("click",()=>{
+
+    fadeMusic();
+
+    voicePlayer.play();
+
+});
+
+
+/*==================================================
+    DISSOLVENZA MUSICA
+==================================================*/
+
+function fadeMusic(){
+
+    const fade = setInterval(()=>{
+
+        if(bgMusic.volume > 0.03){
+
+            bgMusic.volume -= 0.03;
+
+        }else{
+
+            bgMusic.pause();
+
+            bgMusic.volume = 0.35;
+
+            clearInterval(fade);
+
+        }
+
+    },150);
+
+}
+
+
+/*==================================================
+    FINE VOCALE
+==================================================*/
+
+voicePlayer.addEventListener("ended",()=>{
+
+    showFinalPage();
+
+});
+
+/*==================================================
+    FINALE
+==================================================*/
+
+const polaroid = document.getElementById("polaroid");
+const finalLove = document.getElementById("finalLove");
+const signature = document.getElementById("signature");
+const restartButton = document.getElementById("restartButton");
+
+
+function showFinalPage(){
+
+    showPage("finalPage");
+
+    /* reset */
+
+    polaroid.classList.add("hidden");
+    finalLove.classList.add("hidden");
+    signature.classList.add("hidden");
+    restartButton.classList.add("hidden");
+
+
+    /* foto */
+
+    setTimeout(()=>{
+
+        polaroid.classList.remove("hidden");
+        polaroid.classList.add("fade-in");
+
+    },400);
+
+
+    /* Ti amo */
+
+    setTimeout(()=>{
+
+        finalLove.classList.remove("hidden");
+        finalLove.classList.add("fade-in");
+
+    },1400);
+
+
+    /* Firma */
+
+    setTimeout(()=>{
+
+        signature.classList.remove("hidden");
+        signature.classList.add("fade-in");
+
+    },2200);
+
+
+    /* Rivivi */
+
+    setTimeout(()=>{
+
+        restartButton.classList.remove("hidden");
+        restartButton.classList.add("fade-in");
+
+    },5200);
+
+}
+
+
+/*==================================================
+    RICOMINCIA
+==================================================*/
+
+restartButton.addEventListener("click",restartJourney);
+
+function restartJourney(){
+
+    location.reload();
+
+}
+
