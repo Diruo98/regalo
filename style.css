@@ -539,6 +539,8 @@ button:hover{
 
     user-select:none;
 
+   animation:starTwinkle 1.5s infinite alternate;
+
 }
 
 .star:hover{
