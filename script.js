@@ -347,10 +347,7 @@ heartFill.addEventListener("click", () => {
 
     heartFill.querySelector("::before");
 
-    heartFill.style.background =
-        `linear-gradient(to top,
-        #ff5f96 ${heartValue}%,
-        #ffe6ef ${heartValue}%)`;
+   heartFill.style.setProperty("--fill", heartValue + "%");
 
     if (heartValue >= 100) {
 
