@@ -424,25 +424,25 @@ const constellationPoints = [
 
 const constellationMessages = [
 
-    "Da quando sei entrata nella mia vita, ogni giorno ha una luce diversa. ❤️",
+    "Da quando sei entrata nella mia vita, ogni giorno ha una luce diversa ⭐️",
 
-    "Ci sono miliardi di stelle... ma io continuo a scegliere te.",
+    "Ci sono miliardi di stelle... ma io continuo a scegliere i tuoi meravigliosi occhi 🤍",
 
-    "Sei il posto in cui il mio cuore si sente finalmente a casa.",
+    "Sei il posto in cui il mio cuore si sente finalmente a casa 🏠",
 
-    "Ogni tuo sorriso illumina più del cielo intero.",
+    "Ogni tuo sorriso illumina più del cielo intero 🥹",
 
-    "Con te ogni istante diventa un ricordo bellissimo.",
+    "Con te ogni istante diventa un ricordo bellissimo come i fantastici 5 giorni insieme 😍 ",
 
-    "Se dovessi ricominciare da capo, sceglierei ancora te.",
+    "Se dovessi ricominciare da capo, sceglierei sempre e soltanto te Sofi 🤍",
 
-    "Il mio desiderio più bello sei sempre tu.",
+    "Il mio desiderio più bello sei sempre tu 🫀",
 
-    "Ogni battito del mio cuore parla di te.",
+    "Ogni battito del mio cuore parla di te 💖",
 
-    "Ogni stella racconta un motivo per cui ti amo.",
+    "Ogni stella racconta un motivo per cui ti amo 🤍",
 
-    "E il motivo più grande... sei semplicemente tu. ❤️"
+    "E il motivo più grande... sei semplicemente tu! ❤️"
 
 ];
 
@@ -516,7 +516,7 @@ function startConstellation(){
     const path =
         document.getElementById("constellationPath");
 
-    message.textContent = "Tocca la prima stella ✨";
+    message.textContent = "Tocca la prima stella e poi tutte le altre in successione ✨";
     message.classList.add("show");
 
     path.style.opacity = ".18";
@@ -545,7 +545,7 @@ function startConstellation(){
 
                     message.innerHTML=
 
-                    "<h2>✨ Ti amo infinitamente Sofia ✨</h2><br>Ogni stella del cielo mi porterà sempre da te. ❤️";
+                    "<h2>✨ Ti amo infinitamente Sofi🤍 ✨</h2><br>Ogni stella del cielo mi porterà sempre da te 🤍";
 
                 },1200);
 
