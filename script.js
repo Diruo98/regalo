@@ -477,6 +477,30 @@ function createStarField(){
 
 }
 
+function createShootingStar(){
+
+    const sky=document.querySelector(".sky");
+
+    const star=document.createElement("div");
+
+    star.className="shooting-star";
+
+    star.style.left=Math.random()*70+"%";
+
+    star.style.top=Math.random()*35+"%";
+
+    star.style.animation="shoot 1.2s linear forwards";
+
+    sky.appendChild(star);
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },1200);
+
+}
+
 function createConstellation(){
 
     const container=document.getElementById("constellation");
