@@ -601,6 +601,29 @@ shootingStarInterval = setInterval(()=>{
 /* =====================================
    CUORE
 ===================================== */
+ const heartQuotes = {
+
+    10:"Da quando sei arrivata, qualcosa dentro di me è cambiato. 🤍",
+
+    20:"Ogni tuo sorriso ha riempito un pezzetto del mio cuore",
+
+    30:"Con te anche i giorni più semplici diventano speciali ✨",
+
+    40:"Ogni tuo abbraccio mi fa sentire a casa",
+
+    50:"Sei diventata il mio posto sicuro ❤️",
+
+    60:"Mi hai colorato il mondo 🤍",
+
+    70:"Ogni ricordo insieme è un tesoro che porterò sempre con me",
+
+    80:"Non riesco più a immaginare un futuro senza di te",
+
+    90:"Ormai il mio cuore sa già a chi appartiene... 🤍",
+
+    100:"Il mio cuore appartiene completamente a te. Ti amo 🤍🦁"
+
+};
 
 function initHeart(){
 
@@ -626,15 +649,39 @@ heartFill.addEventListener("click",()=>{
 
     heartPercent.textContent = percentValue+"%";
 
-    if(heartProgress===10){
+    if(heartQuotes[percentValue]){
 
-        heartMessage.textContent="Il mio cuore è completamente tuo ❤️";
+        heartMessage.textContent = heartQuotes[percentValue];
+
+    }
+
+    heartFill.animate(
+
+        [
+
+            {transform:"scale(1)"},
+
+            {transform:"scale(1.08)"},
+
+            {transform:"scale(1)"}
+
+        ],
+
+        {
+
+            duration:300
+
+        }
+
+    );
+
+    if(heartProgress===10){
 
         setTimeout(()=>{
 
             showPage(pages.letter);
 
-        },1200);
+        },1800);
 
     }
 
