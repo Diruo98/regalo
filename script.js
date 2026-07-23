@@ -57,7 +57,7 @@ const restart = document.getElementById("restart");
 ===================================== */
 
 emailjs.init({
-    publicKey: "LA_TUA_PUBLIC_KEY"
+    publicKey: "wSOh24DBQMubSgC8-"
 });
 
 
