@@ -52,6 +52,14 @@ const fingerprintButton = document.getElementById("fingerprintButton");
 
 const restart = document.getElementById("restart");
 
+/* =====================================
+   EMAILJS
+===================================== */
+
+emailjs.init({
+    publicKey: "LA_TUA_PUBLIC_KEY"
+});
+
 
 /* =====================================
    VARIABILI
