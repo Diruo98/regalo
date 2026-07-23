@@ -269,7 +269,7 @@ function createConfetti(){
 
     ];
 
-    for(let i=0;i<350;i++){
+    for(let i=0;i<600;i++){
 
         const confetto = document.createElement("div");
 
@@ -582,13 +582,19 @@ shootingStarInterval = setInterval(()=>{
 
                 },1200);
 
-                setTimeout(()=>{
+                const sky = document.querySelector(".sky");
 
-                    showPage(pages.heart);
+sky.classList.add("fadeOut");
 
-                    initHeart();
+setTimeout(()=>{
 
-                },5000);
+    showPage(pages.heart);
+
+    initHeart();
+
+    sky.classList.remove("fadeOut");
+
+},1200);
 
             }
 
