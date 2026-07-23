@@ -265,9 +265,15 @@ function createConfetti(){
 
     ];
 
-    for(let i=0;i<180;i++){
+    for(let i=0;i<350;i++){
 
         const confetto = document.createElement("div");
+
+       const w = 5 + Math.random()*6;
+const h = 10 + Math.random()*12;
+
+confetto.style.width = w + "px";
+confetto.style.height = h + "px";
 
         confetto.className = "confetto";
 
@@ -277,7 +283,7 @@ function createConfetti(){
             colors[Math.floor(Math.random()*colors.length)];
 
         confetto.style.animation =
-    `fall ${2.5 + Math.random()*2}s linear forwards`;
+    `fall ${2 + Math.random()*3}s linear forwards`;
 
         confetto.style.transform =
             `rotate(${Math.random()*360}deg)`;
