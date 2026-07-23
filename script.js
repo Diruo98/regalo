@@ -543,51 +543,6 @@ function startConstellation(){
 }
 
 /* =====================================
-   COSTELLAZIONE
-===================================== */
-
-function createConstellation(){
-
-    constellationSky.innerHTML = "";
-
-    constellationMessage.classList.add("hidden");
-
-    for(let i=0;i<12;i++){
-
-        const star = document.createElement("div");
-
-        star.className = "star";
-
-        star.textContent = "⭐";
-
-        star.style.left = Math.random()*280 + "px";
-
-        star.style.top = Math.random()*280 + "px";
-
-        star.addEventListener("click", () => {
-
-            constellationMessage.textContent =
-            "Ogni tuo desiderio illuminerà sempre il mio cielo. ❤️";
-
-            constellationMessage.classList.remove("hidden");
-
-            setTimeout(() => {
-
-                showPage(pages.heart);
-
-                initHeart();
-
-            },1800);
-
-        });
-
-        constellationSky.appendChild(star);
-
-    }
-
-}
-
-/* =====================================
    CUORE
 ===================================== */
 
