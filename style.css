@@ -735,6 +735,10 @@ button:hover{
 
 }
 
+/* =====================================
+   STELLA CADENTE
+===================================== */
+
 .shooting-star{
 
     position:absolute;
@@ -748,10 +752,32 @@ button:hover{
     border-radius:50%;
 
     box-shadow:
-        0 0 10px white,
-        0 0 25px white;
+        0 0 8px white,
+        0 0 20px white;
 
-    animation:shoot 1.2s linear forwards;
+    pointer-events:none;
+
+}
+
+.shooting-star::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120px;
+
+    top:1px;
+
+    width:120px;
+
+    height:2px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,.8)
+    );
 
 }
 
@@ -759,7 +785,8 @@ button:hover{
 
     from{
 
-        transform:translate(0,0);
+        transform:
+            translate(0,0);
 
         opacity:1;
 
@@ -767,16 +794,14 @@ button:hover{
 
     to{
 
-        transform:translate(350px,350px);
+        transform:
+            translate(350px,350px);
 
         opacity:0;
 
     }
 
 }
-
-
-
 
 /* =====================================
    CUORE
