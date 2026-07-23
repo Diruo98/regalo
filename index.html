@@ -4,14 +4,17 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<title>Per Sofi 🤍</title>
+    <title>Per Sofi ❤️</title>
 
-<link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css">
 
 </head>
 
@@ -31,19 +34,23 @@ content="width=device-width, initial-scale=1.0">
      AUDIO
 ===================================== -->
 
-<audio id="bgMusic" loop>
+<audio
+id="bgMusic"
+loop>
 
     <source
-    src="musica.mp3"
-    type="audio/mpeg">
+        src="musica.mp3"
+        type="audio/mpeg">
 
 </audio>
 
-<audio id="voicePlayer">
+
+<audio
+id="voicePlayer">
 
     <source
-    src="vocale.mp3"
-    type="audio/mpeg">
+        src="vocale.mp3"
+        type="audio/mpeg">
 
 </audio>
 
@@ -56,11 +63,11 @@ content="width=device-width, initial-scale=1.0">
 id="introPage"
 class="page">
 
-    <div class="intro-box">
+    <div class="intro-card">
 
         <h1>
 
-            Ciao Sofi... 🤍
+            Ciao Sofi 🤍
 
         </h1>
 
@@ -75,15 +82,15 @@ class="page">
 
         <p>
 
-            Quando sarai pronta,
-            metti le cuffie 🎧
-            oppure alza il volume.
+            Ti consiglio di mettere
+            le cuffie 🎧
+            oppure alzare il volume.
 
         </p>
 
         <button id="playButton">
 
-            Sono pronta 🤍
+            Sono pronta ❤️
 
         </button>
 
@@ -93,40 +100,43 @@ class="page">
 
 
 <!-- =====================================
-     HOME
+     LOADING
 ===================================== -->
 
 <section
-id="home"
+id="loadingPage"
 class="page hidden">
 
-    <h1>
+    <div class="loading-card">
 
-        Sto preparando
-        qualcosa di speciale
-        per te...
+        <h2>
 
-    </h1>
+            Sto preparando
+            qualcosa di speciale...
 
-    <div class="loading">
+        </h2>
 
-        <div id="bar"></div>
+        <div class="loading">
+
+            <div id="bar"></div>
+
+        </div>
+
+        <p id="percent">
+
+            0%
+
+        </p>
+
+        <button
+        id="start"
+        hidden>
+
+            Inizia il viaggio ✨
+
+        </button>
 
     </div>
-
-    <p id="percent">
-
-        0%
-
-    </p>
-
-    <button
-    id="start"
-    hidden>
-
-        INIZIA IL VIAGGIO ✨
-
-    </button>
 
 </section>
 
@@ -135,7 +145,7 @@ class="page hidden">
 ===================================== -->
 
 <section
-id="ticket"
+id="ticketPage"
 class="page hidden">
 
     <div class="ticket-card">
@@ -156,13 +166,13 @@ class="page hidden">
 
         <div class="ticket-buttons">
 
-            <button id="yes">
+            <button id="yesButton">
 
                 Sì ❤️
 
             </button>
 
-            <button id="no">
+            <button id="noButton">
 
                 No 😜
 
@@ -180,10 +190,10 @@ class="page hidden">
 ===================================== -->
 
 <section
-id="birthday"
+id="birthdayPage"
 class="page hidden">
 
-    <div class="birthday-box">
+    <div class="birthday-card">
 
         <h1>
 
@@ -195,7 +205,7 @@ class="page hidden">
         <p>
 
             Spegni tutte le candeline
-            cliccandoci sopra.
+            cliccando sulla loro fiamma. 🔥
 
         </p>
 
@@ -231,16 +241,16 @@ class="page hidden">
         <p>
 
             Chiudi gli occhi,
-            pensa forte ad un desiderio
+            pensa ad un desiderio
             e scrivilo qui sotto.
 
         </p>
 
         <textarea
 
-            id="wishInput"
+        id="wishInput"
 
-            placeholder="Scrivi qui il tuo desiderio..."
+        placeholder="Scrivi qui il tuo desiderio..."
 
         ></textarea>
 
@@ -256,7 +266,7 @@ class="page hidden">
 </section>
 
      <!-- =====================================
-     STELLA DEL DESIDERIO
+     STELLA
 ===================================== -->
 
 <section
@@ -268,7 +278,7 @@ class="page hidden">
         <h1>
 
             Il tuo desiderio
-            sta volando nel cielo...
+            sta raggiungendo il cielo... ⭐
 
         </h1>
 
@@ -295,24 +305,26 @@ class="page hidden">
 
         <h1>
 
-            🌌 Trova la tua stella
+            Trova la tua stella ✨
 
         </h1>
 
         <p>
 
-            Ogni desiderio trova una stella.<br>
-            Tocca quella che senti più tua.
+            Ogni desiderio trova
+            il proprio posto nel cielo.
+
+            Tocca una stella.
 
         </p>
 
         <div id="constellationSky"></div>
 
-        <div
+        <p
         id="constellationMessage"
         class="hidden">
 
-        </div>
+        </p>
 
     </div>
 
@@ -344,18 +356,18 @@ class="page hidden">
         <p>
 
             Ogni tocco
-            mi rende
-            più felice.
+            mi avvicina un po'
+            di più a te.
 
         </p>
 
         <div id="heartFill">
 
-            <div id="heartPercent">
+            <span id="heartPercent">
 
                 0%
 
-            </div>
+            </span>
 
         </div>
 
@@ -377,19 +389,20 @@ class="page hidden">
 id="letterPage"
 class="page hidden">
 
-    <div class="letter-card">
+    <div class="letter-container">
 
         <!-- CUORE -->
 
         <div id="letterHeart">
 
-            ❤️
+            🩷
 
         </div>
 
         <p id="letterHint">
 
-            Tocca il cuore per aprire la lettera
+            Tocca il cuore
+            per aprire la lettera
 
         </p>
 
@@ -397,9 +410,13 @@ class="page hidden">
 
         <div id="envelope">
 
-            <div class="envelope-front"></div>
+            <div class="flap"></div>
 
-            <div class="envelope-flap"></div>
+            <div class="heart-seal">
+
+                💌
+
+            </div>
 
         </div>
 
@@ -408,6 +425,7 @@ class="page hidden">
         <div id="paper">
 
             <div id="letterText"></div>
+
             <!-- POLAROID -->
 
             <div
@@ -443,29 +461,28 @@ class="page hidden">
 id="fingerprintPage"
 class="page hidden">
 
-    <div class="finger-card">
+    <div class="fingerprint-card">
 
         <h1>
 
-            Un ultimo piccolo gesto...
+            Un ultimo piccolo gesto... ❤️
 
         </h1>
 
         <p>
 
-            Tieni premuta la mia impronta
+            Tieni premuto
+            il pulsante qui sotto
             per sbloccare
-            l'ultimo ricordo. ❤️
+            il mio ultimo messaggio.
 
         </p>
 
-        <img
+        <div id="fingerprintButton">
 
-        id="fingerprint"
+            🖐🏻
 
-        src="fingerprint.png"
-
-        alt="Impronta">
+        </div>
 
         <p
         id="fingerprintText"
@@ -505,7 +522,8 @@ class="page hidden">
         <p>
 
             Premi Play
-            e ascoltami fino alla fine. 🎙️
+            e ascolta il mio messaggio
+            fino alla fine. 🎙️
 
         </p>
 
@@ -574,46 +592,8 @@ class="page hidden">
 
         alt="Firma">
 
-         <!-- FIRMA -->
 
-<img
-
-id="signature"
-
-class="hidden"
-
-src="firma.png"
-
-alt="Firma">
-
-
-<!-- DEDICA -->
-
-<p
-
-id="finalQuote"
-
-class="hidden">
-
-    Con tutto l'amore che ho 🤍
-
-</p>
-
-
-<!-- RICOMINCIA -->
-
-<button
-
-id="restart"
-
-class="hidden">
-
-    Rivivi il viaggio 🤍
-
-</button>
-
-
-        <!-- RICOMINCIA -->
+        <!-- RIVIVI -->
 
         <button
 
