@@ -557,6 +557,38 @@ button:hover{
 }
 
 /* =====================================
+   TRASFORMAZIONE
+===================================== */
+
+.constellation-star.finish{
+
+    transform:scale(1.9);
+
+    filter:
+
+        drop-shadow(0 0 12px white)
+
+        drop-shadow(0 0 24px #ffd6f0);
+
+    transition:1.2s;
+
+}
+
+#constellation{
+
+    transition:1.5s;
+
+}
+
+#constellation.transform{
+
+    transform:scale(.65);
+
+    opacity:.15;
+
+}
+
+/* =====================================
    LUNA
 ===================================== */
 
