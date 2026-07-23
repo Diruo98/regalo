@@ -868,9 +868,9 @@ button:hover{
 
     width:170px;
 
-    height:170px;
+    height:150px;
 
-    margin:35px auto;
+    margin:40px auto;
 
     position:relative;
 
@@ -882,20 +882,7 @@ button:hover{
 
     align-items:center;
 
-    background:#ffd6e7;
-
-    clip-path:polygon(
-        50% 92%,
-        0% 42%,
-        18% 10%,
-        50% 28%,
-        82% 10%,
-        100% 42%
-    );
-
-    overflow:hidden;
-
-    transition:.25s;
+    transition:.35s;
 
 }
 
@@ -907,31 +894,47 @@ button:hover{
 
 #heartFill::before{
 
-    content:"";
+    content:"❤";
 
     position:absolute;
 
-    bottom:0;
+    inset:0;
 
-    left:0;
+    display:flex;
 
-    width:100%;
+    justify-content:center;
 
-    height:0%;
+    align-items:center;
 
-    background:
+    font-size:170px;
 
-        linear-gradient(
-
-            180deg,
-
-            #ff5f98,
-
-            #ff89b5
-
-        );
+    color:#ffd6e7;
 
     transition:.35s;
+
+}
+
+#heartFill::after{
+
+    content:"❤";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:170px;
+
+    color:#ff6a9f;
+
+    clip-path: inset(100% 0 0 0);
+
+    transition:clip-path .5s ease;
 
 }
 
