@@ -582,19 +582,24 @@ shootingStarInterval = setInterval(()=>{
 
                 },1200);
 
-                const sky = document.querySelector(".sky");
+               setTimeout(()=>{
 
-sky.classList.add("fadeOut");
+        const sky = document.querySelector(".sky");
 
-setTimeout(()=>{
+        sky.classList.add("fadeOut");
 
-    showPage(pages.heart);
+        setTimeout(()=>{
 
-    initHeart();
+            showPage(pages.heart);
 
-    sky.classList.remove("fadeOut");
+            initHeart();
 
-},1200);
+            sky.classList.remove("fadeOut");
+
+        },1200);
+
+    },5000);
+
 
             }
 
