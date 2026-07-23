@@ -1390,3 +1390,46 @@ button:hover{
     }
 
 }
+
+
+/* =====================================
+   COSTELLAZIONE MOBILE
+===================================== */
+
+.sky{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#constellation{
+
+    transform:scale(.82);
+
+    transform-origin:center;
+
+}
+
+#constellationSvg{
+
+    transform:scale(.82);
+
+    transform-origin:center;
+
+}
+
+#constellationMessage{
+
+    bottom:35px;
+
+    font-size:1.05rem;
+
+    width:88%;
+
+    line-height:1.7;
+
+}
