@@ -496,6 +496,52 @@ function createConstellation(){
 
 }
 
+function startConstellation(){
+
+    createStarField();
+    createConstellation();
+
+    const stars = document.querySelectorAll(".constellation-star");
+    const message = document.getElementById("constellationMessage");
+
+    let current = 0;
+
+    stars.forEach((star,index)=>{
+
+        star.addEventListener("click",()=>{
+
+            if(index !== current) return;
+
+            star.classList.add("active");
+
+            message.textContent = constellationMessages[index];
+            message.classList.add("show");
+
+            current++;
+
+            if(current === stars.length){
+
+                setTimeout(()=>{
+
+                    message.textContent =
+                    "Ti amo infinitamente Sofia. ❤️✨";
+
+                },1500);
+
+                setTimeout(()=>{
+
+                    showPage(pages.heart);
+
+                },4500);
+
+            }
+
+        });
+
+    });
+
+}
+
 /* =====================================
    COSTELLAZIONE
 ===================================== */
