@@ -532,6 +532,14 @@ function startConstellation(){
     createStarField();
     createConstellation();
 
+   clearInterval(shootingStarInterval);
+
+shootingStarInterval = setInterval(()=>{
+
+    createShootingStar();
+
+},7000);
+
     const stars =
         document.querySelectorAll(".constellation-star");
 
