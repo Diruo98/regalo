@@ -404,21 +404,21 @@ function animateStar(){
 }
 
 /* =====================================
-   NUOVA COSTELLAZIONE
+   COSTELLAZIONE
 ===================================== */
 
 const constellationPoints = [
 
-    {x:15,y:22},
-    {x:28,y:17},
-    {x:42,y:30},
-    {x:56,y:23},
-    {x:70,y:37},
-    {x:82,y:26},
-    {x:72,y:54},
-    {x:52,y:67},
-    {x:30,y:56},
-    {x:18,y:40}
+    {x:17,y:24},
+    {x:30,y:17},
+    {x:43,y:30},
+    {x:57,y:23},
+    {x:71,y:37},
+    {x:83,y:27},
+    {x:72,y:57},
+    {x:52,y:70},
+    {x:31,y:59},
+    {x:18,y:42}
 
 ];
 
@@ -442,9 +442,11 @@ const constellationMessages = [
 
     "Ogni stella racconta un motivo per cui ti amo.",
 
-    "E il motivo più grande... sei semplicemente tu. 🤍"
+    "E il motivo più grande... sei semplicemente tu. ❤️"
 
 ];
+
+let constellationIndex = 0;
 
 function createStarField(){
 
@@ -452,22 +454,22 @@ function createStarField(){
 
     field.innerHTML = "";
 
-    for(let i = 0; i < 100; i++){
+    for(let i=0;i<100;i++){
 
         const star = document.createElement("div");
 
-        star.className = "sky-star";
+        star.className="sky-star";
 
-        star.style.left = Math.random()*100 + "%";
-        star.style.top = Math.random()*100 + "%";
+        const size=2+Math.random()*4;
 
-        const size = 2 + Math.random()*3;
+        star.style.width=size+"px";
+        star.style.height=size+"px";
 
-        star.style.width = size + "px";
-        star.style.height = size + "px";
+        star.style.left=Math.random()*100+"%";
+        star.style.top=Math.random()*100+"%";
 
-        star.style.animationDuration =
-            (2 + Math.random()*4) + "s";
+        star.style.animationDuration=
+            (2+Math.random()*4)+"s";
 
         field.appendChild(star);
 
@@ -477,20 +479,22 @@ function createStarField(){
 
 function createConstellation(){
 
-    const area = document.getElementById("constellation");
+    const container=document.getElementById("constellation");
 
-    area.innerHTML = "";
+    container.innerHTML="";
 
     constellationPoints.forEach((point,index)=>{
 
-        const star = document.createElement("div");
+        const star=document.createElement("div");
 
-        star.className = "constellation-star";
+        star.className="constellation-star";
 
-        star.style.left = point.x + "%";
-        star.style.top = point.y + "%";
+        star.style.left=point.x+"%";
+        star.style.top=point.y+"%";
 
-        area.appendChild(star);
+        star.dataset.index=index;
+
+        container.appendChild(star);
 
     });
 
@@ -498,41 +502,60 @@ function createConstellation(){
 
 function startConstellation(){
 
+    constellationIndex = 0;
+
     createStarField();
     createConstellation();
 
-    const stars = document.querySelectorAll(".constellation-star");
-    const message = document.getElementById("constellationMessage");
+    const stars =
+        document.querySelectorAll(".constellation-star");
 
-    let current = 0;
+    const message =
+        document.getElementById("constellationMessage");
+
+    const path =
+        document.getElementById("constellationPath");
+
+    message.textContent = "Tocca la prima stella ✨";
+    message.classList.add("show");
+
+    path.style.opacity = ".18";
 
     stars.forEach((star,index)=>{
 
         star.addEventListener("click",()=>{
 
-            if(index !== current) return;
+            if(index!==constellationIndex) return;
 
             star.classList.add("active");
 
-            message.textContent = constellationMessages[index];
-            message.classList.add("show");
+            message.textContent =
+            constellationMessages[index];
 
-            current++;
+            constellationIndex++;
 
-            if(current === stars.length){
+            /* illumina sempre di più la costellazione */
+
+            path.style.opacity =
+                0.18 + constellationIndex*0.07;
+
+            if(constellationIndex===stars.length){
 
                 setTimeout(()=>{
 
-                    message.textContent =
-                    "Ti amo infinitamente Sofia. ❤️✨";
+                    message.innerHTML=
 
-                },1500);
+                    "<h2>✨ Ti amo infinitamente Sofia ✨</h2><br>Ogni stella del cielo mi porterà sempre da te. ❤️";
+
+                },1200);
 
                 setTimeout(()=>{
 
                     showPage(pages.heart);
 
-                },4500);
+                    initHeart();
+
+                },5000);
 
             }
 
