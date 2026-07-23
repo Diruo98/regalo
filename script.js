@@ -69,6 +69,7 @@ let loadingValue = 0;
 let candlesOff = 0;
 let heartProgress = 0;
 let fingerprintTimer = null;
+let shootingStarInterval = null;
 
 
 /* =====================================
