@@ -556,6 +556,54 @@ button:hover{
 
 }
 
+/* =====================================
+   LUNA
+===================================== */
+
+.moon{
+
+    position:absolute;
+
+    top:50px;
+
+    right:60px;
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:#fff9dc;
+
+    box-shadow:
+        0 0 25px rgba(255,255,220,.7),
+        0 0 60px rgba(255,255,220,.35);
+
+    z-index:2;
+
+}
+
+.moon::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:#162b57;
+
+    left:18px;
+
+    top:2px;
+
+}
+
 /* Stelle decorative */
 
 #starField{
