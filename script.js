@@ -72,13 +72,6 @@ let fingerprintTimer = null;
 
 
 /* =====================================
-   EMAILJS
-===================================== */
-
-// emailjs.init("LA_TUA_PUBLIC_KEY");
-
-
-/* =====================================
    FUNZIONI GENERALI
 ===================================== */
 
@@ -331,9 +324,9 @@ sendWish.addEventListener("click", () => {
 
         emailjs.send(
 
-            "SERVICE_ID",
+            "service_umr8t4k",
 
-            "TEMPLATE_ID",
+            "template_ag1927r",
 
             {
 
