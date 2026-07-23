@@ -572,40 +572,46 @@ shootingStarInterval = setInterval(()=>{
             path.style.opacity =
                 0.18 + constellationIndex*0.07;
 
-            if(constellationIndex===stars.length){
+           if(constellationIndex===stars.length){
 
-                setTimeout(()=>{
+    stars.forEach(star=>{
 
-                    message.innerHTML=
+        star.classList.add("finish");
 
-                    "<h2>✨ Ti amo infinitamente Sofi🤍 ✨</h2><br>Ogni stella del cielo mi porterà sempre da te 🤍";
+    });
 
-                },1200);
+    setTimeout(()=>{
 
-               setTimeout(()=>{
+        message.innerHTML=
+        "<h2>✨ Ti amo infinitamente Sofi 🤍 ✨</h2><br>Ogni stella del cielo mi porterà sempre da te 🤍";
 
-        const sky = document.querySelector(".sky");
+    },1000);
 
-        sky.classList.add("fadeOut");
+    setTimeout(()=>{
 
-        setTimeout(()=>{
+        document
+        .getElementById("constellation")
+        .classList.add("transform");
 
-            showPage(pages.heart);
+    },3500);
 
-            initHeart();
+    setTimeout(()=>{
 
-            sky.classList.remove("fadeOut");
+        showPage(pages.heart);
 
-        },1200);
+        initHeart();
 
-    },5000);
+        document
+        .getElementById("constellation")
+        .classList.remove("transform");
 
+        stars.forEach(star=>{
 
-            }
+            star.classList.remove("finish");
 
         });
 
-    });
+    },5200);
 
 }
 
