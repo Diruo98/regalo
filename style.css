@@ -1057,3 +1057,22 @@ button:hover{
     }
 
 }
+@keyframes starTwinkle{
+
+    from{
+
+        transform:scale(1);
+
+        opacity:.6;
+
+    }
+
+    to{
+
+        transform:scale(1.25);
+
+        opacity:1;
+
+    }
+
+}
