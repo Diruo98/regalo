@@ -446,6 +446,56 @@ const constellationMessages = [
 
 ];
 
+function createStarField(){
+
+    const field = document.getElementById("starField");
+
+    field.innerHTML = "";
+
+    for(let i = 0; i < 100; i++){
+
+        const star = document.createElement("div");
+
+        star.className = "sky-star";
+
+        star.style.left = Math.random()*100 + "%";
+        star.style.top = Math.random()*100 + "%";
+
+        const size = 2 + Math.random()*3;
+
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+
+        star.style.animationDuration =
+            (2 + Math.random()*4) + "s";
+
+        field.appendChild(star);
+
+    }
+
+}
+
+function createConstellation(){
+
+    const area = document.getElementById("constellation");
+
+    area.innerHTML = "";
+
+    constellationPoints.forEach((point,index)=>{
+
+        const star = document.createElement("div");
+
+        star.className = "constellation-star";
+
+        star.style.left = point.x + "%";
+        star.style.top = point.y + "%";
+
+        area.appendChild(star);
+
+    });
+
+}
+
 /* =====================================
    COSTELLAZIONE
 ===================================== */
