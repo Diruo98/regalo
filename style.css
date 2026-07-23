@@ -522,47 +522,23 @@ button:active{
    FIAMMA
 ===================================== */
 
-.candle::before{
-
-    content:"";
+.flame{
 
     position:absolute;
+
+    top:-24px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    top:-16px;
+    font-size:20px;
 
-    width:14px;
+    pointer-events:none;
 
-    height:20px;
+    user-select:none;
 
-    border-radius:50% 50% 50% 50%;
-
-    background:radial-gradient(
-
-        circle,
-
-        #fff8b5 0%,
-
-        #ffd84d 40%,
-
-        #ff8c42 100%
-
-    );
-
-    animation:flicker .25s infinite alternate;
-
-    box-shadow:
-
-        0 0 12px rgba(255,210,80,.8);
-
-}
-
-.candle.off::before{
-
-    display:none;
+    animation:flicker .18s infinite alternate;
 
 }
 
@@ -672,13 +648,19 @@ button:active{
 
     from{
 
-        transform:translateX(-50%) scale(.95);
+        transform:
+        translateX(-50%)
+        rotate(-4deg)
+        scale(.95);
 
     }
 
     to{
 
-        transform:translateX(-50%) scale(1.08);
+        transform:
+        translateX(-50%)
+        rotate(4deg)
+        scale(1.08);
 
     }
 
