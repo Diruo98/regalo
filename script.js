@@ -261,7 +261,9 @@ function createConfetti(){
         "#ffd166",
         "#7ed957",
         "#5ec8ff",
-        "#c77dff"
+        "#c77dff",
+       "#ffffff",
+      "#fff5c3"
 
     ];
 
