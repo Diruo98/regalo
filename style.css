@@ -72,10 +72,6 @@ body{
    SFONDO
 ===================================== */
 
-/* =====================================
-   SFONDO
-===================================== */
-
 #hearts{
 
     position:fixed;
@@ -532,55 +528,118 @@ button:hover{
 
 }
 
-
 /* =====================================
    COSTELLAZIONE
 ===================================== */
 
-#constellationSky{
+#constellationPage{
+
+    background:
+    radial-gradient(circle at top,
+    #243b6b 0%,
+    #13254d 35%,
+    #08101f 100%);
+
+    overflow:hidden;
+
+}
+
+.sky{
 
     position:relative;
 
-    width:320px;
+    width:100%;
 
-    height:320px;
+    height:100vh;
 
-    margin:35px auto;
+    overflow:hidden;
 
 }
 
-.star{
+/* Stelle decorative */
+
+#starField{
 
     position:absolute;
 
-    font-size:22px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    user-select:none;
-
-   animation:starTwinkle 1.5s infinite alternate;
+    inset:0;
 
 }
 
-.star:hover{
+/* Stelle cliccabili */
 
-    transform:scale(1.25);
+#constellation{
+
+    position:absolute;
+
+    inset:0;
 
 }
+
+/* Linee */
+
+#constellationLines{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+}
+
+#constellationLines line{
+
+    stroke:white;
+
+    stroke-width:2;
+
+    opacity:.15;
+
+}
+
+/* Messaggio */
 
 #constellationMessage{
 
-    margin-top:25px;
+    position:absolute;
 
-    color:#d86b92;
+    left:50%;
 
-    font-weight:600;
+    bottom:60px;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    font-size:1.35rem;
+
+    font-weight:500;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:.5s;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.5);
+
+    max-width:700px;
+
+    padding:0 20px;
 
 }
 
+#constellationMessage.show{
+
+    opacity:1;
+
+}
 
 /* =====================================
    CUORE
