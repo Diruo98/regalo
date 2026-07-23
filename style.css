@@ -642,9 +642,9 @@ button:hover{
 
     position:absolute;
 
-    width:16px;
+    width:18px;
 
-    height:16px;
+    height:18px;
 
     border-radius:50%;
 
@@ -652,12 +652,13 @@ button:hover{
 
     cursor:pointer;
 
+    transition:.35s;
+
     box-shadow:
 
-        0 0 10px rgba(255,255,255,.8),
-        0 0 20px rgba(255,255,180,.6);
-
-    transition:.35s;
+        0 0 12px rgba(255,255,255,.9),
+        0 0 30px rgba(255,245,180,.7),
+        0 0 55px rgba(255,255,255,.45);
 
 }
 
