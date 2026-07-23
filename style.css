@@ -1367,3 +1367,26 @@ button:hover{
     }
 
 }
+
+@media(max-width:768px){
+
+    .moon{
+
+        width:55px;
+        height:55px;
+
+        right:25px;
+        top:35px;
+
+    }
+
+    .moon::after{
+
+        width:48px;
+        height:48px;
+
+        left:13px;
+
+    }
+
+}
