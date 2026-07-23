@@ -437,3 +437,192 @@ function createConstellation(){
 
 }
 
+/* =====================================
+   CUORE
+===================================== */
+
+function initHeart(){
+
+    heartProgress = 0;
+
+    heartFill.style.setProperty("--fill","0%");
+
+    heartPercent.textContent = "0%";
+
+    heartMessage.textContent = "Tocca il cuore ❤️";
+
+}
+
+heartFill.addEventListener("click",()=>{
+
+    if(heartProgress>=10) return;
+
+    heartProgress++;
+
+    const percentValue = heartProgress*10;
+
+    heartFill.style.setProperty("--fill",percentValue+"%");
+
+    heartPercent.textContent = percentValue+"%";
+
+    if(heartProgress===10){
+
+        heartMessage.textContent="Il mio cuore è completamente tuo ❤️";
+
+        setTimeout(()=>{
+
+            showPage(pages.letter);
+
+        },1200);
+
+    }
+
+});
+
+
+/* =====================================
+   LETTERA
+===================================== */
+
+const fullLetter=`
+
+QUI INCOLLERAI LA LETTERA
+
+`;
+
+letterHeart.addEventListener("click",()=>{
+
+    letterHeart.style.display="none";
+
+    envelope.classList.add("open");
+
+    setTimeout(()=>{
+
+        paper.classList.add("show");
+
+        typeLetter();
+
+    },800);
+
+});
+
+function typeLetter(){
+
+    let i=0;
+
+    letterText.textContent="";
+
+    const timer=setInterval(()=>{
+
+        letterText.textContent+=fullLetter.charAt(i);
+
+        i++;
+
+        if(i>=fullLetter.length){
+
+            clearInterval(timer);
+
+            letterPhoto.classList.remove("hidden");
+
+            continueFromLetter.classList.remove("hidden");
+
+        }
+
+    },28);
+
+}
+
+continueFromLetter.addEventListener("click",()=>{
+
+    showPage(pages.fingerprint);
+
+});
+
+
+/* =====================================
+   IMPRONTA
+===================================== */
+
+fingerprintButton.addEventListener("mousedown",startFingerprint);
+fingerprintButton.addEventListener("touchstart",startFingerprint);
+
+fingerprintButton.addEventListener("mouseup",stopFingerprint);
+fingerprintButton.addEventListener("mouseleave",stopFingerprint);
+fingerprintButton.addEventListener("touchend",stopFingerprint);
+
+function startFingerprint(){
+
+    fingerprintTimer=setTimeout(()=>{
+
+        showPage(pages.voice);
+
+    },1800);
+
+}
+
+function stopFingerprint(){
+
+    clearTimeout(fingerprintTimer);
+
+}
+
+
+/* =====================================
+   VOCALE
+===================================== */
+
+voicePlayer.addEventListener("ended",()=>{
+
+    showPage(pages.final);
+
+    showFinal();
+
+});
+
+
+/* =====================================
+   FINALE
+===================================== */
+
+const polaroid=document.getElementById("polaroid");
+
+const finalLove=document.getElementById("finalLove");
+
+const signature=document.getElementById("signature");
+
+function showFinal(){
+
+    polaroid.classList.remove("hidden");
+
+    setTimeout(()=>{
+
+        finalLove.classList.remove("hidden");
+
+    },1200);
+
+    setTimeout(()=>{
+
+        signature.classList.remove("hidden");
+
+    },2200);
+
+    setTimeout(()=>{
+
+        restart.classList.remove("hidden");
+
+    },4200);
+
+}
+
+
+/* =====================================
+   RICOMINCIA
+===================================== */
+
+restart.addEventListener("click",()=>{
+
+    location.reload();
+
+});
+
+
