@@ -6,7 +6,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Per Sofi 🤍</title>
 
@@ -16,6 +17,7 @@
 
 <body>
 
+
 <!-- =====================================
      SFONDO
 ===================================== -->
@@ -24,33 +26,41 @@
 
 <div id="confetti"></div>
 
+
 <!-- =====================================
      AUDIO
 ===================================== -->
 
 <audio id="bgMusic" loop>
 
-    <source src="musica.mp3" type="audio/mpeg">
+    <source
+    src="musica.mp3"
+    type="audio/mpeg">
 
 </audio>
 
-<audio id="voiceMessage">
+<audio id="voicePlayer">
 
-    <source src="vocale.mp3" type="audio/mpeg">
+    <source
+    src="vocale.mp3"
+    type="audio/mpeg">
 
 </audio>
+
 
 <!-- =====================================
      INTRO
 ===================================== -->
 
-<section id="introPage" class="page">
+<section
+id="introPage"
+class="page">
 
     <div class="intro-box">
 
         <h1>
 
-            Ciao Sofi...🤍
+            Ciao Sofi... 🤍
 
         </h1>
 
@@ -81,16 +91,20 @@
 
 </section>
 
-     <!-- =====================================
+
+<!-- =====================================
      HOME
 ===================================== -->
 
-<section id="home" class="page hidden">
+<section
+id="home"
+class="page hidden">
 
     <h1>
 
-        Sto preparando qualcosa
-        per te amore mio...
+        Sto preparando
+        qualcosa di speciale
+        per te...
 
     </h1>
 
@@ -106,19 +120,9 @@
 
     </p>
 
-     <div id="heartContainer">
-
-    <div id="heartFill"></div>
-
-    <p id="heartPercent">0%</p>
-
-    <p id="heartMessage">
-        Tocca il cuore...
-    </p>
-
-</div>
-
-    <button id="start" hidden>
+    <button
+    id="start"
+    hidden>
 
         INIZIA IL VIAGGIO ✨
 
@@ -126,11 +130,13 @@
 
 </section>
 
-<!-- =====================================
+     <!-- =====================================
      BIGLIETTO
 ===================================== -->
 
-<section id="ticket" class="page hidden">
+<section
+id="ticket"
+class="page hidden">
 
     <div class="ticket-card">
 
@@ -143,7 +149,8 @@
         <h2>
 
             Vuoi continuare
-            questo viaggio insieme ad Eddi?
+            questo viaggio
+            insieme ad Eddi?
 
         </h2>
 
@@ -167,24 +174,28 @@
 
 </section>
 
-     <!-- =====================================
+
+<!-- =====================================
      COMPLEANNO
 ===================================== -->
 
-<section id="birthday" class="page hidden">
+<section
+id="birthday"
+class="page hidden">
 
     <div class="birthday-box">
 
         <h1>
 
-            Buon Compleanno amore mio 🤍
+            Buon Compleanno
+            amore mio 🤍
 
         </h1>
 
         <p>
 
             Spegni tutte le candeline
-            cliccandoci sopra!
+            cliccandoci sopra.
 
         </p>
 
@@ -200,11 +211,14 @@
 
 </section>
 
+
 <!-- =====================================
      DESIDERIO
 ===================================== -->
 
-<section id="wishPage" class="page hidden">
+<section
+id="wishPage"
+class="page hidden">
 
     <div class="wish-card">
 
@@ -216,8 +230,9 @@
 
         <p>
 
-            Chiudi gli occhi
-            e scrivilo qui sotto...
+            Chiudi gli occhi,
+            pensa forte ad un desiderio
+            e scrivilo qui sotto.
 
         </p>
 
@@ -225,13 +240,12 @@
 
             id="wishInput"
 
-            placeholder="Scrivi il tuo desiderio..."
+            placeholder="Scrivi qui il tuo desiderio..."
 
         ></textarea>
 
-        <br><br>
-
-        <button id="sendWish">
+        <button
+        id="sendWish">
 
             Affidalo alle stelle ⭐
 
@@ -245,80 +259,58 @@
      STELLA DEL DESIDERIO
 ===================================== -->
 
-<section id="starPage" class="page hidden">
+<section
+id="starPage"
+class="page hidden">
 
-    <h1>
+    <div class="star-card">
 
-        Il tuo desiderio
-        sta volando nel cielo...
+        <h1>
 
-    </h1>
+            Il tuo desiderio
+            sta volando nel cielo...
 
-    <div id="wishStar">
+        </h1>
 
-        ⭐
+        <div id="wishStar">
+
+            ⭐
+
+        </div>
 
     </div>
 
 </section>
+
 
 <!-- =====================================
      COSTELLAZIONE
 ===================================== -->
 
-<section id="constellationPage" class="page hidden">
+<section
+id="constellationPage"
+class="page hidden">
 
-    <h1>
+    <div class="constellation-card">
 
-        🌌 Trova la tua stella
+        <h1>
 
-    </h1>
+            🌌 Trova la tua stella
 
-    <p>
+        </h1>
 
-        Ogni desiderio trova una stella.<br>
-        Tocca quella che senti più tua. ✨
+        <p>
 
-    </p>
+            Ogni desiderio trova una stella.<br>
+            Tocca quella che senti più tua.
 
-    <div id="constellationSky"></div>
+        </p>
 
-    <div id="constellationMessage" class="hidden">
+        <div id="constellationSky"></div>
 
-        ✨<br><br>
-
-        Qualunque stella tu scelga...<br>
-
-        per me sarà sempre la più bella. ❤️
-
-    </div>
-
-</section>
-
-     <!-- =====================================
-     CUORE
-===================================== -->
-
-<section id="heartPage" class="page hidden">
-
-    <h1>
-
-        Riempi il cuore di Eddi
-        come hai fatto nella vita ❤️
-
-    </h1>
-
-    <p>
-
-        Continua a cliccare...
-
-    </p>
-
-    <div id="heartFill">
-
-        <div id="heartPercent">
-
-            0%
+        <div
+        id="constellationMessage"
+        class="hidden">
 
         </div>
 
@@ -326,135 +318,184 @@
 
 </section>
 
+
 <!-- =====================================
+     CUORE
+===================================== -->
+
+<section
+id="heartPage"
+class="page hidden">
+
+    <div class="heart-card">
+
+        <h1>
+
+            ❤️
+
+        </h1>
+
+        <h2>
+
+            Riempi il mio cuore
+
+        </h2>
+
+        <p>
+
+            Ogni tocco
+            mi rende
+            più felice.
+
+        </p>
+
+        <div id="heartFill">
+
+            <div id="heartPercent">
+
+                0%
+
+            </div>
+
+        </div>
+
+        <p id="heartMessage">
+
+            Tocca il cuore... 🤍
+
+        </p>
+
+    </div>
+
+</section>
+
+     <!-- =====================================
      LETTERA
 ===================================== -->
 
-<section id="letterPage" class="page hidden">
+<section
+id="letterPage"
+class="page hidden">
 
-    <div class="letter-container">
+    <div class="letter-card">
 
         <div id="envelope">
 
-            <div class="flap"></div>
+            <div class="envelope-front"></div>
 
-            <div class="heart-seal">
-
-                🤍
-
-            </div>
+            <div class="envelope-flap"></div>
 
         </div>
 
         <div id="paper">
 
-            <h2>
-
-                Per te amore mio 🤍
-
-            </h2>
-
             <div id="letterText"></div>
 
-            <div class="polaroid">
+            <!-- POLAROID -->
+
+            <div
+            id="letterPhoto"
+            class="hidden">
 
                 <img
-                src="foto.jpg"
+                src="polaroid.jpg"
                 alt="Noi">
 
             </div>
 
-            <button
-            id="continueFromLetter"
-            class="hidden">
-
-                Continua 🤍
-
-            </button>
-
         </div>
+
+        <button
+        id="continueFromLetter"
+        class="hidden">
+
+            Continua 🤍
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     IMPRONTA
+===================================== -->
+
+<section
+id="fingerprintPage"
+class="page hidden">
+
+    <div class="finger-card">
+
+        <h1>
+
+            Un ultimo piccolo gesto...
+
+        </h1>
+
+        <p>
+
+            Tieni premuta la mia impronta
+            per sbloccare
+            l'ultimo ricordo. ❤️
+
+        </p>
+
+        <img
+
+        id="fingerprint"
+
+        src="fingerprint.png"
+
+        alt="Impronta">
+
+        <p
+        id="fingerprintText"
+        class="hidden">
+
+            ❤️ Sbloccato ❤️
+
+        </p>
 
     </div>
 
 </section>
 
      <!-- =====================================
-     IMPRONTA
+     VOCALE
 ===================================== -->
 
-<section id="fingerprintPage" class="page hidden">
-
-    <div class="fingerprint-card">
-
-        <h1>
-
-            🤍
-
-        </h1>
-
-        <h2>
-
-            Manca un'ultima sorpresa...
-
-        </h2>
-
-        <p>
-
-            Appoggia il tuo dito
-            sull'impronta
-            per sbloccarla.
-
-        </p>
-
-        <div id="fingerprint">
-
-            <img
-            src="fingerprint.png"
-            alt="Impronta">
-
-        </div>
-
-        <p
-        id="fingerprintText"
-        class="hidden">
-
-            Sbloccato 🔓🤍
-
-        </p>
-
-    </div>
-
-</section>
-
-<!-- =====================================
-     MESSAGGIO VOCALE
-===================================== -->
-
-<section id="voicePage" class="page hidden">
+<section
+id="voicePage"
+class="page hidden">
 
     <div class="voice-card">
 
         <h1>
 
-            🎙️
+            ❤️
 
         </h1>
 
         <h2>
 
-            Hai sbloccato
-            un messaggio vocale.
+            Ho ancora una cosa
+            da dirti...
 
         </h2>
 
         <p>
 
-            Ascoltalo quando ti sentirai pronta. 🤍
+            Premi Play
+            e ascoltami fino alla fine. 🎙️
 
         </p>
 
         <audio
+
         id="voicePlayer"
+
         controls>
 
             <source
@@ -463,50 +504,66 @@
 
         </audio>
 
-        <button
-        id="continueAfterVoice"
-        class="hidden">
-
-            Continua ❤️
-
-        </button>
-
     </div>
 
 </section>
+
 
 <!-- =====================================
      FINALE
 ===================================== -->
 
-<section id="finalPage" class="page hidden">
+<section
+id="finalPage"
+class="page hidden">
 
     <div class="final-card">
 
-        <div class="final-polaroid">
+        <!-- POLAROID -->
 
-            <img
-            src="foto.jpg"
-            alt="Noi">
+        <img
 
-        </div>
+        id="polaroid"
 
-        <h1 id="finalLove">
+        class="hidden"
 
-            Ti amo. ❤️
+        src="polaroid.jpg"
+
+        alt="Noi">
+
+
+        <!-- TI AMO -->
+
+        <h1
+
+        id="finalLove"
+
+        class="hidden">
+
+            Ti amo ❤️
 
         </h1>
 
-        <div id="signature">
 
-            <img
-            src="firma.png"
-            alt="Firma">
+        <!-- FIRMA -->
 
-        </div>
+        <img
+
+        id="signature"
+
+        class="hidden"
+
+        src="firma.png"
+
+        alt="Firma">
+
+
+        <!-- RICOMINCIA -->
 
         <button
+
         id="restart"
+
         class="hidden">
 
             Rivivi il viaggio 🤍
@@ -517,21 +574,9 @@
 
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-
-emailjs.init({
-
-    publicKey:"wSOh24DBQMubSgC8-"
-
-});
-
-</script>
 
 <script src="script.js"></script>
 
 </body>
 
 </html>
-
