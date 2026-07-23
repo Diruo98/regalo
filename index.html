@@ -6,7 +6,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 <title>Per Sofi 🤍</title>
@@ -32,11 +33,19 @@ href="style.css">
 ========================== -->
 
 <audio id="bgMusic" loop>
-    <source src="musica.mp3" type="audio/mpeg">
+
+    <source
+    src="musica.mp3"
+    type="audio/mpeg">
+
 </audio>
 
 <audio id="voiceMessage">
-    <source src="vocale.mp3" type="audio/mpeg">
+
+    <source
+    src="vocale.mp3"
+    type="audio/mpeg">
+
 </audio>
 
 <!-- ==========================
@@ -47,29 +56,39 @@ href="style.css">
 id="introPage"
 class="page">
 
-<h1>
+    <div class="intro-box">
 
-Ciao Sofi! 🤍
-Ho preparato una piccola sorpresa
-per te 🤍
+        <h1>
 
-</h1>
+            Ciao Sofi 🤍
 
-<p>
+        </h1>
 
-Quando sarai pronta, metti le cuffie o alza il volume e clicca qui sotto...
+        <p>
 
-</p>
+            Ho preparato un piccolo viaggio.
 
-<button id="playButton">
+            <br><br>
 
-Sono pronta! 🤍
+            Non è un semplice regalo...
 
-</button>
+            <br><br>
+
+            È qualcosa che ho creato pensando soltanto a te.
+
+        </p>
+
+        <button id="playButton">
+
+            Sono pronta 🤍
+
+        </button>
+
+    </div>
 
 </section>
 
-<!-- ==========================
+     <!-- ==========================
      HOME
 ========================== -->
 
@@ -77,36 +96,40 @@ Sono pronta! 🤍
 id="home"
 class="page hidden">
 
-<h1>
+    <div class="loading-box">
 
-Sto preparando qualcosa
-per te amore mio...
+        <h1>
 
-</h1>
+            Sto preparando qualcosa
+            di speciale...
 
-<div class="loading">
+        </h1>
 
-<div id="bar"></div>
+        <div class="loading">
 
-</div>
+            <div id="bar"></div>
 
-<p id="percent">
+        </div>
 
-0%
+        <p id="percent">
 
-</p>
+            0%
 
-<button
-id="start"
-hidden>
+        </p>
 
-INIZIA IL VIAGGIO ✨
+        <button
+        id="start"
+        hidden>
 
-</button>
+            Inizia il viaggio ✨
+
+        </button>
+
+    </div>
 
 </section>
 
-    <!-- ==========================
+<!-- ==========================
      BIGLIETTO
 ========================== -->
 
@@ -114,38 +137,39 @@ INIZIA IL VIAGGIO ✨
 id="ticket"
 class="page hidden">
 
-<div class="ticket-card">
+    <div class="ticket-card">
 
-<h1>
+        <h1>
 
-💌
+            💌
 
-</h1>
+        </h1>
 
-<h2>
+        <h2>
 
-Vuoi continuare
-questo viaggio insieme ad Eddi?
+            Vuoi continuare
+            questo viaggio
+            insieme ad Eddi?
 
-</h2>
+        </h2>
 
-<div>
+        <div class="ticket-buttons">
 
-<button id="yes">
+            <button id="yes">
 
-Sì ❤️
+                Sì ❤️
 
-</button>
+            </button>
 
-<button id="no">
+            <button id="no">
 
-No 😜
+                No 😜
 
-</button>
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
@@ -157,33 +181,37 @@ No 😜
 id="birthday"
 class="page hidden">
 
-<div class="birthday-box">
+    <div class="birthday-box">
 
-<h1>
+        <h1>
 
-Buon Compleanno amore mio 🤍
+            Buon Compleanno
+            amore mio 🤍
 
-</h1>
+        </h1>
 
-<p>
+        <p>
 
-Spegni tutte le candeline cliccandoci sopra!
+            Spegni tutte
+            le candeline!
 
-</p>
+        </p>
 
-<div id="candles"></div>
+        <div id="candles">
 
-<p id="counter">
+        </div>
 
-Candeline rimaste: 19  
+        <p id="counter">
 
-</p>
+            Candeline rimaste: 19
 
-</div>
+        </p>
+
+    </div>
 
 </section>
 
-<!-- ==========================
+     <!-- ==========================
      DESIDERIO
 ========================== -->
 
@@ -191,38 +219,35 @@ Candeline rimaste: 19
 id="wishPage"
 class="page hidden">
 
-<div class="wish-card">
+    <div class="wish-card">
 
-<h1>
+        <h1>
 
-Esprimi un desiderio Sofi! ✨
+            Esprimi un desiderio ✨
 
-</h1>
+        </h1>
 
-<p>
+        <p>
 
-Chiudi gli occhi
-e scrivilo qui nella casella...
+            Chiudi gli occhi per un istante...
+            <br><br>
+            Scrivilo qui sotto e affidalo alle stelle.
 
-</p>
+        </p>
 
-<textarea
+        <textarea
+        id="wishInput"
+        placeholder="Scrivi il tuo desiderio..."></textarea>
 
-id="wishInput"
+        <br><br>
 
-placeholder="Scrivi il tuo desiderio..."
+        <button id="sendWish">
 
-></textarea>
+            Affidalo alle stelle ⭐
 
-<br><br>
+        </button>
 
-<button id="sendWish">
-
-Affidalo alle stelle! ⭐
-
-</button>
-
-</div>
+    </div>
 
 </section>
 
@@ -234,50 +259,22 @@ Affidalo alle stelle! ⭐
 id="starPage"
 class="page hidden">
 
-<h1>
+    <div class="star-box">
 
-Il tuo desiderio
-sta volando nel cielo...
+        <h1>
 
-</h1>
+            Il tuo desiderio
+            sta volando nel cielo...
 
-<div id="wishStar">
+        </h1>
 
-⭐
+        <div id="wishStar">
 
-</div>
+            ⭐
 
-</section>
+        </div>
 
-<!-- ==========================
-     CUORE
-========================== -->
-
-<section
-id="heartPage"
-class="page hidden">
-
-<h1>
-
-Riempi il cuore di Eddi come hai fatto nella vita
-
-</h1>
-
-<p>
-
-Continua a cliccare...🤍
-
-</p>
-
-<div id="heartFill">
-
-<div id="heartPercent">
-
-0%
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -289,30 +286,89 @@ Continua a cliccare...🤍
 id="constellationPage"
 class="page hidden">
 
-<h1>
+    <div class="constellation-box">
 
-🌌 Trova la tua stella
+        <h1>
 
-</h1>
+            🌌 Trova la tua stella
 
-<p>
+        </h1>
 
-Ogni desiderio trova una stella.<br>
-Tocca quella che senti più tua. ✨
+        <p>
 
-</p>
+            Ogni desiderio trova una stella.
 
-<div id="constellationSky"></div>
+            <br><br>
 
-     <div id="constellationMessage" class="hidden">
+            Tocca quella che senti più tua.
 
-    ✨<br><br>
+        </p>
 
-    Qualunque stella tu scelga...<br>
+        <div id="constellationSky">
 
-    per me sarà sempre la più bella. ❤️
+        </div>
 
-</div>
+        <div
+        id="constellationMessage"
+        class="hidden">
+
+            <h2>
+
+                ✨
+
+            </h2>
+
+            <p>
+
+                Qualunque stella tu scelga...
+
+                <br><br>
+
+                per me sarà sempre
+                la più bella. ❤️
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+     <!-- ==========================
+     CUORE
+========================== -->
+
+<section
+id="heartPage"
+class="page hidden">
+
+    <div class="heart-box">
+
+        <h1>
+
+            Riempi il cuore di Eddi
+            come hai fatto nella realtà. 🤍
+
+        </h1>
+
+        <p>
+
+            Continua a cliccare fino a quando non arriva al 100%...
+
+        </p>
+
+        <div id="heartFill">
+
+            <div id="heartPercent">
+
+                0%
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -324,47 +380,95 @@ Tocca quella che senti più tua. ✨
 id="letterPage"
 class="page hidden">
 
-<div class="letter-container">
+    <div class="letter-container">
 
-<div id="envelope">
+        <div id="envelope">
 
-<div class="flap"></div>
+            <div class="flap"></div>
 
-<div class="heart-seal">
+            <div class="heart-seal">
 
-🤍
+                🤍
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div id="paper">
+        <div id="paper">
 
-<h2>
+            <h2>
 
-Per te amore mio🤍
+                Per te amore mio 🤍
 
-</h2>
+            </h2>
 
-<div id="letterText"></div>
+            <div id="letterText"></div>
 
-<div class="polaroid">
+            <div class="polaroid">
 
-<img
+                <img
+                src="foto.jpg"
+                alt="La nostra foto">
 
-src="foto.jpg"
+            </div>
 
-alt="La nostra foto"
+            <button
+            id="continueFromLetter"
+            class="hidden">
 
->
+                Continua 🤍
 
-</div>
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
+
+     <!-- ==========================
+     IMPRONTA
+========================== -->
+
+<section
+id="fingerprintPage"
+class="page hidden">
+
+    <div class="finger-box">
+
+        <h1>
+
+            Prima di ascoltare
+            la mia voce...
+
+        </h1>
+
+        <p>
+
+            Lasciami la tua impronta. 🤍
+
+        </p>
+
+        <div id="fingerArea">
+
+            <div id="fingerprint">
+
+                🖐🏻
+
+            </div>
+
+        </div>
+
+        <p id="fingerText">
+
+            Tieni premuto per un secondo
+
+        </p>
+
+    </div>
+
+</section>
+
 <!-- ==========================
      FINALE
 ========================== -->
@@ -373,39 +477,57 @@ alt="La nostra foto"
 id="finalPage"
 class="page hidden">
 
-<h1>
+    <div class="final-box">
 
-✨
+        <h1>
 
-</h1>
+            ✨
 
-<h2>
+        </h1>
 
-Il regalo più bello
-sei tu.
+        <h2>
 
-</h2>
+            Il regalo più bello
+            sei tu.
 
-<p>
+        </h2>
 
-Grazie per aver fatto
-questo viaggio con me. 🤍
+        <p>
 
-</p>
+            Grazie per aver fatto
+            questo viaggio con me.
 
-<button id="restart">
+            <br><br>
 
-Rivivi il viaggio 🤍
+            Ti voglio bene,
+            Sofi. 🤍
 
-</button>
+        </p>
+
+        <button id="restart">
+
+            Rivivi il viaggio 🤍
+
+        </button>
+
+    </div>
 
 </section>
+
+<!-- ==========================
+     EMAILJS
+========================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
+
 emailjs.init({
-    publicKey: "wSOh24DBQMubSgC8-"
+
+    publicKey:"wSOh24DBQMubSgC8-"
+
 });
+
 </script>
 
 <script src="script.js"></script>
@@ -413,4 +535,3 @@ emailjs.init({
 </body>
 
 </html>
-
