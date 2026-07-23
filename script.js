@@ -260,23 +260,36 @@ function createConfetti(){
 
     area.innerHTML = "";
 
-    for(let i=0;i<120;i++){
+    const colors = [
+
+        "#ff5f98",
+        "#ff8fb8",
+        "#ffd166",
+        "#7ed957",
+        "#5ec8ff",
+        "#c77dff"
+
+    ];
+
+    for(let i=0;i<180;i++){
 
         const confetto = document.createElement("div");
 
         confetto.className = "confetto";
 
-        confetto.textContent = "🎉";
-
         confetto.style.left = Math.random()*100 + "vw";
 
-        confetto.style.top = "-40px";
+        confetto.style.background =
+            colors[Math.floor(Math.random()*colors.length)];
 
-        confetto.style.fontSize =
-            (18 + Math.random()*12) + "px";
+        confetto.style.animationDuration =
+            (2.5 + Math.random()*2) + "s";
 
-        confetto.style.animation =
-            `fall ${2 + Math.random()*2}s linear forwards`;
+        confetto.style.animationDelay =
+            (Math.random()*0.8) + "s";
+
+        confetto.style.transform =
+            `rotate(${Math.random()*360}deg)`;
 
         area.appendChild(confetto);
 
@@ -284,12 +297,11 @@ function createConfetti(){
 
             confetto.remove();
 
-        },4000);
+        },5000);
 
     }
 
 }
-
 /* =====================================
    DESIDERIO
 ===================================== */
