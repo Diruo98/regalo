@@ -153,12 +153,6 @@ startButton.addEventListener("click", () => {
    BIGLIETTO
 ===================================== */
 
-yesButton.addEventListener("click", () => {
-
-    showPage(pages.birthday);
-
-});
-
 noButton.addEventListener("mouseenter", () => {
 
     noButton.style.position = "absolute";
@@ -282,11 +276,8 @@ function createConfetti(){
         confetto.style.background =
             colors[Math.floor(Math.random()*colors.length)];
 
-        confetto.style.animationDuration =
-            (2.5 + Math.random()*2) + "s";
-
-        confetto.style.animationDelay =
-            (Math.random()*0.8) + "s";
+        confetto.style.animation =
+    `fall ${2.5 + Math.random()*2}s linear forwards`;
 
         confetto.style.transform =
             `rotate(${Math.random()*360}deg)`;
