@@ -397,7 +397,7 @@ function animateStar(){
 
         showPage(pages.constellation);
 
-        createConstellation();
+        startConstellation();
 
     },2500);
 
