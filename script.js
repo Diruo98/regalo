@@ -408,40 +408,19 @@ function animateStar(){
    COSTELLAZIONE
 ===================================== */
 
-const constellationDesktop = [
-
-    {x:17,y:24},
-    {x:30,y:17},
-    {x:43,y:30},
-    {x:57,y:23},
-    {x:71,y:37},
-    {x:83,y:27},
-    {x:72,y:57},
-    {x:52,y:70},
-    {x:31,y:59},
-    {x:18,y:42}
-
-];
-
-const constellationMobile = [
-
-    {x:8,y:18},
-    {x:25,y:8},
-    {x:44,y:24},
-    {x:60,y:12},
-    {x:80,y:28},
-    {x:94,y:15},
-    {x:82,y:58},
-    {x:55,y:82},
-    {x:24,y:60},
-    {x:8,y:36}
+const constellationPoints = [  
+   {x:17,y:24}, 
+   {x:30,y:17}, 
+   {x:43,y:30}, 
+   {x:57,y:23},  
+   {x:71,y:37}, 
+   {x:83,y:27},  
+   {x:72,y:57}, 
+   {x:52,y:70}, 
+   {x:31,y:59}, 
+   {x:18,y:42}  
 
 ];
-
-const constellationPoints =
-window.innerWidth <= 768
-    ? constellationMobile
-    : constellationDesktop;
 
 const constellationMessages = [
 
