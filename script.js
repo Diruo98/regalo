@@ -269,7 +269,7 @@ function createConfetti(){
 
     ];
 
-    for(let i=0;i<600;i++){
+    for(let i=0;i<800;i++){
 
         const confetto = document.createElement("div");
 
@@ -408,7 +408,7 @@ function animateStar(){
    COSTELLAZIONE
 ===================================== */
 
-const constellationPoints = [
+const constellationDesktop = [
 
     {x:17,y:24},
     {x:30,y:17},
@@ -422,6 +422,26 @@ const constellationPoints = [
     {x:18,y:42}
 
 ];
+
+const constellationMobile = [
+
+    {x:8,y:18},
+    {x:25,y:8},
+    {x:44,y:24},
+    {x:60,y:12},
+    {x:80,y:28},
+    {x:94,y:15},
+    {x:82,y:58},
+    {x:55,y:82},
+    {x:24,y:60},
+    {x:8,y:36}
+
+];
+
+const constellationPoints =
+window.innerWidth <= 768
+    ? constellationMobile
+    : constellationDesktop;
 
 const constellationMessages = [
 
