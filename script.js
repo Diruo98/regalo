@@ -531,101 +531,84 @@ function startConstellation(){
     createStarField();
     createConstellation();
 
-   clearInterval(shootingStarInterval);
+    clearInterval(shootingStarInterval);
 
-shootingStarInterval = setInterval(()=>{
+    shootingStarInterval = setInterval(()=>{
 
-    createShootingStar();
+        createShootingStar();
 
-},7000);
+    },7000);
 
-    const stars =
-        document.querySelectorAll(".constellation-star");
+    const stars = document.querySelectorAll(".constellation-star");
+    const message = document.getElementById("constellationMessage");
+    const path = document.getElementById("constellationPath");
 
-    const message =
-        document.getElementById("constellationMessage");
-
-    const path =
-        document.getElementById("constellationPath");
-
-    message.textContent = "Tocca la prima stella in alto a sinistra e poi tutte le altre in successione 🤍 ✨";
-    message.classList.add("show");
+    message.innerHTML =
+    "Tocca la prima stella in alto a sinistra e poi tutte le altre in successione 🤍✨";
 
     path.style.opacity = ".18";
 
-   const newStars = [];
-
-stars.forEach(star=>{
-
-    const clone = star.cloneNode(true);
-
-    star.replaceWith(clone);
-
-    newStars.push(clone);
-
-});
-
-   newStars.forEach((star,index)=>{
-
-        star.addEventListener("click",()=>{
-
-            if(index!==constellationIndex) return;
-
-            star.classList.add("active");
-
-            message.textContent =
-            constellationMessages[index];
-
-            constellationIndex++;
-
-            /* illumina sempre di più la costellazione */
-
-            path.style.opacity =
-                0.18 + constellationIndex*0.07;
-
-           if(constellationIndex===stars.length){
-
     stars.forEach(star=>{
 
-        star.classList.add("finish");
+        star.classList.remove("active");
+        star.classList.remove("finish");
 
     });
 
-    setTimeout(()=>{
+    stars.forEach((star,index)=>{
 
-        message.innerHTML=
-        "<h2>✨ Ti amo infinitamente Sofi 🤍 ✨</h2><br>Ogni stella del cielo mi porterà sempre da te 🤍";
+        star.onclick = ()=>{
 
-    },1000);
+            if(index !== constellationIndex) return;
 
-    setTimeout(()=>{
+            star.classList.add("active");
 
-        document
-        .getElementById("constellation")
-        .classList.add("transform");
+            if(constellationMessages[index]){
 
-    },3500);
+                message.textContent =
+                constellationMessages[index];
 
-    setTimeout(()=>{
+            }
 
-        showPage(pages.heart);
+            constellationIndex++;
 
-        initHeart();
+            path.style.opacity =
+            0.18 + constellationIndex*0.07;
 
-        document
-        .getElementById("constellation")
-        .classList.remove("transform");
+            if(constellationIndex===stars.length){
 
-        stars.forEach(star=>{
+                stars.forEach(s=>s.classList.add("finish"));
 
-            star.classList.remove("finish");
+                setTimeout(()=>{
 
-        });
+                    message.innerHTML=
+                    "<h2>✨ Ti amo infinitamente Sofi 🤍 ✨</h2><br>Ogni stella del cielo mi porterà sempre da te 🤍";
 
-    },5200);
+                },900);
 
-}
-           });
+                setTimeout(()=>{
+
+                    document
+                    .getElementById("constellation")
+                    .classList.add("transform");
+
+                },3200);
+
+                setTimeout(()=>{
+
+                    showPage(pages.heart);
+
+                    initHeart();
+
+                    document
+                    .getElementById("constellation")
+                    .classList.remove("transform");
+
+                },5000);
+
+            }
+
+        };
 
     });
 
