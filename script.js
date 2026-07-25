@@ -24,7 +24,7 @@ const voicePlayer = document.getElementById("voicePlayer");
 
 const playButton = document.getElementById("playButton");
 const startButton = document.getElementById("start");
-
+let emojiInterval;
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 
