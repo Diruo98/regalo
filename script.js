@@ -575,6 +575,7 @@ function startConstellation(){
 
     createStarField();
     createConstellation();
+   createSegments();
 
     clearInterval(shootingStarInterval);
 
@@ -585,15 +586,15 @@ function startConstellation(){
     },7000);
 
     const stars = document.querySelectorAll(".constellation-star");
-    const message = document.getElementById("constellationMessage");
-    const path = document.getElementById("constellationPath");
+const segments = document.querySelectorAll(".constellation-segment");
+const message = document.getElementById("constellationMessage");
 
     message.innerHTML =
     "Tocca la prima stella in alto a sinistra e poi tutte le altre in successione 🤍✨";
 
    message.classList.add("show");
 
-    path.style.opacity = ".18";
+    
 
     stars.forEach(star=>{
 
@@ -619,8 +620,12 @@ function startConstellation(){
 
             constellationIndex++;
 
-            path.style.opacity =
-            0.18 + constellationIndex*0.07;
+          if(segments[index]){
+
+    segments[index].style.transform =
+        segments[index].style.transform.replace("scaleX(0)","scaleX(1)");
+
+}
 
             if(constellationIndex===stars.length){
 
