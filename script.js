@@ -620,6 +620,8 @@ const message = document.getElementById("constellationMessage");
 
    segments[index].style.opacity = "1";
 
+          }
+
             if(constellationIndex===stars.length){
 
                 stars.forEach(s=>s.classList.add("finish"));
