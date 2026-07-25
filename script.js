@@ -525,46 +525,6 @@ function createConstellation(){
 
 }
 
-function createConstellationSvg(){
-
-    const svg = document.getElementById("constellationSvg");
-
-    svg.innerHTML = "";
-
-    for(let i=0;i<constellationPoints.length-1;i++){
-
-        const p1 = constellationPoints[i];
-        const p2 = constellationPoints[i+1];
-
-        const line =
-            document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "line"
-            );
-
-        line.setAttribute("x1",p1.x*10);
-        line.setAttribute("y1",p1.y*10);
-
-        line.setAttribute("x2",p2.x*10);
-        line.setAttribute("y2",p2.y*10);
-
-        line.setAttribute("stroke","#fff7d0");
-        line.setAttribute("stroke-width","3");
-        line.setAttribute("stroke-linecap","round");
-
-        line.style.opacity="0";
-
-        line.style.transition=
-            "opacity .6s ease";
-
-        line.classList.add("constellation-line");
-
-        svg.appendChild(line);
-
-    }
-
-}
-
 function startConstellation(){
 
     constellationIndex = 0;
@@ -582,7 +542,6 @@ function startConstellation(){
     },7000);
 
     const stars = document.querySelectorAll(".constellation-star");
-const segments = document.querySelectorAll(".constellation-line");
 const message = document.getElementById("constellationMessage");
 
     message.innerHTML =
@@ -615,12 +574,6 @@ const message = document.getElementById("constellationMessage");
             }
 
             constellationIndex++;
-
-          if(segments[index]){
-
-   segments[index].style.opacity = "1";
-
-          }
 
             if(constellationIndex===stars.length){
 
