@@ -449,6 +449,45 @@ const constellationMessages = [
 
 let constellationIndex = 0;
 
+function createEmojiRain(){
+
+    const emojis = [
+        "🤍",
+        "✨",
+        "🌸",
+        "💫",
+        "⭐",
+        "🦁",
+        "♾️", 
+        "😍"
+    ];
+
+    const emoji = document.createElement("div");
+
+    emoji.className = "falling-emoji";
+
+    emoji.textContent =
+        emojis[Math.floor(Math.random()*emojis.length)];
+
+    emoji.style.left =
+        Math.random()*100+"vw";
+
+    emoji.style.fontSize =
+        (18+Math.random()*16)+"px";
+
+    emoji.style.animationDuration =
+        (10+Math.random()*8)+"s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(()=>{
+
+        emoji.remove();
+
+    },18000);
+
+}
+
 function createStarField(){
 
     const field = document.getElementById("starField");
