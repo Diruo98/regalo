@@ -702,6 +702,73 @@ button:hover{
 
 }
 
+Hai ragione 😄, mi sono espresso male.
+
+Non intendevo una classe chiamata "constellation".
+
+Intendevo semplicemente in style.css, nella zona dove hai già le regole della costellazione, ad esempio vicino a:
+
+#constellation{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:90vmin;
+    height:90vmin;
+
+    transform:translate(-50%,-50%);
+
+}
+
+oppure subito dopo:
+
+.constellation-star{
+...
+}
+
+Puoi aggiungere le nuove regole subito sotto. Ad esempio:
+
+.constellation-star{
+    ...
+}
+
+/* NUOVO */
+#constellationLines{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.constellation-segment{
+
+    position:absolute;
+
+    height:3px;
+
+    background:#fff8d6;
+
+    border-radius:999px;
+
+    transform-origin:left center;
+
+    transform:scaleX(0);
+
+    opacity:.9;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.8),
+        0 0 18px rgba(255,245,180,.65);
+
+    transition:transform .7s ease;
+
+}
+
 
 
 /* NUOVO */
