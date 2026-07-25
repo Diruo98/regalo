@@ -702,6 +702,76 @@ button:hover{
 
 }
 
+
+
+/* NUOVO */
+
+#constellationLines{
+
+
+
+    position:absolute;
+
+
+
+    inset:0;
+
+
+
+    pointer-events:none;
+
+
+
+}
+
+
+
+.constellation-segment{
+
+
+
+    position:absolute;
+
+
+
+    height:3px;
+
+
+
+    background:#fff8d6;
+
+
+
+    border-radius:999px;
+
+
+
+    transform-origin:left center;
+
+
+
+    transform:scaleX(0);
+
+
+
+    opacity:.9;
+
+
+
+    box-shadow:
+
+        0 0 8px rgba(255,255,255,.8),
+
+        0 0 18px rgba(255,245,180,.65);
+
+
+
+    transition:transform .7s ease;
+
+
+
+}
+
 .constellation-star:hover{
 
     transform:
