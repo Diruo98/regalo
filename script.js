@@ -525,6 +525,50 @@ function createConstellation(){
 
 }
 
+function createSegments(){
+
+    const container =
+        document.getElementById("constellationLines");
+
+    container.innerHTML = "";
+
+    for(let i=0;i<constellationPoints.length-1;i++){
+
+        const p1 = constellationPoints[i];
+        const p2 = constellationPoints[i+1];
+
+        const segment =
+            document.createElement("div");
+
+        segment.className =
+            "constellation-segment";
+
+        const dx = p2.x-p1.x;
+        const dy = p2.y-p1.y;
+
+        const length =
+            Math.sqrt(dx*dx+dy*dy);
+
+        const angle =
+            Math.atan2(dy,dx)*180/Math.PI;
+
+        segment.style.left = p1.x+"%";
+        segment.style.top  = p1.y+"%";
+
+        segment.style.width =
+            length+"%";
+
+        segment.style.transform =
+            "rotate("+angle+"deg) scaleX(0)";
+
+        segment.dataset.index=i;
+
+        container.appendChild(segment);
+
+    }
+
+}
+
 function startConstellation(){
 
     constellationIndex = 0;
