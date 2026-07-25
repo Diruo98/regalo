@@ -408,17 +408,18 @@ function animateStar(){
    COSTELLAZIONE
 ===================================== */
 
-const constellationPoints = [  
-   {x:17,y:24}, 
-   {x:30,y:17}, 
-   {x:43,y:30}, 
-   {x:57,y:23},  
-   {x:71,y:37}, 
-   {x:83,y:27},  
-   {x:72,y:57}, 
-   {x:52,y:70}, 
-   {x:31,y:59}, 
-   {x:18,y:42}  
+const constellationPoints = [
+
+    {x:17,y:24},
+    {x:30,y:17},
+    {x:43,y:30},
+    {x:57,y:23},
+    {x:71,y:37},
+    {x:83,y:27},
+    {x:72,y:57},
+    {x:52,y:70},
+    {x:31,y:59},
+    {x:18,y:42}
 
 ];
 
@@ -432,7 +433,7 @@ const constellationMessages = [
 
     "Ogni tuo sorriso illumina più del cielo intero 🥹",
 
-    "Con te ogni istante diventa un ricordo bellissimo come i fantastici 5 giorni insieme 😍 ",
+    "Con te ogni istante diventa un ricordo bellissimo come i fantastici 5 giorni insieme 😍",
 
     "Se dovessi ricominciare da capo, sceglierei sempre e soltanto te Sofi 🤍",
 
@@ -545,6 +546,8 @@ function startConstellation(){
 
     message.innerHTML =
     "Tocca la prima stella in alto a sinistra e poi tutte le altre in successione 🤍✨";
+
+   message.classList.add("show");
 
     path.style.opacity = ".18";
 
