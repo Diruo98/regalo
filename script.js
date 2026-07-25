@@ -331,7 +331,7 @@ sendWish.addEventListener("click", () => {
 
             {
 
-                message: wish
+                wish: wish
 
             }
 
