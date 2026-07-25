@@ -548,7 +548,7 @@ shootingStarInterval = setInterval(()=>{
     const path =
         document.getElementById("constellationPath");
 
-    message.textContent = "Tocca la prima stella e poi tutte le altre in successione ✨";
+    message.textContent = "Tocca la prima stella in alto a sinistra e poi tutte le altre in successione 🤍 ✨";
     message.classList.add("show");
 
     path.style.opacity = ".18";
