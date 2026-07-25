@@ -531,7 +531,7 @@ function startConstellation(){
 
     createStarField();
     createConstellation();
-  createConstellationSvg();
+ 
 
     clearInterval(shootingStarInterval);
 
