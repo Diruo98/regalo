@@ -98,6 +98,8 @@ playButton.addEventListener("click", () => {
 
     bgMusic.play().catch(() => {});
 
+    startEmojiRain();
+
     showPage(pages.loading);
 
     startLoading();
