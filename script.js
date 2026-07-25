@@ -525,45 +525,41 @@ function createConstellation(){
 
 }
 
-function createSegments(){
+function createConstellationSvg(){
 
-    const container =
-        document.getElementById("constellationLines");
+    const svg = document.getElementById("constellationSvg");
 
-    container.innerHTML = "";
+    svg.innerHTML = "";
 
     for(let i=0;i<constellationPoints.length-1;i++){
 
         const p1 = constellationPoints[i];
         const p2 = constellationPoints[i+1];
 
-        const segment =
-            document.createElement("div");
+        const line =
+            document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "line"
+            );
 
-        segment.className =
-            "constellation-segment";
+        line.setAttribute("x1",p1.x*10);
+        line.setAttribute("y1",p1.y*10);
 
-        const dx = p2.x-p1.x;
-        const dy = p2.y-p1.y;
+        line.setAttribute("x2",p2.x*10);
+        line.setAttribute("y2",p2.y*10);
 
-        const length =
-            Math.sqrt(dx*dx+dy*dy);
+        line.setAttribute("stroke","#fff7d0");
+        line.setAttribute("stroke-width","3");
+        line.setAttribute("stroke-linecap","round");
 
-        const angle =
-            Math.atan2(dy,dx)*180/Math.PI;
+        line.style.opacity="0";
 
-        segment.style.left = p1.x+"%";
-        segment.style.top  = p1.y+"%";
+        line.style.transition=
+            "opacity .6s ease";
 
-        segment.style.width =
-            length+"%";
+        line.classList.add("constellation-line");
 
-        segment.style.transform =
-            "rotate("+angle+"deg) scaleX(0)";
-
-        segment.dataset.index=i;
-
-        container.appendChild(segment);
+        svg.appendChild(line);
 
     }
 
@@ -575,7 +571,7 @@ function startConstellation(){
 
     createStarField();
     createConstellation();
-   createSegments();
+  createConstellationSvg();
 
     clearInterval(shootingStarInterval);
 
@@ -586,7 +582,7 @@ function startConstellation(){
     },7000);
 
     const stars = document.querySelectorAll(".constellation-star");
-const segments = document.querySelectorAll(".constellation-segment");
+const segments = document.querySelectorAll(".constellation-line");
 const message = document.getElementById("constellationMessage");
 
     message.innerHTML =
@@ -622,10 +618,7 @@ const message = document.getElementById("constellationMessage");
 
           if(segments[index]){
 
-    segments[index].style.transform =
-        segments[index].style.transform.replace("scaleX(0)","scaleX(1)");
-
-}
+   segments[index].style.opacity = "1";
 
             if(constellationIndex===stars.length){
 
