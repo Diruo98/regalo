@@ -1676,3 +1676,59 @@ button:hover{
     }
 
 }
+
+.falling-emoji{
+
+    position:absolute;
+
+    top:-60px;
+
+    font-size:22px;
+
+    opacity:.18;
+
+    pointer-events:none;
+
+    animation:fallEmoji linear forwards;
+
+}
+
+@keyframes fallEmoji{
+
+    0%{
+
+        transform:
+        translateY(-40px)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.25;
+
+    }
+
+    50%{
+
+        transform:
+        translateY(45vh)
+        translateX(18px)
+        rotate(8deg);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(110vh)
+        translateX(-18px)
+        rotate(-8deg);
+
+        opacity:0;
+
+    }
+
+}
