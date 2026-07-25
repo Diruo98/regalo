@@ -811,16 +811,22 @@ button:hover{
 
 .constellation-star.active{
 
-    background:white;
-
     transform:
         translate(-50%,-50%)
         scale(1.35);
 
+    background:#fffef8;
+
     box-shadow:
-        0 0 12px white,
-        0 0 28px #fff8b5,
-        0 0 55px #fff2a6;
+
+        0 0 18px #fff,
+
+        0 0 45px #fff9c4,
+
+        0 0 90px rgba(255,255,255,.95);
+
+    animation:
+        pulseStar 1.6s ease-in-out infinite;
 
 }
 
