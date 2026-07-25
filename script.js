@@ -503,20 +503,20 @@ function createShootingStar(){
 
 function createConstellation(){
 
-    const container=document.getElementById("constellation");
+    const container = document.getElementById("constellation");
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
     constellationPoints.forEach((point,index)=>{
 
-        const star=document.createElement("div");
+        const star = document.createElement("div");
 
-        star.className="constellation-star";
+        star.className = "constellation-star";
 
-        star.style.left=point.x+"%";
-        star.style.top=point.y+"%";
+        star.style.left = point.x + "%";
+        star.style.top  = point.y + "%";
 
-        star.dataset.index=index;
+        star.dataset.index = index;
 
         container.appendChild(star);
 
@@ -553,7 +553,19 @@ shootingStarInterval = setInterval(()=>{
 
     path.style.opacity = ".18";
 
-    stars.forEach((star,index)=>{
+   const newStars = [];
+
+stars.forEach(star=>{
+
+    const clone = star.cloneNode(true);
+
+    star.replaceWith(clone);
+
+    newStars.push(clone);
+
+});
+
+   newStars.forEach((star,index)=>{
 
         star.addEventListener("click",()=>{
 
