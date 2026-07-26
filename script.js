@@ -412,49 +412,45 @@ function animateStar(){
 
 const constellationPoints = [
 
-   {x:20,y:20},
+    {x:66, y:16},
 
-   {x:33,y:15},
+    {x:48, y:15},
 
-   {x:47,y:27},
+    {x:30, y:26},
 
-   {x:60,y:20},
+    {x:48, y:38},
 
-   {x:74,y:33},
+    {x:60, y:48},
 
-   {x:84,y:24},
+    {x:49, y:58},
 
-   {x:73,y:54},
+    {x:31, y:69},
 
-   {x:53,y:67},
+    {x:49, y:78},
 
-   {x:33,y:57},
-
-   {x:20,y:40}
+    {x:67, y:77}
 
 ];
 
 const constellationMessages = [
 
-    "Da quando sei entrata nella mia vita, ogni giorno ha una luce diversa ⭐️",
+"Ho sempre pensato che il cielo custodisse qualcosa di speciale.",
 
-    "Ci sono miliardi di stelle... ma io continuo a scegliere i tuoi meravigliosi occhi 🤍",
+"Poi ho iniziato a guardarlo con occhi diversi.",
 
-    "Sei il posto in cui il mio cuore si sente finalmente a casa 🏠",
+"Ogni stella sembrava raccontare un ricordo",
 
-    "Ogni tuo sorriso illumina più del cielo intero 🥹",
+"Ogni luce mi riportava un sorriso",
 
-    "Con te ogni istante diventa un ricordo bellissimo come i fantastici 5 giorni insieme 😍",
+"Finché ho capito che non era una costellazione qualunque.",
 
-    "Se dovessi ricominciare da capo, sceglierei sempre e soltanto te Sofi 🤍",
+"C'era un disegno nascosto tra le stelle",
 
-    "Il mio desiderio più bello sei sempre tu 🫀",
+"Un nome che il cielo sembrava voler scrivere",
 
-    "Ogni battito del mio cuore parla di te 💖",
+"E quel nome eri tu",
 
-    "Ogni stella racconta un motivo per cui ti amo 🤍",
-
-    "E il motivo più grande... sei semplicemente tu! ❤️"
+"La costellazione più bella avrà sempre una sola iniziale: S 🤍"
 
 ];
 
