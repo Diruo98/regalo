@@ -670,46 +670,42 @@ const message = document.getElementById("constellationMessage");
 
             if(constellationIndex===stars.length){
 
-                stars.forEach(s=>s.classList.add("finish"));
+    stars.forEach(s=>s.classList.add("finish"));
 
-               constellation.classList.add("constellation-complete");
+    constellation.classList.add("constellation-complete");
 
-                setTimeout(()=>{
+    setTimeout(()=>{
 
-                   message.innerHTML = `
-<div class="constellation-final">
-    <div class="big-s">S</div>
-    <div class="final-text">
-        Il cielo aveva già scritto il tuo nome...<br>
-        <span>Sofia 🤍</span>
-    </div>
-</div>`;
+        message.innerHTML = `
+        <div class="constellation-final">
+            <div class="big-s">S</div>
+            <div class="final-text">
+                Il cielo aveva già scritto il tuo nome...<br>
+                <span>Sofia 🤍</span>
+            </div>
+        </div>`;
 
-                setTimeout(()=>{
+    },900);
 
-                    document
-                    .getElementById("constellation")
-                    .classList.add("transform");
+    setTimeout(()=>{
 
-                },3200);
+        document
+        .getElementById("constellation")
+        .classList.add("transform");
 
-                setTimeout(()=>{
+    },3200);
 
-                    showPage(pages.heart);
+    setTimeout(()=>{
 
-                    initHeart();
+        showPage(pages.heart);
 
-                    document
-                    .getElementById("constellation")
-                    .classList.remove("transform");
+        initHeart();
 
-                },5000);
+        document
+        .getElementById("constellation")
+        .classList.remove("transform");
 
-            }
-
-        };
-
-    });
+    },5000);
 
 }
 
