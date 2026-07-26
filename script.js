@@ -490,6 +490,16 @@ function createEmojiRain(){
 
 }
 
+function hideEmojis(){
+
+    document.querySelectorAll(".falling-emoji").forEach(emoji=>{
+
+        emoji.remove();
+
+    });
+
+}
+
 function createStarField(){
 
     const field = document.getElementById("starField");
@@ -570,7 +580,8 @@ function startConstellation(){
 
     constellationIndex = 0;
 
-
+       hideEmojis();
+   
     createStarField();
     createConstellation();
  
