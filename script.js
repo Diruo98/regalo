@@ -446,9 +446,9 @@ const constellationMessages = [
 
 "Poi sei arrivata tu.",
 
-"Da quel momento ogni stella ha iniziato a brillare in modo diverso.",
+"Da quel momento ogni stella ha iniziato a brillare in modo diverso...",
 
-"Ogni luce mi ricordava un tuo sorriso.",
+"Ogni luce mi ricordava i tuoi bellissimi occhi.",
 
 "Ogni desiderio mi riportava sempre da te.",
 
@@ -638,7 +638,7 @@ function startConstellation(){
 const message = document.getElementById("constellationMessage");
 
     message.innerHTML =
-    "Tocca la prima stella in alto a sinistra e poi tutte le altre in successione 🤍✨";
+    "Tocca la prima stella in alto a destra e poi segui la forma fino in basso per leggere la storia...🤍✨";
 
    message.classList.add("show");
 
