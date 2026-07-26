@@ -676,10 +676,14 @@ const message = document.getElementById("constellationMessage");
 
                 setTimeout(()=>{
 
-                    message.innerHTML=
-                    "<h2>✨ Ti amo infinitamente Sofi 🤍 ✨</h2><br>Ogni stella del cielo mi porterà sempre da te 🤍";
-
-                },900);
+                   message.innerHTML = `
+<div class="constellation-final">
+    <div class="big-s">S</div>
+    <div class="final-text">
+        Il cielo aveva già scritto il tuo nome...<br>
+        <span>Sofia 🤍</span>
+    </div>
+</div>`;
 
                 setTimeout(()=>{
 
