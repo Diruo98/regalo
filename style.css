@@ -1725,3 +1725,48 @@ button:hover{
     }
 
 }
+
+/* =====================================
+   BAGLIORE FINALE COSTELLAZIONE
+===================================== */
+
+.constellation-complete .constellation-star{
+
+    animation:finalGlow 1.4s ease-in-out;
+
+}
+
+@keyframes finalGlow{
+
+    0%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        box-shadow:
+            0 0 12px #fff,
+            0 0 25px #fff5b8;
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.45);
+
+        box-shadow:
+            0 0 25px #fff,
+            0 0 60px #ffe66d,
+            0 0 90px #fff;
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        box-shadow:
+            0 0 12px #fff,
+            0 0 25px #fff5b8;
+
+    }
+
+}
