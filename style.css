@@ -67,6 +67,20 @@ body{
 
 }
 
+/* ==========================
+   PAGINE NOTTURNE
+========================== */
+
+.night-page{
+
+    background:
+    radial-gradient(circle at top,
+    #243b6b 0%,
+    #162b57 35%,
+    #08101f 100%);
+
+}
+
 
 /* =====================================
    SFONDO
@@ -1592,8 +1606,6 @@ button:hover{
         overflow:hidden;
 
     }
-
-   @media (max-width:768px){
 
     .sky{
 
