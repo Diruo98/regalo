@@ -451,6 +451,9 @@ const constellationMessages = [
 
 let constellationIndex = 0;
 
+// Variabile globale
+let emojiRainInterval;
+
 function createEmojiRain(){
 
     const emojis = [
@@ -487,6 +490,24 @@ function createEmojiRain(){
         emoji.remove();
 
     },18000);
+
+}
+
+function startEmojiRain(){
+
+    if(emojiRainInterval) return;
+
+    emojiRainInterval = setInterval(createEmojiRain,1200);
+
+}
+
+function stopEmojiRain(){
+
+    clearInterval(emojiRainInterval);
+
+    emojiRainInterval = null;
+
+    document.querySelectorAll(".falling-emoji").forEach(e=>e.remove());
 
 }
 
@@ -666,6 +687,12 @@ const message = document.getElementById("constellationMessage");
     });
 
 }
+
+window.addEventListener("load", () => {
+
+    startEmojiRain();
+
+});
 
 /* =====================================
    CUORE
