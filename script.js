@@ -658,6 +658,8 @@ const message = document.getElementById("constellationMessage");
 
                 stars.forEach(s=>s.classList.add("finish"));
 
+               constellation.classList.add("constellation-complete");
+
                 setTimeout(()=>{
 
                     message.innerHTML=
