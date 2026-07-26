@@ -709,6 +709,12 @@ const message = document.getElementById("constellationMessage");
 
 }
 
+              };
+
+    });
+
+}
+
 window.addEventListener("load", () => {
 
     startEmojiRain();
