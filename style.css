@@ -666,13 +666,13 @@ button:hover{
 
 #constellation{
 
+    width:min(92vw,92vh);
+    height:min(92vw,92vh);
+
     position:absolute;
 
     left:50%;
     top:50%;
-
-    width:90vmin;
-    height:90vmin;
 
     transform:translate(-50%,-50%);
 
