@@ -1669,11 +1669,15 @@ button:hover{
 
     top:-60px;
 
-    z-index:2;
+    left:0;
 
     pointer-events:none;
 
+    z-index:2;
+
     opacity:.22;
+
+    will-change:transform;
 
     animation:emojiFall linear forwards;
 
