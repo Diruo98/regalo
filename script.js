@@ -442,23 +442,29 @@ const constellationPoints = [
 
 const constellationMessages = [
 
-"Ho sempre pensato che il cielo custodisse qualcosa di speciale.",
+"Ho sempre pensato che il cielo custodisse qualcosa di speciale...",
 
-"Poi ho iniziato a guardarlo con occhi diversi.",
+"Poi sei arrivata tu.",
 
-"Ogni stella sembrava raccontare un ricordo",
+"Da quel momento ogni stella ha iniziato a brillare in modo diverso.",
 
-"Ogni luce mi riportava un sorriso",
+"Ogni luce mi ricordava un tuo sorriso.",
 
-"Finché ho capito che non era una costellazione qualunque.",
+"Ogni desiderio mi riportava sempre da te.",
 
-"C'era un disegno nascosto tra le stelle",
+"Continuavo a guardare il cielo...",
 
-"Un nome che il cielo sembrava voler scrivere",
+"...finché ho iniziato a vedere un disegno nascosto.",
 
-"E quel nome eri tu",
+"Una forma che sembrava conoscermi.",
 
-"La costellazione più bella avrà sempre una sola iniziale: S 🤍"
+"Più univo le stelle...",
+
+"...più diventava evidente.",
+
+"Non era una costellazione qualunque.",
+
+"Era la tua iniziale..."
 
 ];
 
