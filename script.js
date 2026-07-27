@@ -433,9 +433,9 @@ const constellationPoints = [
     {x:45,y:73},
 
     // Curva finale verso sinistra
-    {x:37,y:79},
-    {x:30,y:84},
-    {x:40,y:88}
+    {x:37,y:70},
+    {x:30,y:70},
+    {x:40,y:68}
 
 ];
 
