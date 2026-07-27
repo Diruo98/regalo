@@ -430,7 +430,7 @@ const constellationPoints = [
     // Curva inferiore
     {x:60,y:56},
     {x:52,y:62},
-    {x:43,y:67},
+    {x:55,y:59},
 
     // Chiusura verso sinistra
     {x:30,y:73},
