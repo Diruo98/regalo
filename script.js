@@ -433,9 +433,9 @@ const constellationPoints = [
     {x:43,y:67},
 
     // Chiusura verso sinistra
-    {x:35,y:73},
-    {x:42,y:79},
-    {x:54,y:81}
+    {x:30,y:73},
+    {x:24,y:82},
+    {x:38,y:92}
 
 ];
 
