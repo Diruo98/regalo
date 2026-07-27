@@ -682,8 +682,8 @@ button:hover{
 
     position:absolute;
 
-    width:16px;
-    height:16px;
+    width:12px;
+    height:12px;
 
     border-radius:50%;
 
@@ -701,6 +701,34 @@ button:hover{
     box-shadow:
         0 0 8px rgba(255,255,255,.9),
         0 0 18px rgba(255,244,180,.65);
+
+}
+
+.constellation-star.medium{
+
+    width:15px;
+    height:15px;
+
+}
+
+.constellation-star.big{
+
+    width:18px;
+    height:18px;
+
+}
+
+.constellation-star.last{
+
+    width:22px;
+    height:22px;
+
+    background:#fff9d6;
+
+    box-shadow:
+        0 0 20px #fff,
+        0 0 40px #ffe066,
+        0 0 70px #ffd43b;
 
 }
 
