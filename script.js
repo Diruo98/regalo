@@ -600,6 +600,21 @@ function createConstellation(){
 
         star.className = "constellation-star";
 
+       const bigStars = [0,3,6,9,12];
+const mediumStars = [1,4,7,10];
+
+if(bigStars.includes(index)){
+    star.classList.add("big");
+}
+
+if(mediumStars.includes(index)){
+    star.classList.add("medium");
+}
+
+if(index === constellationPoints.length-1){
+    star.classList.add("last");
+}
+
         star.style.left = point.x + "%";
         star.style.top  = point.y + "%";
 
