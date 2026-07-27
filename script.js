@@ -412,26 +412,26 @@ function animateStar(){
 
 const constellationPoints = [
 
-    {x:60,y:17},
+    // curva superiore
+    {x:66,y:12},
+    {x:54,y:14},
+    {x:42,y:18},
+    {x:32,y:26},
 
-    {x:46,y:19},
+    // centro alto
+    {x:40,y:36},
+    {x:54,y:44},
+    {x:66,y:50},
 
-    {x:32,y:25},
+    // centro basso
+    {x:58,y:60},
+    {x:46,y:68},
+    {x:34,y:76},
 
-    {x:24,y:35},
-
-    {x:34,y:43},
-
-    {x:48,y:50},
-
-    {x:62,y:57},
-
-    {x:52,y:64},
-{x:40,y:71},
-{x:28,y:78},
-{x:36,y:86},
-{x:50,y:90},
-{x:42,y:96}
+    // curva finale
+    {x:42,y:86},
+    {x:56,y:90},
+    {x:68,y:84}
 
 ];
 
