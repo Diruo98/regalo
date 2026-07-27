@@ -687,13 +687,19 @@ const message = document.getElementById("constellationMessage");
     setTimeout(()=>{
 
         message.innerHTML = `
-        <div class="constellation-final">
-            <div class="big-s">S</div>
-            <div class="final-text">
-                Il cielo aveva già scritto il tuo nome...<br>
-                <span>Sofia 🤍</span>
-            </div>
-        </div>`;
+<div class="constellation-final">
+
+    <div class="final-text">
+
+        La costellazione più bella<br>
+        aveva già un nome.
+
+        <span>Sofia 🤍</span>
+
+    </div>
+
+</div>
+`;
 
     },900);
 
