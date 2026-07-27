@@ -412,26 +412,30 @@ function animateStar(){
 
 const constellationPoints = [
 
-    // curva superiore
-    {x:66,y:12},
-    {x:54,y:14},
-    {x:42,y:18},
-    {x:32,y:26},
+    // Curva superiore
+    {x:63,y:22},
+    {x:56,y:19},
+    {x:48,y:18},
+    {x:40,y:20},
+    {x:34,y:25},
 
-    // centro alto
-    {x:40,y:36},
+    // Discesa sinistra
+    {x:36,y:33},
+    {x:44,y:39},
+
+    // Centro
     {x:54,y:44},
-    {x:66,y:50},
+    {x:63,y:48},
 
-    // centro basso
-    {x:58,y:60},
-    {x:46,y:68},
-    {x:34,y:76},
+    // Curva inferiore
+    {x:60,y:56},
+    {x:52,y:62},
+    {x:43,y:67},
 
-    // curva finale
-    {x:42,y:86},
-    {x:56,y:90},
-    {x:68,y:84}
+    // Chiusura verso sinistra
+    {x:35,y:73},
+    {x:42,y:79},
+    {x:54,y:81}
 
 ];
 
@@ -600,8 +604,8 @@ function createConstellation(){
 
         star.className = "constellation-star";
 
-       const bigStars = [0,3,6,9,12];
-const mediumStars = [1,4,7,10];
+ const bigStars = [0,4,8,11,14];
+const mediumStars = [2,6,10,13];
 
 if(bigStars.includes(index)){
     star.classList.add("big");
