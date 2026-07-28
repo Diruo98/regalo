@@ -1846,3 +1846,50 @@ button:hover{
     letter-spacing:3px;
 
 }
+
+/* ESPLOSIONE CUORI */
+
+.heart-burst{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+    z-index:30;
+
+    animation:heartBurst 1.8s ease-out forwards;
+
+}
+
+@keyframes heartBurst{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.5);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(360deg)
+            scale(1.5);
+
+    }
+
+}
