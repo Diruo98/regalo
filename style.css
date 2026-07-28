@@ -1266,19 +1266,25 @@ button:hover{
 
 }
 
-.heart-seal{
+.seal{
 
-    position:absolute;
+    width:58px;
+    height:58px;
 
-    inset:0;
+    border-radius:50%;
+
+    background:#c93b4f;
+
+    color:white;
 
     display:flex;
-
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
+    font-size:22px;
 
-    font-size:2rem;
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.25);
 
 }
 
