@@ -373,27 +373,45 @@ class="page hidden">
      LETTERA
 ===================================== -->
 
-<section
-id="letterPage"
-class="page hidden">
+<section id="letterPage" class="page hidden">
 
-    <div class="letter-container">
+    <div id="letterScene">
 
-        <!-- CUORE -->
+        <!-- BUSTA -->
 
-        <div id="letterHeart">
+        <div id="envelope">
 
-            🤍
+            <div class="envelope-body"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="seal">
+                🤍
+            </div>
 
         </div>
 
-        <p id="letterHint">
+        <!-- LETTERA -->
 
-            Tocca il cuore
-            per aprire la lettera
+        <div id="letterPaper">
 
-        </p>
+            <div id="letterContent"></div>
 
+        </div>
+
+        <!-- CONTINUA -->
+
+        <button
+            id="continueFromLetter"
+            class="hidden">
+
+            Continua →
+
+        </button>
+
+    </div>
+
+</section>
         <!-- BUSTA -->
 
 <div id="letterScene">
