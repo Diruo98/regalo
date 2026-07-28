@@ -1,6 +1,6 @@
-/*======================================
-RESET
-======================================*/
+/* =====================================
+   RESET
+===================================== */
 
 *{
 
@@ -12,61 +12,40 @@ RESET
 
 }
 
-html{
-
-    scroll-behavior:smooth;
-
-}
-
 body{
 
-    width:100%;
+    font-family:
+    "Poppins",
+    sans-serif;
 
-    min-height:100dvh;
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #fff6fb,
+
+            #ffeaf3
+
+        );
+
+    color:#555;
 
     overflow:hidden;
 
-    font-family:'Poppins',sans-serif;
-
-    background:#020817;
-
-    color:#fff;
-
 }
 
 
-/*======================================
-VARIABILI
-======================================*/
-
-:root{
-
-    --bg:#020817;
-
-    --white:#ffffff;
-
-    --gold:#ffe8a5;
-
-    --pink:#ff8fab;
-
-    --transition:.45s;
-
-}
-
-
-/*======================================
-PAGINE
-======================================*/
+/* =====================================
+   PAGINE
+===================================== */
 
 .page{
 
-    position:fixed;
+    position:absolute;
 
     inset:0;
-
-    width:100%;
-
-    height:100dvh;
 
     display:flex;
 
@@ -74,90 +53,924 @@ PAGINE
 
     align-items:center;
 
-    overflow:hidden;
+    flex-direction:column;
 
-    background:var(--bg);
+    padding:30px;
+
+    text-align:center;
 
 }
 
 .hidden{
 
-    display:none!important;
+    display:none;
 
 }
 
-/*======================================
-SFONDO
-======================================*/
+/* ==========================
+   PAGINE NOTTURNE
+========================== */
 
-.sky{
+.night-page{
+
+    background:
+    radial-gradient(circle at top,
+    #243b6b 0%,
+    #162b57 35%,
+    #08101f 100%);
+
+}
+
+
+/* =====================================
+   SFONDO
+===================================== */
+
+#hearts{
 
     position:fixed;
 
     inset:0;
 
-    width:100%;
+    overflow:hidden;
 
-    height:100dvh;
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+#confetti{
+
+    position:fixed;
+
+    inset:0;
 
     overflow:hidden;
 
-    background:
-        radial-gradient(circle at top,#13233d 0%,#020817 70%);
+    pointer-events:none;
+
+    z-index:9999;
 
 }
 
+/* =====================================
+   CORIANDOLI
+===================================== */
 
-/*======================================
-STELLE
-======================================*/
-
-.star{
+.confetto{
 
     position:absolute;
 
-    width:2px;
+    top:-20px;
 
-    height:2px;
+    width:8px;
+
+    height:18px;
+
+    border-radius:2px;
+
+    pointer-events:none;
+
+    will-change:transform;
+
+}
+
+
+/* =====================================
+   CARD
+===================================== */
+
+.intro-card,
+.loading-card,
+.ticket-card,
+.birthday-card,
+.wish-card,
+.star-card,
+.constellation-card,
+.heart-card,
+.letter-container,
+.fingerprint-card,
+.voice-card,
+.final-card{
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:30px;
+
+    padding:42px;
+
+    width:430px;
+
+    max-width:92%;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.18),
+        0 10px 25px rgba(255,170,200,.18);
+
+}
+
+/* =====================================
+   TITOLI
+===================================== */
+
+h1{
+
+    color:#d86b92;
+
+    font-size:2.2rem;
+
+    margin-bottom:18px;
+
+}
+
+h2{
+
+    color:#d86b92;
+
+    margin-bottom:18px;
+
+}
+
+p{
+
+    line-height:1.8;
+
+    margin-bottom:22px;
+
+}
+
+
+/* =====================================
+   BOTTONI
+===================================== */
+
+button{
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #ff8fb8,
+
+            #ff6fa5
+
+        );
+
+    color:white;
+
+    border:none;
+
+    border-radius:30px;
+
+    padding:
+
+        14px 30px;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:
+
+        translateY(-2px)
+
+        scale(1.04);
+
+    box-shadow:
+
+        0 12px 25px
+
+        rgba(255,120,170,.30);
+
+}
+
+/* =====================================
+   INTRO
+===================================== */
+
+.intro-card{
+
+    animation:fadeUp .8s;
+
+}
+
+.intro-card p{
+
+    font-size:1.05rem;
+
+}
+
+
+/* =====================================
+   LOADING
+===================================== */
+
+.loading{
+
+    width:100%;
+
+    height:18px;
+
+    background:#ffe3ef;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin:28px 0 18px;
+
+}
+
+#bar{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:30px;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #ff7dac,
+
+            #ffb3cf
+
+        );
+
+    transition:.25s;
+
+}
+
+#percent{
+
+    font-size:1.2rem;
+
+    font-weight:600;
+
+    color:#d86b92;
+
+}
+
+
+/* =====================================
+   BIGLIETTO
+===================================== */
+
+.ticket-card h1{
+
+    font-size:3rem;
+
+    margin-bottom:15px;
+
+}
+
+.ticket-card h2{
+
+    line-height:1.6;
+
+    margin-bottom:35px;
+
+}
+
+.ticket-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.ticket-buttons button{
+
+    min-width:120px;
+
+}
+
+/* =====================================
+   COMPLEANNO
+===================================== */
+
+#candles{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin:35px 0;
+
+}
+
+.candle{
+
+    width:24px;
+
+    height:90px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    background:repeating-linear-gradient(
+
+        45deg,
+
+        #ff8fb8 0px,
+
+        #ff8fb8 8px,
+
+        #ffd4e6 8px,
+
+        #ffd4e6 16px
+
+    );
+
+    box-shadow:
+
+        0 5px 12px rgba(255,170,200,.35);
+
+}
+
+
+/* =====================================
+   FIAMMA
+===================================== */
+
+.flame{
+
+    position:absolute;
+
+    top:-24px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:20px;
+
+    pointer-events:auto;
+
+    user-select:none;
+
+    animation:flicker .18s infinite alternate;
+
+}
+
+
+/* =====================================
+   FUMO
+===================================== */
+
+.candle.off::after{
+
+    content:"â˜";
+
+    position:absolute;
+
+    top:-22px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:16px;
+
+    opacity:.65;
+
+    animation:smoke 1.4s forwards;
+
+}
+
+#counter{
+
+    font-weight:600;
+
+    color:#d86b92;
+
+}
+
+
+/* =====================================
+   DESIDERIO
+===================================== */
+
+#wishInput{
+
+    width:100%;
+
+    min-height:170px;
+
+    resize:none;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:2px solid #ffd2e5;
+
+    outline:none;
+
+    font-size:1rem;
+
+    font-family:inherit;
+
+    margin:25px 0;
+
+    transition:.25s;
+
+}
+
+#wishInput:focus{
+
+    border-color:#ff8fb8;
+
+    box-shadow:
+
+        0 0 12px rgba(255,150,190,.25);
+
+}
+
+/* =====================================
+   STELLA
+===================================== */
+
+#wishStar{
+
+    font-size:60px;
+
+    margin-top:40px;
+
+    animation:starFloat 2s ease-in-out infinite;
+
+}
+
+/* =====================================
+   COSTELLAZIONE
+===================================== */
+
+#constellationPage{
+
+    background:
+    radial-gradient(circle at top,
+    #243b6b 0%,
+    #162b57 35%,
+    #08101f 100%);
+
+    overflow:hidden;
+
+}
+
+.sky{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100dvh;
+
+    overflow:hidden;
+
+}
+
+/* =====================================
+   TRASFORMAZIONE
+===================================== */
+
+.constellation-star.finish{
+
+    transform:scale(1.9);
+
+    filter:
+
+        drop-shadow(0 0 12px white)
+
+        drop-shadow(0 0 24px #ffd6f0);
+
+    transition:1.2s;
+
+}
+
+#constellation{
+
+    transition:1.5s;
+
+}
+
+#constellation.transform{
+
+    transform:
+        translateY(-45px)
+        scale(1.05);
+
+    transition:
+        transform 1.4s ease;
+
+}
+
+/* =====================================
+   LUNA
+===================================== */
+
+.moon{
+
+    position:absolute;
+
+    top:50px;
+
+    right:60px;
+
+    width:80px;
+
+    height:80px;
 
     border-radius:50%;
 
-    background:#fff;
+    background:#fff9dc;
 
-    opacity:.75;
+    box-shadow:
+        0 0 25px rgba(255,255,220,.7),
+        0 0 60px rgba(255,255,220,.35);
 
-    animation:twinkle 3s ease-in-out infinite;
-
-}
-
-.star.small{
-
-    width:2px;
-
-    height:2px;
+    z-index:2;
 
 }
 
-.star.medium{
+.moon::after{
 
-    width:3px;
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:#162b57;
+
+    left:18px;
+
+    top:2px;
+
+}
+
+/* Stelle decorative */
+
+#starField{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.sky-star{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.3;
+
+    animation:twinkle linear infinite;
+
+}
+
+/* Costellazione */
+
+#constellation{
+
+    width:min(92vw,92vh);
+    height:min(92vw,92vh);
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+}
+
+.constellation-star{
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#fff6c7;
+
+    cursor:pointer;
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        transform .35s,
+        box-shadow .35s,
+        background .35s;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.9),
+        0 0 18px rgba(255,244,180,.65);
+
+}
+
+.constellation-star.medium{
+
+    width:15px;
+    height:15px;
+
+}
+
+.constellation-star.big{
+
+    width:18px;
+    height:18px;
+
+}
+
+.constellation-star.last{
+
+    width:22px;
+    height:22px;
+
+    background:#fff9d6;
+
+    box-shadow:
+        0 0 20px #fff,
+        0 0 40px #ffe066,
+        0 0 70px #ffd43b;
+
+}
+
+
+#constellation{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:90vmin;
+    height:90vmin;
+
+    transform:translate(-50%,-50%);
+
+}
+
+
+#constellationSvg{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+}
+
+
+/* NUOVO */
+
+#constellationLines{
+
+
+
+    position:absolute;
+
+
+
+    inset:0;
+
+
+
+    pointer-events:none;
+
+
+
+}
+
+
+
+.constellation-segment{
+
+
+
+    position:absolute;
+
+
 
     height:3px;
 
+
+
+    background:#fff8d6;
+
+
+
+    border-radius:999px;
+
+
+
+    transform-origin:left center;
+
+
+
+    transform:scaleX(0);
+
+
+
+    opacity:.9;
+
+
+
+    box-shadow:
+
+        0 0 8px rgba(255,255,255,.8),
+
+        0 0 18px rgba(255,245,180,.65);
+
+
+
+    transition:transform .7s ease;
+
+
+
 }
 
-.star.big{
+.constellation-star:hover{
 
-    width:4px;
-
-    height:4px;
+    transform:
+        translate(-50%,-50%)
+        scale(1.18);
 
 }
 
+.constellation-star.active{
 
-/*======================================
-ANIMAZIONE STELLE
-======================================*/
+    transform:
+        translate(-50%,-50%)
+        scale(1.35);
+
+    background:#fffef8;
+
+    box-shadow:
+
+        0 0 18px #fff,
+
+        0 0 45px #fff9c4,
+
+        0 0 90px rgba(255,255,255,.95);
+
+    animation:
+        pulseStar 1.6s ease-in-out infinite;
+
+}
+
+/* Linee */
+
+#constellationSvg{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+}
+
+#constellationPath{
+
+    fill:none;
+
+    stroke:#fff8d6;
+
+    stroke-width:3;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    opacity:.12;
+
+    filter:drop-shadow(0 0 8px rgba(255,255,255,.6));
+
+    transition:opacity .4s;
+
+}
+
+/* Testo */
+
+#constellationMessage{
+
+    position:absolute;
+
+    bottom:70px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    text-align:center;
+
+    max-width:700px;
+
+    width:90%;
+
+    font-size:1.3rem;
+
+    line-height:1.8;
+
+    font-weight:500;
+
+    text-shadow:
+
+        0 0 10px rgba(255,255,255,.5);
+
+    opacity:0;
+
+    transition:.6s;
+
+}
+
+#constellationMessage.show{
+
+    opacity:1;
+
+}
+
+/* =====================================
+   TRANSIZIONE COSTELLAZIONE
+===================================== */
+
+.sky.fadeOut{
+
+    animation:skyFade .9s forwards;
+
+}
+
+@keyframes skyFade{
+
+    from{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:scale(1.08);
+
+    }
+
+}
+
+/* =====================================
+   ANIMAZIONI
+===================================== */
 
 @keyframes twinkle{
 
@@ -173,7 +986,7 @@ ANIMAZIONE STELLE
 
         opacity:1;
 
-        transform:scale(1.3);
+        transform:scale(1.35);
 
     }
 
@@ -187,603 +1000,116 @@ ANIMAZIONE STELLE
 
 }
 
+/* =====================================
+   STELLA CADENTE
+===================================== */
 
-/*======================================
-LUNA
-======================================*/
-
-.moon{
+.shooting-star{
 
     position:absolute;
 
-    top:40px;
+    width:3px;
 
-    right:40px;
+    height:3px;
 
-    width:70px;
-
-    height:70px;
+    background:white;
 
     border-radius:50%;
 
-    background:#fff8dc;
-
     box-shadow:
+        0 0 8px white,
+        0 0 20px white;
 
-        0 0 30px rgba(255,255,220,.8),
-
-        0 0 70px rgba(255,255,220,.3);
+    pointer-events:none;
 
 }
 
-.moon::after{
+.shooting-star::after{
 
     content:"";
 
     position:absolute;
 
-    width:60px;
+    left:-120px;
 
-    height:60px;
+    top:1px;
 
-    border-radius:50%;
+    width:120px;
 
-    background:#020817;
-
-    top:5px;
-
-    left:18px;
-
-}
-
-/*======================================
-HOME
-======================================*/
-
-#loadingPage{
-
-    flex-direction:column;
-
-    gap:35px;
-
-    text-align:center;
-
-}
-
-
-/*======================================
-TITOLO
-======================================*/
-
-#loadingPage h1{
-
-    font-size:2.6rem;
-
-    font-weight:600;
-
-    color:#fff;
-
-    text-shadow:
-
-        0 0 18px rgba(255,255,255,.35);
-
-}
-
-
-/*======================================
-PLAY
-======================================*/
-
-#playMusic{
-
-    width:80px;
-
-    height:80px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#ffffff18;
-
-    backdrop-filter:blur(12px);
-
-    color:#fff;
-
-    font-size:2rem;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-}
-
-#playMusic:hover{
-
-    transform:scale(1.08);
-
-    background:#ffffff28;
-
-}
-
-
-/*======================================
-BARRA
-======================================*/
-
-.loading-bar{
-
-    width:min(420px,85vw);
-
-    height:12px;
-
-    border-radius:999px;
-
-    overflow:hidden;
-
-    background:#ffffff15;
-
-}
-
-#bar{
-
-    width:0;
-
-    height:100%;
-
-    border-radius:999px;
+    height:2px;
 
     background:linear-gradient(
-
-        90deg,
-
-        #ffe8a5,
-
-        #ffffff
-
+        to right,
+        transparent,
+        rgba(255,255,255,.8)
     );
 
 }
 
-
-/*======================================
-PERCENTUALE
-======================================*/
-
-#percent{
-
-    margin-top:15px;
-
-    font-size:1rem;
-
-    color:#ddd;
-
-}
-
-
-/*======================================
-INIZIA
-======================================*/
-
-#start{
-
-    margin-top:30px;
-
-    padding:15px 42px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#ffe8a5;
-
-    color:#1a1a1a;
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-}
-
-#start:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-
-        0 8px 30px rgba(255,232,165,.35);
-
-}
-
-/*======================================
-BIGLIETTO
-======================================*/
-
-#ticketPage{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    padding:30px;
-
-}
-
-
-/*======================================
-CARD
-======================================*/
-
-.ticket{
-
-    width:min(620px,90vw);
-
-    padding:45px;
-
-    border-radius:22px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-
-    box-shadow:
-
-        0 20px 60px rgba(0,0,0,.28);
-
-}
-
-
-/*======================================
-TESTO
-======================================*/
-
-.ticket h2{
-
-    font-size:2rem;
-
-    margin-bottom:20px;
-
-    font-weight:600;
-
-}
-
-.ticket p{
-
-    font-size:1.15rem;
-
-    line-height:1.8;
-
-    color:#efefef;
-
-}
-
-
-/*======================================
-PULSANTI
-======================================*/
-
-.ticket-buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:30px;
-
-    margin-top:40px;
-
-    position:relative;
-
-}
-
-
-/*======================================
-SI
-======================================*/
-
-#yesBtn{
-
-    padding:15px 40px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#ffe8a5;
-
-    color:#1f1f1f;
-
-    cursor:pointer;
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    transition:.35s;
-
-}
-
-#yesBtn:hover{
-
-    transform:scale(1.06);
-
-}
-
-
-/*======================================
-NO
-======================================*/
-
-#noBtn{
-
-    padding:15px 40px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#ffffff22;
-
-    color:white;
-
-    cursor:pointer;
-
-    position:relative;
-
-    transition:
-
-        left .25s ease,
-
-        top .25s ease,
-
-        transform .25s ease;
-
-}
-
-/*======================================
-CANDELINE
-======================================*/
-
-#candlesPage{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    overflow:hidden;
-
-}
-
-
-/*======================================
-TORTA
-======================================*/
-
-.cake{
-
-    position:relative;
-
-    width:min(360px,80vw);
-
-    margin:auto;
-
-}
-
-
-/*======================================
-BASE TORTA
-======================================*/
-
-.cake-base{
-
-    width:100%;
-
-    height:140px;
-
-    border-radius:24px;
-
-    background:linear-gradient(
-
-        180deg,
-
-        #ffd6d6,
-
-        #ffb5b5
-
-    );
-
-    box-shadow:
-
-        0 15px 40px rgba(0,0,0,.25);
-
-}
-
-
-/*======================================
-CANDELE
-======================================*/
-
-.candle{
-
-    position:absolute;
-
-    width:14px;
-
-    height:70px;
-
-    border-radius:8px;
-
-    background:
-
-        repeating-linear-gradient(
-
-            45deg,
-
-            #ffffff,
-
-            #ffffff 6px,
-
-            #ff9fb5 6px,
-
-            #ff9fb5 12px
-
-        );
-
-}
-
-
-/*======================================
-FIAMMA
-======================================*/
-
-.flame{
-
-    position:absolute;
-
-    top:-16px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:14px;
-
-    height:20px;
-
-    border-radius:50% 50% 50% 50%;
-
-    background:
-
-        radial-gradient(
-
-            circle,
-
-            #fff7c2,
-
-            #ffcb4c 60%,
-
-            #ff8a00
-
-        );
-
-    animation:flicker .18s infinite alternate;
-
-}
-
-
-/*======================================
-FIAMMA
-======================================*/
-
-@keyframes flicker{
+@keyframes shoot{
 
     from{
 
         transform:
+            translate(0,0);
 
-            translateX(-50%)
-
-            scale(1)
-
-            rotate(-2deg);
+        opacity:1;
 
     }
 
     to{
 
         transform:
-
-            translateX(-50%)
-
-            scale(1.12)
-
-            rotate(2deg);
-
-    }
-
-}
-
-
-/*======================================
-SPENTA
-======================================*/
-
-.flame.off{
-
-    opacity:0;
-
-    transform:
-
-        translateX(-50%)
-
-        scale(.2);
-
-}
-
-
-/*======================================
-FUMO
-======================================*/
-
-.smoke{
-
-    position:absolute;
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.45);
-
-    animation:smoke 1.8s forwards;
-
-}
-
-@keyframes smoke{
-
-    from{
-
-        opacity:.6;
-
-        transform:translateY(0) scale(.3);
-
-    }
-
-    to{
+            translate(350px,350px);
 
         opacity:0;
 
-        transform:
-
-            translateY(-55px)
-
-            scale(1.4);
-
     }
 
 }
 
-/*======================================
-COSTELLAZIONE
-======================================*/
+@keyframes pulseStar{
 
-#constellationPage{
+    0%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(1.2);
+
+    }
+
+    50%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(1.45);
+
+    }
+
+    100%{
+
+        transform:
+        translate(-50%,-50%)
+        scale(1.2);
+
+    }
+
+}
+/* =====================================
+   CUORE
+===================================== */
+
+#heartFill{
+
+    width:170px;
+
+    height:150px;
+
+    margin:40px auto;
 
     position:relative;
+
+    cursor:pointer;
 
     display:flex;
 
@@ -791,363 +1117,89 @@ COSTELLAZIONE
 
     align-items:center;
 
-    overflow:hidden;
+    transition:.35s;
 
 }
 
+#heartFill:hover{
 
-/*======================================
-CONTENITORE
-======================================*/
-
-#constellation{
-
-    position:relative;
-
-    width:min(900px,92vw);
-
-    height:min(620px,80vh);
+    transform:scale(1.04);
 
 }
 
+#heartFill::before{
 
-/*======================================
-SVG
-======================================*/
-
-#constellationSvg{
+    content:"â¤";
 
     position:absolute;
 
     inset:0;
 
-    width:100%;
-
-    height:100%;
-
-}
-
-
-/*======================================
-LINEE
-======================================*/
-
-.constellation-line{
-
-    fill:none;
-
-    stroke:#ffffff;
-
-    stroke-width:2;
-
-    stroke-linecap:round;
-
-    stroke-linejoin:round;
-
-    opacity:0;
-
-}
-
-
-/*======================================
-STELLE
-======================================*/
-
-.constellation-star{
-
-    position:absolute;
-
-    width:14px;
-
-    height:14px;
-
-    border-radius:50%;
-
-    background:white;
-
-    transform:translate(-50%,-50%);
-
-    box-shadow:
-
-        0 0 10px rgba(255,255,255,.8),
-
-        0 0 30px rgba(255,255,255,.5);
-
-    transition:
-
-        transform .35s,
-
-        box-shadow .35s;
-
-}
-
-
-/*======================================
-STELLA ATTIVA
-======================================*/
-
-.constellation-star.active{
-
-    transform:
-
-        translate(-50%,-50%)
-
-        scale(1.4);
-
-    box-shadow:
-
-        0 0 18px #fff,
-
-        0 0 45px #ffe8a5,
-
-        0 0 70px rgba(255,255,255,.8);
-
-}
-
-
-/*======================================
-BAGLIORE
-======================================*/
-
-.constellation-complete .constellation-star{
-
-    animation:constellationGlow 1.4s ease-in-out;
-
-}
-
-@keyframes constellationGlow{
-
-    0%{
-
-        transform:translate(-50%,-50%) scale(1);
-
-    }
-
-    50%{
-
-        transform:translate(-50%,-50%) scale(1.6);
-
-    }
-
-    100%{
-
-        transform:translate(-50%,-50%) scale(1);
-
-    }
-
-}
-
-
-/*======================================
-MESSAGGI
-======================================*/
-
-#constellationMessage{
-
-    position:absolute;
-
-    left:50%;
-
-    bottom:45px;
-
-    transform:translateX(-50%);
-
-    width:min(650px,90vw);
-
-    text-align:center;
-
-    color:white;
-
-    font-size:1.15rem;
-
-    line-height:1.8;
-
-    text-shadow:
-
-        0 0 10px rgba(255,255,255,.35);
-
-}
-
-/*======================================
-CUORE
-======================================*/
-
-#heartPage{
-
     display:flex;
 
     justify-content:center;
 
     align-items:center;
 
-    flex-direction:column;
+    font-size:170px;
 
-    overflow:hidden;
-
-}
-
-
-/*======================================
-CONTENITORE
-======================================*/
-
-.heart-wrapper{
-
-    position:relative;
-
-    width:min(340px,80vw);
-
-    height:min(340px,80vw);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-/*======================================
-SVG
-======================================*/
-
-#heartSvg{
-
-    width:100%;
-
-    height:100%;
-
-}
-
-
-/*======================================
-BORDO
-======================================*/
-
-.heart-outline{
-
-    fill:none;
-
-    stroke:#ffffff;
-
-    stroke-width:8;
-
-    opacity:.35;
-
-}
-
-
-/*======================================
-RIEMPIMENTO
-======================================*/
-
-.heart-fill{
-
-    fill:#ff5b8a;
-
-    transform-origin:center;
+    color:#ffd6e7;
 
     transition:.35s;
 
 }
 
+#heartFill::after{
 
-/*======================================
-PERCENTUALE
-======================================*/
-
-#heartPercent{
+    content:"â¤";
 
     position:absolute;
 
-    font-size:2.6rem;
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:170px;
+
+    color:#ff6a9f;
+
+    clip-path: inset(100% 0 0 0);
+
+    transition:clip-path .5s ease;
+
+}
+
+#heartPercent{
+
+    position:relative;
+
+    z-index:2;
+
+    color:white;
 
     font-weight:700;
 
-    color:white;
-
-    text-shadow:
-
-        0 0 15px rgba(255,255,255,.45);
+    font-size:1.4rem;
 
 }
-
-
-/*======================================
-TESTO
-======================================*/
 
 #heartMessage{
 
-    margin-top:40px;
+    color:#d86b92;
 
-    width:min(650px,90vw);
+    font-weight:600;
 
-    text-align:center;
-
-    font-size:1.15rem;
-
-    line-height:1.8;
-
-    color:white;
-
-}
-
-
-/*======================================
-FINALE
-======================================*/
-
-.heart-complete{
-
-    animation:heartGlow 1.4s ease-in-out;
-
-}
-
-@keyframes heartGlow{
-
-    0%{
-
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        transform:scale(1.12);
-
-        filter:
-
-            drop-shadow(0 0 20px rgba(255,255,255,.8))
-
-            drop-shadow(0 0 45px rgba(255,80,120,.8));
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
+    margin-top:20px;
 
 }
 
 /*======================================
 LETTERA
 ======================================*/
-
-#letterPage{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    overflow:hidden;
-
-}
 
 #letterScene{
 
@@ -1163,55 +1215,25 @@ LETTERA
 
     align-items:center;
 
-}
-
-
-/*======================================
-SCRITTA
-======================================*/
-
-#letterHint{
-
-    position:absolute;
-
-    top:12%;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:90%;
-
-    text-align:center;
-
-    color:white;
-
-    font-size:1.25rem;
-
-    line-height:1.8;
-
-    opacity:.95;
-
-    transition:.5s;
+    overflow:hidden;
 
 }
 
-
-/*======================================
+/*=============================
 BUSTA
-======================================*/
+=============================*/
 
 #envelope{
 
-    position:relative;
+    position:absolute;
 
-    width:320px;
+    width:330px;
 
     height:220px;
 
     cursor:pointer;
 
-    transition:.8s;
+    transition:opacity .8s ease;
 
 }
 
@@ -1221,13 +1243,12 @@ BUSTA
 
     inset:0;
 
-    background:#f3e9dc;
+    background:#f3e2c9;
 
-    border-radius:12px;
+    border-radius:14px;
 
     box-shadow:
-
-        0 20px 45px rgba(0,0,0,.25);
+        0 18px 45px rgba(0,0,0,.18);
 
 }
 
@@ -1235,17 +1256,15 @@ BUSTA
 
     position:absolute;
 
-    width:100%;
+    inset:0;
 
-    height:120px;
+    background:#ead5b8;
 
-    background:#ead9c6;
-
-    clip-path:polygon(0 0,100% 0,50% 100%);
+    clip-path:polygon(0 0,100% 0,50% 60%);
 
     transform-origin:top;
 
-    transition:.8s;
+    transition:transform 1.2s ease;
 
 }
 
@@ -1255,69 +1274,83 @@ BUSTA
 
     left:50%;
 
-    top:86px;
+    top:55%;
 
-    transform:translateX(-50%);
+    transform:translate(-50%,-50%);
 
-    font-size:2rem;
+    width:60px;
 
-    cursor:pointer;
+    height:60px;
 
-    animation:heartPulse 2s infinite;
+    border-radius:50%;
+
+    background:#cb3f58;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+    box-shadow:
+
+        0 8px 20px rgba(0,0,0,.25);
 
 }
 
-@keyframes heartPulse{
-
-    0%{transform:translateX(-50%) scale(1);}
-
-    50%{transform:translateX(-50%) scale(1.12);}
-
-    100%{transform:translateX(-50%) scale(1);}
-
-}
-
-
-/*======================================
+/*=============================
 FOGLIO
-======================================*/
+=============================*/
 
 #letterPaper{
 
     position:absolute;
 
-    width:min(700px,88vw);
+    width:90%;
 
-    height:78vh;
+    max-width:720px;
 
-    background:white;
+    background:#fffef8;
 
-    border-radius:20px;
+    border-radius:18px;
 
-    padding:45px;
+    padding:55px;
 
     box-shadow:
 
-        0 30px 80px rgba(0,0,0,.25);
+        0 20px 70px rgba(0,0,0,.15);
 
     transform:
 
-        translateY(180px)
+        translateY(150px)
 
-        scale(.6);
+        scale(.55);
 
     opacity:0;
 
-    overflow-y:auto;
-
-    transition:1s;
+    transition:1.3s ease;
 
 }
 
+#letterContent{
 
-/*======================================
-APERTURA
-======================================*/
+    white-space:pre-wrap;
+
+    line-height:1.9;
+
+    font-size:1.15rem;
+
+    color:#4a4a4a;
+
+}
+
+/*=============================
+ANIMAZIONE
+=============================*/
 
 #letterScene.open .envelope-flap{
 
@@ -1341,37 +1374,11 @@ APERTURA
 
     opacity:0;
 
-    transform:scale(.85);
-
 }
 
-#letterScene.open #letterHint{
-
-    opacity:0;
-
-}
-
-
-/*======================================
-TESTO
-======================================*/
-
-#letterContent{
-
-    color:#444;
-
-    font-size:1.15rem;
-
-    line-height:2;
-
-    white-space:pre-line;
-
-}
-
-
-/*======================================
-CONTINUA
-======================================*/
+/*=============================
+PULSANTE CONTINUA
+=============================*/
 
 #continueFromLetter{
 
@@ -1379,31 +1386,17 @@ CONTINUA
 
     left:50%;
 
-    bottom:40px;
+    bottom:60px;
 
     transform:translateX(-50%);
 
-    padding:15px 40px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#ffe8a5;
-
-    color:#222;
-
-    font-size:1rem;
-
-    font-weight:600;
-
-    cursor:pointer;
+    z-index:100;
 
     opacity:0;
 
     pointer-events:none;
 
-    transition:.45s;
+    transition:.5s;
 
 }
 
@@ -1414,329 +1407,103 @@ CONTINUA
     pointer-events:auto;
 
 }
+/* =====================================
+   IMPRONTA
+===================================== */
 
-/*======================================
-FACE ID
-======================================*/
+#fingerprintButton{
 
-.unlock-card{
+    width:140px;
 
-    width:min(430px,88vw);
+    height:140px;
 
-    padding:45px;
+    margin:35px auto;
 
-    border-radius:24px;
+    border-radius:50%;
 
-    background:rgba(255,255,255,.08);
+    background:#ffe6f1;
 
-    backdrop-filter:blur(18px);
+    display:flex;
 
-    text-align:center;
+    justify-content:center;
 
-}
+    align-items:center;
 
-#faceIcon{
-
-    font-size:4rem;
-
-    margin-bottom:25px;
-
-}
-
-#fingerButton{
-
-    font-size:3rem;
-
-    margin-top:35px;
+    font-size:70px;
 
     cursor:pointer;
 
+    user-select:none;
+
+    box-shadow:
+        0 0 20px rgba(255,170,200,.30);
+
 }
 
-#secretBox{
 
-    display:none;
+/* =====================================
+   VOCALE
+===================================== */
+
+#voicePlayer{
+
+    width:100%;
 
     margin-top:30px;
 
 }
 
-#secretWord{
 
-    width:100%;
+/* =====================================
+   FINALE
+===================================== */
 
-    margin-top:15px;
+#polaroid{
 
-    padding:15px;
+    width:270px;
 
-    border-radius:14px;
+    border-radius:20px;
 
-    border:none;
-
-    font-size:1rem;
-
-}
-
-.unlock-error{
-
-    animation:shake .35s;
-
-}
-
-@keyframes shake{
-
-    0%{transform:translateX(0);}
-
-    20%{transform:translateX(-8px);}
-
-    40%{transform:translateX(8px);}
-
-    60%{transform:translateX(-8px);}
-
-    80%{transform:translateX(8px);}
-
-    100%{transform:translateX(0);}
-
-}
-
-/*======================================
-VOCALE
-======================================*/
-
-#voicePage{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    text-align:center;
-
-}
-
-.voice-card{
-
-    width:min(520px,90vw);
-
-    padding:45px;
-
-    border-radius:24px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-
-}
-
-.voice-card h2{
-
-    margin-bottom:18px;
-
-}
-
-.voice-card p{
-
-    line-height:1.8;
-
-}
-
-#audioPlayer{
-
-    width:100%;
-
-    margin-top:35px;
-
-}
-
-
-/*======================================
-FINALE
-======================================*/
-
-#endingPage{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    text-align:center;
-
-    overflow:hidden;
-
-}
-
-
-/*======================================
-POLAROID
-======================================*/
-
-.polaroid{
-
-    width:min(330px,80vw);
-
-    padding:18px;
-
-    background:white;
-
-    border-radius:8px;
+    transform:rotate(-4deg);
 
     box-shadow:
-
-        0 20px 60px rgba(0,0,0,.35);
-
-    transform:rotate(-2deg);
+        0 20px 45px rgba(0,0,0,.18);
 
 }
 
-.polaroid img{
+#finalLove{
 
-    width:100%;
-
-    display:block;
-
-    border-radius:4px;
+    margin-top:30px;
 
 }
 
-.polaroid p{
+#signature{
 
-    color:#444;
+    width:180px;
 
-    margin-top:15px;
+    margin-top:20px;
 
-    font-family:"Caveat",cursive;
+}
 
-    font-size:2rem;
+#restart{
+
+    margin-top:40px;
 
 }
 
 
-/*======================================
-SCRITTA FINALE
-======================================*/
+/* =====================================
+   ANIMAZIONI
+===================================== */
 
-.final-text{
-
-    margin-top:45px;
-
-    color:white;
-
-    font-size:2rem;
-
-    line-height:1.8;
-
-}
-
-.final-text span{
-
-    display:block;
-
-    margin-top:25px;
-
-    font-size:4rem;
-
-    font-weight:700;
-
-    color:#ffe8a5;
-
-    text-shadow:
-
-        0 0 18px rgba(255,255,255,.9),
-
-        0 0 45px rgba(255,220,120,.8);
-
-}
-
-/*======================================
-EPILOGO
-======================================*/
-
-#epilogue{
-
-    position:fixed;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    background:#020817;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:2s;
-
-}
-
-#epilogue.show{
-
-    opacity:1;
-
-}
-
-#epilogueMessage{
-
-    font-family:"Caveat",cursive;
-
-    font-size:3rem;
-
-    color:white;
-
-    text-align:center;
-
-    line-height:1.8;
-
-    text-shadow:
-
-        0 0 20px rgba(255,255,255,.45);
-
-}
-
-#epilogueMessage small{
-
-    display:block;
-
-    margin-top:25px;
-
-    font-size:2rem;
-
-    color:#ffe8a5;
-
-}
-
-.fadeIn{
-
-    animation:fadeIn .8s ease;
-
-}
-
-.fadeOut{
-
-    animation:fadeOut .6s ease;
-
-}
-
-@keyframes fadeIn{
+@keyframes fadeUp{
 
     from{
 
         opacity:0;
 
-        transform:translateY(20px);
+        transform:
+        translateY(35px);
 
     }
 
@@ -1744,21 +1511,41 @@ EPILOGO
 
         opacity:1;
 
-        transform:translateY(0);
+        transform:
+        translateY(0);
 
     }
 
 }
 
-@keyframes fadeOut{
+@keyframes flicker{
 
     from{
 
-        opacity:1;
+        transform:
+        translateX(-50%)
+        rotate(-4deg)
+        scale(.95);
 
     }
 
     to{
+
+        transform:
+        translateX(-50%)
+        rotate(4deg)
+        scale(1.08);
+
+    }
+
+}
+
+@keyframes smoke{
+
+    to{
+
+        transform:
+        translate(-50%,-35px);
 
         opacity:0;
 
@@ -1766,39 +1553,56 @@ EPILOGO
 
 }
 
-button{
+@keyframes candleMove{
 
-    transition:
+    0%{
 
-        transform .25s,
+        transform:rotate(-1deg);
 
-        box-shadow .25s,
+    }
 
-        opacity .25s;
+    50%{
 
-}
+        transform:rotate(1deg);
 
-button:hover{
+    }
 
-    transform:translateY(-2px);
+    100%{
 
-}
+        transform:rotate(-1deg);
 
-button:active{
-
-    transform:scale(.97);
+    }
 
 }
 
-.heartbeat{
+@keyframes starFloat{
 
-    animation:heartbeat 1.8s infinite;
+    0%{
+
+        transform:
+        translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(0);
+
+    }
 
 }
 
-@keyframes heartbeat{
+@keyframes heartBeat{
 
-    0%,100%{
+    0%{
 
         transform:scale(1);
 
@@ -1806,7 +1610,7 @@ button:active{
 
     15%{
 
-        transform:scale(1.08);
+        transform:scale(1.12);
 
     }
 
@@ -1818,109 +1622,569 @@ button:active{
 
     45%{
 
-        transform:scale(1.05);
+        transform:scale(1.12);
+
+    }
+
+    60%{
+
+        transform:scale(1);
+
+    }
+
+    100%{
+
+        transform:scale(1);
 
     }
 
 }
 
-.star{
+@keyframes fall{
 
-    will-change:transform,opacity;
+    0%{
+
+        transform:
+            translateY(-30px)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(110vh)
+            rotate(540deg);
+
+        opacity:1;
+
+    }
 
 }
+@keyframes starTwinkle{
+
+    from{
+
+        transform:scale(1);
+
+        opacity:.6;
+
+    }
+
+    to{
+
+        transform:scale(1.25);
+
+        opacity:1;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .sky{
+
+        width:100%;
+        height:100dvh;
+
+        overflow:hidden;
+
+    }
+
+    .sky{
+
+        width:100%;
+        height:100dvh;
+
+        overflow:hidden;
+
+    }
+
+    /* altre regole... */
+
+    #constellation{
+
+        width:95vw;
+        height:75vh;
+        top:40%;
+
+    }
+
+
+
+    .moon{
+
+        width:55px;
+        height:55px;
+
+        top:30px;
+        right:25px;
+
+    }
+
+    .moon::after{
+
+        width:48px;
+        height:48px;
+
+        left:12px;
+
+    }
+
+    #constellation{
+
+        position:absolute;
+
+        inset:0;
+
+        transform:scale(1.15);
+
+        transform-origin:center center;
+
+    }
+
+    #constellationSvg{
+
+        position:absolute;
+
+        inset:0;
+
+        transform:scale(.78);
+
+        transform-origin:center center;
+
+    }
+
+    #constellationMessage{
+
+        width:88%;
+
+        left:50%;
+
+        transform:translateX(-50%);
+
+        bottom:35px;
+
+        font-size:1rem;
+
+        line-height:1.6;
+
+    }
+
+}
+
+.falling-emoji{
+
+    position:fixed;
+
+    top:-60px;
+
+    left:0;
+
+    pointer-events:none;
+
+    z-index:2;
+
+    opacity:.22;
+
+    will-change:transform;
+
+    animation:emojiFall linear forwards;
+
+}
+
+@keyframes emojiFall{
+
+    from{
+
+        transform:
+            translateY(-80px)
+            rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:.22;
+
+    }
+
+    to{
+
+        transform:
+            translateY(110vh)
+            translateX(20px)
+            rotate(12deg);
+
+        opacity:0;
+
+    }
+
+}
+
+/* =====================================
+   BAGLIORE FINALE COSTELLAZIONE
+===================================== */
+
+.constellation-complete .constellation-star{
+
+    animation:finalGlow .9s ease-out forwards;
+
+}
+
+@keyframes finalGlow{
+
+    0%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        box-shadow:
+            0 0 6px rgba(255,255,255,.9),
+            0 0 14px rgba(255,240,170,.6);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.22);
+
+        box-shadow:
+            0 0 12px rgba(255,255,255,.95),
+            0 0 24px rgba(255,225,120,.75);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        box-shadow:
+            0 0 6px rgba(255,255,255,.9),
+            0 0 14px rgba(255,240,170,.6);
+
+        opacity:1;
+
+    }
+
+}
+/* =====================================
+   FINALE COSTELLAZIONE
+===================================== */
+
+.constellation-final{
+
+    width:100%;
+
+    text-align:center;
+
+    margin-top:260px;
+
+    animation:
+        fadeUp 1.4s ease;
+
+}
+
+.final-text{
+
+    font-size:2.2rem;
+
+    line-height:1.8;
+
+}
+
+.final-text span{
+
+    display:block;
+
+    margin-top:28px;
+
+    font-size:5rem;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+}
+
+/* ESPLOSIONE CUORI */
+
+.heart-burst{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+    z-index:30;
+
+    animation:heartBurst 1.8s ease-out forwards;
+
+}
+
+@keyframes heartBurst{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.5);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(360deg)
+            scale(1.5);
+
+    }
+
+}
+
+/* =====================================
+   SCENA LETTERA
+===================================== */
+
+#letterScene{
+
+    position:relative;
+
+    width:100%;
+
+    height:100dvh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* =====================================
+   TESTO INTRO
+===================================== */
+
+#letterHint{
+
+    position:absolute;
+
+    top:18%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    font-size:1.2rem;
+
+    text-align:center;
+
+    opacity:.95;
+
+    transition:.6s;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.4);
+
+}
+
+/* =====================================
+   BUSTA
+===================================== */
+
+#envelope{
+
+    position:relative;
+
+    width:320px;
+
+    height:220px;
+
+    cursor:pointer;
+
+    transition:.8s;
+
+}
+
+.envelope-body{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#f6efe5;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.envelope-flap{
+
+    position:absolute;
+
+    width:100%;
+
+    height:110px;
+
+    background:#ece1d2;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+
+    transition:.8s;
+
+}
+
+.seal{
+
+    position:absolute;
+
+    left:50%;
+
+    top:88px;
+
+    transform:translateX(-50%);
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+.seal:hover{
+
+    transform:
+        translateX(-50%)
+        scale(1.15);
+
+}
+
+/* =====================================
+   LETTERA
+===================================== */
 
 #letterPaper{
 
-    scroll-behavior:smooth;
+    position:absolute;
+
+    width:min(700px,88vw);
+
+    height:78vh;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:45px;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.25);
+
+    opacity:0;
+
+    transform:
+        translateY(120px)
+        scale(.55);
+
+    transition:1s;
+
+    overflow-y:auto;
 
 }
 
-::selection{
+/* =====================================
+   APERTURA
+===================================== */
 
-    background:#ffe8a5;
+#letterScene.open .envelope-flap{
 
-    color:#111;
-
-}
-
-/*======================================
-PRELOADER
-======================================*/
-
-#preloadStatus{
-
-    margin-top:30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-    color:#ddd;
-
-    font-size:.95rem;
+    transform:rotateX(180deg);
 
 }
 
-.preload-item{
+#letterScene.open #letterPaper{
 
-    display:flex;
+    opacity:1;
 
-    justify-content:space-between;
-
-    width:240px;
-
-}
-
-.preload-item span{
-
-    color:#ffe8a5;
+    transform:
+        translateY(0)
+        scale(1);
 
 }
 
-/*======================================
-PERFORMANCE
-======================================*/
+#letterScene.open #envelope{
 
-*{
-    -webkit-tap-highlight-color:transparent;
-}
+    opacity:0;
 
-button,
-.seal,
-.constellation-star{
+    transform:scale(.85);
 
-    touch-action:manipulation;
+    pointer-events:none;
 
 }
 
-img{
+#letterScene.open #letterHint{
 
-    user-select:none;
-
-    -webkit-user-drag:none;
+    opacity:0;
 
 }
 
-html,
-body{
+/* =====================================
+   CONTINUA
+===================================== */
 
-    overscroll-behavior:none;
+#continueFromLetter{
+
+    position:absolute;
+
+    bottom:45px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.5s;
 
 }
 
-.star,
-.constellation-star,
-#letterPaper,
-#envelope,
-.polaroid{
+#continueFromLetter.show{
 
-    will-change:transform,opacity;
+    opacity:1;
 
-    backface-visibility:hidden;
-
-    transform:translateZ(0);
+    pointer-events:auto;
 
 }
