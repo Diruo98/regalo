@@ -1376,6 +1376,37 @@ ANIMAZIONE
 
 }
 
+/*=============================
+PULSANTE CONTINUA
+=============================*/
+
+#continueFromLetter{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:60px;
+
+    transform:translateX(-50%);
+
+    z-index:100;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.5s;
+
+}
+
+#continueFromLetter.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
 /* =====================================
    IMPRONTA
 ===================================== */
