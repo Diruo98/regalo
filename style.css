@@ -1765,7 +1765,7 @@ button:hover{
 
 .constellation-complete .constellation-star{
 
-    animation:finalGlow 1.4s ease-in-out;
+    animation:finalGlow .9s ease-out forwards;
 
 }
 
