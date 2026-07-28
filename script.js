@@ -899,11 +899,11 @@ const continueFromLetter = document.getElementById("continueFromLetter");
 
 const fullLetter = `
 
-QUI INCOLLERAI LA LETTERA
+QUI INCOLLA LA TUA LETTERA
 
 Con amore 🤍
 
-Fabio
+il tuo Eddi
 
 `;
 
@@ -915,15 +915,19 @@ function initLetter(){
 
     continueFromLetter.classList.add("hidden");
 
-    envelope.onclick = ()=>{
+    envelope.style.opacity = "1";
+
+    envelope.onclick = null;
+
+    envelope.onclick = () => {
 
         envelope.onclick = null;
 
-        // apertura busta
+        // apre il lembo
         letterScene.classList.add("open");
 
-        // inizio scrittura
-        setTimeout(()=>{
+        // aspetta che il foglio esca
+        setTimeout(() => {
 
             typeLetter();
 
@@ -934,6 +938,8 @@ function initLetter(){
 }
 
 function typeLetter(){
+
+    letterContent.textContent = "";
 
     let i = 0;
 
