@@ -1811,24 +1811,21 @@ button:hover{
 .constellation-final{
 
     width:100%;
+
     text-align:center;
 
-    animation:fadeUp 1.2s ease;
+    margin-top:260px;
+
+    animation:
+        fadeUp 1.4s ease;
 
 }
 
 .final-text{
 
-    color:white;
-
-    font-size:2.4rem;
+    font-size:2.2rem;
 
     line-height:1.8;
-
-    font-weight:500;
-
-    text-shadow:
-        0 0 12px rgba(255,255,255,.45);
 
 }
 
@@ -1836,19 +1833,12 @@ button:hover{
 
     display:block;
 
-    margin-top:30px;
+    margin-top:28px;
 
-    font-size:4.5rem;
+    font-size:5rem;
 
     font-weight:700;
 
-    color:#ffe8a5;
-
-    letter-spacing:2px;
-
-    text-shadow:
-        0 0 18px rgba(255,255,255,.95),
-        0 0 40px rgba(255,220,120,.8),
-        0 0 70px rgba(255,210,80,.7);
+    letter-spacing:3px;
 
 }
