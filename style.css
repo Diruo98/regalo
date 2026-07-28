@@ -1776,19 +1776,22 @@ button:hover{
         transform:translate(-50%,-50%) scale(1);
 
         box-shadow:
-            0 0 12px #fff,
-            0 0 25px #fff5b8;
+            0 0 6px rgba(255,255,255,.9),
+            0 0 14px rgba(255,240,170,.6);
+
+        opacity:1;
 
     }
 
     50%{
 
-        transform:translate(-50%,-50%) scale(1.45);
+        transform:translate(-50%,-50%) scale(1.22);
 
         box-shadow:
-            0 0 25px #fff,
-            0 0 60px #ffe66d,
-            0 0 90px #fff;
+            0 0 12px rgba(255,255,255,.95),
+            0 0 24px rgba(255,225,120,.75);
+
+        opacity:1;
 
     }
 
@@ -1797,13 +1800,14 @@ button:hover{
         transform:translate(-50%,-50%) scale(1);
 
         box-shadow:
-            0 0 12px #fff,
-            0 0 25px #fff5b8;
+            0 0 6px rgba(255,255,255,.9),
+            0 0 14px rgba(255,240,170,.6);
+
+        opacity:1;
 
     }
 
 }
-
 /* =====================================
    FINALE COSTELLAZIONE
 ===================================== */
