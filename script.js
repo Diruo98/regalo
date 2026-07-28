@@ -41,11 +41,8 @@ const heartFill = document.getElementById("heartFill");
 const heartPercent = document.getElementById("heartPercent");
 const heartMessage = document.getElementById("heartMessage");
 
-const letterHeart = document.getElementById("letterHeart");
+
 const envelope = document.getElementById("envelope");
-const paper = document.getElementById("paper");
-const letterText = document.getElementById("letterText");
-const letterPhoto = document.getElementById("letterPhoto");
 const continueFromLetter = document.getElementById("continueFromLetter");
 
 const fingerprintButton = document.getElementById("fingerprintButton");
