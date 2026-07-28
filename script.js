@@ -885,10 +885,8 @@ heartFill.addEventListener("click",()=>{
 ===================================== */
 
 const letterScene = document.getElementById("letterScene");
-const envelope = document.getElementById("envelope");
 const letterPaper = document.getElementById("letterPaper");
 const letterContent = document.getElementById("letterContent");
-const continueFromLetter = document.getElementById("continueFromLetter");
 
 const fullLetter = `
 
