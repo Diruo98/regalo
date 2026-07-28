@@ -1961,3 +1961,230 @@ PULSANTE CONTINUA
     }
 
 }
+
+/* =====================================
+   SCENA LETTERA
+===================================== */
+
+#letterScene{
+
+    position:relative;
+
+    width:100%;
+
+    height:100dvh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* =====================================
+   TESTO INTRO
+===================================== */
+
+#letterHint{
+
+    position:absolute;
+
+    top:18%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    font-size:1.2rem;
+
+    text-align:center;
+
+    opacity:.95;
+
+    transition:.6s;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.4);
+
+}
+
+/* =====================================
+   BUSTA
+===================================== */
+
+#envelope{
+
+    position:relative;
+
+    width:320px;
+
+    height:220px;
+
+    cursor:pointer;
+
+    transition:.8s;
+
+}
+
+.envelope-body{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#f6efe5;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.envelope-flap{
+
+    position:absolute;
+
+    width:100%;
+
+    height:110px;
+
+    background:#ece1d2;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+
+    transition:.8s;
+
+}
+
+.seal{
+
+    position:absolute;
+
+    left:50%;
+
+    top:88px;
+
+    transform:translateX(-50%);
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+.seal:hover{
+
+    transform:
+        translateX(-50%)
+        scale(1.15);
+
+}
+
+/* =====================================
+   LETTERA
+===================================== */
+
+#letterPaper{
+
+    position:absolute;
+
+    width:min(700px,88vw);
+
+    height:78vh;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:45px;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.25);
+
+    opacity:0;
+
+    transform:
+        translateY(120px)
+        scale(.55);
+
+    transition:1s;
+
+    overflow-y:auto;
+
+}
+
+/* =====================================
+   APERTURA
+===================================== */
+
+#letterScene.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
+
+#letterScene.open #letterPaper{
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+#letterScene.open #envelope{
+
+    opacity:0;
+
+    transform:scale(.85);
+
+    pointer-events:none;
+
+}
+
+#letterScene.open #letterHint{
+
+    opacity:0;
+
+}
+
+/* =====================================
+   CONTINUA
+===================================== */
+
+#continueFromLetter{
+
+    position:absolute;
+
+    bottom:45px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.5s;
+
+}
+
+#continueFromLetter.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
