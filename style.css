@@ -1197,153 +1197,184 @@ button:hover{
 
 }
 
-/* =====================================
-   LETTERA
-===================================== */
+/*======================================
+LETTERA
+======================================*/
 
-#letterHeart{
-
-    font-size:70px;
-
-    cursor:pointer;
-
-    user-select:none;
-
-    margin-bottom:15px;
-
-    animation:heartBeat 1.4s infinite;
-
-}
-
-#letterHint{
-
-    color:#d86b92;
-
-    font-size:18px;
-
-    margin-bottom:25px;
-
-}
-
-#envelope{
-
-    width:320px;
-
-    height:220px;
-
-    background:#ffe2ee;
-
-    border-radius:12px;
+#letterScene{
 
     position:relative;
 
-    cursor:pointer;
+    width:100%;
 
-    box-shadow:
-        0 20px 45px rgba(255,170,200,.28);
+    height:100dvh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
 
 }
 
-.flap{
+/*=============================
+BUSTA
+=============================*/
+
+#envelope{
+
+    position:absolute;
+
+    width:330px;
+
+    height:220px;
+
+    cursor:pointer;
+
+    transition:opacity .8s ease;
+
+}
+
+.envelope-body{
 
     position:absolute;
 
     inset:0;
 
-    background:#ffd3e6;
+    background:#f3e2c9;
 
-    clip-path:polygon(0 0,100% 0,50% 55%);
+    border-radius:14px;
 
-    transform-origin:top;
-
-    transition:.8s;
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.18);
 
 }
 
-#envelope.open .flap{
+.envelope-flap{
 
-    transform:rotateX(180deg);
+    position:absolute;
+
+    inset:0;
+
+    background:#ead5b8;
+
+    clip-path:polygon(0 0,100% 0,50% 60%);
+
+    transform-origin:top;
+
+    transition:transform 1.2s ease;
 
 }
 
 .seal{
 
-    width:58px;
-    height:58px;
+    position:absolute;
+
+    left:50%;
+
+    top:55%;
+
+    transform:translate(-50%,-50%);
+
+    width:60px;
+
+    height:60px;
 
     border-radius:50%;
 
-    background:#c93b4f;
+    background:#cb3f58;
 
     color:white;
 
     display:flex;
-    align-items:center;
+
     justify-content:center;
+
+    align-items:center;
 
     font-size:22px;
 
     box-shadow:
-        0 6px 18px rgba(0,0,0,.25);
+
+        0 8px 20px rgba(0,0,0,.25);
 
 }
 
-#paper{
+/*=============================
+FOGLIO
+=============================*/
 
-    display:none;
+#letterPaper{
 
-    width:720px;
+    position:absolute;
 
-    max-width:94%;
+    width:90%;
 
-    background:white;
+    max-width:720px;
 
-    padding:45px;
-
-    border-radius:25px;
-
-    margin-top:30px;
-
-    box-shadow:
-        0 20px 45px rgba(255,170,200,.30);
-
-}
-
-#paper.show{
-
-    display:block;
-
-}
-
-#letterText{
-
-    white-space:pre-line;
-
-    line-height:2;
-
-    text-align:left;
-
-}
-
-#letterPhoto{
-
-    margin-top:35px;
-
-}
-
-#letterPhoto img{
-
-    width:240px;
+    background:#fffef8;
 
     border-radius:18px;
 
-    transform:rotate(-4deg);
+    padding:55px;
 
     box-shadow:
-        0 15px 30px rgba(0,0,0,.15);
+
+        0 20px 70px rgba(0,0,0,.15);
+
+    transform:
+
+        translateY(150px)
+
+        scale(.55);
+
+    opacity:0;
+
+    transition:1.3s ease;
 
 }
 
+#letterContent{
+
+    white-space:pre-wrap;
+
+    line-height:1.9;
+
+    font-size:1.15rem;
+
+    color:#4a4a4a;
+
+}
+
+/*=============================
+ANIMAZIONE
+=============================*/
+
+#letterScene.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
+
+#letterScene.open #letterPaper{
+
+    transform:
+
+        translateY(0)
+
+        scale(1);
+
+    opacity:1;
+
+}
+
+#letterScene.open #envelope{
+
+    opacity:0;
+
+}
 
 /* =====================================
    IMPRONTA
