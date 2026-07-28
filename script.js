@@ -878,6 +878,8 @@ heartFill.addEventListener("click",()=>{
 
             showPage(pages.letter);
 
+           initLetter();
+
         },2200);
 
     }
@@ -889,47 +891,67 @@ heartFill.addEventListener("click",()=>{
    LETTERA
 ===================================== */
 
-const fullLetter=`
+const letterScene = document.getElementById("letterScene");
+const envelope = document.getElementById("envelope");
+const letterPaper = document.getElementById("letterPaper");
+const letterContent = document.getElementById("letterContent");
+const continueFromLetter = document.getElementById("continueFromLetter");
+
+const fullLetter = `
 
 QUI INCOLLERAI LA LETTERA
 
+Con amore 🤍
+
+Fabio
+
 `;
 
-letterHeart.addEventListener("click",()=>{
+function initLetter(){
 
-    letterHeart.style.display="none";
+    letterScene.classList.remove("open");
 
-    envelope.classList.add("open");
+    letterContent.textContent = "";
 
-    setTimeout(()=>{
+    continueFromLetter.classList.add("hidden");
 
-        paper.classList.add("show");
+    envelope.onclick = ()=>{
 
-        typeLetter();
+        envelope.onclick = null;
 
-    },800);
+        // apertura busta
+        letterScene.classList.add("open");
 
-});
+        // inizio scrittura
+        setTimeout(()=>{
+
+            typeLetter();
+
+        },1200);
+
+    };
+
+}
 
 function typeLetter(){
 
-    let i=0;
+    let i = 0;
 
-    letterText.textContent="";
+    const timer = setInterval(()=>{
 
-    const timer=setInterval(()=>{
-
-        letterText.textContent+=fullLetter.charAt(i);
+        letterContent.textContent += fullLetter.charAt(i);
 
         i++;
 
-        if(i>=fullLetter.length){
+        if(i >= fullLetter.length){
 
             clearInterval(timer);
 
-            letterPhoto.classList.remove("hidden");
+            setTimeout(()=>{
 
-            continueFromLetter.classList.remove("hidden");
+                continueFromLetter.classList.remove("hidden");
+
+            },800);
 
         }
 
