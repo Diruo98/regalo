@@ -885,83 +885,94 @@ heartFill.addEventListener("click",()=>{
 ===================================== */
 
 const letterScene = document.getElementById("letterScene");
+const letterHint = document.getElementById("letterHint");
+const envelope = document.getElementById("envelope");
+const seal = document.querySelector(".seal");
+
 const letterPaper = document.getElementById("letterPaper");
 const letterContent = document.getElementById("letterContent");
 
-const fullLetter = `
+const continueFromLetter =
+document.getElementById("continueFromLetter");
 
-QUI INCOLLA LA TUA LETTERA
 
-Con amore 🤍
+const letterText = `
 
-il tuo Eddi
+Ciao Sofi 🤍
 
+Da quando sei entrata nella mia vita,
+ogni giornata ha un colore diverso.
+
+Questo piccolo viaggio è soltanto
+un modo per ricordarti una cosa...
+
+Ti amo infinitamente.
+
+Con tutto il mio cuore.
+
+🤍
 `;
 
-function initLetter(){
 
-    letterScene.classList.remove("open");
+/* =====================================
+   APERTURA LETTERA
+===================================== */
 
-    letterContent.textContent = "";
+seal.addEventListener("click",()=>{
 
-    continueFromLetter.classList.add("hidden");
+    letterScene.classList.add("open");
 
-    envelope.style.opacity = "1";
+    setTimeout(()=>{
 
-    envelope.onclick = null;
+        typeLetter();
 
-    envelope.onclick = () => {
+    },900);
 
-        envelope.onclick = null;
+});
 
-        // apre il lembo
-        letterScene.classList.add("open");
 
-        // aspetta che il foglio esca
-        setTimeout(() => {
-
-            typeLetter();
-
-        },1200);
-
-    };
-
-}
+/* =====================================
+   MACCHINA DA SCRIVERE
+===================================== */
 
 function typeLetter(){
 
-    letterContent.textContent = "";
+    letterContent.innerHTML="";
 
-    let i = 0;
+    let i=0;
 
-    const timer = setInterval(()=>{
+    const timer=setInterval(()=>{
 
-        letterContent.textContent += fullLetter.charAt(i);
+        letterContent.innerHTML+=letterText.charAt(i);
 
         i++;
 
-        if(i >= fullLetter.length){
+        if(i>=letterText.length){
 
             clearInterval(timer);
 
             setTimeout(()=>{
 
-                continueFromLetter.classList.remove("show");
+                continueFromLetter.classList.add("show");
 
             },800);
 
         }
 
-    },28);
+    },35);
 
 }
+
+
+/* =====================================
+   CONTINUA
+===================================== */
 
 continueFromLetter.addEventListener("click",()=>{
 
     showPage(pages.fingerprint);
 
 });
-
 
 /* =====================================
    IMPRONTA
