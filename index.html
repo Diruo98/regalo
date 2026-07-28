@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Per Sofi 🤍</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- =====================================
+     SFONDO
+===================================== -->
+
+<div id="hearts"></div>
+
+<div id="confetti"></div>
+
+
+<!-- =====================================
+     AUDIO
+===================================== -->
+
+<audio
+id="bgMusic"
+loop>
+
+    <source
+        src="musica.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<audio
+id="voicePlayer">
+
+    <source
+        src="vocale.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- =====================================
+     INTRO
+===================================== -->
+
+<section
+id="introPage"
+class="page night-page">
+
+    <div class="intro-card">
+
+        <h1>
+
+            Ciao Sofi 🤍
+
+        </h1>
+
+        <p>
+
+            Ho preparato un piccolo viaggio
+            per te 🤍
+
+        </p>
+
+        <p>
+
+            Ti consiglio di mettere
+            le cuffie 🎧
+            oppure alzare il volume 🥹
+
+        </p>
+
+        <button id="playButton">
+
+            Sono pronta! 🤍😍
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     LOADING
+===================================== -->
+
+<section
+id="loadingPage"
+class="page hidden">
+
+    <div class="loading-card">
+
+        <h2>
+
+            Sto preparando
+            qualcosa di speciale...
+
+        </h2>
+
+        <div class="loading">
+
+            <div id="bar"></div>
+
+        </div>
+
+        <p id="percent">
+
+            0%
+
+        </p>
+
+        <button
+        id="start"
+        hidden>
+
+            Inizia il viaggio ✨
+
+        </button>
+
+    </div>
+
+</section>
+
+     <!-- =====================================
+     BIGLIETTO
+===================================== -->
+
+<section
+id="ticketPage"
+class="page hidden">
+
+    <div class="ticket-card">
+
+        <h1>
+
+            💌
+
+        </h1>
+
+        <h2>
+
+            Vuoi continuare
+            questo viaggio
+            insieme ad Eddi?
+
+        </h2>
+
+        <div class="ticket-buttons">
+
+            <button id="yesButton">
+
+                Sì ❤️
+
+            </button>
+
+            <button id="noButton">
+
+                No 😜
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     COMPLEANNO
+===================================== -->
+
+<section
+id="birthdayPage"
+class="page night-page hidden">
+
+    <div class="birthday-card">
+
+        <h1>
+
+            Buon Compleanno
+            amore mio! 🤍
+
+        </h1>
+
+        <p>
+
+            Spegni tutte le candeline
+            cliccando sulla loro fiamma 🔥
+
+        </p>
+
+        <div id="candles"></div>
+
+        <p id="counter">
+
+            Candeline rimaste: 19
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     DESIDERIO
+===================================== -->
+
+<section
+id="wishPage"
+class="page night-page hidden">
+
+    <div class="wish-card">
+
+        <h1>
+
+            Esprimi un desiderio ✨
+
+        </h1>
+
+        <p>
+
+            Chiudi gli occhi,
+            pensa ad un desiderio
+            e scrivilo qui sotto 👇 🥹
+
+        </p>
+
+        <textarea
+
+        id="wishInput"
+
+        placeholder="Scrivi qui il tuo desiderio..."
+
+        ></textarea>
+
+        <button
+        id="sendWish">
+
+            Affidalo alle stelle ⭐
+
+        </button>
+
+    </div>
+
+</section>
+
+     <!-- =====================================
+     STELLA
+===================================== -->
+
+<section
+id="starPage"
+class="page night-page hidden">
+
+    <div class="star-card">
+
+        <h1>
+
+            Il tuo desiderio
+            sta raggiungendo il cielo... ⭐
+
+        </h1>
+
+        <div id="wishStar">
+
+            ⭐
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     COSTELLAZIONE
+===================================== -->
+
+<section id="constellationPage" class="page night-page hidden">
+
+    <div class="sky">
+
+        <div class="moon"></div>
+
+        <!-- Stelle decorative -->
+        <div id="starField"></div>
+
+
+        <!-- Stelle cliccabili -->
+        <div id="constellation"></div>
+
+        <!-- Testo -->
+        <div id="constellationMessage">
+
+            Tocca la prima stella in alto a destra e poi tutte le altre in successione ⭐️
+
+        </div>
+
+    </div>
+
+</section>
+    
+<!-- =====================================
+     CUORE
+===================================== -->
+
+<section
+id="heartPage"
+class="page hidden">
+
+    <div class="heart-card">
+
+        <h1>
+
+            ❤️
+
+        </h1>
+
+        <h2>
+
+            Riempi il mio cuore
+
+        </h2>
+
+        <p>
+
+            Ogni tocco
+            mi avvicina un po'
+            di più a te.
+
+        </p>
+
+        <div id="heartFill">
+
+            <span id="heartPercent">
+
+                0%
+
+            </span>
+
+        </div>
+
+        <p id="heartMessage">
+
+            Tocca il cuore... 🤍
+
+        </p>
+
+    </div>
+
+</section>
+
+   <!-- =====================================
+     LETTERA
+===================================== -->
+
+<section id="letterPage" class="page hidden">
+
+    <div id="letterScene">
+
+        <!-- TESTO -->
+
+        <p id="letterHint">
+            Tocca il cuore per aprire la lettera 🤍
+        </p>
+
+        <!-- BUSTA -->
+
+        <div id="envelope">
+
+            <div class="envelope-body"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="seal">
+                🤍
+            </div>
+
+        </div>
+
+        <!-- LETTERA -->
+
+        <div id="letterPaper">
+
+            <div id="letterContent"></div>
+
+        </div>
+
+        <!-- PULSANTE -->
+
+        <button id="continueFromLetter">
+            Continua →
+        </button>
+
+    </div>
+
+</section>
+<!-- =====================================
+     IMPRONTA
+===================================== -->
+
+<section
+id="fingerprintPage"
+class="page night-page hidden">
+
+    <div class="fingerprint-card">
+
+        <h1>
+
+            Un ultimo piccolo gesto... 🤍
+
+        </h1>
+
+        <p>
+
+            Tieni premuto
+            il pulsante qui sotto
+            per sbloccare
+            il mio ultimo messaggio 💬 🥹
+
+        </p>
+
+        <div id="fingerprintButton">
+
+            🖐🏻
+
+        </div>
+
+        <p
+        id="fingerprintText"
+        class="hidden">
+
+            🔓 Sbloccato 🔓
+
+        </p>
+
+    </div>
+
+</section>
+
+     <!-- =====================================
+     VOCALE
+===================================== -->
+
+<section
+id="voicePage"
+class="page night-page hidden">
+
+    <div class="voice-card">
+
+        <h1>
+
+            🤍
+
+        </h1>
+
+        <h2>
+
+            Ho ancora una cosa
+            da dirti...
+
+        </h2>
+
+        <p>
+
+            Premi Play
+            e ascolta il mio messaggio
+            fino alla fine 🎙️ 🥹
+
+        </p>
+
+        <audio
+
+        id="voicePlayer"
+
+        controls>
+
+            <source
+            src="vocale.mp3"
+            type="audio/mpeg">
+
+        </audio>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     FINALE
+===================================== -->
+
+<section
+id="finalPage"
+class="page night-page hidden">
+
+    <div class="final-card">
+
+        <!-- POLAROID -->
+
+        <img
+
+        id="polaroid"
+
+        class="hidden"
+
+        src="polaroid.jpg"
+
+        alt="Noi">
+
+
+        <!-- TI AMO -->
+
+        <h1
+
+        id="finalLove"
+
+        class="hidden">
+
+            Ti amo 🤍
+
+        </h1>
+
+
+        <!-- FIRMA -->
+
+        <img
+
+        id="signature"
+
+        class="hidden"
+
+        src="firma.png"
+
+        alt="Firma">
+
+
+        <!-- RIVIVI -->
+
+        <button
+
+        id="restart"
+
+        class="hidden">
+
+            Rivivi il viaggio 🤍
+
+        </button>
+
+    </div>
+
+</section>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
