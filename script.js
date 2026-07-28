@@ -686,9 +686,19 @@ const message = document.getElementById("constellationMessage");
 
     constellation.classList.add("constellation-complete");
 
-    setTimeout(()=>{
+    // Aspetta che la costellazione si illumini
+setTimeout(()=>{
 
-        message.innerHTML = `
+    document
+    .getElementById("constellation")
+    .classList.add("transform");
+
+},1800);
+
+// Dopo che è salita compare il testo
+setTimeout(()=>{
+
+    message.innerHTML = `
 <div class="constellation-final">
 
     <div class="final-text">
@@ -700,10 +710,11 @@ const message = document.getElementById("constellationMessage");
 
     </div>
 
-</div>
-`;
+</div>`;
 
-    },900);
+    message.classList.add("show");
+
+},3200);
 
     setTimeout(()=>{
 
