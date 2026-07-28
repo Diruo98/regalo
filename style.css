@@ -584,9 +584,12 @@ button:hover{
 
 #constellation.transform{
 
-    transform:scale(.65);
+    transform:
+        translateY(-45px)
+        scale(1.05);
 
-    opacity:.15;
+    transition:
+        transform 1.4s ease;
 
 }
 
