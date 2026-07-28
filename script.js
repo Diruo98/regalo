@@ -632,7 +632,7 @@ function startConstellation(){
 
     constellationIndex = 0;
 
-       hideEmojis();
+      stopEmojiRain();
    
     createStarField();
     createConstellation();
@@ -717,11 +717,13 @@ const message = document.getElementById("constellationMessage");
 
         showPage(pages.heart);
 
-        initHeart();
+startEmojiRain();
 
-        document
-        .getElementById("constellation")
-        .classList.remove("transform");
+initHeart();
+
+document
+.getElementById("constellation")
+.classList.remove("transform");
 
     },5000);
 
