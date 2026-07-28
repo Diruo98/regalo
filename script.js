@@ -946,7 +946,7 @@ function typeLetter(){
 
             setTimeout(()=>{
 
-                continueFromLetter.classList.remove("hidden");
+                continueFromLetter.classList.remove("show");
 
             },800);
 
