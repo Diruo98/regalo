@@ -63,6 +63,7 @@ let candlesOff = 0;
 let heartProgress = 0;
 let fingerprintTimer = null;
 let shootingStarInterval = null;
+let writing = false;
 
 
 /* =====================================
@@ -926,8 +927,6 @@ Un piccolo viaggio.
 Per ricordarti quanto sei importante.
 
 Buon compleanno. ❤️`;
-
-let writing = false;
 
 document.addEventListener("click", (e) => {
 
