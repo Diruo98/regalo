@@ -879,87 +879,63 @@ heartFill.addEventListener("click",()=>{
 
 });
 
-
-/* =====================================
-   LETTERA
-===================================== */
+/*======================================
+LETTERA
+======================================*/
 
 const letterScene = document.getElementById("letterScene");
 const letterHint = document.getElementById("letterHint");
-const envelope = document.getElementById("envelope");
 const seal = document.querySelector(".seal");
-
-const letterPaper = document.getElementById("letterPaper");
 const letterContent = document.getElementById("letterContent");
+const continueFromLetter = document.getElementById("continueFromLetter");
 
-const continueFromLetter =
-document.getElementById("continueFromLetter");
+const letterText = `Cara Sofia,
 
+oggi non volevo regalarti qualcosa di normale.
 
-const letterText = `
+Volevo regalarti un ricordo.
 
-Ciao Sofi 🤍
+Un piccolo viaggio.
 
-Da quando sei entrata nella mia vita,
-ogni giornata ha un colore diverso.
+Per ricordarti quanto sei importante.
 
-Questo piccolo viaggio è soltanto
-un modo per ricordarti una cosa...
+Buon compleanno. ❤️`;
 
-Ti amo infinitamente.
+let writing = false;
 
-Con tutto il mio cuore.
+seal.addEventListener("click", () => {
 
-🤍
-`;
+    if (writing) return;
 
+    writing = true;
 
-/* =====================================
-   APERTURA LETTERA
-===================================== */
-
-document.addEventListener("click", function (e) {
-
-    if (!e.target.classList.contains("seal")) return;
+    letterHint.style.opacity = "0";
 
     letterScene.classList.add("open");
 
-    document.getElementById("letterHint").style.display = "none";
+    seal.style.pointerEvents = "none";
 
-    setTimeout(() => {
-
-        typeLetter();
-
-    }, 900);
+    setTimeout(typeLetter, 900);
 
 });
 
-
-/* =====================================
-   MACCHINA DA SCRIVERE
-===================================== */
-
 function typeLetter(){
 
-    letterContent.innerHTML="";
+    let i = 0;
 
-    let i=0;
+    letterContent.textContent = "";
 
-    const timer=setInterval(()=>{
+    const timer = setInterval(()=>{
 
-        letterContent.innerHTML+=letterText.charAt(i);
+        letterContent.textContent += letterText.charAt(i);
 
         i++;
 
-        if(i>=letterText.length){
+        if(i >= letterText.length){
 
             clearInterval(timer);
 
-            setTimeout(()=>{
-
-                continueFromLetter.classList.add("show");
-
-            },800);
+            continueFromLetter.classList.add("show");
 
         }
 
@@ -967,14 +943,8 @@ function typeLetter(){
 
 }
 
-
-/* =====================================
-   CONTINUA
-===================================== */
-
 continueFromLetter.addEventListener("click",()=>{
-
-    showPage(pages.fingerprint);
+   showPage(pages.fingerprint);
 
 });
 
