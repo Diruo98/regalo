@@ -930,20 +930,13 @@ Buon compleanno. ❤️`;
 
 document.addEventListener("click", (e) => {
 
+    console.log("CLICK", e.target);
+
     if (!e.target.closest(".seal")) return;
 
-    if (writing) return;
-
-    writing = true;
-
-    letterHint.style.opacity = "0";
+    console.log("CERALACCA CLICCATA");
 
     letterScene.classList.add("open");
-
-    const clickedSeal = e.target.closest(".seal");
-    clickedSeal.style.pointerEvents = "none";
-
-    setTimeout(typeLetter, 900);
 
 });
 
