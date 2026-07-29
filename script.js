@@ -903,7 +903,9 @@ Buon compleanno. ❤️`;
 
 let writing = false;
 
-seal.addEventListener("click", () => {
+document.addEventListener("click", (e) => {
+
+    if (!e.target.closest(".seal")) return;
 
     if (writing) return;
 
@@ -913,7 +915,8 @@ seal.addEventListener("click", () => {
 
     letterScene.classList.add("open");
 
-    seal.style.pointerEvents = "none";
+    const clickedSeal = e.target.closest(".seal");
+    clickedSeal.style.pointerEvents = "none";
 
     setTimeout(typeLetter, 900);
 
