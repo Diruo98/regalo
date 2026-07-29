@@ -879,6 +879,32 @@ heartFill.addEventListener("click",()=>{
 
 });
 
+/* =====================================
+   RESET LETTERA
+===================================== */
+
+function initLetter(){
+
+    writing = false;
+
+    letterScene.classList.remove("open");
+
+    letterHint.style.opacity = "1";
+
+    letterContent.textContent = "";
+
+    continueFromLetter.classList.remove("show");
+
+    const seal = document.querySelector(".seal");
+
+    if(seal){
+
+        seal.style.pointerEvents = "auto";
+
+    }
+
+}
+
 /*======================================
 LETTERA
 ======================================*/
