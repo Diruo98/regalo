@@ -1207,11 +1207,7 @@ LETTERA
 
     width:100%;
 
-    max-width:420px;
-
-    height:600px;
-
-    margin:auto;
+    height:100dvh;
 
     display:flex;
 
@@ -1219,25 +1215,52 @@ LETTERA
 
     align-items:center;
 
-    flex-direction:column;
+    overflow:hidden;
 
 }
 
-/*=============================
-BUSTA
-=============================*/
+/*======================================
+TESTO
+======================================*/
 
-#envelope{
+#letterHint{
 
     position:absolute;
 
-    width:330px;
+    top:12%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    font-size:1.25rem;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.35);
+
+    transition:.6s;
+
+}
+
+/*======================================
+BUSTA
+======================================*/
+
+#envelope{
+
+    position:relative;
+
+    width:320px;
 
     height:220px;
 
     cursor:pointer;
 
-    transition:opacity .8s ease;
+    transition:.8s;
 
 }
 
@@ -1247,12 +1270,12 @@ BUSTA
 
     inset:0;
 
-    background:#f3e2c9;
+    background:#f3e5d2;
 
-    border-radius:14px;
+    border-radius:12px;
 
     box-shadow:
-        0 18px 45px rgba(0,0,0,.18);
+        0 20px 45px rgba(0,0,0,.22);
 
 }
 
@@ -1260,15 +1283,17 @@ BUSTA
 
     position:absolute;
 
-    inset:0;
+    width:100%;
 
-    background:#ead5b8;
+    height:110px;
 
-    clip-path:polygon(0 0,100% 0,50% 60%);
+    background:#ead8bf;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
 
     transform-origin:top;
 
-    transition:transform 1.2s ease;
+    transition:.8s;
 
 }
 
@@ -1278,19 +1303,17 @@ BUSTA
 
     left:50%;
 
-    top:55%;
+    top:88px;
 
-    transform:translate(-50%,-50%);
+    transform:translateX(-50%);
 
-    width:60px;
+    width:58px;
 
-    height:60px;
+    height:58px;
 
     border-radius:50%;
 
-    background:#cb3f58;
-
-    color:white;
+    background:#cb4b63;
 
     display:flex;
 
@@ -1298,107 +1321,128 @@ BUSTA
 
     align-items:center;
 
-    font-size:22px;
+    font-size:26px;
 
-    box-shadow:
+    color:white;
 
-        0 8px 20px rgba(0,0,0,.25);
+    cursor:pointer;
+
+    transition:.3s;
 
 }
 
-/*=============================
+.seal:hover{
+
+    transform:
+        translateX(-50%)
+        scale(1.1);
+
+}
+
+/*======================================
 FOGLIO
-=============================*/
+======================================*/
 
 #letterPaper{
 
     position:absolute;
 
-    width:90%;
+    width:290px;
 
-    max-width:720px;
+    min-height:380px;
 
-    background:#fffef8;
+    background:#fffdf9;
 
-    border-radius:18px;
+    border-radius:12px;
 
-    padding:55px;
+    padding:35px 28px;
+
+    box-sizing:border-box;
 
     box-shadow:
-
-        0 20px 70px rgba(0,0,0,.15);
-
-    transform:
-
-        translateY(150px)
-
-        scale(.55);
+        0 20px 45px rgba(0,0,0,.25);
 
     opacity:0;
 
-    transition:1.3s ease;
+    transform:
+        translateY(70px)
+        scale(.9);
+
+    transition:
+        .9s ease;
+
+    z-index:1;
 
 }
+
+/*======================================
+TESTO LETTERA
+======================================*/
 
 #letterContent{
 
-    white-space:pre-wrap;
+    color:#444;
 
-    line-height:1.9;
+    font-size:1rem;
 
-    font-size:1.15rem;
+    line-height:1.8;
 
-    color:#4a4a4a;
+    white-space:pre-line;
+
+    font-family:"Caveat", cursive;
 
 }
 
-/*=============================
-ANIMAZIONE
-=============================*/
+/*======================================
+APERTURA
+======================================*/
 
 #letterScene.open .envelope-flap{
 
-    transform:rotateX(180deg);
+    transform:
+        rotateX(180deg);
 
 }
 
 #letterScene.open #letterPaper{
 
-    transform:
-
-        translateY(0)
-
-        scale(1);
-
     opacity:1;
 
-}
-
-#letterScene.open #envelope{
-
-    opacity:0;
+    transform:
+        translateY(-40px)
+        scale(1);
 
 }
 
-/*=============================
-PULSANTE CONTINUA
-=============================*/
+/*======================================
+CONTINUA
+======================================*/
 
 #continueFromLetter{
 
     position:absolute;
 
-    left:50%;
+    bottom:8%;
 
-    bottom:60px;
+    padding:14px 30px;
 
-    transform:translateX(-50%);
+    border:none;
 
-    z-index:100;
+    border-radius:999px;
+
+    background:#cb4b63;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
 
     opacity:0;
 
     pointer-events:none;
+
+    transform:translateY(20px);
 
     transition:.5s;
 
@@ -1409,6 +1453,8 @@ PULSANTE CONTINUA
     opacity:1;
 
     pointer-events:auto;
+
+    transform:translateY(0);
 
 }
 /* =====================================
