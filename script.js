@@ -179,7 +179,7 @@ function createCandles(){
 
         const flame = document.createElement("div");
         flame.className = "flame";
-       flame.innerHTML = "&#128293;";
+      flame.textContent = "🔥";
 
         candle.appendChild(flame);
 
