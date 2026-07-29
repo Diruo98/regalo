@@ -918,15 +918,19 @@ Con tutto il mio cuore.
    APERTURA LETTERA
 ===================================== */
 
-seal.addEventListener("click",()=>{
+document.addEventListener("click", function (e) {
+
+    if (!e.target.classList.contains("seal")) return;
 
     letterScene.classList.add("open");
 
-    setTimeout(()=>{
+    document.getElementById("letterHint").style.display = "none";
+
+    setTimeout(() => {
 
         typeLetter();
 
-    },900);
+    }, 900);
 
 });
 
