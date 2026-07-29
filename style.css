@@ -449,7 +449,7 @@ button:hover{
 
 .candle.off::after{
 
-    content:"â˜";
+    content:"💨";
 
     position:absolute;
 
@@ -1129,7 +1129,7 @@ button:hover{
 
 #heartFill::before{
 
-    content:"â¤";
+    content:"🤍";
 
     position:absolute;
 
@@ -1151,7 +1151,7 @@ button:hover{
 
 #heartFill::after{
 
-    content:"â¤";
+    content:"🤍";
 
     position:absolute;
 
