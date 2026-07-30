@@ -870,7 +870,7 @@ heartFill.addEventListener("click",()=>{
 
         setTimeout(()=>{
 
-            showPage(pages.letter);
+            showPage(pages.fingerprint);
 
            initLetter();
 
