@@ -892,7 +892,7 @@ heartFill.addEventListener("click",()=>{
 
         setTimeout(()=>{
 
-            showPage(pages.fingerprint);
+            showPage(pages.letter);
 
            initLetter();
 
