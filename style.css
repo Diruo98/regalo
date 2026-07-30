@@ -1942,6 +1942,20 @@ APERTURA
 
 }
 
+#letterScene.open #envelope{
+
+    opacity:0;
+
+    transform:translateY(-80px) scale(.92);
+
+    pointer-events:none;
+
+    transition:
+        opacity .6s ease .9s,
+        transform .6s ease .9s;
+
+}
+
 #letterScene.open #letterPaper{
 
     opacity:1;
