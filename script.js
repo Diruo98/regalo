@@ -940,6 +940,8 @@ seal.addEventListener("click",()=>{
 
 },1500);
 
+   });
+
 function typeLetter(){
 
     let i = 0;
