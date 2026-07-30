@@ -1752,9 +1752,9 @@ button:hover{
 
 }
 
-/* =====================================
-   SCENA LETTERA
-===================================== */
+/*======================================
+LETTERA
+======================================*/
 
 #letterScene{
 
@@ -1774,15 +1774,11 @@ button:hover{
 
 }
 
-/* =====================================
-   TESTO INTRO
-===================================== */
-
 #letterHint{
 
     position:absolute;
 
-    top:18%;
+    top:12%;
 
     left:50%;
 
@@ -1790,22 +1786,19 @@ button:hover{
 
     color:white;
 
-    font-size:1.2rem;
+    font-size:1.25rem;
 
     text-align:center;
 
-    opacity:.95;
+    text-shadow:0 0 12px rgba(255,255,255,.35);
 
     transition:.6s;
 
-    text-shadow:
-        0 0 10px rgba(255,255,255,.4);
-
 }
 
-/* =====================================
-   BUSTA
-===================================== */
+/*=========================
+BUSTA
+=========================*/
 
 #envelope{
 
@@ -1827,12 +1820,11 @@ button:hover{
 
     inset:0;
 
-    background:#f6efe5;
+    background:#f5e5d0;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.25);
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
 
 }
 
@@ -1844,7 +1836,7 @@ button:hover{
 
     height:110px;
 
-    background:#ece1d2;
+    background:#ead8bf;
 
     clip-path:polygon(0 0,100% 0,50% 100%);
 
@@ -1864,58 +1856,83 @@ button:hover{
 
     transform:translateX(-50%);
 
-    font-size:2rem;
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    background:#cb4b63;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:26px;
+
+    color:white;
 
     cursor:pointer;
 
-    transition:.4s;
+    user-select:none;
 
 }
 
 .seal:hover{
 
-    transform:
-        translateX(-50%)
-        scale(1.15);
+    transform:translateX(-50%) scale(1.08);
 
 }
 
-/* =====================================
-   LETTERA
-===================================== */
+/*=========================
+FOGLIO
+=========================*/
 
 #letterPaper{
 
     position:absolute;
 
-    width:min(700px,88vw);
+    width:300px;
 
-    height:78vh;
+    min-height:380px;
 
-    background:white;
+    background:#fffdf9;
 
-    border-radius:18px;
+    border-radius:12px;
 
-    padding:45px;
+    padding:30px;
 
-    box-shadow:
-        0 30px 70px rgba(0,0,0,.25);
+    box-sizing:border-box;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
 
     opacity:0;
 
-    transform:
-        translateY(120px)
-        scale(.55);
+    transform:translateY(60px) scale(.9);
 
-    transition:1s;
-
-    overflow-y:auto;
+    transition:.8s;
 
 }
 
-/* =====================================
-   APERTURA
-===================================== */
+#letterContent{
+
+    white-space:pre-line;
+
+    line-height:1.8;
+
+    color:#444;
+
+    font-family:"Caveat",cursive;
+
+    font-size:1.1rem;
+
+}
+
+/*=========================
+APERTURA
+=========================*/
 
 #letterScene.open .envelope-flap{
 
@@ -1927,41 +1944,33 @@ button:hover{
 
     opacity:1;
 
-    transform:
-        translateY(0)
-        scale(1);
+    transform:translateY(-40px) scale(1);
 
 }
 
-#letterScene.open #envelope{
-
-    opacity:0;
-
-    transform:scale(.85);
-
-    pointer-events:none;
-
-}
-
-#letterScene.open #letterHint{
-
-    opacity:0;
-
-}
-
-/* =====================================
-   CONTINUA
-===================================== */
+/*=========================
+CONTINUA
+=========================*/
 
 #continueFromLetter{
 
     position:absolute;
 
-    bottom:45px;
+    bottom:8%;
 
-    left:50%;
+    padding:14px 28px;
 
-    transform:translateX(-50%);
+    border:none;
+
+    border-radius:999px;
+
+    background:#cb4b63;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
 
     opacity:0;
 
