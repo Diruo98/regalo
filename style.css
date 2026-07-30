@@ -1808,6 +1808,8 @@ BUSTA
 
     height:220px;
 
+   z-index:10;
+
     cursor:pointer;
 
     transition:.8s;
@@ -1856,6 +1858,8 @@ BUSTA
 
     transform:translateX(-50%);
 
+   z-index:20;
+
     width:58px;
 
     height:58px;
@@ -1894,6 +1898,12 @@ FOGLIO
 
     position:absolute;
 
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,60px) scale(.9);
+
     width:300px;
 
     min-height:380px;
@@ -1910,12 +1920,11 @@ FOGLIO
 
     opacity:0;
 
-    transform:translateY(60px) scale(.9);
-
     transition:.8s;
 
-}
+    pointer-events:none;
 
+}
 #letterContent{
 
     white-space:pre-line;
@@ -1944,7 +1953,7 @@ APERTURA
 
     opacity:1;
 
-    transform:translateY(-40px) scale(1);
+    transform:translate(-50%,-40px) scale(1);
 
 }
 
