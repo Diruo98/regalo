@@ -46,6 +46,28 @@ const fingerprintButton = document.getElementById("fingerprintButton");
 const restart = document.getElementById("restart");
 
 /* =====================================
+   LETTERA
+===================================== */
+
+const letterScene = document.getElementById("letterScene");
+const letterHint = document.getElementById("letterHint");
+const seal = document.querySelector("#letterPage .seal");
+const letterContent = document.getElementById("letterContent");
+const continueFromLetter = document.getElementById("continueFromLetter");
+
+const letterText = `Cara Sofia,
+
+oggi non volevo regalarti qualcosa di normale.
+
+Volevo regalarti un ricordo.
+
+Un piccolo viaggio.
+
+Per ricordarti quanto sei importante.
+
+Buon compleanno. 🤍`;
+
+/* =====================================
    EMAILJS
 ===================================== */
 
@@ -877,6 +899,72 @@ heartFill.addEventListener("click",()=>{
         },2200);
 
     }
+
+});
+
+function initLetter(){
+
+    writing = false;
+
+    letterScene.classList.remove("open");
+
+    letterHint.style.opacity = "1";
+
+    letterContent.textContent = "";
+
+    continueFromLetter.classList.remove("show");
+
+    if(seal){
+
+        seal.style.pointerEvents = "auto";
+
+    }
+
+}
+
+seal.addEventListener("click",()=>{
+
+    if(writing) return;
+
+    writing = true;
+
+    letterHint.style.opacity = "0";
+
+    letterScene.classList.add("open");
+
+    seal.style.pointerEvents = "none";
+
+    setTimeout(typeLetter,800);
+
+});
+
+function typeLetter(){
+
+    let i = 0;
+
+    letterContent.textContent = "";
+
+    const timer = setInterval(()=>{
+
+        letterContent.textContent += letterText.charAt(i);
+
+        i++;
+
+        if(i >= letterText.length){
+
+            clearInterval(timer);
+
+            continueFromLetter.classList.add("show");
+
+        }
+
+    },35);
+
+}
+
+continueFromLetter.addEventListener("click",()=>{
+
+    showPage(pages.fingerprint);
 
 });
 
