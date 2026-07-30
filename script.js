@@ -934,9 +934,11 @@ seal.addEventListener("click",()=>{
 
     seal.style.pointerEvents = "none";
 
-    setTimeout(typeLetter,800);
+  setTimeout(()=>{
 
-});
+    typeLetter();
+
+},1500);
 
 function typeLetter(){
 
