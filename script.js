@@ -11,6 +11,9 @@ const pages = {
     wish: document.getElementById("wishPage"),
     star: document.getElementById("starPage"),
     constellation: document.getElementById("constellationPage"),
+
+    eyes: document.getElementById("eyesPage"),
+
     heart: document.getElementById("heartPage"),
     letter: document.getElementById("letterPage"),
     fingerprint: document.getElementById("fingerprintPage"),
@@ -19,74 +22,89 @@ const pages = {
 
 };
 
-const bgMusic = document.getElementById("bgMusic");
-const voicePlayer = document.getElementById("voicePlayer");
+/* =====================================
+   EMAILJS
+===================================== */
 
-const playButton = document.getElementById("playButton");
-const startButton = document.getElementById("start");
-let emojiInterval;
-const yesButton = document.getElementById("yesButton");
-const noButton = document.getElementById("noButton");
+emailjs.init("LUA_TUA_PUBLIC_KEY");
 
-const candlesContainer = document.getElementById("candles");
-const counter = document.getElementById("counter");
+/* =====================================
+   INTRO
+===================================== */
 
-const wishInput = document.getElementById("wishInput");
-const sendWish = document.getElementById("sendWish");
+const introMusic = document.getElementById("introMusic");
+const musicToggle = document.getElementById("musicToggle");
+const startBtn = document.getElementById("startBtn");
 
-const constellationSky = document.getElementById("constellationSky");
-const constellationMessage = document.getElementById("constellationMessage");
+/* =====================================
+   LOADING
+===================================== */
+
+const loadingBar = document.getElementById("loadingBar");
+
+/* =====================================
+   BIGLIETTO
+===================================== */
+
+const ticketInput = document.getElementById("ticketName");
+const ticketContinue = document.getElementById("ticketContinue");
+
+/* =====================================
+   CANDELINE
+===================================== */
+
+const candles = document.querySelectorAll(".candle");
+
+/* =====================================
+   DESIDERIO
+===================================== */
+
+const wishStar = document.getElementById("wishStar");
+
+/* =====================================
+   COSTELLAZIONE
+===================================== */
+
+const constellation = document.getElementById("constellation");
+
+let constellationProgress = 0;
+
+/* =====================================
+   CUORE
+===================================== */
 
 const heartFill = document.getElementById("heartFill");
 const heartPercent = document.getElementById("heartPercent");
 const heartMessage = document.getElementById("heartMessage");
 
-const fingerprintButton = document.getElementById("fingerprintButton");
-
-const restart = document.getElementById("restart");
+let heartProgress = 0;
 
 /* =====================================
    LETTERA
 ===================================== */
 
 const letterScene = document.getElementById("letterScene");
-const letterHint = document.getElementById("letterHint");
-const seal = document.querySelector("#letterPage .seal");
-const letterContent = document.getElementById("letterContent");
+const openLetter = document.getElementById("openLetter");
 const continueFromLetter = document.getElementById("continueFromLetter");
 
-const letterText = `Cara Sofia,
-
-oggi non volevo regalarti qualcosa di normale.
-
-Volevo regalarti un ricordo.
-
-Un piccolo viaggio.
-
-Per ricordarti quanto sei importante.
-
-Buon compleanno. 🤍`;
-
 /* =====================================
-   EMAILJS
+   IMPRONTA
 ===================================== */
 
-emailjs.init({
-    publicKey: "wSOh24DBQMubSgC8-"
-});
-
+const fingerprint = document.getElementById("fingerprint");
+const fingerprintMessage = document.getElementById("fingerprintMessage");
 
 /* =====================================
-   VARIABILI
+   VOCALE
 ===================================== */
 
-let loadingValue = 0;
-let candlesOff = 0;
-let heartProgress = 0;
-let fingerprintTimer = null;
-let shootingStarInterval = null;
-let writing = false;
+const voicePlayer = document.getElementById("voicePlayer");
 
+/* =====================================
+   FINALE
+===================================== */
+
+const finalForm = document.getElementById("finalForm");
 
 /* =====================================
    FUNZIONI GENERALI
@@ -96,7 +114,7 @@ function showPage(page){
 
     Object.values(pages).forEach(p=>{
 
-        p.classList.add("hidden");
+        if(p) p.classList.add("hidden");
 
     });
 
@@ -108,13 +126,54 @@ function showPage(page){
    INTRO
 ===================================== */
 
-playButton.addEventListener("click", () => {
+let musicStarted = false;
 
-    bgMusic.volume = 0.35;
+function startMusic(){
 
-    bgMusic.play().catch(() => {});
+    if(musicStarted) return;
 
-   startEmojiRain();
+    introMusic.volume = 0.35;
+
+    introMusic.play().then(()=>{
+
+        musicStarted = true;
+
+        musicToggle.textContent = "🎵";
+
+    }).catch(()=>{
+
+        musicToggle.textContent = "🔇";
+
+    });
+
+}
+
+musicToggle.addEventListener("click",()=>{
+
+    if(!musicStarted){
+
+        startMusic();
+        return;
+
+    }
+
+    if(introMusic.paused){
+
+        introMusic.play();
+        musicToggle.textContent="🎵";
+
+    }else{
+
+        introMusic.pause();
+        musicToggle.textContent="🔇";
+
+    }
+
+});
+
+startBtn.addEventListener("click",()=>{
+
+    startMusic();
 
     showPage(pages.loading);
 
@@ -129,57 +188,58 @@ playButton.addEventListener("click", () => {
 
 function startLoading(){
 
-    loadingValue = 0;
+    loadingBar.style.width="0%";
 
-    startButton.hidden = true;
+    let progress = 0;
 
-    bar.style.width = "0%";
+    const timer = setInterval(()=>{
 
-    percent.textContent = "0%";
+        progress++;
 
-    const timer = setInterval(() => {
+        loadingBar.style.width = progress+"%";
 
-        loadingValue++;
-
-        bar.style.width = loadingValue + "%";
-
-        percent.textContent = loadingValue + "%";
-
-        if(loadingValue >= 100){
+        if(progress>=100){
 
             clearInterval(timer);
 
-            startButton.hidden = false;
+            setTimeout(()=>{
+
+                showPage(pages.ticket);
+
+            },400);
 
         }
 
-    },30);
+    },35);
 
 }
-
-
-/* =====================================
-   INIZIA IL VIAGGIO
-===================================== */
-
-startButton.addEventListener("click", () => {
-
-    showPage(pages.ticket);
-
-});
-
 
 /* =====================================
    BIGLIETTO
 ===================================== */
 
-noButton.addEventListener("mouseenter", () => {
+ticketContinue.disabled = true;
 
-    noButton.style.position = "absolute";
+ticketInput.addEventListener("input",()=>{
 
-    noButton.style.left = Math.random() * 70 + 10 + "%";
+    const value = ticketInput.value.trim();
 
-    noButton.style.top = Math.random() * 70 + 10 + "%";
+    ticketContinue.disabled = value.length === 0;
+
+});
+
+ticketContinue.addEventListener("click",()=>{
+
+    const name = ticketInput.value.trim();
+
+    if(name==="") return;
+
+    // salva il nome
+    window.userName = name;
+
+    showPage(pages.birthday);
+
+    initBirthday();
 
 });
 
@@ -187,238 +247,177 @@ noButton.addEventListener("mouseenter", () => {
    CANDELINE
 ===================================== */
 
-function createCandles(){
+let candlesBlown = 0;
 
-    candlesContainer.innerHTML = "";
+function initBirthday(){
 
-    candlesOff = 0;
+    candlesBlown = 0;
 
-    counter.textContent = "Candeline rimaste: 19";
+    const title = document.getElementById("birthdayTitle");
 
-    for(let i=0; i<19; i++){
+    if(title){
 
-        const candle = document.createElement("div");
-        candle.className = "candle";
+        title.textContent =
+            "Buon Compleanno " +
+            (window.userName || "") +
+            " 🤍";
+    }
 
-        const flame = document.createElement("div");
-        flame.className = "flame";
-      flame.textContent = "🔥";
+    candles.forEach(candle=>{
 
-        candle.appendChild(flame);
+        candle.classList.remove("off");
 
-        flame.addEventListener("click", () => {
+    });
 
-            if(candle.classList.contains("off")) return;
+}
 
-            candle.classList.add("off");
+candles.forEach(candle=>{
 
-            flame.remove();
+    candle.addEventListener("click",()=>{
 
-            candlesOff++;
+        if(candle.classList.contains("off")) return;
 
-            counter.textContent =
-                "Candeline rimaste: " + (19-candlesOff);
+        candle.classList.add("off");
 
-            if(candlesOff === 19){
+        candlesBlown++;
 
-                finishBirthday();
+        candle.animate(
+
+            [
+
+                {transform:"scale(1)"},
+
+                {transform:"scale(1.15)"},
+
+                {transform:"scale(1)"}
+
+            ],
+
+            {
+
+                duration:300
 
             }
 
-        });
+        );
 
-        candlesContainer.appendChild(candle);
+        if(candlesBlown===candles.length){
 
-    }
+            setTimeout(()=>{
 
-}
+                showPage(pages.wish);
 
+            },900);
 
-/* =====================================
-   BIGLIETTO -> CANDELINE
-===================================== */
+        }
 
-yesButton.addEventListener("click", () => {
-
-    showPage(pages.birthday);
-
-    createCandles();
+    });
 
 });
 
-
-/* =====================================
-   FINE COMPLEANNO
-===================================== */
-
-function finishBirthday(){
-
-    createConfetti();
-
-    setTimeout(() => {
-
-        showPage(pages.wish);
-
-    },2500);
-
-}
-
-
-/* =====================================
-   CORIANDOLI
-===================================== */
-
-function createConfetti(){
-
-    const area = document.getElementById("confetti");
-
-    area.innerHTML = "";
-
-    const colors = [
-
-        "#ff5f98",
-        "#ff8fb8",
-        "#ffd166",
-        "#7ed957",
-        "#5ec8ff",
-        "#c77dff",
-       "#ffffff",
-      "#fff5c3"
-
-    ];
-
-    for(let i=0;i<800;i++){
-
-        const confetto = document.createElement("div");
-
-       const w = 5 + Math.random()*6;
-const h = 10 + Math.random()*12;
-
-confetto.style.width = w + "px";
-confetto.style.height = h + "px";
-
-        confetto.className = "confetto";
-
-        confetto.style.left = Math.random()*100 + "vw";
-
-        confetto.style.background =
-            colors[Math.floor(Math.random()*colors.length)];
-
-        confetto.style.animation =
-    `fall ${2 + Math.random()*3}s linear forwards`;
-
-        confetto.style.transform =
-            `rotate(${Math.random()*360}deg)`;
-
-        area.appendChild(confetto);
-
-        setTimeout(()=>{
-
-            confetto.remove();
-
-        },5000);
-
-    }
-
-}
 /* =====================================
    DESIDERIO
 ===================================== */
 
-sendWish.addEventListener("click", () => {
+function initWish(){
 
-    const wish = wishInput.value.trim();
+    if(wishStar){
 
-    if(wish === ""){
-
-        alert("Scrivi prima un desiderio ❤️");
-
-        return;
-
+        wishStar.classList.remove("active");
+        wishStar.classList.remove("shooting");
     }
 
-    // Invio EmailJS (se presente)
+}
 
-    if(typeof emailjs !== "undefined"){
+if(wishStar){
 
-        emailjs.send(
+    wishStar.addEventListener("click",()=>{
 
-            "service_umr8t4k",
+        if(wishStar.classList.contains("shooting")) return;
 
-            "template_ag1927r",
+        wishStar.classList.add("active");
 
-            {
+        setTimeout(()=>{
 
-                wish: wish
+            wishStar.classList.add("shooting");
 
-            }
+        },400);
 
-        ).catch(error => {
+        setTimeout(()=>{
 
-            console.log("EmailJS:", error);
+            showPage(pages.star);
 
-        });
+            initStar();
 
-    }
+        },2200);
 
-    showPage(pages.star);
+    });
 
-    animateStar();
-
-});
-
+}
 
 /* =====================================
    STELLA
 ===================================== */
 
-const wishStar = document.getElementById("wishStar");
+const starButton = document.getElementById("starButton");
+const starMessage = document.getElementById("starMessage");
+const shootingStar = document.getElementById("shootingStar");
 
-function animateStar(){
+function initStar(){
 
-    wishStar.style.opacity = "1";
+    if(starButton){
 
-    wishStar.animate(
+        starButton.disabled = false;
 
-        [
+    }
 
-            {
+    if(shootingStar){
 
-                transform:"translateY(0px) scale(1)",
+        shootingStar.classList.remove("animate");
 
-                opacity:1
+    }
 
-            },
+    if(starMessage){
 
-            {
+        starMessage.classList.remove("show");
 
-                transform:"translateY(-280px) scale(.2)",
+    }
 
-                opacity:0
+}
 
-            }
+if(starButton){
 
-        ],
+    starButton.addEventListener("click",()=>{
 
-        {
+        if(starButton.disabled) return;
 
-            duration:2500,
+        starButton.disabled = true;
 
-            easing:"ease-in-out",
+        if(shootingStar){
 
-            fill:"forwards"
+            shootingStar.classList.add("animate");
 
         }
 
-    );
+        setTimeout(()=>{
 
-    setTimeout(() => {
+            if(starMessage){
 
-        showPage(pages.constellation);
+                starMessage.classList.add("show");
 
-        startConstellation();
+            }
 
-    },2500);
+        },1500);
+
+        setTimeout(()=>{
+
+            showPage(pages.constellation);
+
+            startConstellation();
+
+        },3200);
+
+    });
 
 }
 
@@ -427,190 +426,22 @@ function animateStar(){
 ===================================== */
 
 const constellationPoints = [
-
-    // Riga alta
-    {x:60,y:18},
-    {x:50,y:18},
-    {x:40,y:18},
-
-    // Curva sinistra
-    {x:34,y:28},
-    {x:34,y:40},
-
-    // Centro
-    {x:46,y:48},
-    {x:58,y:48},
-
-    // Curva destra
-    {x:66,y:58},
-    {x:66,y:70},
-
-    // Curva finale
-    {x:58,y:80},
-    {x:46,y:84},
-    {x:34,y:84},
-    {x:26,y:80}
-
+    {x:48,y:15},
+    {x:43,y:26},
+    {x:56,y:35},
+    {x:48,y:47},
+    {x:38,y:60},
+    {x:56,y:72},
+    {x:45,y:84}
 ];
 
-const constellationMessages = [
+let constellationProgress = 0;
 
-"Ho sempre pensato che il cielo custodisse qualcosa di speciale...",
+function startConstellation(){
 
-"Poi sei arrivata tu.",
+    constellation.innerHTML="";
 
-"Da quel momento ogni stella ha iniziato a brillare in modo diverso...",
-
-"Ogni luce mi ricordava i tuoi bellissimi occhi.",
-
-"Ogni desiderio mi riportava sempre da te.",
-
-"Continuavo a guardare il cielo...",
-
-"...finché ho iniziato a vedere un disegno nascosto.",
-
-"Una forma che sembrava conoscermi.",
-
-"Più univo le stelle...",
-
-"...più diventava evidente.",
-
-"Non era una costellazione qualunque.",
-
-"Era la tua iniziale..."
-
-];
-
-let constellationIndex = 0;
-
-// Variabile globale
-let emojiRainInterval;
-
-function createEmojiRain(){
-
-    const emojis = [
-        "🤍",
-        "✨",
-        "🌸",
-        "💫",
-        "⭐",
-        "🦁",
-        "♾️", 
-        "😍"
-    ];
-
-    const emoji = document.createElement("div");
-
-    emoji.className = "falling-emoji";
-
-    emoji.textContent =
-        emojis[Math.floor(Math.random()*emojis.length)];
-
-    emoji.style.left =
-        Math.random()*100+"vw";
-
-    emoji.style.fontSize =
-        (18+Math.random()*16)+"px";
-
-    emoji.style.animationDuration =
-        (10+Math.random()*8)+"s";
-
-    document.body.appendChild(emoji);
-
-    setTimeout(()=>{
-
-        emoji.remove();
-
-    },18000);
-
-}
-
-function startEmojiRain(){
-
-    if(emojiRainInterval) return;
-
-    emojiRainInterval = setInterval(createEmojiRain,1200);
-
-}
-
-function stopEmojiRain(){
-
-    clearInterval(emojiRainInterval);
-
-    emojiRainInterval = null;
-
-    document.querySelectorAll(".falling-emoji").forEach(e=>e.remove());
-
-}
-
-function hideEmojis(){
-
-    document.querySelectorAll(".falling-emoji").forEach(emoji=>{
-
-        emoji.remove();
-
-    });
-
-}
-
-function createStarField(){
-
-    const field = document.getElementById("starField");
-
-    field.innerHTML = "";
-
-    for(let i=0;i<100;i++){
-
-        const star = document.createElement("div");
-
-        star.className="sky-star";
-
-        const size=2+Math.random()*4;
-
-        star.style.width=size+"px";
-        star.style.height=size+"px";
-
-        star.style.left=Math.random()*100+"%";
-        star.style.top=Math.random()*100+"%";
-
-        star.style.animationDuration=
-            (2+Math.random()*4)+"s";
-
-        field.appendChild(star);
-
-    }
-
-}
-
-function createShootingStar(){
-
-    const sky=document.querySelector(".sky");
-
-    const star=document.createElement("div");
-
-    star.className="shooting-star";
-
-    star.style.left=Math.random()*70+"%";
-
-    star.style.top=Math.random()*35+"%";
-
-    star.style.animation="shoot 1.2s linear forwards";
-
-    sky.appendChild(star);
-
-    setTimeout(()=>{
-
-        star.remove();
-
-    },1200);
-
-}
-
-function createConstellation(){
-
-    const container = document.getElementById("constellation");
-
-    container.innerHTML = "";
+    constellationProgress = 0;
 
     constellationPoints.forEach((point,index)=>{
 
@@ -618,158 +449,151 @@ function createConstellation(){
 
         star.className = "constellation-star";
 
- const bigStars = [0,4,8,11,14];
-const mediumStars = [2,6,10,13];
-
-if(bigStars.includes(index)){
-    star.classList.add("big");
-}
-
-if(mediumStars.includes(index)){
-    star.classList.add("medium");
-}
-
-if(index === constellationPoints.length-1){
-    star.classList.add("last");
-}
-
-        star.style.left = point.x + "%";
-        star.style.top  = point.y + "%";
+        star.style.left = point.x+"%";
+        star.style.top = point.y+"%";
 
         star.dataset.index = index;
 
-        container.appendChild(star);
+        constellation.appendChild(star);
 
     });
 
 }
 
-function startConstellation(){
+constellation.addEventListener("click",(e)=>{
 
-    constellationIndex = 0;
+    if(!e.target.classList.contains("constellation-star")) return;
 
-      stopEmojiRain();
-   
-    createStarField();
-    createConstellation();
- 
+    const star = e.target;
 
-    clearInterval(shootingStarInterval);
+    const index = Number(star.dataset.index);
 
-    shootingStarInterval = setInterval(()=>{
+    if(index!==constellationProgress) return;
 
-        createShootingStar();
+    star.classList.add("active");
 
-    },7000);
+    if(index>0){
 
-    const stars = document.querySelectorAll(".constellation-star");
-const message = document.getElementById("constellationMessage");
+        const prev =
+            document.querySelector(
+                `.constellation-star[data-index="${index-1}"]`
+            );
 
-    message.innerHTML =
-    "Tocca la prima stella in alto a destra e poi segui la forma fino in basso per leggere la storia...🤍✨";
+        drawConstellationLine(prev,star);
 
-   message.classList.add("show");
+    }
 
-    
+    constellationProgress++;
 
-    stars.forEach(star=>{
+    if(constellationProgress===constellationPoints.length){
 
-        star.classList.remove("active");
-        star.classList.remove("finish");
+        setTimeout(()=>{
 
-    });
+            constellation.classList.add("constellation-complete");
 
-    stars.forEach((star,index)=>{
+        },600);
 
-        star.onclick = ()=>{
+        setTimeout(()=>{
 
-            if(index !== constellationIndex) return;
+            showPage(pages.eyes);
 
-            star.classList.add("active");
+            startEyesScene();
 
-            if(constellationMessages[index]){
+        },2600);
 
-                message.textContent =
-                constellationMessages[index];
+    }
 
-            }
+});
 
-            constellationIndex++;
+function drawConstellationLine(a,b){
 
-            if(constellationIndex===stars.length){
+    const line = document.createElement("div");
 
-    stars.forEach(s=>s.classList.add("finish"));
+    line.className="constellation-line";
 
-    constellation.classList.add("constellation-complete");
+    const ax=a.offsetLeft+6;
+    const ay=a.offsetTop+6;
 
-    // Aspetta che la costellazione si illumini
-setTimeout(()=>{
+    const bx=b.offsetLeft+6;
+    const by=b.offsetTop+6;
 
-    document
-    .getElementById("constellation")
-    .classList.add("transform");
+    const dx=bx-ax;
+    const dy=by-ay;
 
-},1800);
+    const length=Math.sqrt(dx*dx+dy*dy);
 
-// Dopo che è salita compare il testo
-setTimeout(()=>{
+    line.style.width=length+"px";
 
-    message.innerHTML = `
-<div class="constellation-final">
+    line.style.left=ax+"px";
+    line.style.top=ay+"px";
 
-    <div class="final-text">
+    line.style.transform=
+        `rotate(${Math.atan2(dy,dx)}rad)`;
 
-        La costellazione più bella<br>
-        aveva già un nome.
+    constellation.appendChild(line);
 
-        <span>Sofia 🤍</span>
+}
 
-    </div>
+/* =====================================
+   OCCHI
+===================================== */
 
-</div>`;
+const eyesLine1 = document.getElementById("eyesLine1");
+const eyesLine2 = document.getElementById("eyesLine2");
 
-    message.classList.add("show");
+const eyesPhoto = document.getElementById("eyesPhoto");
 
-},3200);
+const continueEyes =
+document.getElementById("continueEyes");
+
+function startEyesScene(){
+
+    eyesLine1.classList.remove("show");
+    eyesLine2.classList.remove("show");
+
+    eyesPhoto.classList.remove("show");
+
+    continueEyes.classList.remove("show");
 
     setTimeout(()=>{
 
-        document
-        .getElementById("constellation")
-        .classList.add("transform");
+        eyesLine1.classList.add("show");
 
-    },3200);
+    },800);
 
     setTimeout(()=>{
 
-        showPage(pages.eyes);
+        eyesLine2.classList.add("show");
 
-startEyesScene();
+    },2800);
 
-document
-.getElementById("constellation")
-.classList.remove("transform");
+    setTimeout(()=>{
 
-    },5000);
+        eyesPhoto.classList.add("show");
+
+    },4700);
+
+    setTimeout(()=>{
+
+        continueEyes.classList.add("show");
+
+    },6000);
 
 }
 
-              };
+continueEyes.addEventListener("click",()=>{
 
-    });
+    showPage(pages.heart);
 
-}
-
-window.addEventListener("load", () => {
-
-    startEmojiRain();
+    initHeart();
 
 });
 
 /* =====================================
    CUORE
 ===================================== */
- const heartQuotes = {
+
+const heartQuotes = {
 
     10:"Da quando sei arrivata, qualcosa dentro di me è cambiato. 🤍",
 
@@ -793,46 +617,7 @@ window.addEventListener("load", () => {
 
 };
 
-function createHeartBurst(){
-
-    const hearts = ["❤️","💕","💖","💗","💞"];
-
-    for(let i=0;i<35;i++){
-
-        const heart = document.createElement("div");
-
-        heart.className = "heart-burst";
-
-        heart.textContent =
-            hearts[Math.floor(Math.random()*hearts.length)];
-
-        heart.style.left =
-            (50 + (Math.random()-0.5)*18) + "%";
-
-        heart.style.top = "50%";
-
-        heart.style.setProperty(
-            "--x",
-            (Math.random()-0.5)*250 + "px"
-        );
-
-        heart.style.setProperty(
-            "--y",
-            (-150-Math.random()*220) + "px"
-        );
-
-        heart.style.fontSize =
-            (18+Math.random()*18)+"px";
-
-        document
-            .getElementById("heartPage")
-            .appendChild(heart);
-
-        setTimeout(()=>heart.remove(),1800);
-
-    }
-
-}
+let heartProgress = 0;
 
 function initHeart(){
 
@@ -840,9 +625,9 @@ function initHeart(){
 
     heartFill.style.setProperty("--fill","0%");
 
-    heartPercent.textContent = "0%";
+    heartPercent.textContent="0%";
 
-    heartMessage.textContent = "Tocca il cuore ❤️";
+    heartMessage.textContent="Tocca il cuore ❤️";
 
 }
 
@@ -852,17 +637,13 @@ heartFill.addEventListener("click",()=>{
 
     heartProgress++;
 
-    const percentValue = heartProgress*10;
+    const percent = heartProgress*10;
 
-    heartFill.style.setProperty("--fill",percentValue+"%");
+    heartFill.style.setProperty("--fill",percent+"%");
 
-    heartPercent.textContent = percentValue+"%";
+    heartPercent.textContent = percent+"%";
 
-    if(heartQuotes[percentValue]){
-
-        heartMessage.textContent = heartQuotes[percentValue];
-
-    }
+    heartMessage.textContent = heartQuotes[percent];
 
     heartFill.animate(
 
@@ -886,13 +667,13 @@ heartFill.addEventListener("click",()=>{
 
     if(heartProgress===10){
 
-       createHeartBurst();
+        createHeartBurst();
 
         setTimeout(()=>{
 
             showPage(pages.letter);
 
-           initLetter();
+            initLetter();
 
         },2200);
 
@@ -900,77 +681,51 @@ heartFill.addEventListener("click",()=>{
 
 });
 
-/* =====================================
-   OCCHI
-===================================== */
+function createHeartBurst(){
 
-const eyesLine1 = document.getElementById("eyesLine1");
-const eyesLine2 = document.getElementById("eyesLine2");
+    const hearts=["❤️","💕","💖","💗","💞"];
 
-const eyesPhoto = document.getElementById("eyesPhoto");
+    for(let i=0;i<35;i++){
 
-const starLayer = document.getElementById("starLayer");
-const starGlow = document.getElementById("starGlow");
+        const h=document.createElement("div");
 
-const continueEyes = document.getElementById("continueEyes");
+        h.className="heart-burst";
 
-function startEyesScene(){
+        h.textContent=
+            hearts[Math.floor(Math.random()*hearts.length)];
 
-    starLayer.innerHTML="";
+        h.style.left=
+            (50+(Math.random()-0.5)*18)+"%";
 
-    eyesPhoto.classList.remove("show");
+        h.style.top="50%";
 
-    starGlow.classList.remove("show");
+        h.style.setProperty(
 
-    continueEyes.classList.remove("show");
+            "--x",
 
-    eyesLine1.classList.remove("show");
-    eyesLine2.classList.remove("show");
+            (Math.random()-0.5)*250+"px"
 
-    setTimeout(()=>{
+        );
 
-        eyesLine1.classList.add("show");
+        h.style.setProperty(
 
-    },700);
+            "--y",
 
-    setTimeout(()=>{
+            (-150-Math.random()*220)+"px"
 
-        eyesLine2.classList.add("show");
+        );
 
-    },2600);
+        h.style.fontSize=
 
-    setTimeout(()=>{
+            (18+Math.random()*18)+"px";
 
-        copyConstellationStars();
+        document
+            .getElementById("heartPage")
+            .appendChild(h);
 
-    },4200);
+        setTimeout(()=>h.remove(),1800);
 
-}
-
-function copyConstellationStars(){
-
-    starLayer.innerHTML="";
-
-    const stars =
-        document.querySelectorAll(".constellation-star");
-
-    stars.forEach(star=>{
-
-        const rect =
-            star.getBoundingClientRect();
-
-        const clone =
-            document.createElement("div");
-
-        clone.className="flying-star";
-
-        clone.style.left=rect.left+"px";
-
-        clone.style.top=rect.top+"px";
-
-        starLayer.appendChild(clone);
-
-    });
+    }
 
 }
 
@@ -978,160 +733,37 @@ function copyConstellationStars(){
    LETTERA
 ===================================== */
 
-function initLetter(){
+const letterScene = document.getElementById("letterScene");
+const openLetter = document.getElementById("openLetter");
+const continueFromLetter = document.getElementById("continueFromLetter");
 
-    writing = false;
+function initLetter(){
 
     letterScene.classList.remove("open");
 
-    letterHint.style.opacity = "1";
-
-    letterContent.textContent = "";
-
     continueFromLetter.classList.remove("show");
-
-    if(seal){
-
-        seal.style.pointerEvents = "auto";
-
-    }
 
 }
 
-seal.addEventListener("click",()=>{
+openLetter.addEventListener("click",()=>{
 
-    if(writing) return;
-
-    writing = true;
-
-    letterHint.style.opacity = "0";
+    if(letterScene.classList.contains("open")) return;
 
     letterScene.classList.add("open");
 
-    seal.style.pointerEvents = "none";
+    setTimeout(()=>{
 
-  setTimeout(()=>{
+        continueFromLetter.classList.add("show");
 
-    typeLetter();
+    },2500);
 
-},1500);
-
-   });
-
-function typeLetter(){
-
-    let i = 0;
-
-    letterContent.textContent = "";
-
-    const timer = setInterval(()=>{
-
-        letterContent.textContent += letterText.charAt(i);
-
-        i++;
-
-        if(i >= letterText.length){
-
-            clearInterval(timer);
-
-            continueFromLetter.classList.add("show");
-
-        }
-
-    },35);
-
-}
+});
 
 continueFromLetter.addEventListener("click",()=>{
 
     showPage(pages.fingerprint);
 
-});
-
-/* =====================================
-   IMPRONTA
-===================================== */
-
-fingerprintButton.addEventListener("mousedown",startFingerprint);
-fingerprintButton.addEventListener("touchstart",startFingerprint);
-
-fingerprintButton.addEventListener("mouseup",stopFingerprint);
-fingerprintButton.addEventListener("mouseleave",stopFingerprint);
-fingerprintButton.addEventListener("touchend",stopFingerprint);
-
-function startFingerprint(){
-
-    fingerprintTimer=setTimeout(()=>{
-
-        showPage(pages.voice);
-
-    },1800);
-
-}
-
-function stopFingerprint(){
-
-    clearTimeout(fingerprintTimer);
-
-}
-
-
-/* =====================================
-   VOCALE
-===================================== */
-
-voicePlayer.addEventListener("ended",()=>{
-
-    showPage(pages.final);
-
-    showFinal();
+    initFingerprint();
 
 });
-
-
-/* =====================================
-   FINALE
-===================================== */
-
-const polaroid=document.getElementById("polaroid");
-
-const finalLove=document.getElementById("finalLove");
-
-const signature=document.getElementById("signature");
-
-function showFinal(){
-
-    polaroid.classList.remove("hidden");
-
-    setTimeout(()=>{
-
-        finalLove.classList.remove("hidden");
-
-    },1200);
-
-    setTimeout(()=>{
-
-        signature.classList.remove("hidden");
-
-    },2200);
-
-    setTimeout(()=>{
-
-        restart.classList.remove("hidden");
-
-    },4200);
-
-}
-
-
-/* =====================================
-   RICOMINCIA
-===================================== */
-
-restart.addEventListener("click",()=>{
-
-    location.reload();
-
-});
-
 
