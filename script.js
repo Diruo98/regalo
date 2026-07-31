@@ -114,7 +114,7 @@ playButton.addEventListener("click", () => {
 
     bgMusic.play().catch(() => {});
 
-   setInterval(createEmojiRain,1200);
+   startEmojiRain();
 
     showPage(pages.loading);
 
@@ -743,8 +743,6 @@ setTimeout(()=>{
     setTimeout(()=>{
 
         showPage(pages.heart);
-
-startEmojiRain();
 
 initHeart();
 
