@@ -2008,9 +2008,11 @@ PAGINA OCCHI
 
 #eyesPage{
 
-    background:#050816;
+    background:#030510;
 
     overflow:hidden;
+
+    position:relative;
 
     display:flex;
 
@@ -2018,23 +2020,19 @@ PAGINA OCCHI
 
     align-items:center;
 
-    flex-direction:column;
-
-    position:relative;
-
 }
 
-#eyesText{
+/* Testi */
+
+#eyesOverlay{
 
     position:absolute;
 
-    top:10%;
+    top:9%;
 
     width:90%;
 
     text-align:center;
-
-    color:#fff;
 
     z-index:20;
 
@@ -2043,25 +2041,29 @@ PAGINA OCCHI
 #eyesLine1,
 #eyesLine2{
 
+    color:white;
+
     opacity:0;
 
-    transform:translateY(20px);
+    transform:translateY(25px);
 
-    transition:.8s;
+    transition:1s;
+
+    text-shadow:0 0 20px rgba(255,255,255,.25);
 
 }
 
 #eyesLine1{
 
-    font-size:1.7rem;
-
-    margin-bottom:20px;
+    font-size:1.8rem;
 
 }
 
 #eyesLine2{
 
     font-size:1.5rem;
+
+    margin-top:18px;
 
 }
 
@@ -2074,7 +2076,9 @@ PAGINA OCCHI
 
 }
 
-#starCloud{
+/* Stelle */
+
+#starLayer{
 
     position:absolute;
 
@@ -2082,37 +2086,75 @@ PAGINA OCCHI
 
     pointer-events:none;
 
+    z-index:8;
+
 }
 
-.star-particle{
+.flying-star{
 
     position:absolute;
 
-    width:4px;
+    width:7px;
 
-    height:4px;
+    height:7px;
 
     border-radius:50%;
 
-    background:#ffe7a8;
+    background:#fff4bc;
 
-    box-shadow:0 0 10px #fff5bf;
+    box-shadow:
+        0 0 10px #fff7cf,
+        0 0 20px #fff7cf;
 
 }
 
-#eyesPhoto{
+/* Nube */
 
-    width:min(90vw,500px);
+#starGlow{
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+        rgba(255,245,180,.45),
+        transparent 70%);
 
     opacity:0;
 
+    transition:1.5s;
+
+    z-index:9;
+
+}
+
+#starGlow.show{
+
+    opacity:1;
+
+}
+
+/* Foto */
+
+#eyesPhoto{
+
+    width:min(88vw,480px);
+
+    border-radius:18px;
+
+    opacity:0;
+
+    filter:blur(22px);
+
     transform:scale(1.08);
 
-    filter:blur(20px);
+    transition:2s;
 
-    transition:1.8s ease;
-
-    z-index:10;
+    z-index:12;
 
 }
 
@@ -2120,8 +2162,52 @@ PAGINA OCCHI
 
     opacity:1;
 
+    filter:blur(0);
+
     transform:scale(1);
 
-    filter:blur(0);
+}
+
+/* Pulsante */
+
+#continueEyes{
+
+    position:absolute;
+
+    bottom:8%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#cb4b63;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.6s;
+
+    z-index:30;
+
+}
+
+#continueEyes.show{
+
+    opacity:1;
+
+    pointer-events:auto;
 
 }
