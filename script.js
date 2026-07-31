@@ -742,9 +742,9 @@ setTimeout(()=>{
 
     setTimeout(()=>{
 
-        showPage(pages.heart);
+        showPage(pages.eyes);
 
-initHeart();
+startEyesScene();
 
 document
 .getElementById("constellation")
