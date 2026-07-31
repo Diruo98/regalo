@@ -1806,17 +1806,13 @@ BUSTA
 
 #envelope{
 
-    position:absolute;
-
-    left:50%;
-
-    top:50%;
-
-    transform:translate(-50%,-50%);
+    position:relative;
 
     width:320px;
 
     height:220px;
+
+   z-index:10;
 
     cursor:pointer;
 
@@ -1908,11 +1904,17 @@ FOGLIO
 
     left:50%;
 
-    top:50%;
+    top:220px;
 
-    transform:translate(-50%,-35%) scale(.85);
+    transform:translateX(-50%) scale(.9);
 
-    opacity:0;
+    width:min(90vw,300px);
+
+    min-height:auto;
+
+    padding:30px;
+
+    box-sizing:border-box;
 
 }
 
@@ -1995,216 +1997,6 @@ CONTINUA
 }
 
 #continueFromLetter.show{
-
-    opacity:1;
-
-    pointer-events:auto;
-
-}
-
-/*=====================================
-PAGINA OCCHI
-=====================================*/
-
-#eyesPage{
-
-    background:#030510;
-
-    overflow:hidden;
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-/* Testi */
-
-#eyesOverlay{
-
-    position:absolute;
-
-    top:9%;
-
-    width:90%;
-
-    text-align:center;
-
-    z-index:20;
-
-}
-
-#eyesLine1,
-#eyesLine2{
-
-    color:white;
-
-    opacity:0;
-
-    transform:translateY(25px);
-
-    transition:1s;
-
-    text-shadow:0 0 20px rgba(255,255,255,.25);
-
-}
-
-#eyesLine1{
-
-    font-size:1.8rem;
-
-}
-
-#eyesLine2{
-
-    font-size:1.5rem;
-
-    margin-top:18px;
-
-}
-
-#eyesLine1.show,
-#eyesLine2.show{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-/* Stelle */
-
-#starLayer{
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:8;
-
-}
-
-.flying-star{
-
-    position:absolute;
-
-    width:7px;
-
-    height:7px;
-
-    border-radius:50%;
-
-    background:#fff4bc;
-
-    box-shadow:
-        0 0 10px #fff7cf,
-        0 0 20px #fff7cf;
-
-}
-
-/* Nube */
-
-#starGlow{
-
-    position:absolute;
-
-    width:180px;
-
-    height:180px;
-
-    border-radius:50%;
-
-    background:radial-gradient(circle,
-        rgba(255,245,180,.45),
-        transparent 70%);
-
-    opacity:0;
-
-    transition:1.5s;
-
-    z-index:9;
-
-}
-
-#starGlow.show{
-
-    opacity:1;
-
-}
-
-/* Foto */
-
-#eyesPhoto{
-
-    width:min(88vw,480px);
-
-    border-radius:18px;
-
-    opacity:0;
-
-    filter:blur(22px);
-
-    transform:scale(1.08);
-
-    transition:2s;
-
-    z-index:12;
-
-}
-
-#eyesPhoto.show{
-
-    opacity:1;
-
-    filter:blur(0);
-
-    transform:scale(1);
-
-}
-
-/* Pulsante */
-
-#continueEyes{
-
-    position:absolute;
-
-    bottom:8%;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    padding:14px 30px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#cb4b63;
-
-    color:white;
-
-    font-size:1rem;
-
-    cursor:pointer;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.6s;
-
-    z-index:30;
-
-}
-
-#continueEyes.show{
 
     opacity:1;
 
