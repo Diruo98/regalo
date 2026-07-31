@@ -1806,13 +1806,17 @@ BUSTA
 
 #envelope{
 
-    position:relative;
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
 
     width:320px;
 
     height:220px;
-
-   z-index:10;
 
     cursor:pointer;
 
@@ -1904,17 +1908,11 @@ FOGLIO
 
     left:50%;
 
-    top:220px;
+    top:50%;
 
-    transform:translateX(-50%) scale(.9);
+    transform:translate(-50%,-35%) scale(.85);
 
-    width:min(90vw,300px);
-
-    min-height:auto;
-
-    padding:30px;
-
-    box-sizing:border-box;
+    opacity:0;
 
 }
 
