@@ -900,6 +900,84 @@ heartFill.addEventListener("click",()=>{
 
 });
 
+/* =====================================
+   OCCHI
+===================================== */
+
+const eyesLine1 = document.getElementById("eyesLine1");
+const eyesLine2 = document.getElementById("eyesLine2");
+
+const eyesPhoto = document.getElementById("eyesPhoto");
+
+const starLayer = document.getElementById("starLayer");
+const starGlow = document.getElementById("starGlow");
+
+const continueEyes = document.getElementById("continueEyes");
+
+function startEyesScene(){
+
+    starLayer.innerHTML="";
+
+    eyesPhoto.classList.remove("show");
+
+    starGlow.classList.remove("show");
+
+    continueEyes.classList.remove("show");
+
+    eyesLine1.classList.remove("show");
+    eyesLine2.classList.remove("show");
+
+    setTimeout(()=>{
+
+        eyesLine1.classList.add("show");
+
+    },700);
+
+    setTimeout(()=>{
+
+        eyesLine2.classList.add("show");
+
+    },2600);
+
+    setTimeout(()=>{
+
+        copyConstellationStars();
+
+    },4200);
+
+}
+
+function copyConstellationStars(){
+
+    starLayer.innerHTML="";
+
+    const stars =
+        document.querySelectorAll(".constellation-star");
+
+    stars.forEach(star=>{
+
+        const rect =
+            star.getBoundingClientRect();
+
+        const clone =
+            document.createElement("div");
+
+        clone.className="flying-star";
+
+        clone.style.left=rect.left+"px";
+
+        clone.style.top=rect.top+"px";
+
+        starLayer.appendChild(clone);
+
+    });
+
+}
+
+/* =====================================
+   LETTERA
+===================================== */
+
 function initLetter(){
 
     writing = false;
