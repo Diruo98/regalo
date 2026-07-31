@@ -2001,3 +2001,127 @@ CONTINUA
     pointer-events:auto;
 
 }
+
+/*=====================================
+PAGINA OCCHI
+=====================================*/
+
+#eyesPage{
+
+    background:#050816;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    position:relative;
+
+}
+
+#eyesText{
+
+    position:absolute;
+
+    top:10%;
+
+    width:90%;
+
+    text-align:center;
+
+    color:#fff;
+
+    z-index:20;
+
+}
+
+#eyesLine1,
+#eyesLine2{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:.8s;
+
+}
+
+#eyesLine1{
+
+    font-size:1.7rem;
+
+    margin-bottom:20px;
+
+}
+
+#eyesLine2{
+
+    font-size:1.5rem;
+
+}
+
+#eyesLine1.show,
+#eyesLine2.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+#starCloud{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.star-particle{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#ffe7a8;
+
+    box-shadow:0 0 10px #fff5bf;
+
+}
+
+#eyesPhoto{
+
+    width:min(90vw,500px);
+
+    opacity:0;
+
+    transform:scale(1.08);
+
+    filter:blur(20px);
+
+    transition:1.8s ease;
+
+    z-index:10;
+
+}
+
+#eyesPhoto.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+    filter:blur(0);
+
+}
