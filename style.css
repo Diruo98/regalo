@@ -2188,3 +2188,102 @@ CONTINUA
     }
 
 }
+
+/* ==========================
+   CAMPO STELLARE
+========================== */
+
+#starField{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.45;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,.8);
+
+    animation:twinkle linear infinite;
+
+}
+
+/* stelle un po' più grandi */
+
+.star.big{
+
+    width:4px;
+    height:4px;
+
+    opacity:.8;
+
+    box-shadow:
+
+        0 0 10px rgba(255,255,255,.95),
+        0 0 25px rgba(255,240,180,.4);
+
+}
+
+/* stelle dorate */
+
+.star.gold{
+
+    background:#ffe8a6;
+
+    box-shadow:
+
+        0 0 10px rgba(255,240,180,.9),
+        0 0 25px rgba(255,220,120,.6);
+
+}
+
+/* stelle azzurre */
+
+.star.blue{
+
+    background:#d8ecff;
+
+    box-shadow:
+
+        0 0 8px rgba(200,230,255,.8);
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        opacity:.2;
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+        transform:scale(1.4);
+
+    }
+
+    100%{
+
+        opacity:.2;
+        transform:scale(.8);
+
+    }
+
+}
