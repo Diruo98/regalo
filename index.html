@@ -295,6 +295,10 @@ class="page night-page hidden">
      COSTELLAZIONE
 ===================================== -->
 
+<!-- =====================================
+     COSTELLAZIONE
+===================================== -->
+
 <section id="constellationPage" class="page hidden">
 
     <!-- Testo narratore -->
@@ -303,61 +307,30 @@ class="page night-page hidden">
     <!-- Campo stellare -->
     <div id="starField"></div>
 
-    <!-- Contenitore della costellazione -->
+    <!-- Stelle che formeranno la S -->
     <div id="constellationContainer">
 
+        <!-- Le linee della costellazione -->
         <svg id="constellationLines"></svg>
 
     </div>
 
-    <!-- Pulsante continua (rimarrà nascosto all'inizio) -->
-    <button id="continueAfterConstellation" class="hidden">
-        Continua ♡
-    </button>
+    <!-- Nebulosa centrale (comparirà dopo) -->
+    <div id="cosmicCenter"></div>
 
-</section>
+    <!-- Dipinto cosmico -->
+    <img
+        id="cosmicEyes"
+        src="regalo/occhi-cosmico.png"
+        alt="Occhi cosmici">
 
-    <div class="sky">
+    <!-- Foto reale -->
+    <img
+        id="realEyes"
+        src="regalo/occhi.jpg"
+        alt="I tuoi occhi">
 
-        <div class="moon"></div>
-
-        <!-- Stelle decorative -->
-        <div id="starField"></div>
-
-
-        <!-- Stelle cliccabili -->
-        <div id="constellation"></div>
-
-        <!-- Testo -->
-        <div id="constellationMessage">
-
-            Tocca la prima stella in alto a destra e poi tutte le altre in successione ⭐️
-
-        </div>
-
-    </div>
-
-</section>
-
-    <section id="eyesPage" class="page hidden">
-
-    <div id="cosmicBackground">
-
-        <div id="nebula1"></div>
-        <div id="nebula2"></div>
-
-        <div id="starField"></div>
-
-        <img id="cosmicEyes"
-             src="regalo/occhi-cosmico.png">
-
-        <img id="realEyes"
-             src="regalo/occhi.jpg">
-
-        <div id="starGlow"></div>
-
-    </div>
-
+    <!-- Testo finale -->
     <div id="eyesText">
 
         <p id="eyesLine1">
@@ -370,8 +343,11 @@ class="page night-page hidden">
 
     </div>
 
-    <button id="continueEyes">
-        Continua ♡
+    <!-- Continua -->
+    <button id="continueAfterConstellation" class="hidden">
+
+        Continua 🤍
+
     </button>
 
 </section>
