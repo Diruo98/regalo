@@ -785,6 +785,62 @@ function createCosmicDust(){
 
 }
 
+/*======================================
+        REGIA DELLA SCENA
+======================================*/
+
+function playConstellationScene(){
+
+    if(animationRunning) return;
+
+    animationRunning = true;
+
+    // 1
+    createSky();
+
+    // 2
+    prepareConstellation();
+
+    // 3
+    setTimeout(()=>{
+
+        showNarration(
+            "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
+        );
+
+    },1500);
+
+    // 4
+    setTimeout(()=>{
+
+        lightConstellationStars();
+
+    },5000);
+
+}
+
+/*======================================
+        TESTI DEL CIELO
+======================================*/
+
+function showNarration(text){
+
+    const box = document.getElementById("constellationText");
+
+    if(!box) return;
+
+    box.innerHTML = text;
+
+    box.classList.remove("show");
+
+    setTimeout(()=>{
+
+        box.classList.add("show");
+
+    },50);
+
+}
+
 function startConstellation(){
 
     constellationIndex = 0;
