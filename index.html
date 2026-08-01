@@ -295,13 +295,27 @@ class="page night-page hidden">
      COSTELLAZIONE
 ===================================== -->
 
-<section id="constellationPage" class="page night-page hidden">
+<section id="constellationPage" class="page hidden">
 
-   <div id="cosmicOverlay">
+    <!-- Testo narratore -->
+    <div id="constellationText"></div>
 
-    <div id="cosmicStars"></div>
+    <!-- Campo stellare -->
+    <div id="starField"></div>
 
-</div>
+    <!-- Contenitore della costellazione -->
+    <div id="constellationContainer">
+
+        <svg id="constellationLines"></svg>
+
+    </div>
+
+    <!-- Pulsante continua (rimarrà nascosto all'inizio) -->
+    <button id="continueAfterConstellation" class="hidden">
+        Continua ♡
+    </button>
+
+</section>
 
     <div class="sky">
 
