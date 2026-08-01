@@ -666,44 +666,6 @@ function createShootingStar(){
 
 }
 
-function createConstellation(){
-
-    const container = document.getElementById("constellation");
-
-    container.innerHTML = "";
-
-    constellationPoints.forEach((point,index)=>{
-
-        const star = document.createElement("div");
-
-        star.className = "constellation-star";
-
- const bigStars = [0,4,8,11,14];
-const mediumStars = [2,6,10,13];
-
-if(bigStars.includes(index)){
-    star.classList.add("big");
-}
-
-if(mediumStars.includes(index)){
-    star.classList.add("medium");
-}
-
-if(index === constellationPoints.length-1){
-    star.classList.add("last");
-}
-
-        star.style.left = point.x + "%";
-        star.style.top  = point.y + "%";
-
-        star.dataset.index = index;
-
-        container.appendChild(star);
-
-    });
-
-}
-
 /* =====================================
    POLVERE COSMICA
 ===================================== */
