@@ -836,6 +836,71 @@ function moveConstellationStars(){
 
 }
 
+/*======================================
+        LA S RESPIRA
+======================================*/
+
+function holdConstellation(){
+
+    constellationStars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1.6)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(2)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1.6)"
+
+                }
+
+            ],
+
+            {
+
+                duration:2500,
+
+                iterations:Infinity,
+
+                easing:"ease-in-out"
+
+            }
+
+        );
+
+    });
+
+    setTimeout(()=>{
+
+        showNarration(
+            "Pensavo che quella fosse la lettera più bella del cielo..."
+        );
+
+    },1000);
+
+    setTimeout(()=>{
+
+        breakConstellation();
+
+    },5000);
+
+}
+
 function startConstellation(){
 
     stopEmojiRain();
