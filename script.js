@@ -644,6 +644,58 @@ if(index === constellationPoints.length-1){
 
 }
 
+/* =====================================
+   POLVERE COSMICA
+===================================== */
+
+function createCosmicDust(){
+
+    const field = document.getElementById("cosmicDust");
+
+    if(!field) return;
+
+    field.innerHTML = "";
+
+    for(let i=0;i<500;i++){
+
+        const star = document.createElement("div");
+
+        star.classList.add("dust");
+
+        const r = Math.random();
+
+        if(r>0.92){
+
+            star.classList.add("gold");
+
+        }else if(r>0.84){
+
+            star.classList.add("blue");
+
+        }
+
+        const size = 1 + Math.random()*3;
+
+        star.style.width = size+"px";
+        star.style.height = size+"px";
+
+        star.style.left = Math.random()*100+"%";
+        star.style.top = Math.random()*100+"%";
+
+        star.style.opacity = .15 + Math.random()*.8;
+
+        star.style.animationDuration =
+            (3 + Math.random()*8)+"s";
+
+        star.style.animationDelay =
+            (-Math.random()*8)+"s";
+
+        field.appendChild(star);
+
+    }
+
+}
+
 function startConstellation(){
 
     constellationIndex = 0;
