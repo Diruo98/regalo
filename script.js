@@ -555,6 +555,93 @@ function hideEmojis(){
 
 }
 
+/*======================================
+        UNIVERSO COSMICO
+======================================*/
+
+const SKY_STAR_COUNT = 450;
+
+let skyStars = [];
+
+let constellationStars = [];
+
+let animationRunning = false;
+
+let sceneStep = 0;
+
+/*======================================
+        CREA IL CIELO
+======================================*/
+
+function createSky(){
+
+    const field = document.getElementById("starField");
+
+    field.innerHTML="";
+
+    skyStars=[];
+
+    for(let i=0;i<SKY_STAR_COUNT;i++){
+
+        const star=document.createElement("div");
+
+        star.className="star";
+
+        const r=Math.random();
+
+        if(r>.94){
+
+            star.classList.add("gold");
+
+        }else if(r>.88){
+
+            star.classList.add("blue");
+
+        }
+
+        if(Math.random()>.94){
+
+            star.classList.add("big");
+
+        }
+
+        star.style.left=Math.random()*100+"%";
+
+        star.style.top=Math.random()*100+"%";
+
+        star.style.animationDuration=
+            (2+Math.random()*6)+"s";
+
+        star.style.animationDelay=
+            (-Math.random()*6)+"s";
+
+        field.appendChild(star);
+
+        skyStars.push(star);
+
+    }
+
+}
+
+/*======================================
+        SCEGLI LE STELLE
+======================================*/
+
+function prepareConstellation(){
+
+    constellationStars=[];
+
+    const shuffled=[...skyStars]
+        .sort(()=>Math.random()-.5);
+
+    for(let i=0;i<constellationPoints.length;i++){
+
+        constellationStars.push(shuffled[i]);
+
+    }
+
+}
+
 function createStarField(){
 
     const field = document.getElementById("starField");
