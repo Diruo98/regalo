@@ -874,6 +874,35 @@ function lightConstellationStars(){
 
 }
 
+/*======================================
+    LE STELLE FORMANO LA S
+======================================*/
+
+function moveConstellationStars(){
+
+    constellationStars.forEach((star,index)=>{
+
+        const point = constellationPoints[index];
+
+        star.style.left = point.x + "%";
+
+        star.style.top = point.y + "%";
+
+        star.style.transform = "translate(-50%,-50%) scale(1.8)";
+
+    });
+
+    // Quando la S è completa
+    setTimeout(()=>{
+
+        showNarration("Poi sei arrivata tu.");
+
+        holdConstellation();
+
+    },2500);
+
+}
+
 function startConstellation(){
 
     stopEmojiRain();
