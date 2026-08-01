@@ -2553,3 +2553,73 @@ CONTINUA
     }
 
 }
+
+/*======================================
+    CIELO VIVO
+======================================*/
+
+#constellationPage{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+#constellationPage::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-5%;
+
+    background-image:url("sfondo-costellazione.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    animation:skyDrift 35s ease-in-out infinite alternate;
+
+    z-index:0;
+
+}
+
+@keyframes skyDrift{
+
+    0%{
+
+        transform:
+        scale(1.05)
+        translate(0px,0px);
+
+    }
+
+    50%{
+
+        transform:
+        scale(1.08)
+        translate(-12px,-8px);
+
+    }
+
+    100%{
+
+        transform:
+        scale(1.06)
+        translate(10px,6px);
+
+    }
+
+}
+
+#constellationPage>*{
+
+    position:relative;
+
+    z-index:2;
+
+}
