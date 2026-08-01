@@ -841,15 +841,42 @@ function showNarration(text){
 
 }
 
+/*======================================
+    LE STELLE SI SVEGLIANO
+======================================*/
+
+function lightConstellationStars(){
+
+    let delay = 0;
+
+    constellationStars.forEach((star,index)=>{
+
+        setTimeout(()=>{
+
+            star.classList.add("big");
+            star.classList.add("gold");
+
+            star.style.transition =
+                "all 1.8s ease";
+
+        },delay);
+
+        delay += 350;
+
+    });
+
+    // Quando tutte sono illuminate
+    setTimeout(()=>{
+
+        moveConstellationStars();
+
+    },delay + 1000);
+
+}
+
 function startConstellation(){
 
-    constellationIndex = 0;
-
-      stopEmojiRain();
-   
-    createStarField();
-    createConstellation();
- 
+    stopEmojiRain();
 
     clearInterval(shootingStarInterval);
 
@@ -858,6 +885,10 @@ function startConstellation(){
         createShootingStar();
 
     },7000);
+
+    playConstellationScene();
+
+}
 
     const stars = document.querySelectorAll(".constellation-star");
 const message = document.getElementById("constellationMessage");
