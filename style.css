@@ -2001,3 +2001,190 @@ CONTINUA
     pointer-events:auto;
 
 }
+
+/* =====================================
+   OCCHI COSMICI
+===================================== */
+
+#eyesPage{
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at center,
+    #16203b 0%,
+    #0b1125 35%,
+    #050914 75%,
+    #020308 100%);
+
+}
+
+/* ==========================
+   CONTENITORE
+========================== */
+
+#cosmicBackground{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   NEBULOSE
+========================== */
+
+#nebula1,
+#nebula2{
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    border-radius:50%;
+
+    filter:blur(140px);
+
+    opacity:.22;
+
+    animation:nebulaFloat 18s ease-in-out infinite;
+
+}
+
+#nebula1{
+
+    left:-250px;
+    top:-180px;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(255,210,130,.75),
+
+    rgba(255,180,80,.18),
+
+    transparent 72%);
+
+}
+
+#nebula2{
+
+    right:-250px;
+    bottom:-200px;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(120,180,255,.55),
+
+    rgba(90,120,255,.15),
+
+    transparent 72%);
+
+}
+
+/* ==========================
+   GLOW CENTRALE
+========================== */
+
+#starGlow{
+
+    position:absolute;
+
+    left:50%;
+    top:48%;
+
+    width:420px;
+    height:420px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(255,245,190,.85),
+
+    rgba(255,245,190,.15),
+
+    transparent);
+
+    filter:blur(45px);
+
+    opacity:.15;
+
+    animation:glowPulse 5s ease-in-out infinite;
+
+}
+
+/* ==========================
+   ANIMAZIONI
+========================== */
+
+@keyframes nebulaFloat{
+
+    0%{
+
+        transform:
+        translate(0px,0px)
+        scale(1);
+
+    }
+
+    50%{
+
+        transform:
+        translate(30px,-20px)
+        scale(1.05);
+
+    }
+
+    100%{
+
+        transform:
+        translate(0px,0px)
+        scale(1);
+
+    }
+
+}
+
+@keyframes glowPulse{
+
+    0%{
+
+        opacity:.12;
+        transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    }
+
+    50%{
+
+        opacity:.32;
+        transform:
+        translate(-50%,-50%)
+        scale(1.08);
+
+    }
+
+    100%{
+
+        opacity:.12;
+        transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    }
+
+}
