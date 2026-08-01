@@ -642,35 +642,6 @@ function prepareConstellation(){
 
 }
 
-function createStarField(){
-
-    const field = document.getElementById("starField");
-
-    field.innerHTML = "";
-
-    for(let i=0;i<100;i++){
-
-        const star = document.createElement("div");
-
-        star.className="sky-star";
-
-        const size=2+Math.random()*4;
-
-        star.style.width=size+"px";
-        star.style.height=size+"px";
-
-        star.style.left=Math.random()*100+"%";
-        star.style.top=Math.random()*100+"%";
-
-        star.style.animationDuration=
-            (2+Math.random()*4)+"s";
-
-        field.appendChild(star);
-
-    }
-
-}
-
 function createShootingStar(){
 
     const sky=document.querySelector(".sky");
