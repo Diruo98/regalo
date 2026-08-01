@@ -2457,3 +2457,99 @@ CONTINUA
     }
 
 }
+
+/*======================================
+   STELLE SOPRA IL CIELO
+======================================*/
+
+#cosmicOverlay{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+#cosmicStars{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+.cosmicStar{
+
+    position:absolute;
+
+    width:2px;
+
+    height:2px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.35;
+
+    box-shadow:
+
+        0 0 8px rgba(255,255,255,.9);
+
+    animation:cosmicTwinkle linear infinite;
+
+}
+
+.cosmicStar.big{
+
+    width:4px;
+
+    height:4px;
+
+    opacity:.85;
+
+}
+
+.cosmicStar.gold{
+
+    background:#ffe9b2;
+
+}
+
+.cosmicStar.blue{
+
+    background:#d8ebff;
+
+}
+
+@keyframes cosmicTwinkle{
+
+    0%{
+
+        opacity:.2;
+
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.5);
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+        transform:scale(.8);
+
+    }
+
+}
