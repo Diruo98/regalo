@@ -2623,3 +2623,48 @@ CONTINUA
     z-index:2;
 
 }
+
+/*======================================
+        TESTO NARRAZIONE
+======================================*/
+
+#constellationText{
+
+    position:absolute;
+
+    top:12%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:80%;
+
+    max-width:700px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:1.35rem;
+
+    font-weight:300;
+
+    line-height:1.6;
+
+    opacity:0;
+
+    transition:opacity 2s ease;
+
+    z-index:50;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.25);
+
+}
+
+#constellationText.show{
+
+    opacity:1;
+
+}
