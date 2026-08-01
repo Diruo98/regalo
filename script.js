@@ -416,6 +416,8 @@ function animateStar(){
 
         showPage(pages.constellation);
 
+       createCosmicDust();
+
         startConstellation();
 
     },2500);
