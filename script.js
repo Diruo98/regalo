@@ -625,6 +625,8 @@ function startConstellation(){
 
     stopEmojiRain();
 
+   hideEmojis();
+
     clearInterval(shootingStarInterval);
 
     createStarField();
