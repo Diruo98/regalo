@@ -963,7 +963,7 @@ function initFingerprint(){
     fingerprintButton.style.background="#ffe6f1";
 
     fingerprintMessage.textContent=
-    "Appoggia il dito sull'impronta.";
+    "Appoggia il dito sull'impronta";
 
     passwordInput.value="";
 
@@ -979,7 +979,21 @@ function initFingerprint(){
    VOCALE
 ===================================== */
 
+listenVoice.addEventListener("click",()=>{
+
+    showPage(pages.voice);
+
+    voicePlayer.pause();
+
+    voicePlayer.currentTime = 0;
+
+    voicePlayer.play().catch(()=>{});
+
+});
+
 voicePlayer.addEventListener("ended",()=>{
+
+    voicePlayer.currentTime = 0;
 
     showPage(pages.final);
 
@@ -987,41 +1001,51 @@ voicePlayer.addEventListener("ended",()=>{
 
 });
 
-
 /* =====================================
    FINALE
 ===================================== */
 
-const polaroid=document.getElementById("polaroid");
+const polaroid =
+document.getElementById("polaroid");
 
-const finalLove=document.getElementById("finalLove");
+const finalLove =
+document.getElementById("finalLove");
 
-const signature=document.getElementById("signature");
+const signature =
+document.getElementById("signature");
 
 function showFinal(){
 
-    polaroid.classList.remove("hidden");
+    polaroid.classList.add("hidden");
+    finalLove.classList.add("hidden");
+    signature.classList.add("hidden");
+    restart.classList.add("hidden");
+
+    setTimeout(()=>{
+
+        polaroid.classList.remove("hidden");
+
+    },200);
 
     setTimeout(()=>{
 
         finalLove.classList.remove("hidden");
 
-    },1200);
+    },1400);
 
     setTimeout(()=>{
 
         signature.classList.remove("hidden");
 
-    },2200);
+    },2400);
 
     setTimeout(()=>{
 
         restart.classList.remove("hidden");
 
-    },4200);
+    },4300);
 
 }
-
 
 /* =====================================
    RICOMINCIA
