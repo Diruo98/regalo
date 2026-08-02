@@ -24,7 +24,7 @@ const voicePlayer = document.getElementById("voicePlayer");
 
 const playButton = document.getElementById("playButton");
 const startButton = document.getElementById("start");
-let emojiInterval;
+
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
 
@@ -34,9 +34,6 @@ const counter = document.getElementById("counter");
 const wishInput = document.getElementById("wishInput");
 const sendWish = document.getElementById("sendWish");
 
-const constellationSky = document.getElementById("constellationSky");
-const constellationMessage = document.getElementById("constellationMessage");
-
 const heartFill = document.getElementById("heartFill");
 const heartPercent = document.getElementById("heartPercent");
 const heartMessage = document.getElementById("heartMessage");
@@ -45,14 +42,20 @@ const fingerprintButton = document.getElementById("fingerprintButton");
 
 const restart = document.getElementById("restart");
 
+let emojiInterval;
+
 /* =====================================
    LETTERA
 ===================================== */
 
 const letterScene = document.getElementById("letterScene");
+
 const letterHint = document.getElementById("letterHint");
+
 const seal = document.querySelector("#letterPage .seal");
+
 const letterContent = document.getElementById("letterContent");
+
 const continueFromLetter = document.getElementById("continueFromLetter");
 
 const letterText = `Cara Sofia,
@@ -77,14 +80,21 @@ emailjs.init({
 
 
 /* =====================================
-   VARIABILI
+   STATO APPLICAZIONE
 ===================================== */
 
 let loadingValue = 0;
+
 let candlesOff = 0;
+
 let heartProgress = 0;
+
 let fingerprintTimer = null;
+
 let shootingStarInterval = null;
+
+let emojiInterval = null;
+
 let writing = false;
 
 
@@ -94,13 +104,21 @@ let writing = false;
 
 function showPage(page){
 
-    Object.values(pages).forEach(p=>{
+    Object.values(pages).forEach(currentPage=>{
 
-        p.classList.add("hidden");
+        currentPage.classList.add("hidden");
 
     });
 
     page.classList.remove("hidden");
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"instant"
+
+    });
 
 }
 
@@ -114,7 +132,7 @@ playButton.addEventListener("click", () => {
 
     bgMusic.play().catch(() => {});
 
-   setInterval(createEmojiRain,1200);
+    startEmojiRain();
 
     showPage(pages.loading);
 
@@ -133,17 +151,21 @@ function startLoading(){
 
     startButton.hidden = true;
 
+    const bar = document.getElementById("bar");
+
+    const percent = document.getElementById("percent");
+
     bar.style.width = "0%";
 
     percent.textContent = "0%";
 
-    const timer = setInterval(() => {
+    const timer = setInterval(()=>{
 
         loadingValue++;
 
-        bar.style.width = loadingValue + "%";
+        bar.style.width = `${loadingValue}%`;
 
-        percent.textContent = loadingValue + "%";
+        percent.textContent = `${loadingValue}%`;
 
         if(loadingValue >= 100){
 
@@ -156,7 +178,6 @@ function startLoading(){
     },30);
 
 }
-
 
 /* =====================================
    INIZIA IL VIAGGIO
@@ -175,11 +196,15 @@ startButton.addEventListener("click", () => {
 
 noButton.addEventListener("mouseenter", () => {
 
+    const x = Math.random() * 60 + 20;
+
+    const y = Math.random() * 55 + 20;
+
     noButton.style.position = "absolute";
 
-    noButton.style.left = Math.random() * 70 + 10 + "%";
+    noButton.style.left = `${x}%`;
 
-    noButton.style.top = Math.random() * 70 + 10 + "%";
+    noButton.style.top = `${y}%`;
 
 });
 
@@ -195,18 +220,21 @@ function createCandles(){
 
     counter.textContent = "Candeline rimaste: 19";
 
-    for(let i=0; i<19; i++){
+    for(let i = 0; i < 19; i++){
 
         const candle = document.createElement("div");
+
         candle.className = "candle";
 
         const flame = document.createElement("div");
+
         flame.className = "flame";
-      flame.textContent = "🔥";
+
+        flame.textContent = "🔥";
 
         candle.appendChild(flame);
 
-        flame.addEventListener("click", () => {
+        flame.addEventListener("click", ()=>{
 
             if(candle.classList.contains("off")) return;
 
@@ -216,8 +244,7 @@ function createCandles(){
 
             candlesOff++;
 
-            counter.textContent =
-                "Candeline rimaste: " + (19-candlesOff);
+            counter.textContent = `Candeline rimaste: ${19 - candlesOff}`;
 
             if(candlesOff === 19){
 
@@ -233,12 +260,11 @@ function createCandles(){
 
 }
 
-
 /* =====================================
-   BIGLIETTO -> CANDELINE
+   BIGLIETTO → CANDELINE
 ===================================== */
 
-yesButton.addEventListener("click", () => {
+yesButton.addEventListener("click", ()=>{
 
     showPage(pages.birthday);
 
@@ -255,7 +281,9 @@ function finishBirthday(){
 
     createConfetti();
 
-    setTimeout(() => {
+    stopEmojiRain();
+
+    setTimeout(()=>{
 
         showPage(pages.wish);
 
@@ -282,33 +310,35 @@ function createConfetti(){
         "#7ed957",
         "#5ec8ff",
         "#c77dff",
-       "#ffffff",
-      "#fff5c3"
+        "#ffffff",
+        "#fff5c3"
 
     ];
 
-    for(let i=0;i<800;i++){
+    const totalConfetti = 350;
+
+    for(let i = 0; i < totalConfetti; i++){
 
         const confetto = document.createElement("div");
 
-       const w = 5 + Math.random()*6;
-const h = 10 + Math.random()*12;
-
-confetto.style.width = w + "px";
-confetto.style.height = h + "px";
-
         confetto.className = "confetto";
 
-        confetto.style.left = Math.random()*100 + "vw";
+        const w = 5 + Math.random() * 6;
+        const h = 10 + Math.random() * 12;
+
+        confetto.style.width = `${w}px`;
+        confetto.style.height = `${h}px`;
+
+        confetto.style.left = `${Math.random() * 100}vw`;
 
         confetto.style.background =
-            colors[Math.floor(Math.random()*colors.length)];
-
-        confetto.style.animation =
-    `fall ${2 + Math.random()*3}s linear forwards`;
+            colors[Math.floor(Math.random() * colors.length)];
 
         confetto.style.transform =
-            `rotate(${Math.random()*360}deg)`;
+            `rotate(${Math.random() * 360}deg)`;
+
+        confetto.style.animation =
+            `fall ${2 + Math.random() * 3}s linear forwards`;
 
         area.appendChild(confetto);
 
@@ -321,15 +351,16 @@ confetto.style.height = h + "px";
     }
 
 }
+
 /* =====================================
    DESIDERIO
 ===================================== */
 
-sendWish.addEventListener("click", () => {
+sendWish.addEventListener("click", ()=>{
 
     const wish = wishInput.value.trim();
 
-    if(wish === ""){
+    if(!wish){
 
         alert("Scrivi prima un desiderio ❤️");
 
@@ -337,7 +368,7 @@ sendWish.addEventListener("click", () => {
 
     }
 
-    // Invio EmailJS (se presente)
+    // Invio EmailJS
 
     if(typeof emailjs !== "undefined"){
 
@@ -353,7 +384,7 @@ sendWish.addEventListener("click", () => {
 
             }
 
-        ).catch(error => {
+        ).catch(error=>{
 
             console.log("EmailJS:", error);
 
@@ -366,7 +397,6 @@ sendWish.addEventListener("click", () => {
     animateStar();
 
 });
-
 
 /* =====================================
    STELLA
@@ -412,11 +442,9 @@ function animateStar(){
 
     );
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
         showPage(pages.constellation);
-
-       createCosmicDust();
 
         startConstellation();
 
@@ -485,176 +513,57 @@ const constellationMessages = [
 
 let constellationIndex = 0;
 
-// Variabile globale
-let emojiRainInterval;
 
-function createEmojiRain(){
+/* =====================================
+   CAMPO STELLARE
+===================================== */
 
-    const emojis = [
-        "🤍",
-        "✨",
-        "🌸",
-        "💫",
-        "⭐",
-        "🦁",
-        "♾️", 
-        "😍"
-    ];
-
-    const emoji = document.createElement("div");
-
-    emoji.className = "falling-emoji";
-
-    emoji.textContent =
-        emojis[Math.floor(Math.random()*emojis.length)];
-
-    emoji.style.left =
-        Math.random()*100+"vw";
-
-    emoji.style.fontSize =
-        (18+Math.random()*16)+"px";
-
-    emoji.style.animationDuration =
-        (10+Math.random()*8)+"s";
-
-    document.body.appendChild(emoji);
-
-    setTimeout(()=>{
-
-        emoji.remove();
-
-    },18000);
-
-}
-
-function startEmojiRain(){
-
-    if(emojiRainInterval) return;
-
-    emojiRainInterval = setInterval(createEmojiRain,1200);
-
-}
-
-function stopEmojiRain(){
-
-    clearInterval(emojiRainInterval);
-
-    emojiRainInterval = null;
-
-    document.querySelectorAll(".falling-emoji").forEach(e=>e.remove());
-
-}
-
-function hideEmojis(){
-
-    document.querySelectorAll(".falling-emoji").forEach(emoji=>{
-
-        emoji.remove();
-
-    });
-
-}
-
-/*======================================
-        UNIVERSO COSMICO
-======================================*/
-
-const SKY_STAR_COUNT = 450;
-
-let skyStars = [];
-
-let constellationStars = [];
-
-let animationRunning = false;
-
-let sceneStep = 0;
-
-/*======================================
-        CREA IL CIELO
-======================================*/
-
-function createSky(){
+function createStarField(){
 
     const field = document.getElementById("starField");
 
-    field.innerHTML="";
+    field.innerHTML = "";
 
-    skyStars=[];
+    for(let i = 0; i < 100; i++){
 
-    for(let i=0;i<SKY_STAR_COUNT;i++){
+        const star = document.createElement("div");
 
-        const star=document.createElement("div");
+        star.className = "sky-star";
 
-        star.className="star";
+        const size = 2 + Math.random() * 4;
 
-        const r=Math.random();
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
 
-        if(r>.94){
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
 
-            star.classList.add("gold");
-
-        }else if(r>.88){
-
-            star.classList.add("blue");
-
-        }
-
-        if(Math.random()>.94){
-
-            star.classList.add("big");
-
-        }
-
-        star.style.left=Math.random()*100+"%";
-
-        star.style.top=Math.random()*100+"%";
-
-        star.style.animationDuration=
-            (2+Math.random()*6)+"s";
-
-        star.style.animationDelay=
-            (-Math.random()*6)+"s";
+        star.style.animationDuration =
+            `${2 + Math.random() * 4}s`;
 
         field.appendChild(star);
 
-        skyStars.push(star);
-
     }
 
 }
 
-/*======================================
-        SCEGLI LE STELLE
-======================================*/
-
-function prepareConstellation(){
-
-    constellationStars=[];
-
-    const shuffled=[...skyStars]
-        .sort(()=>Math.random()-.5);
-
-    for(let i=0;i<constellationPoints.length;i++){
-
-        constellationStars.push(shuffled[i]);
-
-    }
-
-}
+/* =====================================
+   STELLA CADENTE
+===================================== */
 
 function createShootingStar(){
 
-    const sky=document.querySelector(".sky");
+    const sky = document.getElementById("constellationPage");
 
-    const star=document.createElement("div");
+    const star = document.createElement("div");
 
-    star.className="shooting-star";
+    star.className = "shooting-star";
 
-    star.style.left=Math.random()*70+"%";
+    star.style.left = `${Math.random() * 70}%`;
 
-    star.style.top=Math.random()*35+"%";
+    star.style.top = `${Math.random() * 35}%`;
 
-    star.style.animation="shoot 1.2s linear forwards";
+    star.style.animation = "shoot 1.2s linear forwards";
 
     sky.appendChild(star);
 
@@ -667,94 +576,26 @@ function createShootingStar(){
 }
 
 /* =====================================
-   POLVERE COSMICA
+   AVVIO SCENA COSTELLAZIONE
 ===================================== */
-
-function createCosmicDust(){
-
-    const field = document.getElementById("cosmicDust");
-
-    if(!field) return;
-
-    field.innerHTML = "";
-
-    for(let i=0;i<500;i++){
-
-        const star = document.createElement("div");
-
-        star.classList.add("dust");
-
-        const r = Math.random();
-
-        if(r>0.92){
-
-            star.classList.add("gold");
-
-        }else if(r>0.84){
-
-            star.classList.add("blue");
-
-        }
-
-        const size = 1 + Math.random()*3;
-
-        star.style.width = size+"px";
-        star.style.height = size+"px";
-
-        star.style.left = Math.random()*100+"%";
-        star.style.top = Math.random()*100+"%";
-
-        star.style.opacity = .15 + Math.random()*.8;
-
-        star.style.animationDuration =
-            (3 + Math.random()*8)+"s";
-
-        star.style.animationDelay =
-            (-Math.random()*8)+"s";
-
-        field.appendChild(star);
-
-    }
-
-}
-
-/*======================================
-        REGIA DELLA SCENA
-======================================*/
 
 function playConstellationScene(){
 
-    if(animationRunning) return;
+    createStarField();
 
-    animationRunning = true;
+    createConstellation();
 
-    // 1
-    createSky();
+    showNarration(
 
-    // 2
-    prepareConstellation();
+        "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
 
-    // 3
-    setTimeout(()=>{
-
-        showNarration(
-            "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
-        );
-
-    },1500);
-
-    // 4
-    setTimeout(()=>{
-
-        lightConstellationStars();
-
-    },5000);
+    );
 
 }
 
-/*======================================
-        TESTI DEL CIELO
-======================================*/
+/* =====================================
+   TESTI COSTELLAZIONE
+===================================== */
 
 function showNarration(text){
 
@@ -762,7 +603,7 @@ function showNarration(text){
 
     if(!box) return;
 
-    box.innerHTML = text;
+    box.textContent = text;
 
     box.classList.remove("show");
 
@@ -775,131 +616,8 @@ function showNarration(text){
 }
 
 /*======================================
-    LE STELLE SI SVEGLIANO
-======================================*/
-
-function lightConstellationStars(){
-
-    let delay = 0;
-
-    constellationStars.forEach((star,index)=>{
-
-        setTimeout(()=>{
-
-            star.classList.add("big");
-            star.classList.add("gold");
-
-            star.style.transition =
-                "all 1.8s ease";
-
-        },delay);
-
-        delay += 350;
-
-    });
-
-    // Quando tutte sono illuminate
-    setTimeout(()=>{
-
-        moveConstellationStars();
-
-    },delay + 1000);
-
-}
-
-/*======================================
-    LE STELLE FORMANO LA S
-======================================*/
-
-function moveConstellationStars(){
-
-    constellationStars.forEach((star,index)=>{
-
-        const point = constellationPoints[index];
-
-        star.style.left = point.x + "%";
-
-        star.style.top = point.y + "%";
-
-        star.style.transform = "translate(-50%,-50%) scale(1.8)";
-
-    });
-
-    // Quando la S è completa
-    setTimeout(()=>{
-
-        showNarration("Poi sei arrivata tu.");
-
-        holdConstellation();
-
-    },2500);
-
-}
-
-/*======================================
         LA S RESPIRA
 ======================================*/
-
-function holdConstellation(){
-
-    constellationStars.forEach(star=>{
-
-        star.animate(
-
-            [
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(1.6)"
-
-                },
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(2)"
-
-                },
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(1.6)"
-
-                }
-
-            ],
-
-            {
-
-                duration:2500,
-
-                iterations:Infinity,
-
-                easing:"ease-in-out"
-
-            }
-
-        );
-
-    });
-
-    setTimeout(()=>{
-
-        showNarration(
-            "Pensavo che quella fosse la lettera più bella del cielo..."
-        );
-
-    },1000);
-
-    setTimeout(()=>{
-
-        breakConstellation();
-
-    },5000);
-
-}
 
 function startConstellation(){
 
@@ -907,13 +625,17 @@ function startConstellation(){
 
     clearInterval(shootingStarInterval);
 
+    createStarField();
+
+    createConstellation();
+
+    playConstellationScene();
+
     shootingStarInterval = setInterval(()=>{
 
         createShootingStar();
 
     },7000);
-
-    playConstellationScene();
 
 }
 
@@ -1000,7 +722,7 @@ function initHeart(){
 
 heartFill.addEventListener("click",()=>{
 
-    if(heartProgress>=10) return;
+    if(heartProgress === 10) return;
 
     heartProgress++;
 
@@ -1126,29 +848,73 @@ continueFromLetter.addEventListener("click",()=>{
    IMPRONTA
 ===================================== */
 
-fingerprintButton.addEventListener("mousedown",startFingerprint);
-fingerprintButton.addEventListener("touchstart",startFingerprint);
+const fingerprintMessage =
+document.getElementById("fingerprintMessage");
 
-fingerprintButton.addEventListener("mouseup",stopFingerprint);
-fingerprintButton.addEventListener("mouseleave",stopFingerprint);
-fingerprintButton.addEventListener("touchend",stopFingerprint);
+const passwordArea =
+document.getElementById("passwordArea");
 
-function startFingerprint(){
+const passwordInput =
+document.getElementById("passwordInput");
 
-    fingerprintTimer=setTimeout(()=>{
+const unlockButton =
+document.getElementById("unlockButton");
 
-        showPage(pages.voice);
+const voiceButtons =
+document.getElementById("voiceButtons");
 
-    },1800);
+const listenVoice =
+document.getElementById("listenVoice");
 
-}
+const skipVoice =
+document.getElementById("skipVoice");
 
-function stopFingerprint(){
+fingerprintButton.addEventListener("click",()=>{
 
-    clearTimeout(fingerprintTimer);
+    fingerprintButton.style.background="#ff6b6b";
 
-}
+    fingerprintMessage.textContent =
+    "❌ Impronta non riconosciuta";
 
+    passwordArea.classList.remove("hidden");
+
+});
+
+unlockButton.addEventListener("click",()=>{
+
+    const password =
+    passwordInput.value.trim().toLowerCase();
+
+    if(password !== "leoncina"){
+
+        alert("Parola segreta errata 🤍");
+
+        return;
+
+    }
+
+    fingerprintButton.style.background="#74d67a";
+
+    fingerprintMessage.textContent =
+    "✔ Accesso consentito";
+
+    passwordArea.classList.add("hidden");
+
+    voiceButtons.classList.remove("hidden");
+
+});
+
+listenVoice.addEventListener("click",()=>{
+
+    showPage(pages.voice);
+
+});
+
+skipVoice.addEventListener("click",()=>{
+
+    showPage(pages.final);
+
+});
 
 /* =====================================
    VOCALE
