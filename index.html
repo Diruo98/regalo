@@ -434,12 +434,9 @@ class="page night-page hidden">
 
         </h1>
 
-        <p>
+        <p id="fingerprintMessage">
 
-            Tieni premuto
-            il pulsante qui sotto
-            per sbloccare
-            il mio ultimo messaggio 💬 🥹
+            Appoggia il dito sull'impronta.
 
         </p>
 
@@ -449,18 +446,61 @@ class="page night-page hidden">
 
         </div>
 
-        <p
-        id="fingerprintText"
+        <div
+        id="passwordArea"
         class="hidden">
 
-            🔓 Sbloccato 🔓
+            <p id="passwordHint">
 
-        </p>
+                🤍 Solo una persona conosce la parola segreta...
+
+                <br><br>
+
+                Quale frase russa ti dico sempre?
+
+            </p>
+
+            <input
+
+                id="passwordInput"
+
+                type="text"
+
+                placeholder="Parola segreta">
+
+            <button
+            id="unlockButton">
+
+                Sblocca 🤍
+
+            </button>
+
+        </div>
+
+        <div
+        id="voiceButtons"
+        class="hidden">
+
+            <button
+            id="listenVoice">
+
+                🎙️ Ascolta il vocale
+
+            </button>
+
+            <button
+            id="skipVoice">
+
+                ⏭️ Continua
+
+            </button>
+
+        </div>
 
     </div>
 
 </section>
-
+    
      <!-- =====================================
      VOCALE
 ===================================== -->
