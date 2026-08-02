@@ -97,6 +97,8 @@ let emojiInterval = null;
 
 let writing = false;
 
+let fingerprintAttempts = 0;
+
 
 /* =====================================
    FUNZIONI GENERALI
@@ -885,22 +887,60 @@ unlockButton.addEventListener("click",()=>{
     const password =
     passwordInput.value.trim().toLowerCase();
 
-    if(password !== "leoncina"){
+    if(password==="ty krasivaya"){
 
-        alert("Parola segreta errata 🤍");
+        fingerprintButton.style.background="#7ed957";
+
+        fingerprintMessage.textContent=
+        "✔ Accesso consentito 🤍";
+
+        passwordArea.classList.add("hidden");
+
+        voiceButtons.classList.remove("hidden");
 
         return;
 
     }
 
-    fingerprintButton.style.background="#74d67a";
+    fingerprintAttempts++;
 
-    fingerprintMessage.textContent =
-    "✔ Accesso consentito";
+    fingerprintButton.style.background="#ff6b6b";
 
-    passwordArea.classList.add("hidden");
+    fingerprintMessage.textContent=
+    "❌ Parola segreta errata";
 
-    voiceButtons.classList.remove("hidden");
+    fingerprintButton.animate(
+
+        [
+
+            {transform:"translateX(0)"},
+
+            {transform:"translateX(-8px)"},
+
+            {transform:"translateX(8px)"},
+
+            {transform:"translateX(-8px)"},
+
+            {transform:"translateX(0)"}
+
+        ],
+
+        {
+
+            duration:350
+
+        }
+
+    );
+
+    if(fingerprintAttempts>=3){
+
+        fingerprintMessage.innerHTML=
+        "Forse questo messaggio non è destinato a te...";
+
+        skipVoice.classList.remove("hidden");
+
+    }
 
 });
 
@@ -915,6 +955,25 @@ skipVoice.addEventListener("click",()=>{
     showPage(pages.final);
 
 });
+
+function initFingerprint(){
+
+    fingerprintAttempts=0;
+
+    fingerprintButton.style.background="#ffe6f1";
+
+    fingerprintMessage.textContent=
+    "Appoggia il dito sull'impronta.";
+
+    passwordInput.value="";
+
+    passwordArea.classList.add("hidden");
+
+    voiceButtons.classList.add("hidden");
+
+    skipVoice.classList.add("hidden");
+
+}
 
 /* =====================================
    VOCALE
