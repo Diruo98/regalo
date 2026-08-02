@@ -122,6 +122,73 @@ function showPage(page){
 
 }
 
+function createEmojiRain(){
+
+    const emojis = [
+        "🤍",
+        "✨",
+        "🌸",
+        "💫",
+        "⭐",
+        "🦁",
+        "♾️", 
+        "😍"
+    ];
+
+    const emoji = document.createElement("div");
+
+    emoji.className = "falling-emoji";
+
+    emoji.textContent =
+        emojis[Math.floor(Math.random()*emojis.length)];
+
+    emoji.style.left =
+        Math.random()*100+"vw";
+
+    emoji.style.fontSize =
+        (18+Math.random()*16)+"px";
+
+    emoji.style.animationDuration =
+        (10+Math.random()*8)+"s";
+
+    document.body.appendChild(emoji);
+
+    setTimeout(()=>{
+
+        emoji.remove();
+
+    },18000);
+
+}
+
+function startEmojiRain(){
+
+    if(emojiRainInterval) return;
+
+    emojiRainInterval = setInterval(createEmojiRain,1200);
+
+}
+
+function stopEmojiRain(){
+
+    clearInterval(emojiRainInterval);
+
+    emojiRainInterval = null;
+
+    document.querySelectorAll(".falling-emoji").forEach(e=>e.remove());
+
+}
+
+function hideEmojis(){
+
+    document.querySelectorAll(".falling-emoji").forEach(emoji=>{
+
+        emoji.remove();
+
+    });
+
+}
+
 /* =====================================
    INTRO
 ===================================== */
