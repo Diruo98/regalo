@@ -93,8 +93,6 @@ let fingerprintTimer = null;
 
 let shootingStarInterval = null;
 
-let emojiInterval = null;
-
 let writing = false;
 
 let fingerprintAttempts = 0;
