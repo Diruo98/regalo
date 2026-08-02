@@ -42,7 +42,7 @@ const fingerprintButton = document.getElementById("fingerprintButton");
 
 const restart = document.getElementById("restart");
 
-let emojiInterval;
+let emojiRainInterval = null;
 
 /* =====================================
    LETTERA
@@ -1008,12 +1008,6 @@ unlockButton.addEventListener("click",()=>{
         skipVoice.classList.remove("hidden");
 
     }
-
-});
-
-listenVoice.addEventListener("click",()=>{
-
-    showPage(pages.voice);
 
 });
 
