@@ -283,48 +283,35 @@ class="page night-page hidden">
      COSTELLAZIONE
 ===================================== -->
 
-<section id="constellationPage" class="page hidden">
+<section
+id="constellationPage"
+class="page cosmicScene hidden">
 
-    <!-- Testo narratore -->
-    <div id="constellationText"></div>
+    <!-- Nebulose -->
+    <div class="cosmicNebula">
+        <div class="nebula gold"></div>
+        <div class="nebula blue"></div>
+    </div>
 
-    <!-- Campo stellare -->
+    <!-- Stelle di sfondo -->
     <div id="starField"></div>
 
-    <!-- Nebulosa centrale -->
-    <div id="cosmicCenter"></div>
+    <!-- Polvere cosmica -->
+    <div id="cosmicDust"></div>
 
-    <!-- Dipinto cosmico -->
-    <img
-        id="cosmicEyes"
-        src="regalo/occhi-cosmico.png"
-        alt="Occhi cosmici">
+    <!-- Stelle della costellazione -->
+    <div id="constellation">
 
-    <!-- Foto reale -->
-    <img
-        id="realEyes"
-        src="regalo/occhi.jpg"
-        alt="I tuoi occhi">
+        <svg id="constellationSvg">
 
-    <!-- Testi -->
-    <div id="eyesText">
+            <path id="constellationPath"></path>
 
-        <p id="eyesLine1">
-            Pensavo che quella fosse la lettera più bella del cielo...
-        </p>
-
-        <p id="eyesLine2">
-            ...finché non ho visto i tuoi occhi.
-        </p>
+        </svg>
 
     </div>
 
-    <!-- Pulsante finale -->
-    <button id="continueAfterConstellation" class="hidden">
-
-        Continua 🤍
-
-    </button>
+    <!-- Testo -->
+    <div id="constellationText"></div>
 
 </section>
     
