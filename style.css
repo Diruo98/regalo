@@ -604,243 +604,250 @@ button:disabled{
     position:relative;
 
     width:100%;
+
     height:100dvh;
 
     overflow:hidden;
 
-    background-image:url("sfondo-costellazione.png");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
 }
 
-/* =====================================
-   TRASFORMAZIONE COSTELLAZIONE
-===================================== */
-
-/* Stelle illuminate */
-
-.constellation-star.finish{
-
-    transform:scale(1.9);
-
-    opacity:1;
-
-    filter:
-        drop-shadow(0 0 12px rgba(255,255,255,.95))
-        drop-shadow(0 0 30px rgba(255,220,245,.75));
-
-    transition:
-        transform 1.2s ease,
-        filter 1.2s ease,
-        opacity 1.2s ease;
-
-}
-
-/* Nebulosa */
-
-#cosmicCenter{
-
-    position:absolute;
-
-    inset:0;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.10) 0%,
-            rgba(180,200,255,.10) 20%,
-            rgba(120,140,255,.12) 40%,
-            transparent 70%
-        );
-
-    transition:opacity 2s ease;
-
-}
-
-/* Quando compare */
-
-#cosmicCenter.show{
-
-    opacity:1;
-
-}
-
-/* Dipinto cosmico */
-
-#cosmicEyes{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    opacity:0;
-
-    transition:
-        opacity 2.5s ease,
-        transform 4s ease;
-
-}
-
-/* Comparsa */
-
-#cosmicEyes.show{
-
-    opacity:1;
-
-    transform:scale(1.03);
-
-}
-
-/* Foto reale */
-
-#realEyes{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    opacity:0;
-
-    transition:opacity 2s ease;
-
-}
-
-/* Comparsa finale */
-
-#realEyes.show{
-
-    opacity:1;
-
-}
-
-/* =====================================
-   COSTELLAZIONE
-===================================== */
-
-/* Campo stellare */
+/* ===============================
+   STELLE DI SFONDO
+================================ */
 
 #starField{
 
     position:absolute;
+
     inset:0;
 
     overflow:hidden;
 
 }
-
-/* Stelle del cielo */
 
 .star{
 
     position:absolute;
 
+    width:2px;
+
+    height:2px;
+
     border-radius:50%;
 
     background:white;
 
-    opacity:.35;
-
-    animation:twinkle 3s ease-in-out infinite;
-
-}
-
-/* Stelle più luminose */
-
-.star.big{
-
-    opacity:.9;
+    opacity:.75;
 
     box-shadow:
-        0 0 10px rgba(255,255,255,.9),
-        0 0 22px rgba(255,240,190,.45);
+
+        0 0 8px rgba(255,255,255,.9);
+
+    animation:
+
+        starTwinkle infinite alternate;
 
 }
 
-/* Stelle cliccabili */
+.star.gold{
+
+    background:#ffe39c;
+
+}
+
+.star.blue{
+
+    background:#d7ecff;
+
+}
+
+/* ===============================
+   CONTENITORE COSTELLAZIONE
+================================ */
+
+#constellation{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:15;
+
+}
+
+/* ===============================
+   LINEE
+================================ */
+
+#constellationSvg{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+}
+
+#constellationPath{
+
+    fill:none;
+
+    stroke:#ffe6a5;
+
+    stroke-width:2.5;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    filter:
+
+        drop-shadow(0 0 10px rgba(255,235,160,.9));
+
+}
+
+/* ===============================
+   STELLE DELLA COSTELLAZIONE
+================================ */
 
 .constellation-star{
 
     position:absolute;
 
     width:14px;
+
     height:14px;
 
     border-radius:50%;
 
-    background:#fff8d8;
+    background:white;
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(.25);
+
+    opacity:0;
 
     cursor:pointer;
 
-    transform:translate(-50%,-50%);
+    transition:
+
+        transform .45s ease,
+
+        opacity .45s ease,
+
+        box-shadow .45s ease;
 
     box-shadow:
-        0 0 12px rgba(255,255,255,.9),
-        0 0 28px rgba(255,235,170,.65);
 
-    transition:
-        transform .35s ease,
-        filter .35s ease,
-        opacity .35s ease;
+        0 0 12px rgba(255,255,255,.8);
+
+}
+
+.constellation-star.active{
+
+    opacity:1;
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(1);
+
+}
+
+.constellation-star.completed{
+
+    background:#ffe39c;
+
+    box-shadow:
+
+        0 0 15px rgba(255,235,180,.95),
+
+        0 0 30px rgba(255,225,120,.8);
 
 }
 
 .constellation-star:hover{
 
     transform:
+
         translate(-50%,-50%)
-        scale(1.2);
+
+        scale(1.18);
 
 }
 
-/* Stelle illuminate */
+/* ===============================
+   TESTO
+================================ */
 
-.constellation-star.finish{
+#constellationText{
 
-    transform:
-        translate(-50%,-50%)
-        scale(1.9);
+    position:absolute;
 
-    filter:
-        drop-shadow(0 0 15px rgba(255,255,255,.95))
-        drop-shadow(0 0 35px rgba(255,220,245,.8));
+    left:50%;
+
+    bottom:65px;
+
+    transform:translateX(-50%);
+
+    width:85%;
+
+    max-width:720px;
+
+    color:white;
+
+    text-align:center;
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+
+    text-shadow:
+
+        0 0 15px rgba(255,255,255,.25);
+
+    opacity:0;
+
+    transition:.8s;
+
+    z-index:20;
 
 }
 
+#constellationText.show{
 
-/* =====================================
+    opacity:1;
+
+}
+
+/* ===============================
    ANIMAZIONI
-===================================== */
+================================ */
 
-@keyframes twinkle{
+@keyframes starTwinkle{
 
-    0%{
+    from{
 
-        opacity:.25;
+        opacity:.45;
 
         transform:scale(.9);
 
     }
 
-    50%{
+    to{
 
         opacity:1;
 
@@ -848,74 +855,27 @@ button:disabled{
 
     }
 
-    100%{
+}
 
-        opacity:.25;
+@media(max-width:768px){
 
-        transform:scale(.9);
+    #constellationText{
+
+        width:90%;
+
+        font-size:1rem;
+
+        line-height:1.7;
+
+        bottom:45px;
 
     }
 
-}
+    .constellation-star{
 
-/* =====================================
-   STELLA CADENTE
-===================================== */
+        width:12px;
 
-.shooting-star{
-
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:#fff;
-
-    box-shadow:
-        0 0 10px rgba(255,255,255,.95),
-        0 0 24px rgba(255,255,255,.8);
-
-    pointer-events:none;
-
-}
-
-.shooting-star::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:-120px;
-    top:1px;
-
-    width:120px;
-    height:2px;
-
-    background:linear-gradient(
-        to right,
-        transparent,
-        rgba(255,255,255,.75)
-    );
-
-}
-
-@keyframes shoot{
-
-    from{
-
-        transform:translate(0,0);
-
-        opacity:1;
-
-    }
-
-    to{
-
-        transform:translate(350px,350px);
-
-        opacity:0;
+        height:12px;
 
     }
 
