@@ -656,11 +656,11 @@ function animateConstellation(){
 
             clearInterval(timer);
 
-           drawConstellationLines();
+          drawConstellationLines();
 
 setTimeout(()=>{
 
-    pulseConstellation();
+    constellationCompleted();
 
 },3000);
 
@@ -818,6 +818,460 @@ function drawConstellationLines(){
     "stroke-dashoffset 3s ease";
 
     path.style.strokeDashoffset = "0";
+
+}
+
+/*======================================
+        COSTELLAZIONE COMPLETATA
+======================================*/
+
+function constellationCompleted(){
+
+    showNarration(
+
+        "Pensavo che quella fosse la lettera più bella del cielo..."
+
+    );
+
+    stars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1.45)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)"
+
+                }
+
+            ],
+
+            {
+
+                duration:1800,
+
+                iterations:Infinity,
+
+                easing:"ease-in-out"
+
+            }
+
+        );
+
+    });
+
+    setTimeout(()=>{
+
+        explodeConstellation();
+
+    },3500);
+
+}
+
+/*======================================
+        ESPLOSIONE
+======================================*/
+
+function explodeConstellation(){
+
+    showNarration(
+
+        "...poi il cielo ha deciso di raccontarmi qualcosa."
+
+    );
+
+    stars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)",
+
+                    opacity:1
+
+                },
+
+                {
+
+                    transform:
+
+                    `translate(
+
+                    ${(Math.random()-0.5)*500}px,
+
+                    ${(Math.random()-0.5)*500}px
+
+                    )
+
+                    scale(.2)`,
+
+                    opacity:0
+
+                }
+
+            ],
+
+            {
+
+                duration:1800,
+
+                fill:"forwards",
+
+                easing:"ease-out"
+
+            }
+
+        );
+
+    });
+
+    document
+        .getElementById("constellationSvg")
+        .style.opacity = "0";
+
+    setTimeout(()=>{
+
+        startEyesScene();
+
+    },1800);
+
+}
+
+/*======================================
+        PARTICELLE OCCHI
+======================================*/
+
+let particles = [];
+
+let eyeTargets = [];
+
+let animationFrame;
+
+const eyesImage = new Image();
+
+eyesImage.src = "eyes.png";
+
+eyesImage.onload = ()=>{
+
+    buildEyeTargets();
+
+};
+
+/*======================================
+        PARTICELLE
+======================================*/
+class Particle{
+
+    constructor(x,y){
+
+        this.x=x;
+        this.y=y;
+
+        this.vx=0;
+        this.vy=0;
+
+        this.size=1+Math.random()*2;
+
+        this.target=null;
+
+    }
+
+    update(){
+
+        if(this.target){
+
+            const dx=this.target.x-this.x;
+            const dy=this.target.y-this.y;
+
+            this.vx+=dx*0.012;
+            this.vy+=dy*0.012;
+
+            this.vx*=0.93;
+            this.vy*=0.93;
+
+        }
+
+        this.x+=this.vx;
+        this.y+=this.vy;
+
+    }
+
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.fillStyle="#fff7cf";
+
+        ctx.shadowBlur=18;
+
+        ctx.shadowColor="#ffe79c";
+
+        ctx.arc(
+
+            this.x,
+
+            this.y,
+
+            this.size,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+/* =====================================
+   CREAZIONE PARTICELLE
+===================================== */
+function createParticles(){
+
+    particles=[];
+
+    stars.forEach(star=>{
+
+        const rect=
+        star.getBoundingClientRect();
+
+        const cx=
+        rect.left+rect.width/2;
+
+        const cy=
+        rect.top+rect.height/2;
+
+        for(let i=0;i<170;i++){
+
+            particles.push(
+
+                new Particle(
+
+                    cx+(Math.random()-.5)*18,
+
+                    cy+(Math.random()-.5)*18
+
+                )
+
+            );
+
+        }
+
+    });
+
+}
+
+/* =====================================
+   TARGET OCCHI
+===================================== */
+function buildEyeTargets(){
+
+    eyeTargets=[];
+
+    const off=document.createElement("canvas");
+
+    const offCtx=off.getContext("2d");
+
+    off.width=eyesImage.width;
+
+    off.height=eyesImage.height;
+
+    offCtx.drawImage(
+
+        eyesImage,
+
+        0,
+
+        0
+
+    );
+
+    const pixels=
+
+    offCtx.getImageData(
+
+        0,
+
+        0,
+
+        off.width,
+
+        off.height
+
+    ).data;
+
+    const scale=.55;
+
+    const offsetX=
+
+    window.innerWidth/2
+
+    -
+
+    off.width*scale/2;
+
+    const offsetY=
+
+    window.innerHeight/2
+
+    -
+
+    off.height*scale/2;
+
+    for(let y=0;y<off.height;y+=3){
+
+        for(let x=0;x<off.width;x+=3){
+
+            const index=
+
+            (y*off.width+x)*4;
+
+            if(pixels[index+3]>40){
+
+                eyeTargets.push({
+
+                    x:offsetX+x*scale,
+
+                    y:offsetY+y*scale
+
+                });
+
+            }
+
+        }
+
+    }
+
+}
+
+/* =====================================
+FUNZIONE ASSIGN TARGET
+===================================== */
+function assignTargets(){
+
+    particles.forEach((particle,index)=>{
+
+        particle.target =
+
+        eyeTargets[index % eyeTargets.length];
+
+    });
+
+}
+
+/* =====================================
+ANIMATE PARTICLES
+===================================== */
+function animateParticles(){
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        eyesCanvas.width,
+
+        eyesCanvas.height
+
+    );
+
+    particles.forEach(p=>{
+
+        p.update();
+
+        p.draw();
+
+    });
+
+    animationFrame =
+
+    requestAnimationFrame(
+
+        animateParticles
+
+    );
+
+}
+
+/* =====================================
+   SCENA OCCHI INIZIALE
+===================================== */
+function startEyesScene(){
+
+    document
+
+    .getElementById("eyesScene")
+
+    .classList.add("show");
+
+    createParticles();
+
+    assignTargets();
+
+    animateParticles();
+
+    setTimeout(()=>{
+
+        showRealEyes();
+
+    },4500);
+
+}
+
+/* =====================================
+   MOSTRA OCCHI 
+===================================== */
+function showRealEyes(){
+
+    cancelAnimationFrame(
+
+        animationFrame
+
+    );
+
+    document
+
+    .getElementById("realEyes")
+
+    .classList.add("show");
+
+    showNarration(
+
+        "...finché non ho visto i tuoi occhi. 🤍"
+
+    );
+
+    setTimeout(()=>{
+
+        showPage(pages.heart);
+
+        initHeart();
+
+    },4500);
 
 }
 
