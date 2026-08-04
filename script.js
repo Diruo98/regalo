@@ -668,24 +668,37 @@ class Particle{
 
     constructor(x,y){
 
-        this.x=x;
-        this.y=y;
+        this.x = x;
+        this.y = y;
 
-        this.vx=0;
-        this.vy=0;
+        this.vx = 0;
+        this.vy = 0;
 
-        this.size=
-        1+Math.random()*2;
+        this.size = 1 + Math.random()*2;
 
-        this.alpha=
-        .3+Math.random()*.7;
+        this.alpha = .3 + Math.random()*.7;
+
+        this.target = null;
 
     }
 
     update(){
 
-        this.x+=this.vx;
-        this.y+=this.vy;
+        if(this.target){
+
+            const dx = this.target.x - this.x;
+            const dy = this.target.y - this.y;
+
+            this.vx += dx * 0.015;
+            this.vy += dy * 0.015;
+
+            this.vx *= 0.88;
+            this.vy *= 0.88;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+        }
 
     }
 
@@ -693,12 +706,11 @@ class Particle{
 
         ctx.beginPath();
 
-        ctx.fillStyle=
+        ctx.fillStyle =
         `rgba(255,230,180,${this.alpha})`;
 
-        ctx.shadowBlur=8;
-
-        ctx.shadowColor="#ffe6a5";
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#ffe9a8";
 
         ctx.arc(
 
@@ -742,6 +754,23 @@ function createParticles(){
         );
 
     }
+
+}
+
+/*======================================
+     PUNTO PER OGNI PARTICELLA
+======================================*/
+
+function assignTargets(){
+
+    particles.forEach((particle,index)=>{
+
+        const target =
+        eyeTargets[index % eyeTargets.length];
+
+        particle.target = target;
+
+    });
 
 }
 
@@ -994,10 +1023,75 @@ function showNarration(text){
 }
 
 /*======================================
-        FINALE
+        FINALE COSTELLAZIONE
 ======================================*/
 
 function finishConstellation(){
+
+    // Blocca altri click
+    currentStar = 999;
+
+    showNarration(
+
+        "Pensavo che quella fosse la lettera più bella del cielo..."
+
+    );
+
+    // La S respira
+    constellationStars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+                    transform:"translate(-50%,-50%) scale(1)"
+                },
+
+                {
+                    transform:"translate(-50%,-50%) scale(1.35)"
+                },
+
+                {
+                    transform:"translate(-50%,-50%) scale(1)"
+                }
+
+            ],
+
+            {
+
+                duration:1800,
+
+                iterations:Infinity,
+
+                easing:"ease-in-out"
+
+            }
+
+        );
+
+    });
+
+    // Dopo 3 secondi
+    setTimeout(()=>{
+
+        showNarration(
+
+            "...finché non ho visto i tuoi occhi."
+
+        );
+
+        dissolveConstellation();
+
+    },3000);
+
+}
+
+/*======================================
+      LA COSTELLAZIONE SI ROMPE
+======================================*/
+
+function dissolveConstellation(){
 
     constellationStars.forEach(star=>{
 
@@ -1007,25 +1101,27 @@ function finishConstellation(){
 
                 {
 
-                    transform:
+                    opacity:1,
 
-                    "translate(-50%,-50%) scale(1)"
-
-                },
-
-                {
-
-                    transform:
-
-                    "translate(-50%,-50%) scale(1.35)"
+                    transform:"translate(-50%,-50%) scale(1)"
 
                 },
 
                 {
 
+                    opacity:0,
+
                     transform:
 
-                    "translate(-50%,-50%) scale(1)"
+                    `translate(
+
+                    ${(Math.random()-.5)*250}px,
+
+                    ${(Math.random()-.5)*250}px
+
+                    )
+
+                    scale(.2)`
 
                 }
 
@@ -1033,9 +1129,11 @@ function finishConstellation(){
 
             {
 
-                duration:1400,
+                duration:1800,
 
-                iterations:Infinity
+                fill:"forwards",
+
+                easing:"ease-in"
 
             }
 
@@ -1043,9 +1141,57 @@ function finishConstellation(){
 
     });
 
+    document
+
+    .getElementById("constellationSvg")
+
+    .style.opacity="0";
+
+    setTimeout(()=>{
+
+        startEyesScene();
+
+    },1800);
+
+}
+
+/*======================================
+        SCENA DEGLI OCCHI
+======================================*/
+
+function startEyesScene(){
+
+    createParticles();
+
+    assignTargets();
+
+    animateParticles();
+
+    setTimeout(()=>{
+
+        revealEyes();
+
+    },4500);
+
+}
+
+/*======================================
+      COMPAIONO GLI OCCHI
+======================================*/
+
+function revealEyes(){
+
+    cancelAnimationFrame(animationFrame);
+
+    document
+
+    .getElementById("realEyes")
+
+    .classList.add("show");
+
     showNarration(
 
-        "Non era una costellazione qualunque...<br><br><strong>Era la tua iniziale.</strong> 🤍"
+        "Ogni volta che li guardo...<br><br>ritrovo casa. 🤍"
 
     );
 
@@ -1055,9 +1201,11 @@ function finishConstellation(){
 
         initHeart();
 
-    },5000);
+    },4500);
 
 }
+
+
 
 /*======================================
         AVVIO
