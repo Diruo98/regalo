@@ -616,6 +616,160 @@ function createConstellation(){
     });
 
 }
+/*======================================
+        OCCHI COSMICI
+======================================*/
+
+const eyesCanvas =
+document.getElementById("eyesCanvas");
+
+const ctx =
+eyesCanvas.getContext("2d");
+
+let particles=[];
+
+let eyeTargets=[];
+
+let animationFrame;
+
+/*======================================
+        RESIZE CANVAS
+======================================*/
+function resizeEyesCanvas(){
+
+    eyesCanvas.width =
+    window.innerWidth;
+
+    eyesCanvas.height =
+    window.innerHeight;
+
+}
+
+resizeEyesCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeEyesCanvas
+);
+
+/*======================================
+       CLASSE PARTICELLA 
+======================================*/
+class Particle{
+
+    constructor(x,y){
+
+        this.x=x;
+        this.y=y;
+
+        this.vx=0;
+        this.vy=0;
+
+        this.size=
+        1+Math.random()*2;
+
+        this.alpha=
+        .3+Math.random()*.7;
+
+    }
+
+    update(){
+
+        this.x+=this.vx;
+        this.y+=this.vy;
+
+    }
+
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.fillStyle=
+        `rgba(255,230,180,${this.alpha})`;
+
+        ctx.shadowBlur=8;
+
+        ctx.shadowColor="#ffe6a5";
+
+        ctx.arc(
+
+            this.x,
+
+            this.y,
+
+            this.size,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        ctx.fill();
+
+    }
+
+}
+
+/*======================================
+        CREA PARTICELLE
+======================================*/
+function createParticles(){
+
+    particles=[];
+
+    for(let i=0;i<2000;i++){
+
+        particles.push(
+
+            new Particle(
+
+                Math.random()*eyesCanvas.width,
+
+                Math.random()*eyesCanvas.height
+
+            )
+
+        );
+
+    }
+
+}
+
+/*======================================
+        ANIMAZIONE
+======================================*/
+function animateParticles(){
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        eyesCanvas.width,
+
+        eyesCanvas.height
+
+    );
+
+    particles.forEach(p=>{
+
+        p.update();
+
+        p.draw();
+
+    });
+
+    animationFrame=
+
+    requestAnimationFrame(
+
+        animateParticles
+
+    );
+
+}
 
 /*======================================
         ATTIVA STELLE
