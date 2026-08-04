@@ -654,19 +654,25 @@ function animateConstellation(){
 
         if(currentStar >= stars.length){
 
-            clearInterval(timer);
+    clearInterval(timer);
 
-          drawConstellationLines();
+    console.log("STEP 3 FINITO");
 
-setTimeout(()=>{
+    drawConstellationLines();
 
-    constellationCompleted();
+    console.log("LINEE DISEGNATE");
 
-},3000);
+    setTimeout(()=>{
 
-return;
+        console.log("PARTO CON constellationCompleted");
 
-        }
+        constellationCompleted();
+
+    },3000);
+
+    return;
+
+}
 
         const star = stars[currentStar];
 
