@@ -1192,27 +1192,6 @@ function explodeConstellation(){
 }
 
 /*======================================
-        PARTICELLE OCCHI
-======================================*/
-
-let particles = [];
-
-let eyeTargets = [];
-
-let animationFrame;
-
-const eyesImage = new Image();
-
-eyesImage.src = "eyes.png";
-
-eyesImage.onload = ()=>{
-
-    buildEyeTargets();
-
-};
-
-
-/*======================================
         CREA STELLE COSMICHE
 ======================================*/
 
