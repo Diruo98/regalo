@@ -616,6 +616,7 @@ function createConstellation(){
     });
 
 }
+
 /*======================================
         OCCHI COSMICI
 ======================================*/
@@ -682,81 +683,115 @@ class Particle{
 
     }
 
-    update(){
+   update(){
 
-        if(this.target){
+    if(this.target){
 
-            const dx = this.target.x - this.x;
-            const dy = this.target.y - this.y;
+        const dx =
+        this.target.x-this.x;
 
-            this.vx += dx * 0.015;
-            this.vy += dy * 0.015;
+        const dy =
+        this.target.y-this.y;
 
-            this.vx *= 0.88;
-            this.vy *= 0.88;
+        this.vx += dx*0.020;
 
-            this.x += this.vx;
-            this.y += this.vy;
+        this.vy += dy*0.020;
 
-        }
-
-    }
-
-    draw(){
-
-        ctx.beginPath();
-
-        ctx.fillStyle =
-        `rgba(255,230,180,${this.alpha})`;
-
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "#ffe9a8";
-
-        ctx.arc(
-
-            this.x,
-
-            this.y,
-
-            this.size,
-
-            0,
-
-            Math.PI*2
-
-        );
-
-        ctx.fill();
+        this.vx*=0.90;
+        this.vy*=0.90;
 
     }
+
+    this.x+=this.vx;
+    this.y+=this.vy;
+
+}
+
+   draw(){
+
+    ctx.beginPath();
+
+    const colors = [
+
+        "#ffe49c",
+
+        "#fff5d0",
+
+        "#ffffff",
+
+        "#bfe8ff"
+
+    ];
+
+    ctx.fillStyle =
+
+    colors[
+    Math.floor(Math.random()*colors.length)
+    ];
+
+    ctx.shadowBlur = 18;
+
+    ctx.shadowColor = "#fff7cf";
+
+    ctx.arc(
+
+        this.x,
+
+        this.y,
+
+        this.size,
+
+        0,
+
+        Math.PI*2
+
+    );
+
+    ctx.fill();
 
 }
 
 /*======================================
-        CREA PARTICELLE
+      CREA PARTICELLE DALLA S
 ======================================*/
+
 function createParticles(){
 
-    particles=[];
+    particles = [];
 
-    for(let i=0;i<2000;i++){
+    constellationStars.forEach(star=>{
 
-        particles.push(
+        const rect =
 
-            new Particle(
+        star.getBoundingClientRect();
 
-                Math.random()*eyesCanvas.width,
+        const cx =
 
-                Math.random()*eyesCanvas.height
+        rect.left + rect.width/2;
 
-            )
+        const cy =
 
-        );
+        rect.top + rect.height/2;
 
-    }
+        for(let i=0;i<170;i++){
+
+            particles.push(
+
+                new Particle(
+
+                    cx + (Math.random()-0.5)*15,
+
+                    cy + (Math.random()-0.5)*15
+
+                )
+
+            );
+
+        }
+
+    });
 
 }
-
 /*======================================
      PUNTO PER OGNI PARTICELLA
 ======================================*/
