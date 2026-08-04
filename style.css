@@ -2514,3 +2514,83 @@ CONTINUA
     opacity:1;
 
 }
+
+/* =====================================
+   OCCHI COSMICI
+===================================== */
+
+#eyesScene{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    pointer-events:none;
+
+    z-index:18;
+
+}
+
+#eyesParticles{
+
+    position:absolute;
+
+    width:650px;
+
+    height:250px;
+
+}
+
+.eyeParticle{
+
+    position:absolute;
+
+    width:3px;
+
+    height:3px;
+
+    border-radius:50%;
+
+    background:#ffe39c;
+
+    box-shadow:
+
+        0 0 8px rgba(255,220,150,.8);
+
+}
+
+#realEyes{
+
+    width:700px;
+
+    max-width:80vw;
+
+    opacity:0;
+
+    transform:scale(.96);
+
+    transition:
+
+        opacity 2s ease,
+
+        transform 2s ease;
+
+    filter:
+
+        drop-shadow(0 0 40px rgba(255,220,160,.35));
+
+}
+
+#realEyes.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
