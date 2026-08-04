@@ -530,6 +530,227 @@ const ctx =
 eyesCanvas.getContext("2d");
 
 /*======================================
+        UNIVERSO
+======================================*/
+
+const universeCanvas = document.getElementById("eyesCanvas");
+const uctx = universeCanvas.getContext("2d");
+
+let universeParticles = [];
+let universeAnimation;
+
+const eyesImage = new Image();
+eyesImage.src = "eyes.png";
+
+function resizeUniverse(){
+
+    universeCanvas.width = window.innerWidth;
+    universeCanvas.height = window.innerHeight;
+
+}
+
+resizeUniverse();
+
+window.addEventListener("resize",resizeUniverse);
+
+class UniverseParticle{
+
+    constructor(){
+
+        this.reset();
+
+    }
+
+    reset(){
+
+        this.x = Math.random()*universeCanvas.width;
+        this.y = Math.random()*universeCanvas.height;
+
+        this.vx = 0;
+        this.vy = 0;
+
+        this.size = 1 + Math.random()*2;
+
+        this.alpha = .4 + Math.random()*.6;
+
+        this.state = "sky";
+
+        this.target = null;
+
+    }
+
+    update(){
+
+        if(this.state==="spiral"){
+
+            const cx = universeCanvas.width/2;
+            const cy = universeCanvas.height/2;
+
+            const dx = cx-this.x;
+            const dy = cy-this.y;
+
+            this.vx += dx*0.0008;
+            this.vy += dy*0.0008;
+
+        }
+
+        if(this.state==="eyes" && this.target){
+
+            const dx = this.target.x-this.x;
+            const dy = this.target.y-this.y;
+
+            this.vx += dx*0.010;
+            this.vy += dy*0.010;
+
+        }
+
+        this.vx*=0.97;
+        this.vy*=0.97;
+
+        this.x+=this.vx;
+        this.y+=this.vy;
+
+    }
+
+    draw(){
+
+        uctx.beginPath();
+
+        uctx.fillStyle="#fff7d8";
+
+        uctx.shadowBlur=15;
+
+        uctx.shadowColor="#ffe9a8";
+
+        uctx.arc(
+
+            this.x,
+
+            this.y,
+
+            this.size,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        uctx.fill();
+
+    }
+
+}
+
+/*======================================
+        CREA UNIVERSO
+======================================*/
+
+function createUniverse(){
+
+    universeParticles = [];
+
+    for(let i=0;i<1500;i++){
+
+        universeParticles.push(
+
+            new UniverseParticle()
+
+        );
+
+    }
+
+}
+
+/*======================================
+        ANIMA UNIVERSO
+======================================*/
+
+function animateUniverse(){
+
+    uctx.clearRect(
+
+        0,
+
+        0,
+
+        universeCanvas.width,
+
+        universeCanvas.height
+
+    );
+
+    // Nebulosa centrale
+
+    const gradient =
+
+    uctx.createRadialGradient(
+
+        universeCanvas.width/2,
+
+        universeCanvas.height/2,
+
+        80,
+
+        universeCanvas.width/2,
+
+        universeCanvas.height/2,
+
+        700
+
+    );
+
+    gradient.addColorStop(
+
+        0,
+
+        "rgba(255,220,140,.06)"
+
+    );
+
+    gradient.addColorStop(
+
+        1,
+
+        "rgba(0,0,0,0)"
+
+    );
+
+    uctx.fillStyle = gradient;
+
+    uctx.fillRect(
+
+        0,
+
+        0,
+
+        universeCanvas.width,
+
+        universeCanvas.height
+
+    );
+
+    universeParticles.forEach(p=>{
+
+        p.update();
+
+        p.draw();
+
+    });
+
+    universeAnimation =
+
+    requestAnimationFrame(
+
+        animateUniverse
+
+    );
+
+}
+
+
+
+/*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
 
@@ -1057,19 +1278,13 @@ function animateParticles(){
 ===================================== */
 function startEyesScene(){
 
-    particles=[];
+   document
+    .getElementById("eyesScene")
+    .classList.add("show");
 
-    // Stelle della S
-    createParticles();
+    createUniverse();
 
-    // Nuove stelle dell'universo
-    createSkyParticles(900);
-
-    assignTargets();
-
-    animateParticles();
-
-    showRealEyes();
+    animateUniverse();
 
 }
 
