@@ -1520,6 +1520,53 @@ button:disabled{
 }
 
 /* =====================================
+  SCENA OCCHI
+===================================== */
+#eyesScene{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity 2s ease;
+
+}
+
+#eyesScene.show{
+
+    opacity:1;
+
+}
+
+#realEyes{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:min(75vw,900px);
+
+    opacity:0;
+
+    transition:opacity 2.5s ease;
+
+}
+
+#realEyes.show{
+
+    opacity:1;
+
+}
+
+/* =====================================
    ESPLOSIONE CUORI
 ===================================== */
 
