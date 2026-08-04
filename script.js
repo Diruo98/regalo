@@ -683,27 +683,29 @@ class Particle{
 
     }
 
-   update(){
+  update(){
 
     if(this.target){
 
-        const dx =
-        this.target.x-this.x;
+        const dx = this.target.x - this.x;
+        const dy = this.target.y - this.y;
 
-        const dy =
-        this.target.y-this.y;
+        const distance = Math.sqrt(dx*dx + dy*dy);
 
-        this.vx += dx*0.020;
+        if(distance > 1){
 
-        this.vy += dy*0.020;
+            this.vx += dx * 0.010;
+            this.vy += dy * 0.010;
 
-        this.vx*=0.90;
-        this.vy*=0.90;
+        }
+
+        this.vx *= 0.94;
+        this.vy *= 0.94;
 
     }
 
-    this.x+=this.vx;
-    this.y+=this.vy;
+    this.x += this.vx;
+    this.y += this.vy;
 
 }
 
@@ -915,35 +917,35 @@ function buildEyeTargets(){
 function animateParticles(){
 
     ctx.clearRect(
-
         0,
-
         0,
-
         eyesCanvas.width,
-
         eyesCanvas.height
-
     );
 
-    particles.forEach(p=>{
+    particles.forEach((particle,index)=>{
 
-        p.update();
+        if(eyeTargets.length){
 
-        p.draw();
+            particle.target =
+            eyeTargets[
+                index % eyeTargets.length
+            ];
+
+        }
+
+        particle.update();
+        particle.draw();
 
     });
 
-    animationFrame=
-
+    animationFrame =
     requestAnimationFrame(
-
         animateParticles
-
     );
 
 }
-
+   
 /*======================================
         ATTIVA STELLE
 ======================================*/
