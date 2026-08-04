@@ -580,39 +580,105 @@ const constellationMessages = [
 
 let constellationIndex = 0;
 
+/*======================================
+        CREA COSTELLAZIONE
+======================================*/
 
-/* =====================================
-   CAMPO STELLARE
-===================================== */
+function createConstellation(){
 
-function createStarField(){
+    const box =
+    document.getElementById("constellation");
 
-    const field = document.getElementById("starField");
+    box.innerHTML = "";
 
-    field.innerHTML = "";
+    constellationStars = [];
 
-    for(let i = 0; i < 100; i++){
+    constellationPoints.forEach((point,index)=>{
 
         const star = document.createElement("div");
 
-        star.className = "sky-star";
+        star.className = "constellation-star";
 
-        const size = 2 + Math.random() * 4;
+        star.style.left = point.x + "%";
+        star.style.top = point.y + "%";
 
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
+        star.dataset.index = index;
 
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
+        star.addEventListener(
+            "click",
+            ()=>activateStar(index)
+        );
 
-        star.style.animationDuration =
-            `${2 + Math.random() * 4}s`;
+        box.appendChild(star);
 
-        field.appendChild(star);
+        constellationStars.push(star);
+
+    });
+
+}
+
+/*======================================
+        ATTIVA STELLE
+======================================*/
+
+function activateStar(index){
+
+    if(index !== currentStar) return;
+
+    const star =
+    constellationStars[index];
+
+    star.classList.add("active");
+
+    star.classList.add("completed");
+
+    showNarration(
+        constellationMessages[index]
+    );
+
+    drawConstellation();
+
+    currentStar++;
+
+    if(currentStar === constellationStars.length){
+
+        finishConstellation();
 
     }
 
 }
+
+/*======================================
+        LINEE SVG
+======================================*/
+
+function drawConstellation(){
+
+    const path =
+    document.getElementById("constellationPath");
+
+    let d = "";
+
+    for(let i=0;i<currentStar;i++){
+
+        const p = constellationPoints[i];
+
+        if(i===0){
+
+            d += `M ${p.x}% ${p.y}% `;
+
+        }else{
+
+            d += `L ${p.x}% ${p.y}% `;
+
+        }
+
+    }
+
+    path.setAttribute("d",d);
+
+}
+
 
 /* =====================================
    STELLA CADENTE
@@ -643,24 +709,6 @@ function createShootingStar(){
 }
 
 /* =====================================
-   AVVIO SCENA COSTELLAZIONE
-===================================== */
-
-function playConstellationScene(){
-
-    createStarField();
-
-    createConstellation();
-
-    showNarration(
-
-        "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
-
-    );
-
-}
-
-/* =====================================
    TESTI COSTELLAZIONE
 ===================================== */
 
@@ -683,31 +731,98 @@ function showNarration(text){
 }
 
 /*======================================
-        LA S RESPIRA
+        FINALE
+======================================*/
+
+function finishConstellation(){
+
+    constellationStars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    transform:
+
+                    "translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    transform:
+
+                    "translate(-50%,-50%) scale(1.35)"
+
+                },
+
+                {
+
+                    transform:
+
+                    "translate(-50%,-50%) scale(1)"
+
+                }
+
+            ],
+
+            {
+
+                duration:1400,
+
+                iterations:Infinity
+
+            }
+
+        );
+
+    });
+
+    showNarration(
+
+        "Non era una costellazione qualunque...<br><br><strong>Era la tua iniziale.</strong> 🤍"
+
+    );
+
+    setTimeout(()=>{
+
+        showPage(pages.heart);
+
+        initHeart();
+
+    },5000);
+
+}
+
+/*======================================
+        AVVIO
 ======================================*/
 
 function startConstellation(){
 
     stopEmojiRain();
 
-   hideEmojis();
+    hideEmojis();
 
-    clearInterval(shootingStarInterval);
+    currentStar = 0;
 
-    createStarField();
+    createBackgroundStars();
+
+    createCosmicDust();
 
     createConstellation();
 
-    playConstellationScene();
+    drawConstellation();
 
-    shootingStarInterval = setInterval(()=>{
+    showNarration(
 
-        createShootingStar();
+        "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
 
-    },7000);
+    );
 
 }
-
 
 /* =====================================
    CUORE
