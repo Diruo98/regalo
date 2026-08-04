@@ -608,7 +608,7 @@ function animateUniverse(){
 
     );
 
-    stars.forEach(star=>{
+    universestars.forEach(star=>{
 
         uctx.beginPath();
 
