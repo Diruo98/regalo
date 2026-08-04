@@ -1174,7 +1174,7 @@ function constellationCompleted(){
 
 function startUniverseScene(){
 
-    console.log("UNIVERSO AVVIATO");
+    console.log(universeCanvas.width, universeCanvas.height);
 
     showPage(pages.universeEyes);
 
