@@ -556,15 +556,15 @@ function startUniverseScene(){
 
 }
 
-let stars = [];
+let universestars = [];
 
 function createUniverse(){
 
-    stars = [];
+    universestars = [];
 
     for(let i=0;i<1800;i++){
 
-        stars.push({
+        universestars.push({
 
             x:Math.random()*universeCanvas.width,
 
