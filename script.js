@@ -582,6 +582,8 @@ function createUniverse(){
 
 function animateUniverse(){
 
+   console.log(universeStars.length);
+
     uctx.clearRect(
 
         0,
@@ -1054,105 +1056,6 @@ function constellationCompleted(){
     },2500);
 
 },3500);
-
-}
-
-   
-
-/*======================================
-        ESPLOSIONE
-======================================*/
-
-function explodeConstellation(){
-
-    showNarration(
-
-        "...poi il cielo ha deciso di raccontarmi qualcosa."
-
-    );
-
-    stars.forEach(star=>{
-
-        star.animate(
-
-            [
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(1)",
-
-                    opacity:1
-
-                },
-
-                {
-
-                    transform:
-
-                    `translate(
-
-                    ${(Math.random()-0.5)*500}px,
-
-                    ${(Math.random()-0.5)*500}px
-
-                    )
-
-                    scale(.2)`,
-
-                    opacity:0
-
-                }
-
-            ],
-
-            {
-
-                duration:1800,
-
-                fill:"forwards",
-
-                easing:"ease-out"
-
-            }
-
-        );
-
-    });
-
-    document
-        .getElementById("constellationSvg")
-        .style.opacity = "0";
-
-    setTimeout(()=>{
-
-        startEyesScene();
-
-    },1800);
-
-}
-
-/*======================================
-        CREA STELLE COSMICHE
-======================================*/
-
-function createSkyParticles(count){
-
-    for(let i=0;i<count;i++){
-
-        particles.push(
-
-            new Particle(
-
-                Math.random()*eyesCanvas.width,
-
-                Math.random()*eyesCanvas.height
-
-            )
-
-        );
-
-    }
 
 }
 
