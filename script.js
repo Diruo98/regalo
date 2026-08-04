@@ -524,12 +524,11 @@ function animateStar(){
         UNIVERSO
 ======================================*/
 
-const universeCanvas = document.getElementById("universeCanvas");
-const uctx = universeCanvas.getContext("2d");
+const universeCanvas =
+document.getElementById("universeCanvas");
 
-let universeParticles = [];
-let universeAnimation;
-
+const uctx =
+universeCanvas.getContext("2d");
 
 function resizeUniverse(){
 
@@ -540,84 +539,94 @@ function resizeUniverse(){
 
 resizeUniverse();
 
-window.addEventListener("resize",resizeUniverse);
+window.addEventListener(
+    "resize",
+    resizeUniverse
+);
 
-class UniverseParticle{
+function startUniverseScene(){
 
-    constructor(){
+    showPage(pages.universeEyes);
 
-        this.reset();
+    resizeUniverse();
 
-    }
+    createUniverse();
 
-    reset(){
+    animateUniverse();
 
-        this.x = Math.random()*universeCanvas.width;
-        this.y = Math.random()*universeCanvas.height;
+}
 
-        this.vx = 0;
-        this.vy = 0;
+let stars = [];
 
-        this.size = 1 + Math.random()*2;
+function createUniverse(){
 
-        this.alpha = .4 + Math.random()*.6;
+    stars = [];
 
-        this.state = "sky";
+    for(let i=0;i<1800;i++){
 
-        this.target = null;
+        stars.push({
 
-    }
+            x:Math.random()*universeCanvas.width,
 
-    update(){
+            y:Math.random()*universeCanvas.height,
 
-        if(this.state==="spiral"){
+            size:Math.random()*2+0.4,
 
-            const cx = universeCanvas.width/2;
-            const cy = universeCanvas.height/2;
+            alpha:Math.random()
 
-            const dx = cx-this.x;
-            const dy = cy-this.y;
-
-            this.vx += dx*0.0008;
-            this.vy += dy*0.0008;
-
-        }
-
-        if(this.state==="eyes" && this.target){
-
-            const dx = this.target.x-this.x;
-            const dy = this.target.y-this.y;
-
-            this.vx += dx*0.010;
-            this.vy += dy*0.010;
-
-        }
-
-        this.vx*=0.97;
-        this.vy*=0.97;
-
-        this.x+=this.vx;
-        this.y+=this.vy;
+        });
 
     }
 
-    draw(){
+}
+
+function animateUniverse(){
+
+    uctx.clearRect(
+
+        0,
+
+        0,
+
+        universeCanvas.width,
+
+        universeCanvas.height
+
+    );
+
+    uctx.fillStyle="#020611";
+
+    uctx.fillRect(
+
+        0,
+
+        0,
+
+        universeCanvas.width,
+
+        universeCanvas.height
+
+    );
+
+    stars.forEach(star=>{
 
         uctx.beginPath();
 
-        uctx.fillStyle="#fff7d8";
+        uctx.fillStyle=
 
-        uctx.shadowBlur=15;
+        `rgba(255,245,220,${star.alpha})`;
 
-        uctx.shadowColor="#ffe9a8";
+        uctx.shadowBlur=10;
+
+        uctx.shadowColor="#fff7d0";
 
         uctx.arc(
 
-            this.x,
+            star.x,
 
-            this.y,
+            star.y,
 
-            this.size,
+            star.size,
 
             0,
 
@@ -627,11 +636,15 @@ class UniverseParticle{
 
         uctx.fill();
 
-    }
+    });
+
+    requestAnimationFrame(
+
+        animateUniverse
+
+    );
 
 }
-
-
 
 
 /*======================================
