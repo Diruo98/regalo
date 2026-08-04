@@ -529,20 +529,35 @@ document.getElementById("eyesCanvas");
 const ctx =
 eyesCanvas.getContext("2d");
 
-let particles=[];
+/*======================================
+        NUOVA COSTELLAZIONE
+======================================*/
 
-let eyeTargets=[];
+let stars = [];
 
-let animationFrame;
+let currentStar = 0;
 
-let eyesImage = new Image();
-eyesImage.src = "eyes.png";
+const constellationShape = [
 
-eyesImage.onload = () => {
+    {x:60,y:18},
+    {x:50,y:18},
+    {x:40,y:18},
 
-    buildEyeTargets();
+    {x:34,y:28},
+    {x:34,y:40},
 
-};
+    {x:46,y:48},
+    {x:58,y:48},
+
+    {x:66,y:58},
+    {x:66,y:70},
+
+    {x:58,y:80},
+    {x:46,y:84},
+    {x:34,y:84},
+    {x:26,y:80}
+
+];
 
 /*======================================
         RESIZE CANVAS
@@ -563,6 +578,248 @@ window.addEventListener(
     "resize",
     resizeEyesCanvas
 );
+
+/*======================================
+        CREA CIELO
+======================================*/
+
+function createSky(){
+
+    const sky = document.getElementById("starField");
+
+    sky.innerHTML = "";
+
+    for(let i=0;i<220;i++){
+
+        const star = document.createElement("div");
+
+        star.className = "bgStar";
+
+        star.style.left = Math.random()*100 + "%";
+
+        star.style.top = Math.random()*100 + "%";
+
+        star.style.animationDelay =
+        (Math.random()*5)+"s";
+
+        star.style.opacity =
+        .25 + Math.random()*.75;
+
+        sky.appendChild(star);
+
+    }
+
+}
+
+/*======================================
+        CREA COSTELLAZIONE
+======================================*/
+
+function createConstellation(){
+
+    const box = document.getElementById("constellation");
+
+    box.innerHTML = "";
+
+    stars = [];
+
+    constellationShape.forEach((point)=>{
+
+        const star = document.createElement("div");
+
+        star.className = "constellation-star";
+
+        star.style.left = point.x + "%";
+        star.style.top = point.y + "%";
+
+        star.style.opacity = "0";
+
+        box.appendChild(star);
+
+        stars.push(star);
+
+    });
+
+}
+
+/*======================================
+      ANIMA COSTELLAZIONE
+======================================*/
+
+function animateConstellation(){
+
+    currentStar = 0;
+
+    const timer = setInterval(()=>{
+
+        if(currentStar >= stars.length){
+
+            clearInterval(timer);
+
+           drawConstellationLines();
+
+setTimeout(()=>{
+
+    pulseConstellation();
+
+},3000);
+
+return;
+
+        }
+
+        const star = stars[currentStar];
+
+        star.style.opacity = "1";
+
+        star.classList.add("active");
+
+        currentStar++;
+
+    },350);
+
+}
+/*======================================
+        COSTELLAZIONE RESPIRA
+======================================*/
+
+function pulseConstellation(){
+
+    stars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1.4)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)"
+
+                }
+
+            ],
+
+            {
+
+                duration:1800,
+
+                iterations:Infinity,
+
+                easing:"ease-in-out"
+
+            }
+
+        );
+
+    });
+
+}
+
+/*======================================
+        TESTI COSTELLAZIONE
+======================================*/
+
+function showNarration(text){
+
+    const box =
+    document.getElementById("constellationText");
+
+    box.innerHTML = text;
+
+    box.classList.remove("show");
+
+    setTimeout(()=>{
+
+        box.classList.add("show");
+
+    },30);
+
+}
+
+/*======================================
+        AVVIO COSTELLAZIONE
+======================================*/
+
+function startConstellation(){
+
+    stopEmojiRain();
+
+    hideEmojis();
+
+    currentStar = 0;
+
+    createSky();
+
+    createConstellation();
+
+    showNarration(
+
+        "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
+
+    );
+
+    animateConstellation();
+
+}
+
+
+/*======================================
+        DISEGNA LE LINEE
+======================================*/
+
+function drawConstellationLines(){
+
+    const path =
+    document.getElementById("constellationPath");
+
+    let d = "";
+
+    constellationShape.forEach((point,index)=>{
+
+        if(index===0){
+
+            d += `M ${point.x}% ${point.y}% `;
+
+        }else{
+
+            d += `L ${point.x}% ${point.y}% `;
+
+        }
+
+    });
+
+    path.setAttribute("d",d);
+
+    const length =
+    path.getTotalLength();
+
+    path.style.strokeDasharray = length;
+
+    path.style.strokeDashoffset = length;
+
+    path.getBoundingClientRect();
+
+    path.style.transition =
+    "stroke-dashoffset 3s ease";
+
+    path.style.strokeDashoffset = "0";
+
+}
 
 /* =====================================
    STELLA CADENTE
@@ -589,28 +846,6 @@ function createShootingStar(){
         star.remove();
 
     },1200);
-
-}
-
-/* =====================================
-   TESTI COSTELLAZIONE
-===================================== */
-
-function showNarration(text){
-
-    const box = document.getElementById("constellationText");
-
-    if(!box) return;
-
-    box.textContent = text;
-
-    box.classList.remove("show");
-
-    setTimeout(()=>{
-
-        box.classList.add("show");
-
-    },50);
 
 }
 
