@@ -990,210 +990,32 @@ eyesImage.onload = ()=>{
 
 };
 
+
 /*======================================
-        PARTICELLE
+        CREA STELLE COSMICHE
 ======================================*/
-class Particle{
 
-    constructor(x,y){
+function createSkyParticles(count){
 
-        this.x=x;
-        this.y=y;
+    for(let i=0;i<count;i++){
 
-        this.vx=0;
-        this.vy=0;
+        particles.push(
 
-        this.size=1+Math.random()*2;
+            new Particle(
 
-        this.target=null;
+                Math.random()*eyesCanvas.width,
 
-    }
+                Math.random()*eyesCanvas.height
 
-    update(){
-
-        if(this.target){
-
-            const dx=this.target.x-this.x;
-            const dy=this.target.y-this.y;
-
-            this.vx+=dx*0.012;
-            this.vy+=dy*0.012;
-
-            this.vx*=0.93;
-            this.vy*=0.93;
-
-        }
-
-        this.x+=this.vx;
-        this.y+=this.vy;
-
-    }
-
-    draw(){
-
-        ctx.beginPath();
-
-        ctx.fillStyle="#fff7cf";
-
-        ctx.shadowBlur=18;
-
-        ctx.shadowColor="#ffe79c";
-
-        ctx.arc(
-
-            this.x,
-
-            this.y,
-
-            this.size,
-
-            0,
-
-            Math.PI*2
+            )
 
         );
 
-        ctx.fill();
-
     }
 
 }
 
-/* =====================================
-   CREAZIONE PARTICELLE
-===================================== */
-function createParticles(){
 
-    particles=[];
-
-    stars.forEach(star=>{
-
-        const rect=
-        star.getBoundingClientRect();
-
-        const cx=
-        rect.left+rect.width/2;
-
-        const cy=
-        rect.top+rect.height/2;
-
-        for(let i=0;i<170;i++){
-
-            particles.push(
-
-                new Particle(
-
-                    cx+(Math.random()-.5)*18,
-
-                    cy+(Math.random()-.5)*18
-
-                )
-
-            );
-
-        }
-
-    });
-
-}
-
-/* =====================================
-   TARGET OCCHI
-===================================== */
-function buildEyeTargets(){
-
-    eyeTargets=[];
-
-    const off=document.createElement("canvas");
-
-    const offCtx=off.getContext("2d");
-
-    off.width=eyesImage.width;
-
-    off.height=eyesImage.height;
-
-    offCtx.drawImage(
-
-        eyesImage,
-
-        0,
-
-        0
-
-    );
-
-    const pixels=
-
-    offCtx.getImageData(
-
-        0,
-
-        0,
-
-        off.width,
-
-        off.height
-
-    ).data;
-
-    const scale=.55;
-
-    const offsetX=
-
-    window.innerWidth/2
-
-    -
-
-    off.width*scale/2;
-
-    const offsetY=
-
-    window.innerHeight/2
-
-    -
-
-    off.height*scale/2;
-
-    for(let y=0;y<off.height;y+=3){
-
-        for(let x=0;x<off.width;x+=3){
-
-            const index=
-
-            (y*off.width+x)*4;
-
-            if(pixels[index+3]>40){
-
-                eyeTargets.push({
-
-                    x:offsetX+x*scale,
-
-                    y:offsetY+y*scale
-
-                });
-
-            }
-
-        }
-
-    }
-
-}
-
-/* =====================================
-FUNZIONE ASSIGN TARGET
-===================================== */
-function assignTargets(){
-
-    particles.forEach((particle,index)=>{
-
-        particle.target =
-
-        eyeTargets[index % eyeTargets.length];
-
-    });
-
-}
 
 /* =====================================
 ANIMATE PARTICLES
@@ -1235,71 +1057,19 @@ function animateParticles(){
 ===================================== */
 function startEyesScene(){
 
-    document
+    particles=[];
 
-    .getElementById("eyesScene")
-
-    .classList.add("show");
-
+    // Stelle della S
     createParticles();
+
+    // Nuove stelle dell'universo
+    createSkyParticles(900);
 
     assignTargets();
 
     animateParticles();
 
-    setTimeout(()=>{
-
-        showRealEyes();
-
-    },4500);
-
-}
-
-/* =====================================
-   RIVELA GLI OCCHI
-===================================== */
-
-function showRealEyes(){
-
-    const eyes = document.getElementById("realEyes");
-
-    // Gli occhi iniziano invisibili
-    eyes.style.opacity = "0";
-    eyes.style.transition = "opacity 4s ease";
-
-    // Aspetta che le particelle quasi completino la forma
-    setTimeout(()=>{
-
-        eyes.style.opacity = "1";
-
-    },2000);
-
-    // Il testo compare quando gli occhi stanno emergendo
-    setTimeout(()=>{
-
-        showNarration(
-
-            "...finché non ho visto i tuoi occhi. 🤍"
-
-        );
-
-    },3000);
-
-    // Solo alla fine fermiamo le particelle
-    setTimeout(()=>{
-
-        cancelAnimationFrame(animationFrame);
-
-    },6000);
-
-    // Dopo qualche secondo passiamo al cuore
-    setTimeout(()=>{
-
-        showPage(pages.heart);
-
-        initHeart();
-
-    },9000);
+    showRealEyes();
 
 }
 
