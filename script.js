@@ -1172,13 +1172,12 @@ function constellationCompleted(){
 
 function startUniverseScene(){
 
-    // Passa alla nuova pagina
+    console.log("UNIVERSO AVVIATO");
+
     showPage(pages.universeEyes);
 
-    // Riempie il cielo
     createUniverse();
 
-    // Avvia l'animazione
     animateUniverse();
 
 }
