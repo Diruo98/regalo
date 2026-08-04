@@ -619,7 +619,8 @@ function createConstellation(){
 
     const box = document.getElementById("constellation");
 
-    box.innerHTML = "";
+    // Elimina solo le stelle vecchie
+    box.querySelectorAll(".constellation-star").forEach(star=>star.remove());
 
     stars = [];
 
@@ -652,7 +653,7 @@ function animateConstellation(){
 
     const timer = setInterval(()=>{
 
-        if(currentStar >= stars.length){
+       if(currentStar >= stars.length){
 
     clearInterval(timer);
 
@@ -673,7 +674,6 @@ function animateConstellation(){
     return;
 
 }
-
         const star = stars[currentStar];
 
         star.style.opacity = "1";
