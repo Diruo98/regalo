@@ -632,6 +632,15 @@ let eyeTargets=[];
 
 let animationFrame;
 
+let eyesImage = new Image();
+eyesImage.src = "eyes.png";
+
+eyesImage.onload = () => {
+
+    buildEyeTargets();
+
+};
+
 /*======================================
         RESIZE CANVAS
 ======================================*/
