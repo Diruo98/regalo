@@ -556,15 +556,15 @@ function startUniverseScene(){
 
 }
 
-let universestars = [];
+let universeStars = [];
 
 function createUniverse(){
 
-    universestars = [];
+    universeStars = [];
 
     for(let i=0;i<1800;i++){
 
-        universestars.push({
+        universeStars.push({
 
             x:Math.random()*universeCanvas.width,
 
@@ -608,7 +608,7 @@ function animateUniverse(){
 
     );
 
-    universestars.forEach(star=>{
+    universeStars.forEach(star=>{
 
         uctx.beginPath();
 
