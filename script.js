@@ -1258,10 +1258,6 @@ function startConstellation(){
 
     currentStar = 0;
 
-    createBackgroundStars();
-
-    createCosmicDust();
-
     createConstellation();
 
     drawConstellation();
