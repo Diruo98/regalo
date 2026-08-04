@@ -746,6 +746,106 @@ function createParticles(){
 }
 
 /*======================================
+      CREA TARGET DAGLI OCCHI
+======================================*/
+
+function buildEyeTargets(){
+
+    eyeTargets=[];
+
+    const off =
+    document.createElement("canvas");
+
+    const offCtx =
+    off.getContext("2d");
+
+    off.width =
+    eyesImage.width;
+
+    off.height =
+    eyesImage.height;
+
+    offCtx.drawImage(
+        eyesImage,
+        0,
+        0
+    );
+
+    const pixels =
+    offCtx.getImageData(
+
+        0,
+        0,
+
+        off.width,
+
+        off.height
+
+    ).data;
+
+    const scale = 0.55;
+
+    const offsetX =
+    window.innerWidth/2
+    -
+    off.width*scale/2;
+
+    const offsetY =
+    window.innerHeight/2
+    -
+    off.height*scale/2;
+
+    for(
+
+        let y=0;
+
+        y<off.height;
+
+        y+=3
+
+    ){
+
+        for(
+
+            let x=0;
+
+            x<off.width;
+
+            x+=3
+
+        ){
+
+            const index =
+
+            (y*off.width+x)*4;
+
+            const alpha =
+
+            pixels[index+3];
+
+            if(alpha>30){
+
+                eyeTargets.push({
+
+                    x:
+
+                    offsetX+x*scale,
+
+                    y:
+
+                    offsetY+y*scale
+
+                });
+
+            }
+
+        }
+
+    }
+
+}
+
+/*======================================
         ANIMAZIONE
 ======================================*/
 function animateParticles(){
