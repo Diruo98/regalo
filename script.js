@@ -777,27 +777,35 @@ function startConstellation(){
 
 }
 
-
 /*======================================
-        DISEGNA LE LINEE
+        DISEGNO COSTELLAZIONE
 ======================================*/
 
 function drawConstellationLines(){
 
+    const svg =
+    document.getElementById("constellationSvg");
+
     const path =
     document.getElementById("constellationPath");
+
+    const w = svg.clientWidth;
+    const h = svg.clientHeight;
 
     let d = "";
 
     constellationShape.forEach((point,index)=>{
 
+        const x = w * point.x / 100;
+        const y = h * point.y / 100;
+
         if(index===0){
 
-            d += `M ${point.x}% ${point.y}% `;
+            d += `M ${x} ${y} `;
 
         }else{
 
-            d += `L ${point.x}% ${point.y}% `;
+            d += `L ${x} ${y} `;
 
         }
 
@@ -805,8 +813,7 @@ function drawConstellationLines(){
 
     path.setAttribute("d",d);
 
-    const length =
-    path.getTotalLength();
+    const length = path.getTotalLength();
 
     path.style.strokeDasharray = length;
 
