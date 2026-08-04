@@ -11,6 +11,7 @@ const pages = {
     wish: document.getElementById("wishPage"),
     star: document.getElementById("starPage"),
     constellation: document.getElementById("constellationPage"),
+   universeEyes: document.getElementById("universeEyesPage"),
     heart: document.getElementById("heartPage"),
     letter: document.getElementById("letterPage"),
     fingerprint: document.getElementById("fingerprintPage"),
@@ -520,27 +521,15 @@ function animateStar(){
 }
 
 /*======================================
-        OCCHI COSMICI
-======================================*/
-
-const eyesCanvas =
-document.getElementById("eyesCanvas");
-
-const ctx =
-eyesCanvas.getContext("2d");
-
-/*======================================
         UNIVERSO
 ======================================*/
 
-const universeCanvas = document.getElementById("eyesCanvas");
+const universeCanvas = document.getElementById("universeCanvas");
 const uctx = universeCanvas.getContext("2d");
 
 let universeParticles = [];
 let universeAnimation;
 
-const eyesImage = new Image();
-eyesImage.src = "eyes.png";
 
 function resizeUniverse(){
 
@@ -1110,11 +1099,87 @@ function constellationCompleted(){
 
     });
 
+   setTimeout(()=>{
+
+    showNarration(
+
+        "...finché l'universo ha iniziato a cambiare."
+
+    );
+
+    stars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    opacity:1,
+
+                    transform:"translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    opacity:0,
+
+                    transform:
+                    `translate(
+
+                    ${(Math.random()-0.5)*180}px,
+
+                    ${(Math.random()-0.5)*180}px
+
+                    )
+
+                    scale(.2)`
+
+                }
+
+            ],
+
+            {
+
+                duration:2500,
+
+                easing:"ease-in",
+
+                fill:"forwards"
+
+            }
+
+        );
+
+    });
+
+    document
+    .getElementById("constellationSvg")
+    .style.opacity="0";
+
     setTimeout(()=>{
 
-        explodeConstellation();
+        startUniverseScene();
 
-    },3500);
+    },2500);
+
+},3500);
+
+   /*======================================
+        UNIVERSO
+======================================*/
+
+function startUniverseScene(){
+
+    // Passa alla nuova pagina
+    showPage(pages.universeEyes);
+
+    // Riempie il cielo
+    createUniverse();
+
+    // Avvia l'animazione
+    animateUniverse();
 
 }
 
@@ -1215,57 +1280,20 @@ function createSkyParticles(count){
 
 }
 
-
-
 /* =====================================
-ANIMATE PARTICLES
+   AVVIA LA SCENA UNIVERSO
 ===================================== */
-function animateParticles(){
 
-    ctx.clearRect(
+function startUniverseScene(){
 
-        0,
-
-        0,
-
-        eyesCanvas.width,
-
-        eyesCanvas.height
-
-    );
-
-    particles.forEach(p=>{
-
-        p.update();
-
-        p.draw();
-
-    });
-
-    animationFrame =
-
-    requestAnimationFrame(
-
-        animateParticles
-
-    );
-
-}
-
-/* =====================================
-   SCENA OCCHI INIZIALE
-===================================== */
-function startEyesScene(){
-
-   document
-    .getElementById("eyesScene")
-    .classList.add("show");
+    showPage(pages.universeEyes);
 
     createUniverse();
 
     animateUniverse();
 
 }
+
 
 /* =====================================
    STELLA CADENTE
