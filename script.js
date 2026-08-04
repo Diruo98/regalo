@@ -631,111 +631,6 @@ class UniverseParticle{
 
 }
 
-/*======================================
-        CREA UNIVERSO
-======================================*/
-
-function createUniverse(){
-
-    universeParticles = [];
-
-    for(let i=0;i<1500;i++){
-
-        universeParticles.push(
-
-            new UniverseParticle()
-
-        );
-
-    }
-
-}
-
-/*======================================
-        ANIMA UNIVERSO
-======================================*/
-
-function animateUniverse(){
-
-    uctx.clearRect(
-
-        0,
-
-        0,
-
-        universeCanvas.width,
-
-        universeCanvas.height
-
-    );
-
-    // Nebulosa centrale
-
-    const gradient =
-
-    uctx.createRadialGradient(
-
-        universeCanvas.width/2,
-
-        universeCanvas.height/2,
-
-        80,
-
-        universeCanvas.width/2,
-
-        universeCanvas.height/2,
-
-        700
-
-    );
-
-    gradient.addColorStop(
-
-        0,
-
-        "rgba(255,220,140,.06)"
-
-    );
-
-    gradient.addColorStop(
-
-        1,
-
-        "rgba(0,0,0,0)"
-
-    );
-
-    uctx.fillStyle = gradient;
-
-    uctx.fillRect(
-
-        0,
-
-        0,
-
-        universeCanvas.width,
-
-        universeCanvas.height
-
-    );
-
-    universeParticles.forEach(p=>{
-
-        p.update();
-
-        p.draw();
-
-    });
-
-    universeAnimation =
-
-    requestAnimationFrame(
-
-        animateUniverse
-
-    );
-
-}
 
 
 
@@ -769,25 +664,6 @@ const constellationShape = [
 
 ];
 
-/*======================================
-        RESIZE CANVAS
-======================================*/
-function resizeEyesCanvas(){
-
-    eyesCanvas.width =
-    window.innerWidth;
-
-    eyesCanvas.height =
-    window.innerHeight;
-
-}
-
-resizeEyesCanvas();
-
-window.addEventListener(
-    "resize",
-    resizeEyesCanvas
-);
 
 /*======================================
         CREA CIELO
@@ -1168,21 +1044,7 @@ function constellationCompleted(){
 
 }
 
-   /*======================================
-        UNIVERSO
-======================================*/
-
-function startUniverseScene(){
-
-    console.log(universeCanvas.width, universeCanvas.height);
-
-    showPage(pages.universeEyes);
-
-    createUniverse();
-
-    animateUniverse();
-
-}
+   
 
 /*======================================
         ESPLOSIONE
@@ -1278,20 +1140,6 @@ function createSkyParticles(count){
         );
 
     }
-
-}
-
-/* =====================================
-   AVVIA LA SCENA UNIVERSO
-===================================== */
-
-function startUniverseScene(){
-
-    showPage(pages.universeEyes);
-
-    createUniverse();
-
-    animateUniverse();
 
 }
 
