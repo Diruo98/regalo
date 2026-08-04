@@ -1256,35 +1256,50 @@ function startEyesScene(){
 }
 
 /* =====================================
-   MOSTRA OCCHI 
+   RIVELA GLI OCCHI
 ===================================== */
+
 function showRealEyes(){
 
-    cancelAnimationFrame(
+    const eyes = document.getElementById("realEyes");
 
-        animationFrame
+    // Gli occhi iniziano invisibili
+    eyes.style.opacity = "0";
+    eyes.style.transition = "opacity 4s ease";
 
-    );
+    // Aspetta che le particelle quasi completino la forma
+    setTimeout(()=>{
 
-    document
+        eyes.style.opacity = "1";
 
-    .getElementById("realEyes")
+    },2000);
 
-    .classList.add("show");
+    // Il testo compare quando gli occhi stanno emergendo
+    setTimeout(()=>{
 
-    showNarration(
+        showNarration(
 
-        "...finché non ho visto i tuoi occhi. 🤍"
+            "...finché non ho visto i tuoi occhi. 🤍"
 
-    );
+        );
 
+    },3000);
+
+    // Solo alla fine fermiamo le particelle
+    setTimeout(()=>{
+
+        cancelAnimationFrame(animationFrame);
+
+    },6000);
+
+    // Dopo qualche secondo passiamo al cuore
     setTimeout(()=>{
 
         showPage(pages.heart);
 
         initHeart();
 
-    },4500);
+    },9000);
 
 }
 
