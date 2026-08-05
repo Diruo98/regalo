@@ -574,6 +574,8 @@ function startUniverseScene(){
 
     animateUniverse();
 
+   showPage(pages.universeEyes);
+
 }
 
 let universeStars = [];
