@@ -707,19 +707,28 @@ function animateUniverse(){
 
         }
 
-        else if(universeState==="eyes"){
+       else if(universeState==="eyes"){
 
-            // Le stelle si spengono lentamente
+    // continua a ruotare molto lentamente
+    star.angle += 0.0002;
 
-            star.alpha = Math.max(
+    star.x =
+    star.cx +
+    Math.cos(star.angle) *
+    star.radius;
 
-                0,
+    star.y =
+    star.cy +
+    Math.sin(star.angle) *
+    star.radius;
 
-                star.alpha * 0.985
+    // si spegne lentamente
+    star.alpha = Math.max(
+        0,
+        star.alpha - 0.003
+    );
 
-            );
-
-        }
+}
 
 
 
