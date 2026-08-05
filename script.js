@@ -576,7 +576,7 @@ function startUniverseScene(){
 
     eyesImage.classList.add("show");
 
-},10000);
+},9500);
 
 }
 
@@ -733,6 +733,11 @@ function animateUniverse(){
         0,
         star.alpha - 0.003
     );
+          if(star.alpha < 0.01){
+
+    star.alpha = 0;
+
+}
 
 }
 
