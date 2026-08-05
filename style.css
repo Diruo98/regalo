@@ -2729,3 +2729,105 @@ CONTINUA
     transform:scale(1);
 
 }
+
+/*======================================
+        FINALE UNIVERSO
+======================================*/
+
+#universeEnding{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:40;
+
+    pointer-events:none;
+
+}
+
+#sofiaTitle{
+
+    font-size:clamp(70px,10vw,150px);
+
+    letter-spacing:.35em;
+
+    font-weight:200;
+
+    color:white;
+
+    opacity:0;
+
+    text-shadow:0 0 30px rgba(255,255,255,.35);
+
+    transition:opacity 2s ease;
+
+}
+
+#sofiaQuote{
+
+    max-width:850px;
+
+    margin-top:40px;
+
+    padding:0 40px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:1.35rem;
+
+    line-height:1.8;
+
+    opacity:0;
+
+    transition:opacity 2s ease;
+
+}
+
+#continueButton{
+
+    margin-top:70px;
+
+    padding:16px 46px;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:1.1rem;
+
+    letter-spacing:.18em;
+
+    cursor:pointer;
+
+    border-radius:50px;
+
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+
+    pointer-events:auto;
+
+    transition:.4s;
+
+}
+
+#continueButton:hover{
+
+    background:rgba(255,255,255,.18);
+
+    transform:scale(1.05);
+
+}
