@@ -1644,12 +1644,11 @@ button:disabled{
 
 }
 
-#realEyes{
+#eyesImage{
 
     position:absolute;
 
     left:50%;
-
     top:50%;
 
     transform:translate(-50%,-50%);
@@ -1668,14 +1667,13 @@ button:disabled{
 
 }
 
-#realEyes.show{
+#eyesImage.show{
 
     visibility:visible;
 
     opacity:.85;
 
 }
-
 
 /* =====================================
    ESPLOSIONE CUORI
