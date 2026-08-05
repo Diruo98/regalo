@@ -622,7 +622,7 @@ let galaxyForce = 0;
 ======================================*/
 
 
- function animateUniverse(){
+function animateUniverse(){
 
     uctx.clearRect(
         0,
@@ -682,17 +682,18 @@ let galaxyForce = 0;
     );
 
 
+
     universeStars.forEach(star=>{
 
         if(universeState==="galaxy"){
 
-            // velocità diversa in base alla distanza
+            // Rotazione
 
             star.angle +=
             0.0008 +
             (1/(star.radius+40))*4;
 
-            // la galassia si stringe
+            // Il vortice si stringe
 
             star.radius *= 0.99965;
 
@@ -708,28 +709,21 @@ let galaxyForce = 0;
 
         }
 
-       else if(universeState==="eyes"){
+        else if(universeState==="eyes"){
 
-    if(eyesTargets.length > 0){
+            // Le stelle si spengono lentamente
 
-        const target =
-        eyesTargets[
-            star.id % eyesTargets.length
-        ];
+            star.alpha = Math.max(
 
-        if(target){
+                0,
 
-            star.x +=
-            (target.x - star.x) * 0.03;
+                star.alpha * 0.985
 
-            star.y +=
-            (target.y - star.y) * 0.03;
+            );
 
         }
 
-    }
 
-}
 
         // SCIA
 
@@ -762,6 +756,7 @@ let galaxyForce = 0;
         );
 
         uctx.stroke();
+
 
 
         // STELLA
