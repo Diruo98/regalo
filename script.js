@@ -716,8 +716,6 @@ function createUniverse(){
 
     }
 
-}
-
 
 /*======================================
         ANIMAZIONE UNIVERSO
