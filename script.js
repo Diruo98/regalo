@@ -521,10 +521,6 @@ function animateStar(){
 }
 
 /*======================================
-        UNIVERSO
-======================================*/
-
-/*======================================
             UNIVERSO
 ======================================*/
 
@@ -537,14 +533,30 @@ universeCanvas.getContext("2d");
 const eyesImage =
 document.getElementById("eyesImage");
 
-let universeState = "galaxy";
+const sofiaTitle =
+document.getElementById("sofiaTitle");
+
+const sofiaQuote =
+document.getElementById("sofiaQuote");
+
+const continueButton =
+document.getElementById("continueButton");
+
 
 let universeStars = [];
 
 let galaxyForce = 0;
 
+/* fase dell'animazione */
+let universePhase = 0;
+
+/* opacità occhi */
 let eyesOpacity = 0;
 
+/* opacità testo */
+let titleOpacity = 0;
+let quoteOpacity = 0;
+let buttonOpacity = 0;
 
 
 function resizeUniverse(){
@@ -565,39 +577,41 @@ window.addEventListener(
 );
 
 /*======================================
-       START UNIVERSO
+        START UNIVERSO
 ======================================*/
+
 function startUniverseScene(){
 
     resizeUniverse();
 
     createUniverse();
 
-    universeState = "galaxy";
+    showPage(pages.universeEyes);
+
+    /* reset animazione */
+
+    galaxyForce = 0;
+
+    eyesOpacity = 0;
+
+    universePhase = 0;
+
+    eyesImage.classList.remove("show");
+
+    sofiaTitle.classList.remove("show");
+
+    sofiaQuote.classList.remove("show");
+
+    continueButton.classList.remove("show");
 
     animateUniverse();
 
-    showPage(pages.universeEyes);
-
-    setTimeout(()=>{
-
-        universeState = "eyes";
-
-    },7000);
-
-   setTimeout(()=>{
-
-    eyesImage.classList.add("show");
-
-},9500);
-
 }
-
-let universeStars = [];
 
 /*======================================
         CREAZIONE UNIVERSO
 ======================================*/
+
 function createUniverse(){
 
     universeStars = [];
@@ -607,39 +621,50 @@ function createUniverse(){
 
     for(let i = 0; i < 700; i++){
 
-        const radius = Math.random() * Math.max(cx, cy);
+        const radius =
+        Math.random() * Math.max(cx, cy);
 
-        const angle = Math.random() * Math.PI * 2;
+        const angle =
+        Math.random() * Math.PI * 2;
 
-       universeStars.push({
+        universeStars.push({
 
-    id:i,
+            id:i,
 
-    cx,
-    cy,
+            cx,
+            cy,
 
-    radius,
-    angle,
+            radius,
 
-    size:Math.random()*1.8+0.3,
+            angle,
 
-    alpha:0.5+Math.random()*0.5
+            x:
+            cx + Math.cos(angle) * radius,
 
-});
-       
+            y:
+            cy + Math.sin(angle) * radius,
+
+            size:
+            Math.random()*1.8 + 0.3,
+
+            alpha:
+            0.5 + Math.random()*0.5
+
+        });
+
     }
 
 }
-
-
-let galaxyForce = 0;
 
 /*======================================
         ANIMAZIONE UNIVERSO
 ======================================*/
 
+let universeTimer = 0;
 
 function animateUniverse(){
+
+    universeTimer++;
 
     uctx.clearRect(
         0,
@@ -648,13 +673,72 @@ function animateUniverse(){
         universeCanvas.height
     );
 
-    // Nebulosa
+    const cx =
+    universeCanvas.width / 2;
 
-    const cx = universeCanvas.width/2;
-    const cy = universeCanvas.height/2;
+    const cy =
+    universeCanvas.height / 2;
+
+
+    /*==================================
+            FASI
+    ==================================*/
+
+    // 0 -> galassia
+    // 1 -> vortice
+    // 2 -> dissolvenza
+    // 3 -> occhi
+    // 4 -> nome
+    // 5 -> frase
+    // 6 -> continua
+
+    if(universeTimer < 420){
+
+        universePhase = 0;
+
+    }
+
+    else if(universeTimer < 700){
+
+        universePhase = 1;
+
+    }
+
+    else if(universeTimer < 950){
+
+        universePhase = 2;
+
+    }
+
+    else{
+
+        universePhase = 3;
+
+    }
+
+
+
+    /*==================================
+            NEBULOSA
+    ==================================*/
+
+    let nebulaStrength = 0.08;
+
+    if(universePhase===2){
+
+        nebulaStrength = 0.14;
+
+    }
+
+    if(universePhase===3){
+
+        nebulaStrength = 0.22;
+
+    }
 
     const pulse =
-    0.5 + Math.sin(Date.now()*0.0015)*0.15;
+    0.55 +
+    Math.sin(Date.now()*0.0015)*0.15;
 
     const nebula =
     uctx.createRadialGradient(
@@ -670,21 +754,33 @@ function animateUniverse(){
     );
 
     nebula.addColorStop(
+
         0,
-        `rgba(255,210,120,${0.08*pulse})`
+
+        `rgba(255,210,120,${
+            nebulaStrength*pulse
+        })`
+
     );
 
     nebula.addColorStop(
+
         .45,
-        "rgba(120,170,255,.03)"
+
+        "rgba(120,170,255,.05)"
+
     );
 
     nebula.addColorStop(
+
         1,
+
         "rgba(0,0,0,0)"
+
     );
 
-    uctx.fillStyle = nebula;
+    uctx.fillStyle =
+    nebula;
 
     uctx.fillRect(
 
@@ -698,38 +794,33 @@ function animateUniverse(){
 
     );
 
+   /*==================================
+        STELLE
+==================================*/
 
+universeStars.forEach(star=>{
 
-    universeStars.forEach(star=>{
+    /* ROTAZIONE */
 
-        if(universeState==="galaxy"){
+    let speed =
+    0.0008 +
+    (1/(star.radius+40))*4;
 
-            // Rotazione
+    if(universePhase===1){
 
-            star.angle +=
-            0.0008 +
-            (1/(star.radius+40))*4;
+        speed *= 1.5;
 
-            // Il vortice si stringe
+        star.radius *= 0.99965;
 
-            star.radius *= 0.99965;
+    }
 
-            star.x =
-            star.cx +
-            Math.cos(star.angle)*
-            star.radius;
+    if(universePhase>=2){
 
-            star.y =
-            star.cy +
-            Math.sin(star.angle)*
-            star.radius;
+        speed *= 0.35;
 
-        }
+    }
 
-       else if(universeState==="eyes"){
-
-    // continua a ruotare molto lentamente
-    star.angle += 0.0002;
+    star.angle += speed;
 
     star.x =
     star.cx +
@@ -741,91 +832,176 @@ function animateUniverse(){
     Math.sin(star.angle) *
     star.radius;
 
-    // si spegne lentamente
-    star.alpha = Math.max(
+
+    /* DISSOLVENZA */
+
+    if(universePhase>=2){
+
+        star.alpha *= 0.992;
+
+    }
+
+
+    /* SCIA */
+
+    uctx.beginPath();
+
+    uctx.strokeStyle =
+    `rgba(255,235,170,${
+        star.alpha*0.18
+    })`;
+
+    uctx.lineWidth =
+    star.size;
+
+    uctx.moveTo(
+
+        star.x -
+        Math.cos(star.angle)*18,
+
+        star.y -
+        Math.sin(star.angle)*18
+
+    );
+
+    uctx.lineTo(
+
+        star.x,
+
+        star.y
+
+    );
+
+    uctx.stroke();
+
+
+    /* STELLA */
+
+    uctx.beginPath();
+
+    uctx.fillStyle =
+    `rgba(255,250,235,${
+        star.alpha
+    })`;
+
+    uctx.shadowBlur =
+
+    6 + star.alpha*8;
+
+    uctx.shadowColor =
+    "#fff6c0";
+
+    uctx.arc(
+
+        star.x,
+
+        star.y,
+
+        star.size,
+
         0,
-        star.alpha - 0.003
-    );
-          if(star.alpha < 0.01){
 
-    star.alpha = 0;
+        Math.PI*2
+
+    );
+
+    uctx.fill();
+
+});
+
+
+/*==================================
+        OCCHI
+==================================*/
+
+if(universePhase>=2){
+
+    eyesOpacity += 0.0025;
+
+    if(eyesOpacity>0.85){
+
+        eyesOpacity = 0.85;
+
+    }
+
+    eyesImage.style.opacity =
+    eyesOpacity;
+
+    eyesImage.style.visibility =
+    "visible";
 
 }
 
+   /*==================================
+        TESTO FINALE
+==================================*/
+
+if(universePhase>=3){
+
+    titleOpacity += 0.01;
+
+    if(titleOpacity>1){
+
+        titleOpacity = 1;
+
+    }
+
+    sofiaTitle.style.opacity =
+    titleOpacity;
+
 }
 
 
+if(universeTimer>1100){
 
-        // SCIA
+    quoteOpacity += 0.01;
 
-        uctx.beginPath();
+    if(quoteOpacity>1){
 
-        uctx.strokeStyle =
-        `rgba(255,235,170,${
-            star.alpha*.20
-        })`;
+        quoteOpacity = 1;
 
-        uctx.lineWidth =
-        star.size;
+    }
 
-        uctx.moveTo(
+    sofiaQuote.style.opacity =
+    quoteOpacity;
 
-            star.x-
-            Math.cos(star.angle)*18,
-
-            star.y-
-            Math.sin(star.angle)*18
-
-        );
-
-        uctx.lineTo(
-
-            star.x,
-
-            star.y
-
-        );
-
-        uctx.stroke();
+}
 
 
+if(universeTimer>1350){
 
-        // STELLA
+    buttonOpacity += 0.01;
 
-        uctx.beginPath();
+    if(buttonOpacity>1){
 
-        uctx.fillStyle =
-        `rgba(255,250,235,${
-            star.alpha
-        })`;
+        buttonOpacity = 1;
 
-        uctx.shadowBlur = 6;
+    }
 
-        uctx.shadowColor =
-        "#fff2a0";
+    continueButton.style.opacity =
+    buttonOpacity;
 
-        uctx.arc(
+}
 
-            star.x,
 
-            star.y,
+/*==================================
+        CONTINUA
+==================================*/
 
-            star.size,
+continueButton.onclick = ()=>{
 
-            0,
+    showPage(pages.heart);
 
-            Math.PI*2
+};
 
-        );
 
-        uctx.fill();
+/*==================================
+        LOOP
+==================================*/
 
-    });
-
-    requestAnimationFrame(
-        animateUniverse
-    );
-
+requestAnimationFrame(
+    animateUniverse
+);
 }
 
 /*======================================
