@@ -532,12 +532,10 @@ universeCanvas.getContext("2d");
 
 let universeState = "galaxy";
 
-let eyesTargets = [];
-
 let eyesOpacity = 0;
 
-const eyesImage = new Image();
-eyesImage.src = "eyes.png";
+const eyesImage =
+document.getElementById("eyesImage");
 
 function resizeUniverse(){
 
@@ -616,70 +614,6 @@ function createUniverse(){
 
 }
 
-/*======================================
-        TARGET OCCHI CREAZIONE
-======================================*/
-function generateEyesTargets(){
-
-    const tempCanvas = document.createElement("canvas");
-    const tempCtx = tempCanvas.getContext("2d");
-
-    tempCanvas.width = eyesImage.width;
-    tempCanvas.height = eyesImage.height;
-
-    tempCtx.drawImage(
-        eyesImage,
-        0,
-        0
-    );
-
-    const data =
-    tempCtx.getImageData(
-        0,
-        0,
-        tempCanvas.width,
-        tempCanvas.height
-    ).data;
-
-    eyesTargets = [];
-
-    const offsetX =
-        universeCanvas.width/2
-        - tempCanvas.width/2;
-
-    const offsetY =
-        universeCanvas.height/2
-        - tempCanvas.height/2;
-
-    // un punto ogni 5 pixel
-
-    for(let y=0;y<tempCanvas.height;y+=5){
-
-        for(let x=0;x<tempCanvas.width;x+=5){
-
-            const index =
-            (y*tempCanvas.width+x)*4;
-
-            const alpha =
-            data[index+3];
-
-            if(alpha>20){
-
-                eyesTargets.push({
-
-                    x:offsetX+x,
-
-                    y:offsetY+y
-
-                });
-
-            }
-
-        }
-
-    }
-
-}
 
 let galaxyForce = 0;
 
