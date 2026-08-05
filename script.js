@@ -608,11 +608,116 @@ function animateUniverse(){
         universeCanvas.height
     );
 
+   // =====================================
+// NEBULOSA CENTRALE
+// =====================================
+
+const cx = universeCanvas.width / 2;
+const cy = universeCanvas.height / 2;
+
+const pulse =
+0.5 + Math.sin(Date.now()*0.0015)*0.15;
+
+// Nebulosa dorata
+let gradient1 =
+uctx.createRadialGradient(
+
+    cx,
+
+    cy,
+
+    0,
+
+    cx,
+
+    cy,
+
+    700
+
+);
+
+gradient1.addColorStop(
+    0,
+    `rgba(255,215,120,${0.08*pulse})`
+);
+
+gradient1.addColorStop(
+    0.35,
+    "rgba(255,190,90,0.03)"
+);
+
+gradient1.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+);
+
+uctx.fillStyle = gradient1;
+
+uctx.fillRect(
+
+    0,
+
+    0,
+
+    universeCanvas.width,
+
+    universeCanvas.height
+
+);
+
+// Nebulosa blu
+
+let gradient2 =
+uctx.createRadialGradient(
+
+    cx,
+
+    cy,
+
+    120,
+
+    cx,
+
+    cy,
+
+    900
+
+);
+
+gradient2.addColorStop(
+    0,
+    `rgba(90,170,255,${0.03*pulse})`
+);
+
+gradient2.addColorStop(
+    0.6,
+    "rgba(80,120,255,0.015)"
+);
+
+gradient2.addColorStop(
+    1,
+    "rgba(0,0,0,0)"
+);
+
+uctx.fillStyle = gradient2;
+
+uctx.fillRect(
+
+    0,
+
+    0,
+
+    universeCanvas.width,
+
+    universeCanvas.height
+
+);
+
     universeStars.forEach(star=>{
 
-        star.angle += 0.0015;
+        star.angle += 0.0005 + (1 / (star.radius + 50)) * 3;
 
-        star.radius *= 0.9995;
+        star.radius *= 0.9997;
 
         star.x =
             star.cx +
@@ -622,30 +727,60 @@ function animateUniverse(){
             star.cy +
             Math.sin(star.angle) * star.radius;
 
-        uctx.beginPath();
+       // ---------- SCIA ----------
 
-        uctx.fillStyle =
-            `rgba(255,245,220,${star.alpha})`;
+uctx.beginPath();
 
-        uctx.shadowBlur = 12;
-        uctx.shadowColor = "#ffe8a5";
+uctx.strokeStyle =
+`rgba(255,235,170,${star.alpha*0.18})`;
 
-        uctx.arc(
-            star.x,
-            star.y,
-            star.size,
-            0,
-            Math.PI*2
-        );
+uctx.lineWidth = star.size;
 
-        uctx.fill();
+uctx.moveTo(
 
-    });
+    star.x - Math.cos(star.angle)*18,
 
-    requestAnimationFrame(animateUniverse);
+    star.y - Math.sin(star.angle)*18
 
-}
+);
 
+uctx.lineTo(
+
+    star.x,
+
+    star.y
+
+);
+
+uctx.stroke();
+
+
+// ---------- STELLA ----------
+
+uctx.beginPath();
+
+uctx.fillStyle =
+`rgba(255,250,235,${star.alpha})`;
+
+uctx.shadowBlur = 22;
+
+uctx.shadowColor = "#fff3b0";
+
+uctx.arc(
+
+    star.x,
+
+    star.y,
+
+    star.size,
+
+    0,
+
+    Math.PI*2
+
+);
+
+uctx.fill();
 /*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
