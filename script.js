@@ -588,7 +588,7 @@ function createUniverse(){
     const cx = universeCanvas.width / 2;
     const cy = universeCanvas.height / 2;
 
-    for(let i = 0; i < 2200; i++){
+    for(let i = 0; i < 700; i++){
 
         const radius = Math.random() * Math.max(cx, cy);
 
@@ -845,7 +845,7 @@ let galaxyForce = 0;
             star.alpha
         })`;
 
-        uctx.shadowBlur = 20;
+        uctx.shadowBlur = 6;
 
         uctx.shadowColor =
         "#fff2a0";
