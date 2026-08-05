@@ -609,6 +609,64 @@ function startUniverseScene(){
 }
 
 /*======================================
+            UNIVERSO
+======================================*/
+
+const universeCanvas =
+document.getElementById("universeCanvas");
+
+const uctx =
+universeCanvas.getContext("2d");
+
+const eyesImage =
+document.getElementById("eyesImage");
+
+const sofiaTitle =
+document.getElementById("sofiaTitle");
+
+const sofiaQuote =
+document.getElementById("sofiaQuote");
+
+const continueButton =
+document.getElementById("continueButton");
+
+
+let universeStars = [];
+
+/* tempo totale della scena */
+let universeTimer = 0;
+
+/* fase dell'animazione */
+let universePhase = 0;
+
+/* opacità occhi */
+let eyesOpacity = 0;
+
+/* opacità testi */
+let titleOpacity = 0;
+let quoteOpacity = 0;
+let buttonOpacity = 0;
+
+
+function resizeUniverse(){
+
+    universeCanvas.width =
+    window.innerWidth;
+
+    universeCanvas.height =
+    window.innerHeight;
+
+}
+
+resizeUniverse();
+
+window.addEventListener(
+    "resize",
+    resizeUniverse
+);
+
+
+/*======================================
         CREAZIONE UNIVERSO
 ======================================*/
 
@@ -616,20 +674,77 @@ function createUniverse(){
 
     universeStars = [];
 
-    const cx = universeCanvas.width / 2;
-    const cy = universeCanvas.height / 2;
+    const cx =
+    universeCanvas.width/2;
 
-    for(let i = 0; i < 700; i++){
+    const cy =
+    universeCanvas.height/2;
 
-        const radius =
-        Math.random() * Math.max(cx, cy);
 
-        const angle =
-        Math.random() * Math.PI * 2;
+    /*==============================
+      STELLE DELLA COSTELLAZIONE
+    ==============================*/
+
+    constellationShape.forEach((point,index)=>{
+
+        const startX =
+        (point.x/100)*
+        universeCanvas.width;
+
+        const startY =
+        (point.y/100)*
+        universeCanvas.height;
+
+        const dx = startX-cx;
+        const dy = startY-cy;
 
         universeStars.push({
 
-            id:i,
+            id:index,
+
+            born:true,
+
+            cx,
+            cy,
+
+            radius:
+            Math.sqrt(dx*dx+dy*dy),
+
+            angle:
+            Math.atan2(dy,dx),
+
+            x:startX,
+
+            y:startY,
+
+            size:2.6,
+
+            alpha:1
+
+        });
+
+    });
+
+
+    /*==============================
+        STELLE GALASSIA
+    ==============================*/
+
+    for(let i=0;i<650;i++){
+
+        const radius =
+        Math.random()*
+        Math.max(cx,cy);
+
+        const angle =
+        Math.random()*
+        Math.PI*2;
+
+        universeStars.push({
+
+            id:i+100,
+
+            born:false,
 
             cx,
             cy,
@@ -639,16 +754,19 @@ function createUniverse(){
             angle,
 
             x:
-            cx + Math.cos(angle) * radius,
+            cx+
+            Math.cos(angle)*
+            radius,
 
             y:
-            cy + Math.sin(angle) * radius,
+            cy+
+            Math.sin(angle)*
+            radius,
 
             size:
-            Math.random()*1.8 + 0.3,
+            Math.random()*1.8+0.3,
 
-            alpha:
-            0.5 + Math.random()*0.5
+            alpha:0
 
         });
 
@@ -656,89 +774,86 @@ function createUniverse(){
 
 }
 
+
 /*======================================
         ANIMAZIONE UNIVERSO
 ======================================*/
-
-let universeTimer = 0;
 
 function animateUniverse(){
 
     universeTimer++;
 
     uctx.clearRect(
+
         0,
+
         0,
+
         universeCanvas.width,
+
         universeCanvas.height
+
     );
 
     const cx =
-    universeCanvas.width / 2;
+    universeCanvas.width/2;
 
     const cy =
-    universeCanvas.height / 2;
+    universeCanvas.height/2;
 
 
-    /*==================================
-            FASI
-    ==================================*/
+    /*==============================
+            TIMELINE
+    ==============================*/
 
-    // 0 -> galassia
-    // 1 -> vortice
-    // 2 -> dissolvenza
-    // 3 -> occhi
-    // 4 -> nome
-    // 5 -> frase
-    // 6 -> continua
+    if(universeTimer<400){
 
-    if(universeTimer < 420){
-
-        universePhase = 0;
+        universePhase=0;
 
     }
 
-    else if(universeTimer < 700){
+    else if(universeTimer<700){
 
-        universePhase = 1;
+        universePhase=1;
 
     }
 
-    else if(universeTimer < 950){
+    else if(universeTimer<1000){
 
-        universePhase = 2;
+        universePhase=2;
 
     }
 
     else{
 
-        universePhase = 3;
+        universePhase=3;
 
     }
 
 
-
-    /*==================================
+    /*==============================
             NEBULOSA
-    ==================================*/
+    ==============================*/
 
-    let nebulaStrength = 0.08;
+    let strength = .08;
 
     if(universePhase===2){
 
-        nebulaStrength = 0.14;
+        strength=.14;
 
     }
 
     if(universePhase===3){
 
-        nebulaStrength = 0.22;
+        strength=.24;
 
     }
 
     const pulse =
-    0.55 +
-    Math.sin(Date.now()*0.0015)*0.15;
+    .55+
+    Math.sin(
+        Date.now()*0.0015
+    )*.15;
 
     const nebula =
     uctx.createRadialGradient(
@@ -758,7 +873,7 @@ function animateUniverse(){
         0,
 
         `rgba(255,210,120,${
-            nebulaStrength*pulse
+            strength*pulse
         })`
 
     );
@@ -794,33 +909,44 @@ function animateUniverse(){
 
     );
 
-   /*==================================
+    /* QUI FINISCE IL BLOCCO 1 */
+
+ /*==================================
         STELLE
 ==================================*/
 
 universeStars.forEach(star=>{
 
-    /* ROTAZIONE */
+    /*--------------------------
+        VELOCITÀ
+    --------------------------*/
 
     let speed =
     0.0008 +
     (1/(star.radius+40))*4;
 
+    // fase vortice
     if(universePhase===1){
 
-        speed *= 1.5;
+        speed *= 1.45;
 
         star.radius *= 0.99965;
 
     }
 
+    // fase dissolvenza
     if(universePhase>=2){
 
-        speed *= 0.35;
+        speed *= 0.45;
 
     }
 
     star.angle += speed;
+
+
+    /*--------------------------
+        POSIZIONE
+    --------------------------*/
 
     star.x =
     star.cx +
@@ -833,20 +959,46 @@ universeStars.forEach(star=>{
     star.radius;
 
 
-    /* DISSOLVENZA */
+    /*--------------------------
+        NASCITA GALASSIA
+    --------------------------*/
 
-    if(universePhase>=2){
+    if(!star.born && universePhase>=1){
 
-        star.alpha *= 0.992;
+        star.alpha += 0.004;
+
+        if(star.alpha>1){
+
+            star.alpha=1;
+
+        }
 
     }
 
 
-    /* SCIA */
+    /*--------------------------
+        DISSOLVENZA
+    --------------------------*/
+
+    if(universePhase>=2){
+
+        if(star.born){
+
+            star.alpha *= 0.993;
+
+        }
+
+    }
+
+
+    /*--------------------------
+        SCIA
+    --------------------------*/
 
     uctx.beginPath();
 
     uctx.strokeStyle =
+
     `rgba(255,235,170,${
         star.alpha*0.18
     })`;
@@ -856,10 +1008,10 @@ universeStars.forEach(star=>{
 
     uctx.moveTo(
 
-        star.x -
+        star.x-
         Math.cos(star.angle)*18,
 
-        star.y -
+        star.y-
         Math.sin(star.angle)*18
 
     );
@@ -875,21 +1027,23 @@ universeStars.forEach(star=>{
     uctx.stroke();
 
 
-    /* STELLA */
+    /*--------------------------
+        STELLA
+    --------------------------*/
 
     uctx.beginPath();
 
     uctx.fillStyle =
+
     `rgba(255,250,235,${
         star.alpha
     })`;
 
     uctx.shadowBlur =
-
-    6 + star.alpha*8;
+    6 + star.alpha*10;
 
     uctx.shadowColor =
-    "#fff6c0";
+    "#fff5c0";
 
     uctx.arc(
 
@@ -907,8 +1061,7 @@ universeStars.forEach(star=>{
 
     uctx.fill();
 
-});
-
+});  
 
 /*==================================
         OCCHI
@@ -1102,34 +1255,32 @@ function createConstellation(){
 /*======================================
       ANIMA COSTELLAZIONE
 ======================================*/
-
 function animateConstellation(){
 
     currentStar = 0;
 
     const timer = setInterval(()=>{
 
-       if(currentStar >= stars.length){
+        if(currentStar >= stars.length){
 
-    clearInterval(timer);
+            clearInterval(timer);
 
-    console.log("STEP 3 FINITO");
+            drawConstellationLines();
 
-    drawConstellationLines();
+            // appena finite le linee,
+            // dopo un secondo parte subito
+            // la trasformazione
 
-    console.log("LINEE DISEGNATE");
+            setTimeout(()=>{
 
-    setTimeout(()=>{
+                constellationCompleted();
 
-        console.log("PARTO CON constellationCompleted");
+            },1000);
 
-        constellationCompleted();
+            return;
 
-    },3000);
+        }
 
-    return;
-
-}
         const star = stars[currentStar];
 
         star.style.opacity = "1";
@@ -1141,6 +1292,8 @@ function animateConstellation(){
     },350);
 
 }
+
+
 /*======================================
         COSTELLAZIONE RESPIRA
 ======================================*/
@@ -1291,7 +1444,7 @@ function drawConstellationLines(){
 }
 
 /*======================================
-        COSTELLAZIONE COMPLETATA
+       COSTELLAZIONE COMPLETA
 ======================================*/
 
 function constellationCompleted(){
@@ -1302,118 +1455,42 @@ function constellationCompleted(){
 
     );
 
-    stars.forEach(star=>{
-
-        star.animate(
-
-            [
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(1)"
-
-                },
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(1.45)"
-
-                },
-
-                {
-
-                    transform:
-                    "translate(-50%,-50%) scale(1)"
-
-                }
-
-            ],
-
-            {
-
-                duration:1800,
-
-                iterations:Infinity,
-
-                easing:"ease-in-out"
-
-            }
-
-        );
-
-    });
-
-   setTimeout(()=>{
-
-    showNarration(
-
-        "...finché l'universo ha iniziato a cambiare."
-
-    );
-
-    stars.forEach(star=>{
-
-        star.animate(
-
-            [
-
-                {
-
-                    opacity:1,
-
-                    transform:"translate(-50%,-50%) scale(1)"
-
-                },
-
-                {
-
-                    opacity:0,
-
-                    transform:
-                    `translate(
-
-                    ${(Math.random()-0.5)*180}px,
-
-                    ${(Math.random()-0.5)*180}px
-
-                    )
-
-                    scale(.2)`
-
-                }
-
-            ],
-
-            {
-
-                duration:2500,
-
-                easing:"ease-in",
-
-                fill:"forwards"
-
-            }
-
-        );
-
-    });
-
-    document
-    .getElementById("constellationSvg")
-    .style.opacity="0";
+    pulseConstellation();
 
     setTimeout(()=>{
 
+        showNarration(
+            "...finché l'universo ha iniziato a cambiare."
+        );
+
+    },3000);
+
+
+    setTimeout(()=>{
+
+        // spariscono solo le linee
+        document
+        .getElementById("constellationSvg")
+        .style.transition =
+        "opacity 2s ease";
+
+        document
+        .getElementById("constellationSvg")
+        .style.opacity = "0";
+
+    },5000);
+
+
+    setTimeout(()=>{
+
+        // la costellazione lascia il posto
+        // alla galassia
+
         startUniverseScene();
 
-    },2500);
-
-},3500);
+    },6200);
 
 }
-
 
 /* =====================================
    STELLA CADENTE
