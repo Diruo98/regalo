@@ -1602,34 +1602,10 @@ button:disabled{
 
 }
 
-/* =====================================
-  SCENA OCCHI
-===================================== */
-#eyesScene{
 
-    position:absolute;
-
-    inset:0;
-
-    display:none;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:opacity 2s ease;
-
-    z-index:30;
-
-    overflow:hidden;
-
-}
-
-#eyesScene.show{
-
-    opacity:1;
-
-}
+/*======================================
+        SCENA OCCHI
+======================================*/
 
 #eyesCanvas{
 
@@ -1641,7 +1617,9 @@ button:disabled{
 
     height:100%;
 
-    z-index:30;
+    z-index:20;
+
+    pointer-events:none;
 
 }
 
@@ -1660,11 +1638,12 @@ button:disabled{
 
     visibility:hidden;
 
-    transition:opacity 2.5s ease;
-
-    z-index:31;
-
     pointer-events:none;
+
+    z-index:30;
+
+    transition:
+        opacity 2.5s ease;
 
 }
 
@@ -1675,7 +1654,6 @@ button:disabled{
     opacity:.85;
 
 }
-
 /* =====================================
    ESPLOSIONE CUORI
 ===================================== */
