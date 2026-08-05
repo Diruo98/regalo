@@ -791,6 +791,8 @@ let galaxyForce = 0;
                 eyesTargets.length
             ];
 
+           console.log(target);
+
             if(target){
 
                 star.x +=
