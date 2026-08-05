@@ -639,6 +639,51 @@ button:disabled{
 
 }
 
+.nebulaLayer{
+
+    position:absolute;
+    inset:0;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 40%,
+            rgba(255,190,120,.12),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at 70% 60%,
+            rgba(120,170,255,.10),
+            transparent 55%
+        );
+
+    mix-blend-mode:screen;
+
+    animation: nebulaFloat 18s ease-in-out infinite alternate;
+
+    z-index:1;
+
+    pointer-events:none;
+
+}
+
+@keyframes nebulaFloat{
+
+    from{
+
+        transform:scale(1) translateY(0);
+
+    }
+
+    to{
+
+        transform:scale(1.08) translateY(-20px);
+
+    }
+
+}
+
 #universeCanvas{
 
     position:absolute;
