@@ -564,11 +564,13 @@ function startUniverseScene(){
 
     createUniverse();
 
-   eyesImage.onload = ()=>{
-
     generateEyesTargets();
 
-};
+      setTimeout(()=>{
+
+    universeState = "eyes";
+
+},7000);
 
     animateUniverse();
 
@@ -678,10 +680,13 @@ function generateEyesTargets(){
 }
 
 let galaxyForce = 0;
+
 /*======================================
         ANIMAZIONE UNIVERSO
 ======================================*/
-function animateUniverse(){
+
+
+ function animateUniverse(){
 
     uctx.clearRect(
         0,
@@ -689,6 +694,8 @@ function animateUniverse(){
         universeCanvas.width,
         universeCanvas.height
     );
+
+    // Sfondo
 
     uctx.fillStyle = "#020611";
 
@@ -699,179 +706,174 @@ function animateUniverse(){
         universeCanvas.height
     );
 
-   // =====================================
-// NEBULOSA CENTRALE
-// =====================================
+    // Nebulosa
 
-const cx = universeCanvas.width / 2;
-const cy = universeCanvas.height / 2;
+    const cx = universeCanvas.width/2;
+    const cy = universeCanvas.height/2;
 
-const pulse =
-0.5 + Math.sin(Date.now()*0.0015)*0.15;
+    const pulse =
+    0.5 + Math.sin(Date.now()*0.0015)*0.15;
 
-// Nebulosa dorata
-let gradient1 =
-uctx.createRadialGradient(
+    const nebula =
+    uctx.createRadialGradient(
 
-    cx,
+        cx,
+        cy,
+        0,
 
-    cy,
+        cx,
+        cy,
+        700
 
-    0,
+    );
 
-    cx,
+    nebula.addColorStop(
+        0,
+        `rgba(255,210,120,${0.08*pulse})`
+    );
 
-    cy,
+    nebula.addColorStop(
+        .45,
+        "rgba(120,170,255,.03)"
+    );
 
-    700
+    nebula.addColorStop(
+        1,
+        "rgba(0,0,0,0)"
+    );
 
-);
+    uctx.fillStyle = nebula;
 
-gradient1.addColorStop(
-    0,
-    `rgba(255,215,120,${0.08*pulse})`
-);
+    uctx.fillRect(
 
-gradient1.addColorStop(
-    0.35,
-    "rgba(255,190,90,0.03)"
-);
+        0,
 
-gradient1.addColorStop(
-    1,
-    "rgba(0,0,0,0)"
-);
+        0,
 
-uctx.fillStyle = gradient1;
+        universeCanvas.width,
 
-uctx.fillRect(
+        universeCanvas.height
 
-    0,
+    );
 
-    0,
-
-    universeCanvas.width,
-
-    universeCanvas.height
-
-);
-
-// Nebulosa blu
-
-let gradient2 =
-uctx.createRadialGradient(
-
-    cx,
-
-    cy,
-
-    120,
-
-    cx,
-
-    cy,
-
-    900
-
-);
-
-gradient2.addColorStop(
-    0,
-    `rgba(90,170,255,${0.03*pulse})`
-);
-
-gradient2.addColorStop(
-    0.6,
-    "rgba(80,120,255,0.015)"
-);
-
-gradient2.addColorStop(
-    1,
-    "rgba(0,0,0,0)"
-);
-
-uctx.fillStyle = gradient2;
-
-uctx.fillRect(
-
-    0,
-
-    0,
-
-    universeCanvas.width,
-
-    universeCanvas.height
-
-);
 
     universeStars.forEach(star=>{
 
-        star.angle += 0.0005 + (1 / (star.radius + 50)) * 3;
+        if(universeState==="galaxy"){
 
-        star.radius *= 0.9997;
+            // velocità diversa in base alla distanza
 
-        star.x =
+            star.angle +=
+            0.0008 +
+            (1/(star.radius+40))*4;
+
+            // la galassia si stringe
+
+            star.radius *= 0.99965;
+
+            star.x =
             star.cx +
-            Math.cos(star.angle) * star.radius;
+            Math.cos(star.angle)*
+            star.radius;
 
-        star.y =
+            star.y =
             star.cy +
-            Math.sin(star.angle) * star.radius;
+            Math.sin(star.angle)*
+            star.radius;
 
-       // ---------- SCIA ----------
+        }
 
-uctx.beginPath();
+        else if(universeState==="eyes"){
 
-uctx.strokeStyle =
-`rgba(255,235,170,${star.alpha*0.18})`;
+            const target =
+            eyesTargets[
+                star.id %
+                eyesTargets.length
+            ];
 
-uctx.lineWidth = star.size;
+            if(target){
 
-uctx.moveTo(
+                star.x +=
+                (target.x-star.x)*0.03;
 
-    star.x - Math.cos(star.angle)*18,
+                star.y +=
+                (target.y-star.y)*0.03;
 
-    star.y - Math.sin(star.angle)*18
+            }
 
-);
+        }
 
-uctx.lineTo(
+        // SCIA
 
-    star.x,
+        uctx.beginPath();
 
-    star.y
+        uctx.strokeStyle =
+        `rgba(255,235,170,${
+            star.alpha*.20
+        })`;
 
-);
+        uctx.lineWidth =
+        star.size;
 
-uctx.stroke();
+        uctx.moveTo(
+
+            star.x-
+            Math.cos(star.angle)*18,
+
+            star.y-
+            Math.sin(star.angle)*18
+
+        );
+
+        uctx.lineTo(
+
+            star.x,
+
+            star.y
+
+        );
+
+        uctx.stroke();
 
 
-// ---------- STELLA ----------
+        // STELLA
 
-uctx.beginPath();
+        uctx.beginPath();
 
-uctx.fillStyle =
-`rgba(255,250,235,${star.alpha})`;
+        uctx.fillStyle =
+        `rgba(255,250,235,${
+            star.alpha
+        })`;
 
-uctx.shadowBlur = 22;
+        uctx.shadowBlur = 20;
 
-uctx.shadowColor = "#fff3b0";
+        uctx.shadowColor =
+        "#fff2a0";
 
-uctx.arc(
+        uctx.arc(
 
-    star.x,
+            star.x,
 
-    star.y,
+            star.y,
 
-    star.size,
+            star.size,
 
-    0,
+            0,
 
-    Math.PI*2
+            Math.PI*2
 
-);
+        );
 
-uctx.fill();
+        uctx.fill();
+
+    });
+
+    requestAnimationFrame(
+        animateUniverse
+    );
+
+}
+
 /*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
