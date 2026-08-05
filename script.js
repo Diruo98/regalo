@@ -695,15 +695,6 @@ let galaxyForce = 0;
         universeCanvas.height
     );
 
-    // Sfondo
-
-    uctx.clearRect(
-    0,
-    0,
-    universeCanvas.width,
-    universeCanvas.height
-);
-
     // Nebulosa
 
     const cx = universeCanvas.width/2;
@@ -785,11 +776,9 @@ let galaxyForce = 0;
 
             const target =
             eyesTargets[
-                star.id %
+                star.id % 0
                 eyesTargets.length
             ];
-
-           console.log(target);
 
             if(target){
 
