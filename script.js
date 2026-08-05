@@ -697,14 +697,12 @@ let galaxyForce = 0;
 
     // Sfondo
 
-    uctx.fillStyle = "#020611";
-
-    uctx.fillRect(
-        0,
-        0,
-        universeCanvas.width,
-        universeCanvas.height
-    );
+    uctx.clearRect(
+    0,
+    0,
+    universeCanvas.width,
+    universeCanvas.height
+);
 
     // Nebulosa
 
