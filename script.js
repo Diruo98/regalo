@@ -552,23 +552,7 @@ function startUniverseScene(){
 
     createUniverse();
 
-    galaxyForce = 0;
-
     animateUniverse();
-
-    const growGalaxy = setInterval(()=>{
-
-        galaxyForce += 0.002;
-
-        if(galaxyForce >= 1){
-
-            galaxyForce = 1;
-
-            clearInterval(growGalaxy);
-
-        }
-
-    },16);
 
 }
 
@@ -578,149 +562,89 @@ function createUniverse(){
 
     universeStars = [];
 
-    for(let i=0;i<1800;i++){
+    const cx = universeCanvas.width / 2;
+    const cy = universeCanvas.height / 2;
 
-     universeStars.push({
+    for(let i = 0; i < 2200; i++){
 
-    x:Math.random()*universeCanvas.width,
+        const radius = Math.random() * Math.max(cx, cy);
 
-    y:Math.random()*universeCanvas.height,
+        const angle = Math.random() * Math.PI * 2;
 
-    size:Math.random()*2+0.4,
+        universeStars.push({
 
-    alpha:Math.random(),
+            cx,
+            cy,
 
-    vx:0,
+            radius,
+            angle,
 
-    vy:0
+            size: Math.random() * 1.8 + 0.3,
 
-});
+            alpha: 0.5 + Math.random() * 0.5
+
+        });
 
     }
 
 }
-
 let galaxyForce = 0;
 
 function animateUniverse(){
 
-   console.log(universeStars.length);
-
     uctx.clearRect(
-
         0,
-
         0,
-
         universeCanvas.width,
-
         universeCanvas.height
-
     );
 
-    uctx.fillStyle="#020611";
+    uctx.fillStyle = "#020611";
 
     uctx.fillRect(
-
         0,
-
         0,
-
         universeCanvas.width,
-
         universeCanvas.height
-
     );
 
     universeStars.forEach(star=>{
 
-       const cx = universeCanvas.width / 2;
-const cy = universeCanvas.height / 2;
+        star.angle += 0.0015;
 
-const dx = cx - star.x;
-const dy = cy - star.y;
+        star.radius *= 0.9995;
 
-const dist = Math.sqrt(dx * dx + dy * dy) + 0.001;
-       const pull = 1 - Math.min(dist / 900, 1);
+        star.x =
+            star.cx +
+            Math.cos(star.angle) * star.radius;
 
-star.vx += dx * (0.000015 + galaxyForce * 0.00025 + pull * 0.00015);
-star.vy += dy * (0.000015 + galaxyForce * 0.00025 + pull * 0.00015);
+        star.y =
+            star.cy +
+            Math.sin(star.angle) * star.radius;
 
-star.vx += (-dy / dist) * (0.008 + galaxyForce * 0.09);
-star.vy += ( dx / dist) * (0.008 + galaxyForce * 0.09);
-// attrito
-star.vx *= 0.992;
-star.vy *= 0.992;
+        uctx.beginPath();
 
-// movimento
-star.x += star.vx;
-star.y += star.vy;
+        uctx.fillStyle =
+            `rgba(255,245,220,${star.alpha})`;
 
-       // scia
+        uctx.shadowBlur = 12;
+        uctx.shadowColor = "#ffe8a5";
 
-uctx.beginPath();
+        uctx.arc(
+            star.x,
+            star.y,
+            star.size,
+            0,
+            Math.PI*2
+        );
 
-uctx.strokeStyle =
-`rgba(255,240,180,${star.alpha*0.15})`;
-
-uctx.lineWidth = star.size;
-
-uctx.moveTo(
-
-    star.x - star.vx*18,
-
-    star.y - star.vy*18
-
-);
-
-uctx.lineTo(
-
-    star.x,
-
-    star.y
-
-);
-
-uctx.stroke();
-
-
-// stella
-
-uctx.beginPath();
-
-uctx.fillStyle =
-`rgba(255,250,230,${star.alpha})`;
-
-uctx.shadowBlur = 20;
-
-uctx.shadowColor = "#fff5b5";
-
-uctx.arc(
-
-    star.x,
-
-    star.y,
-
-    star.size,
-
-    0,
-
-    Math.PI*2
-
-);
-
-uctx.fill();
+        uctx.fill();
 
     });
 
-    requestAnimationFrame(
-
-        animateUniverse
-
-    );
+    requestAnimationFrame(animateUniverse);
 
 }
-
 
 /*======================================
         NUOVA COSTELLAZIONE
