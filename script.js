@@ -772,25 +772,28 @@ let galaxyForce = 0;
 
         }
 
-        else if(universeState==="eyes"){
+       else if(universeState==="eyes"){
 
-            const target =
-            eyesTargets[
-                star.id % 0
-                eyesTargets.length
-            ];
+    if(eyesTargets.length > 0){
 
-            if(target){
+        const target =
+        eyesTargets[
+            star.id % eyesTargets.length
+        ];
 
-                star.x +=
-                (target.x-star.x)*0.03;
+        if(target){
 
-                star.y +=
-                (target.y-star.y)*0.03;
+            star.x +=
+            (target.x - star.x) * 0.03;
 
-            }
+            star.y +=
+            (target.y - star.y) * 0.03;
 
         }
+
+    }
+
+}
 
         // SCIA
 
