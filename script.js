@@ -558,23 +558,23 @@ window.addEventListener(
 ======================================*/
 function startUniverseScene(){
 
-    showPage(pages.universeEyes);
-
     resizeUniverse();
 
     createUniverse();
 
     generateEyesTargets();
 
-      setTimeout(()=>{
-
-    universeState = "eyes";
-
-},7000);
+    universeState = "galaxy";
 
     animateUniverse();
 
-   showPage(pages.universeEyes);
+    showPage(pages.universeEyes);
+
+    setTimeout(()=>{
+
+        universeState = "eyes";
+
+    },7000);
 
 }
 
