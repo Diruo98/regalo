@@ -560,8 +560,6 @@ function startUniverseScene(){
 
     createUniverse();
 
-    generateEyesTargets();
-
     universeState = "galaxy";
 
     animateUniverse();
