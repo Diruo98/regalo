@@ -524,23 +524,36 @@ function animateStar(){
         UNIVERSO
 ======================================*/
 
+/*======================================
+            UNIVERSO
+======================================*/
+
 const universeCanvas =
 document.getElementById("universeCanvas");
 
 const uctx =
 universeCanvas.getContext("2d");
 
-let universeState = "galaxy";
-
-let eyesOpacity = 0;
-
 const eyesImage =
 document.getElementById("eyesImage");
 
+let universeState = "galaxy";
+
+let universeStars = [];
+
+let galaxyForce = 0;
+
+let eyesOpacity = 0;
+
+
+
 function resizeUniverse(){
 
-    universeCanvas.width = window.innerWidth;
-    universeCanvas.height = window.innerHeight;
+    universeCanvas.width =
+    window.innerWidth;
+
+    universeCanvas.height =
+    window.innerHeight;
 
 }
 
