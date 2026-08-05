@@ -630,10 +630,7 @@ button:disabled{
 
     inset:0;
 
-    background:
-    url("galaxy.png")
-    center center / cover
-    no-repeat;
+    background: red
 
 }
 
