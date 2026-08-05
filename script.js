@@ -572,6 +572,12 @@ function startUniverseScene(){
 
     },7000);
 
+   setTimeout(()=>{
+
+    eyesImage.classList.add("show");
+
+},10000);
+
 }
 
 let universeStars = [];
