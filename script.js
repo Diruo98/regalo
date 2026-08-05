@@ -552,7 +552,23 @@ function startUniverseScene(){
 
     createUniverse();
 
+    galaxyForce = 0;
+
     animateUniverse();
+
+    const growGalaxy = setInterval(()=>{
+
+        galaxyForce += 0.002;
+
+        if(galaxyForce >= 1){
+
+            galaxyForce = 1;
+
+            clearInterval(growGalaxy);
+
+        }
+
+    },16);
 
 }
 
@@ -564,21 +580,27 @@ function createUniverse(){
 
     for(let i=0;i<1800;i++){
 
-        universeStars.push({
+     universeStars.push({
 
-            x:Math.random()*universeCanvas.width,
+    x:Math.random()*universeCanvas.width,
 
-            y:Math.random()*universeCanvas.height,
+    y:Math.random()*universeCanvas.height,
 
-            size:Math.random()*2+0.4,
+    size:Math.random()*2+0.4,
 
-            alpha:Math.random()
+    alpha:Math.random(),
 
-        });
+    vx:0,
+
+    vy:0
+
+});
 
     }
 
 }
+
+let galaxyForce = 0;
 
 function animateUniverse(){
 
@@ -612,31 +634,82 @@ function animateUniverse(){
 
     universeStars.forEach(star=>{
 
-        uctx.beginPath();
+       const cx = universeCanvas.width / 2;
+const cy = universeCanvas.height / 2;
 
-        uctx.fillStyle=
+const dx = cx - star.x;
+const dy = cy - star.y;
 
-        `rgba(255,245,220,${star.alpha})`;
+const dist = Math.sqrt(dx * dx + dy * dy) + 0.001;
+       const pull = 1 - Math.min(dist / 900, 1);
 
-        uctx.shadowBlur=10;
+star.vx += dx * (0.000015 + galaxyForce * 0.00025 + pull * 0.00015);
+star.vy += dy * (0.000015 + galaxyForce * 0.00025 + pull * 0.00015);
 
-        uctx.shadowColor="#fff7d0";
+star.vx += (-dy / dist) * (0.008 + galaxyForce * 0.09);
+star.vy += ( dx / dist) * (0.008 + galaxyForce * 0.09);
+// attrito
+star.vx *= 0.992;
+star.vy *= 0.992;
 
-        uctx.arc(
+// movimento
+star.x += star.vx;
+star.y += star.vy;
 
-            star.x,
+       // scia
 
-            star.y,
+uctx.beginPath();
 
-            star.size,
+uctx.strokeStyle =
+`rgba(255,240,180,${star.alpha*0.15})`;
 
-            0,
+uctx.lineWidth = star.size;
 
-            Math.PI*2
+uctx.moveTo(
 
-        );
+    star.x - star.vx*18,
 
-        uctx.fill();
+    star.y - star.vy*18
+
+);
+
+uctx.lineTo(
+
+    star.x,
+
+    star.y
+
+);
+
+uctx.stroke();
+
+
+// stella
+
+uctx.beginPath();
+
+uctx.fillStyle =
+`rgba(255,250,230,${star.alpha})`;
+
+uctx.shadowBlur = 20;
+
+uctx.shadowColor = "#fff5b5";
+
+uctx.arc(
+
+    star.x,
+
+    star.y,
+
+    star.size,
+
+    0,
+
+    Math.PI*2
+
+);
+
+uctx.fill();
 
     });
 
