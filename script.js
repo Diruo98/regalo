@@ -622,6 +622,8 @@ function createUniverse(){
     const cy =
     universeCanvas.height/2;
 
+}
+
 
     /*==============================
       STELLE DELLA COSTELLAZIONE
