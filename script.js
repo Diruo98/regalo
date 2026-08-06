@@ -521,62 +521,6 @@ function animateStar(){
 }
 
 /*======================================
-            UNIVERSO
-======================================*/
-
-const universeCanvas =
-document.getElementById("universeCanvas");
-
-const uctx =
-universeCanvas.getContext("2d");
-
-const eyesImage =
-document.getElementById("eyesImage");
-
-const sofiaTitle =
-document.getElementById("sofiaTitle");
-
-const sofiaQuote =
-document.getElementById("sofiaQuote");
-
-const continueButton =
-document.getElementById("continueButton");
-
-
-let universeStars = [];
-
-let galaxyForce = 0;
-
-/* fase dell'animazione */
-let universePhase = 0;
-
-/* opacità occhi */
-let eyesOpacity = 0;
-
-/* opacità testo */
-let titleOpacity = 0;
-let quoteOpacity = 0;
-let buttonOpacity = 0;
-
-
-function resizeUniverse(){
-
-    universeCanvas.width =
-    window.innerWidth;
-
-    universeCanvas.height =
-    window.innerHeight;
-
-}
-
-resizeUniverse();
-
-window.addEventListener(
-    "resize",
-    resizeUniverse
-);
-
-/*======================================
         START UNIVERSO
 ======================================*/
 
@@ -1234,6 +1178,63 @@ function animateConstellation(){
     },350);
 
 }
+
+/*======================================
+            UNIVERSO
+======================================*/
+
+const universeCanvas =
+document.getElementById("universeCanvas");
+
+const uctx =
+universeCanvas.getContext("2d");
+
+const eyesImage =
+document.getElementById("eyesImage");
+
+const sofiaTitle =
+document.getElementById("sofiaTitle");
+
+const sofiaQuote =
+document.getElementById("sofiaQuote");
+
+const continueButton =
+document.getElementById("continueButton");
+
+
+let universeStars = [];
+
+let galaxyForce = 0;
+
+/* fase dell'animazione */
+let universePhase = 0;
+
+/* opacità occhi */
+let eyesOpacity = 0;
+
+/* opacità testo */
+let titleOpacity = 0;
+let quoteOpacity = 0;
+let buttonOpacity = 0;
+
+
+function resizeUniverse(){
+
+    universeCanvas.width =
+    window.innerWidth;
+
+    universeCanvas.height =
+    window.innerHeight;
+
+}
+
+resizeUniverse();
+
+window.addEventListener(
+    "resize",
+    resizeUniverse
+);
+
 
 
 /*======================================
