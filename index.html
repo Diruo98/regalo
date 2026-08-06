@@ -315,45 +315,68 @@ class="page cosmicScene hidden">
 
 </section>
 
-    <!-- =====================================
-     UNIVERSO → OCCHI
-===================================== -->
+  <!--======================================
+            UNIVERSO
+=======================================-->
 
 <section
-id="universeEyesPage"
-class="page hidden universeScene">
+    id="universeEyesPage"
+    class="page hidden universeScene">
 
+    <!-- Sfondo -->
     <div class="galaxyBackground"></div>
 
+    <!-- Nebulosa -->
     <div class="nebulaLayer"></div>
 
+    <!-- Canvas stelle -->
     <canvas id="universeCanvas"></canvas>
 
-    <canvas id="eyesCanvas"></canvas>
-
+    <!-- Occhi -->
     <img
         id="eyesImage"
         src="eyes.png"
         draggable="false"
-    >
+        alt="Eyes">
 
-    <div id="universeEnding">
+    <!-- Titolo -->
+    <div
+        id="sofiaTitle"
+        class="universeTitle">
 
-        <h1 id="sofiaTitle">
-            SOFIA 
-        </h1>
-
-        <p id="sofiaQuote">
-            Qui mettiamo la frase...
-        </p>
-
-        <button id="continueButton">
-            Continua →
-        </button>
+        SOFIA
 
     </div>
 
+    <!-- Frase -->
+    <div
+        id="sofiaQuote"
+        class="universeQuote">
+
+        Perché in fondo...
+
+        <br><br>
+
+        l'universo non stava disegnando
+        una costellazione...
+
+        <br><br>
+
+        Stava disegnando te 🤍
+
+    </div>
+
+    <!-- Pulsante -->
+    <button
+        id="continueButton"
+        class="universeContinue">
+
+        Continua 🤍
+
+    </button>
+
 </section>
+    
 <!-- =====================================
      CUORE
 ===================================== -->
