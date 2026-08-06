@@ -1987,847 +1987,179 @@ CONTINUA
 
 }
 
-/* =====================================
-   UNIVERSO COSMICO
-===================================== */
-
-.cosmicScene{
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-
-    radial-gradient(circle at center,
-
-    #18284d 0%,
-
-    #0b1531 28%,
-
-    #060d1d 62%,
-
-    #02050d 100%);
-
-}
-
-/* ============================= */
-
-.cosmicNebula{
-
-    position:absolute;
-
-    inset:0;
-
-    overflow:hidden;
-
-}
-
-/* ============================= */
-
-.nebula{
-
-    position:absolute;
-
-    width:950px;
-    height:950px;
-
-    border-radius:50%;
-
-    filter:blur(150px);
-
-    opacity:.22;
-
-    animation:
-    nebulaFloat 18s ease-in-out infinite;
-
-}
-
-.nebula.gold{
-
-    left:-260px;
-    top:-180px;
-
-    background:
-
-    radial-gradient(circle,
-
-    rgba(255,214,130,.85),
-
-    rgba(255,180,90,.18),
-
-    transparent 70%);
-
-}
-
-.nebula.blue{
-
-    right:-260px;
-    bottom:-180px;
-
-    background:
-
-    radial-gradient(circle,
-
-    rgba(120,180,255,.6),
-
-    rgba(80,120,255,.18),
-
-    transparent 72%);
-
-}
-
-/* =====================================
-   POLVERE COSMICA
-===================================== */
-
-#cosmicDust{
-
-    position:absolute;
-
-    inset:0;
-
-    pointer-events:none;
-
-}
-
-.dust{
-
-    position:absolute;
-
-    width:2px;
-    height:2px;
-
-    border-radius:50%;
-
-    background:white;
-
-    opacity:.45;
-
-    box-shadow:
-
-    0 0 10px rgba(255,255,255,.8);
-
-    animation:
-    dustFloat linear infinite;
-
-}
-
-.dust.gold{
-
-    background:#ffe6a8;
-
-}
-
-.dust.blue{
-
-    background:#d9ecff;
-
-}
-
-@keyframes dustFloat{
-
-    0%{
-
-        transform:
-        translateY(0px)
-        scale(.8);
-
-    }
-
-    50%{
-
-        transform:
-        translateY(-10px)
-        scale(1.3);
-
-    }
-
-    100%{
-
-        transform:
-        translateY(0px)
-        scale(.8);
-
-    }
-
-}
-
-/* =====================================
-   OCCHI COSMICI
-===================================== */
-
-#eyesPage{
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at center,
-    #16203b 0%,
-    #0b1125 35%,
-    #050914 75%,
-    #020308 100%);
-
-}
-
-/* ==========================
-   CONTENITORE
-========================== */
-
-#cosmicBackground{
-
-    position:absolute;
-
-    inset:0;
-
-    overflow:hidden;
-
-}
-
-/* ==========================
-   NEBULOSE
-========================== */
-
-#nebula1,
-#nebula2{
-
-    position:absolute;
-
-    width:900px;
-    height:900px;
-
-    border-radius:50%;
-
-    filter:blur(140px);
-
-    opacity:.22;
-
-    animation:nebulaFloat 18s ease-in-out infinite;
-
-}
-
-#nebula1{
-
-    left:-250px;
-    top:-180px;
-
-    background:
-
-    radial-gradient(circle,
-
-    rgba(255,210,130,.75),
-
-    rgba(255,180,80,.18),
-
-    transparent 72%);
-
-}
-
-#nebula2{
-
-    right:-250px;
-    bottom:-200px;
-
-    background:
-
-    radial-gradient(circle,
-
-    rgba(120,180,255,.55),
-
-    rgba(90,120,255,.15),
-
-    transparent 72%);
-
-}
-
-/* ==========================
-   GLOW CENTRALE
-========================== */
-
-#starGlow{
+/*======================================
+        SCENA FINALE UNIVERSO
+======================================*/
+
+#eyesImage{
 
     position:absolute;
 
     left:50%;
-    top:48%;
+    top:50%;
 
-    width:420px;
-    height:420px;
+    width:430px;
+    max-width:70vw;
 
     transform:translate(-50%,-50%);
 
-    border-radius:50%;
-
-    background:
-
-    radial-gradient(circle,
-
-    rgba(255,245,190,.85),
-
-    rgba(255,245,190,.15),
-
-    transparent);
-
-    filter:blur(45px);
-
-    opacity:.15;
-
-    animation:glowPulse 5s ease-in-out infinite;
-
-}
-
-/* ==========================
-   ANIMAZIONI
-========================== */
-
-@keyframes nebulaFloat{
-
-    0%{
-
-        transform:
-        translate(0px,0px)
-        scale(1);
-
-    }
-
-    50%{
-
-        transform:
-        translate(30px,-20px)
-        scale(1.05);
-
-    }
-
-    100%{
-
-        transform:
-        translate(0px,0px)
-        scale(1);
-
-    }
-
-}
-
-@keyframes glowPulse{
-
-    0%{
-
-        opacity:.12;
-        transform:
-        translate(-50%,-50%)
-        scale(1);
-
-    }
-
-    50%{
-
-        opacity:.32;
-        transform:
-        translate(-50%,-50%)
-        scale(1.08);
-
-    }
-
-    100%{
-
-        opacity:.12;
-        transform:
-        translate(-50%,-50%)
-        scale(1);
-
-    }
-
-}
-
-/* ==========================
-   CAMPO STELLARE
-========================== */
-
-#starField{
-
-    position:absolute;
-    inset:0;
-
-    overflow:hidden;
-
-}
-
-.star{
-
-    position:absolute;
-
-    width:2px;
-    height:2px;
-
-    border-radius:50%;
-
-    background:white;
-
-    opacity:.45;
-
-    box-shadow:
-        0 0 6px rgba(255,255,255,.8);
-
-    animation:twinkle linear infinite;
-
-}
-
-/* stelle un po' più grandi */
-
-.star.big{
-
-    width:4px;
-    height:4px;
-
-    opacity:.8;
-
-    box-shadow:
-
-        0 0 10px rgba(255,255,255,.95),
-        0 0 25px rgba(255,240,180,.4);
-
-}
-
-/* stelle dorate */
-
-.star.gold{
-
-    background:#ffe8a6;
-
-    box-shadow:
-
-        0 0 10px rgba(255,240,180,.9),
-        0 0 25px rgba(255,220,120,.6);
-
-}
-
-/* stelle azzurre */
-
-.star.blue{
-
-    background:#d8ecff;
-
-    box-shadow:
-
-        0 0 8px rgba(200,230,255,.8);
-
-}
-
-@keyframes twinkle{
-
-    0%{
-
-        opacity:.2;
-        transform:scale(.8);
-
-    }
-
-    50%{
-
-        opacity:1;
-        transform:scale(1.4);
-
-    }
-
-    100%{
-
-        opacity:.2;
-        transform:scale(.8);
-
-    }
-
-}
-
-/*======================================
-   STELLE SOPRA IL CIELO
-======================================*/
-
-#cosmicOverlay{
-
-    position:absolute;
-
-    inset:0;
-
-    overflow:hidden;
+    opacity:0;
 
     pointer-events:none;
 
+    z-index:20;
+
+    transition:opacity 2s ease;
+
 }
 
-#cosmicStars{
+
+/*==============================
+        SOFIA
+==============================*/
+
+#sofiaTitle{
 
     position:absolute;
-
-    inset:0;
-
-}
-
-.cosmicStar{
-
-    position:absolute;
-
-    width:2px;
-
-    height:2px;
-
-    border-radius:50%;
-
-    background:white;
-
-    opacity:.35;
-
-    box-shadow:
-
-        0 0 8px rgba(255,255,255,.9);
-
-    animation:cosmicTwinkle linear infinite;
-
-}
-
-.cosmicStar.big{
-
-    width:4px;
-
-    height:4px;
-
-    opacity:.85;
-
-}
-
-.cosmicStar.gold{
-
-    background:#ffe9b2;
-
-}
-
-.cosmicStar.blue{
-
-    background:#d8ebff;
-
-}
-
-@keyframes cosmicTwinkle{
-
-    0%{
-
-        opacity:.2;
-
-        transform:scale(.8);
-
-    }
-
-    50%{
-
-        opacity:1;
-
-        transform:scale(1.5);
-
-    }
-
-    100%{
-
-        opacity:.2;
-
-        transform:scale(.8);
-
-    }
-
-}
-
-/*======================================
-    CIELO VIVO
-======================================*/
-
-#constellationPage{
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-#constellationPage::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-5%;
-
-    background-image:url("sfondo-costellazione.png");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    animation:skyDrift 35s ease-in-out infinite alternate;
-
-    z-index:0;
-
-}
-
-@keyframes skyDrift{
-
-    0%{
-
-        transform:
-        scale(1.05)
-        translate(0px,0px);
-
-    }
-
-    50%{
-
-        transform:
-        scale(1.08)
-        translate(-12px,-8px);
-
-    }
-
-    100%{
-
-        transform:
-        scale(1.06)
-        translate(10px,6px);
-
-    }
-
-}
-
-#constellationPage>*{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-/*======================================
-        TESTO NARRAZIONE
-======================================*/
-
-#constellationText{
-
-    position:absolute;
-
-    top:12%;
 
     left:50%;
+    top:68%;
+
+    transform:translateX(-50%);
+
+    color:#fff;
+
+    font-size:4rem;
+
+    font-family:"Cormorant Garamond",serif;
+
+    letter-spacing:16px;
+
+    opacity:0;
+
+    text-shadow:
+
+        0 0 25px rgba(255,255,255,.6);
+
+    transition:opacity 2s ease;
+
+    z-index:30;
+
+}
+
+
+/*==============================
+        FRASE
+==============================*/
+
+#sofiaQuote{
+
+    position:absolute;
+
+    left:50%;
+    top:78%;
 
     transform:translateX(-50%);
 
     width:80%;
-
-    max-width:700px;
+    max-width:900px;
 
     text-align:center;
 
     color:white;
 
-    font-size:1.35rem;
+    font-size:1.2rem;
 
-    font-weight:300;
-
-    line-height:1.6;
+    line-height:2rem;
 
     opacity:0;
-
-    transition:opacity 2s ease;
-
-    z-index:50;
 
     text-shadow:
-        0 0 20px rgba(255,255,255,.25);
 
-}
-
-#constellationText.show{
-
-    opacity:1;
-
-}
-
-/* =====================================
-   OCCHI COSMICI
-===================================== */
-
-#eyesScene{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    pointer-events:none;
-
-    z-index:18;
-
-}
-
-#eyesParticles{
-
-    position:absolute;
-
-    width:650px;
-
-    height:250px;
-
-}
-
-.eyeParticle{
-
-    position:absolute;
-
-    width:3px;
-
-    height:3px;
-
-    border-radius:50%;
-
-    background:#ffe39c;
-
-    box-shadow:
-
-        0 0 8px rgba(255,220,150,.8);
-
-}
-
-#realEyes{
-
-    width:700px;
-
-    max-width:80vw;
-
-    opacity:0;
-
-    transform:scale(.96);
-
-    transition:
-
-        opacity 2s ease,
-
-        transform 2s ease;
-
-    filter:
-
-        drop-shadow(0 0 40px rgba(255,220,160,.35));
-
-}
-
-#realEyes.show{
-
-    opacity:1;
-
-    transform:scale(1);
-
-}
-
-/*======================================
-        FINALE UNIVERSO
-======================================*/
-
-#universeEnding{
-
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:40;
-
-    pointer-events:none;
-
-}
-
-#sofiaTitle{
-
-    font-size:clamp(70px,10vw,150px);
-
-    letter-spacing:.35em;
-
-    font-weight:200;
-
-    color:white;
-
-    opacity:0;
-
-    text-shadow:0 0 30px rgba(255,255,255,.35);
+        0 0 12px rgba(255,255,255,.35);
 
     transition:opacity 2s ease;
 
-}
-
-#sofiaQuote{
-
-    max-width:850px;
-
-    margin-top:40px;
-
-    padding:0 40px;
-
-    text-align:center;
-
-    color:white;
-
-    font-size:1.35rem;
-
-    line-height:1.8;
-
-    opacity:0;
-
-    transition:opacity 2s ease;
+    z-index:30;
 
 }
+
+
+/*==============================
+        CONTINUA
+==============================*/
 
 #continueButton{
 
-    margin-top:70px;
+    position:absolute;
 
-    padding:16px 46px;
+    left:50%;
 
-    border:1px solid rgba(255,255,255,.35);
+    bottom:50px;
 
-    background:rgba(255,255,255,.08);
+    transform:translateX(-50%);
 
-    color:white;
+    padding:14px 40px;
 
-    font-size:1.1rem;
+    border:none;
 
-    letter-spacing:.18em;
+    border-radius:40px;
+
+    background:white;
+
+    color:#111;
+
+    font-size:1rem;
 
     cursor:pointer;
 
-    border-radius:50px;
-
-    backdrop-filter:blur(8px);
-
     opacity:0;
 
-    pointer-events:auto;
+    transition:.35s;
 
-    transition:.4s;
+    z-index:35;
 
 }
 
 #continueButton:hover{
 
-    background:rgba(255,255,255,.18);
+    transform:
 
-    transform:scale(1.05);
+        translateX(-50%)
+
+        scale(1.06);
+
+}
+
+
+/*==============================
+        MOBILE
+==============================*/
+
+@media(max-width:768px){
+
+    #eyesImage{
+
+        width:300px;
+
+    }
+
+    #sofiaTitle{
+
+        font-size:2.5rem;
+
+        letter-spacing:8px;
+
+    }
+
+    #sofiaQuote{
+
+        font-size:1rem;
+
+        line-height:1.6rem;
+
+        width:88%;
+
+    }
 
 }
