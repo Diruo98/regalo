@@ -1,5 +1,5 @@
 /* =====================================
-   ELEMENTI
+        ELEMENTI DOM
 ===================================== */
 
 const pages = {
@@ -11,7 +11,7 @@ const pages = {
     wish: document.getElementById("wishPage"),
     star: document.getElementById("starPage"),
     constellation: document.getElementById("constellationPage"),
-   universeEyes: document.getElementById("universeEyesPage"),
+    universeEyes: document.getElementById("universeEyesPage"),
     heart: document.getElementById("heartPage"),
     letter: document.getElementById("letterPage"),
     fingerprint: document.getElementById("fingerprintPage"),
@@ -20,28 +20,124 @@ const pages = {
 
 };
 
+/* =====================================
+        STATO APPLICAZIONE
+===================================== */
+
+let loadingValue = 0;
+
+let candlesOff = 0;
+
+let heartProgress = 0;
+
+let fingerprintAttempts = 0;
+
+let writing = false;
+
+
+/* =====================================
+        INTERVALLI E TIMER
+===================================== */
+
+let emojiRainInterval = null;
+
+let fingerprintTimer = null;
+
+let shootingStarInterval = null;
+
+
+/* =====================================
+        COSTELLAZIONE
+===================================== */
+
+let stars = [];
+
+let currentStar = 0;
+
+
+/* =====================================
+        UNIVERSO
+===================================== */
+
+let universeStars = [];
+
+let universeTimer = 0;
+
+let universePhase = 0;
+
+let galaxyForce = 0;
+
+
+/* =====================================
+        OPACITÀ ANIMAZIONI
+===================================== */
+
+let eyesOpacity = 0;
+
+let titleOpacity = 0;
+
+let quoteOpacity = 0;
+
+let buttonOpacity = 0;
+
+/* =====================================
+        AUDIO
+===================================== */
+
 const bgMusic = document.getElementById("bgMusic");
 const voicePlayer = document.getElementById("voicePlayer");
+
+/* =====================================
+        INTRO
+===================================== */
 
 const playButton = document.getElementById("playButton");
 const startButton = document.getElementById("start");
 
+/* =====================================
+        BIGLIETTO
+===================================== */
+
 const yesButton = document.getElementById("yesButton");
 const noButton = document.getElementById("noButton");
+
+/* =====================================
+        CANDELINE
+===================================== */
 
 const candlesContainer = document.getElementById("candles");
 const counter = document.getElementById("counter");
 
+/* =====================================
+        DESIDERIO
+===================================== */
+
 const wishInput = document.getElementById("wishInput");
 const sendWish = document.getElementById("sendWish");
+
+/* =====================================
+        CUORE
+===================================== */
 
 const heartFill = document.getElementById("heartFill");
 const heartPercent = document.getElementById("heartPercent");
 const heartMessage = document.getElementById("heartMessage");
 
+/* =====================================
+        IMPRONTA
+===================================== */
+
 const fingerprintButton = document.getElementById("fingerprintButton");
 
+/* =====================================
+        FINALE
+===================================== */
+
 const restart = document.getElementById("restart");
+
+/* =====================================
+        VARIABILI GLOBALI
+===================================== */
 
 let emojiRainInterval = null;
 
@@ -81,26 +177,7 @@ emailjs.init({
 
 
 /* =====================================
-   STATO APPLICAZIONE
-===================================== */
-
-let loadingValue = 0;
-
-let candlesOff = 0;
-
-let heartProgress = 0;
-
-let fingerprintTimer = null;
-
-let shootingStarInterval = null;
-
-let writing = false;
-
-let fingerprintAttempts = 0;
-
-
-/* =====================================
-   FUNZIONI GENERALI
+        FUNZIONI GENERALI
 ===================================== */
 
 function showPage(page){
@@ -123,34 +200,46 @@ function showPage(page){
 
 }
 
+/* =====================================
+        EMOJI
+===================================== */
+
 function createEmojiRain(){
 
-    const emojis = [
+    const emojis=[
+
         "🤍",
         "✨",
         "🌸",
         "💫",
         "⭐",
         "🦁",
-        "♾️", 
+        "♾️",
         "😍"
+
     ];
 
-    const emoji = document.createElement("div");
+    const emoji =
+    document.createElement("div");
 
-    emoji.className = "falling-emoji";
+    emoji.className =
+    "falling-emoji";
 
     emoji.textContent =
-        emojis[Math.floor(Math.random()*emojis.length)];
+    emojis[
+        Math.floor(
+            Math.random()*emojis.length
+        )
+    ];
 
     emoji.style.left =
-        Math.random()*100+"vw";
+    Math.random()*100+"vw";
 
     emoji.style.fontSize =
-        (18+Math.random()*16)+"px";
+    (18+Math.random()*16)+"px";
 
     emoji.style.animationDuration =
-        (10+Math.random()*8)+"s";
+    (10+Math.random()*8)+"s";
 
     document.body.appendChild(emoji);
 
@@ -166,51 +255,70 @@ function startEmojiRain(){
 
     if(emojiRainInterval) return;
 
-    emojiRainInterval = setInterval(createEmojiRain,1200);
+    emojiRainInterval =
+
+    setInterval(
+
+        createEmojiRain,
+
+        1200
+
+    );
 
 }
 
 function stopEmojiRain(){
 
-    clearInterval(emojiRainInterval);
+    clearInterval(
+
+        emojiRainInterval
+
+    );
 
     emojiRainInterval = null;
 
-    document.querySelectorAll(".falling-emoji").forEach(e=>e.remove());
+    document
+
+    .querySelectorAll(".falling-emoji")
+
+    .forEach(e=>e.remove());
 
 }
 
 function hideEmojis(){
 
-    document.querySelectorAll(".falling-emoji").forEach(emoji=>{
+    document
 
-        emoji.remove();
+    .querySelectorAll(".falling-emoji")
 
-    });
+    .forEach(e=>e.remove());
 
 }
 
 /* =====================================
-   INTRO
+        INTRO
 ===================================== */
 
-playButton.addEventListener("click", () => {
+playButton.addEventListener("click",()=>{
 
-    bgMusic.volume = 0.35;
+    bgMusic.volume = .35;
 
-    bgMusic.play().catch(() => {});
+    bgMusic.play().catch(()=>{});
 
     startEmojiRain();
 
-    showPage(pages.loading);
+    showPage(
+
+        pages.loading
+
+    );
 
     startLoading();
 
 });
 
-
 /* =====================================
-   LOADING
+        LOADING
 ===================================== */
 
 function startLoading(){
@@ -219,9 +327,11 @@ function startLoading(){
 
     startButton.hidden = true;
 
-    const bar = document.getElementById("bar");
+    const bar =
+    document.getElementById("bar");
 
-    const percent = document.getElementById("percent");
+    const percent =
+    document.getElementById("percent");
 
     bar.style.width = "0%";
 
@@ -231,11 +341,13 @@ function startLoading(){
 
         loadingValue++;
 
-        bar.style.width = `${loadingValue}%`;
+        bar.style.width =
+        `${loadingValue}%`;
 
-        percent.textContent = `${loadingValue}%`;
+        percent.textContent =
+        `${loadingValue}%`;
 
-        if(loadingValue >= 100){
+        if(loadingValue>=100){
 
             clearInterval(timer);
 
@@ -248,36 +360,46 @@ function startLoading(){
 }
 
 /* =====================================
-   INIZIA IL VIAGGIO
+        INIZIA IL VIAGGIO
 ===================================== */
 
-startButton.addEventListener("click", () => {
+startButton.addEventListener("click",()=>{
 
-    showPage(pages.ticket);
+    showPage(
+
+        pages.ticket
+
+    );
 
 });
 
 
 /* =====================================
-   BIGLIETTO
+        BIGLIETTO
 ===================================== */
 
-noButton.addEventListener("mouseenter", () => {
+noButton.addEventListener("mouseenter",()=>{
 
-    const x = Math.random() * 60 + 20;
+    const x =
+    Math.random()*60+20;
 
-    const y = Math.random() * 55 + 20;
+    const y =
+    Math.random()*55+20;
 
-    noButton.style.position = "absolute";
+    noButton.style.position =
+    "absolute";
 
-    noButton.style.left = `${x}%`;
+    noButton.style.left =
+    `${x}%`;
 
-    noButton.style.top = `${y}%`;
+    noButton.style.top =
+    `${y}%`;
 
 });
 
+
 /* =====================================
-   CANDELINE
+        CANDELINE
 ===================================== */
 
 function createCandles(){
@@ -286,23 +408,29 @@ function createCandles(){
 
     candlesOff = 0;
 
-    counter.textContent = "Candeline rimaste: 19";
+    counter.textContent =
+    "Candeline rimaste: 19";
 
-    for(let i = 0; i < 19; i++){
+    for(let i=0;i<19;i++){
 
-        const candle = document.createElement("div");
+        const candle =
+        document.createElement("div");
 
-        candle.className = "candle";
+        candle.className =
+        "candle";
 
-        const flame = document.createElement("div");
+        const flame =
+        document.createElement("div");
 
-        flame.className = "flame";
+        flame.className =
+        "flame";
 
-        flame.textContent = "🔥";
+        flame.textContent =
+        "🔥";
 
         candle.appendChild(flame);
 
-        flame.addEventListener("click", ()=>{
+        flame.addEventListener("click",()=>{
 
             if(candle.classList.contains("off")) return;
 
@@ -312,9 +440,10 @@ function createCandles(){
 
             candlesOff++;
 
-            counter.textContent = `Candeline rimaste: ${19 - candlesOff}`;
+            counter.textContent =
+            `Candeline rimaste: ${19-candlesOff}`;
 
-            if(candlesOff === 19){
+            if(candlesOff===19){
 
                 finishBirthday();
 
@@ -328,13 +457,18 @@ function createCandles(){
 
 }
 
+
 /* =====================================
-   BIGLIETTO → CANDELINE
+    BIGLIETTO → CANDELINE
 ===================================== */
 
-yesButton.addEventListener("click", ()=>{
+yesButton.addEventListener("click",()=>{
 
-    showPage(pages.birthday);
+    showPage(
+
+        pages.birthday
+
+    );
 
     createCandles();
 
@@ -342,7 +476,7 @@ yesButton.addEventListener("click", ()=>{
 
 
 /* =====================================
-   FINE COMPLEANNO
+        FINE COMPLEANNO
 ===================================== */
 
 function finishBirthday(){
@@ -353,20 +487,24 @@ function finishBirthday(){
 
     setTimeout(()=>{
 
-        showPage(pages.wish);
+        showPage(
+
+            pages.wish
+
+        );
 
     },2500);
 
 }
 
-
 /* =====================================
-   CORIANDOLI
+        CORIANDOLI
 ===================================== */
 
 function createConfetti(){
 
-    const area = document.getElementById("confetti");
+    const area =
+    document.getElementById("confetti");
 
     area.innerHTML = "";
 
@@ -385,28 +523,41 @@ function createConfetti(){
 
     const totalConfetti = 350;
 
-    for(let i = 0; i < totalConfetti; i++){
+    for(let i=0;i<totalConfetti;i++){
 
-        const confetto = document.createElement("div");
+        const confetto =
+        document.createElement("div");
 
-        confetto.className = "confetto";
+        confetto.className =
+        "confetto";
 
-        const w = 5 + Math.random() * 6;
-        const h = 10 + Math.random() * 12;
+        const w =
+        5 + Math.random()*6;
 
-        confetto.style.width = `${w}px`;
-        confetto.style.height = `${h}px`;
+        const h =
+        10 + Math.random()*12;
 
-        confetto.style.left = `${Math.random() * 100}vw`;
+        confetto.style.width =
+        `${w}px`;
+
+        confetto.style.height =
+        `${h}px`;
+
+        confetto.style.left =
+        `${Math.random()*100}vw`;
 
         confetto.style.background =
-            colors[Math.floor(Math.random() * colors.length)];
+        colors[
+            Math.floor(
+                Math.random()*colors.length
+            )
+        ];
 
         confetto.style.transform =
-            `rotate(${Math.random() * 360}deg)`;
+        `rotate(${Math.random()*360}deg)`;
 
         confetto.style.animation =
-            `fall ${2 + Math.random() * 3}s linear forwards`;
+        `fall ${2+Math.random()*3}s linear forwards`;
 
         area.appendChild(confetto);
 
@@ -421,24 +572,25 @@ function createConfetti(){
 }
 
 /* =====================================
-   DESIDERIO
+        DESIDERIO
 ===================================== */
 
-sendWish.addEventListener("click", ()=>{
+sendWish.addEventListener("click",()=>{
 
-    const wish = wishInput.value.trim();
+    const wish =
+    wishInput.value.trim();
 
     if(!wish){
 
-        alert("Scrivi prima un desiderio ❤️");
+        alert(
+            "Scrivi prima un desiderio ❤️"
+        );
 
         return;
 
     }
 
-    // Invio EmailJS
-
-    if(typeof emailjs !== "undefined"){
+    if(typeof emailjs!=="undefined"){
 
         emailjs.send(
 
@@ -448,29 +600,41 @@ sendWish.addEventListener("click", ()=>{
 
             {
 
-                wish: wish
+                wish:wish
 
             }
 
         ).catch(error=>{
 
-            console.log("EmailJS:", error);
+            console.log(
+
+                "EmailJS:",
+
+                error
+
+            );
 
         });
 
     }
 
-    showPage(pages.star);
+    showPage(
+
+        pages.star
+
+    );
 
     animateStar();
 
 });
 
+
 /* =====================================
-   STELLA
+        STELLA
 ===================================== */
 
-const wishStar = document.getElementById("wishStar");
+const wishStar =
+document.getElementById("wishStar");
 
 function animateStar(){
 
@@ -482,7 +646,8 @@ function animateStar(){
 
             {
 
-                transform:"translateY(0px) scale(1)",
+                transform:
+                "translateY(0px) scale(1)",
 
                 opacity:1
 
@@ -490,7 +655,8 @@ function animateStar(){
 
             {
 
-                transform:"translateY(-280px) scale(.2)",
+                transform:
+                "translateY(-280px) scale(.2)",
 
                 opacity:0
 
@@ -512,7 +678,11 @@ function animateStar(){
 
     setTimeout(()=>{
 
-        showPage(pages.constellation);
+        showPage(
+
+            pages.constellation
+
+        );
 
         startConstellation();
 
@@ -523,9 +693,6 @@ function animateStar(){
 /*======================================
         COSTELLAZIONE
 ======================================*/
-
-let stars = [];
-let currentStar = 0;
 
 const constellationShape = [
 
@@ -572,23 +739,6 @@ document.getElementById("sofiaQuote");
 const continueButton =
 document.getElementById("continueButton");
 
-
-let universeStars = [];
-
-let universeTimer = 0;
-
-let universePhase = 0;
-
-let galaxyForce = 0;
-
-let eyesOpacity = 0;
-
-let titleOpacity = 0;
-
-let quoteOpacity = 0;
-
-let buttonOpacity = 0;
-
 /*======================================
         CREA CIELO
 ======================================*/
@@ -634,11 +784,10 @@ function createConstellation(){
     const box =
     document.getElementById("constellation");
 
-    box.querySelectorAll(
-        ".constellation-star"
-    ).forEach(s=>s.remove());
+    box.querySelectorAll(".constellation-star")
+    .forEach(star=>star.remove());
 
-    stars=[];
+    stars = [];
 
     constellationShape.forEach(point=>{
 
@@ -649,12 +798,14 @@ function createConstellation(){
         "constellation-star";
 
         star.style.left =
-        point.x+"%";
+        point.x + "%";
 
         star.style.top =
-        point.y+"%";
+        point.y + "%";
 
-        star.style.opacity=0;
+        star.style.opacity = "0";
+
+        star.classList.remove("active");
 
         box.appendChild(star);
 
@@ -726,7 +877,7 @@ function pulseConstellation(){
                 {
 
                     transform:
-                    "translate(-50%,-50%) scale(1.4)"
+                    "translate(-50%,-50%) scale(1.25)"
 
                 },
 
@@ -766,7 +917,7 @@ function showNarration(text){
         "constellationText"
     );
 
-    box.innerHTML=text;
+    box.textcontent=text;
 
     box.classList.remove("show");
 
@@ -794,10 +945,8 @@ function startConstellation(){
 
     createConstellation();
 
-    // Ripristina le linee nel caso si torni qui
-    document
-        .getElementById("constellationSvg")
-        .style.opacity = "1";
+   document.getElementById("constellationPath").style.strokeDashoffset = "";
+document.getElementById("constellationSvg").style.opacity = "1";
 
     showNarration(
         "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
@@ -899,6 +1048,7 @@ function constellationCompleted(){
 
 }
 
+let universeAnimation = null;
 /*======================================
         START UNIVERSO
 ======================================*/
@@ -925,14 +1075,18 @@ function startUniverseScene(){
 
     buttonOpacity = 0;
 
+    cancelAnimationFrame(universeAnimation);
+
     eyesImage.style.opacity = 0;
-    eyesImage.style.visibility = "visible";
+    eyesImage.style.visibility = "hidden";
 
     sofiaTitle.style.opacity = 0;
 
     sofiaQuote.style.opacity = 0;
 
     continueButton.style.opacity = 0;
+
+    continueButton.style.pointerEvents = "none";
 
     animateUniverse();
 
@@ -1044,51 +1198,6 @@ function createUniverse(){
 
 }
 
-    /*==============================
-        GALASSIA
-    ==============================*/
-
-    for(let i=0;i<650;i++){
-
-        const radius =
-        Math.random()*
-        Math.max(cx,cy);
-
-        const angle =
-        Math.random()*
-        Math.PI*2;
-
-        universeStars.push({
-
-            id:i+100,
-
-            born:false,
-
-            cx,
-            cy,
-
-            radius,
-
-            angle,
-
-            x:
-            cx+
-            Math.cos(angle)*radius,
-
-            y:
-            cy+
-            Math.sin(angle)*radius,
-
-            size:
-            Math.random()*1.8+.3,
-
-            alpha:0
-
-        });
-
-    }
-
-}
 /*======================================
         ANIMAZIONE UNIVERSO
 ======================================*/
@@ -1497,22 +1606,11 @@ if(universeTimer > 1900){
 
 }
 
-
-/*==================================
-        CLICK
-==================================*/
-
-continueButton.onclick = ()=>{
-
-    showPage(pages.heart);
-
-};
-
-
 /*==================================
         LOOP
 ==================================*/
 
+universeAnimation =
 requestAnimationFrame(
     animateUniverse
 );
