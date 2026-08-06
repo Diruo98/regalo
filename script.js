@@ -684,6 +684,630 @@ function animateStar(){
 
 }
 
+/*======================================
+        COSTELLAZIONE
+======================================*/
+
+const constellationShape = [
+
+    {x:60,y:18},
+    {x:50,y:18},
+    {x:40,y:18},
+
+    {x:34,y:28},
+    {x:34,y:40},
+
+    {x:46,y:48},
+    {x:58,y:48},
+
+    {x:66,y:58},
+    {x:66,y:70},
+
+    {x:58,y:80},
+    {x:46,y:84},
+    {x:34,y:84},
+    {x:26,y:80}
+
+];
+
+let stars = [];
+
+let currentStar = 0;
+
+
+/*======================================
+        CREA CIELO
+======================================*/
+
+function createSky(){
+
+    const field = document.getElementById("starField");
+
+    field.innerHTML = "";
+
+    for(let i=0;i<220;i++){
+
+        const star = document.createElement("div");
+
+        star.className = "star";
+
+        if(Math.random()>.6){
+
+            star.classList.add("gold");
+
+        }
+
+        star.style.left = Math.random()*100+"%";
+
+        star.style.top = Math.random()*100+"%";
+
+        star.style.opacity = .3 + Math.random()*.7;
+
+        star.style.animationDelay = Math.random()*4+"s";
+
+        field.appendChild(star);
+
+    }
+
+}
+
+
+/*======================================
+        CREA STELLE
+======================================*/
+
+function createConstellation(){
+
+    stars = [];
+
+    const box = document.getElementById("constellation");
+
+    box.querySelectorAll(".constellation-star").forEach(s=>s.remove());
+
+    constellationShape.forEach(point=>{
+
+        const star = document.createElement("div");
+
+        star.className = "constellation-star";
+
+        star.style.left = point.x+"%";
+
+        star.style.top = point.y+"%";
+
+        box.appendChild(star);
+
+        stars.push(star);
+
+    });
+
+}
+
+
+/*======================================
+        DISEGNA LINEE
+======================================*/
+
+function drawConstellationLines(){
+
+    const svg = document.getElementById("constellationSvg");
+
+    svg.innerHTML = "";
+
+    const width = svg.clientWidth;
+
+    const height = svg.clientHeight;
+
+    let path = "";
+
+    constellationShape.forEach((point,index)=>{
+
+        const x = point.x/100*width;
+
+        const y = point.y/100*height;
+
+        if(index===0){
+
+            path += `M ${x} ${y}`;
+
+        }else{
+
+            path += ` L ${x} ${y}`;
+
+        }
+
+    });
+
+    const line = document.createElementNS(
+
+        "http://www.w3.org/2000/svg",
+
+        "path"
+
+    );
+
+    line.setAttribute("d",path);
+
+    line.setAttribute("id","constellationPath");
+
+    svg.appendChild(line);
+
+}
+
+
+/*======================================
+        ANIMA STELLE
+======================================*/
+
+function animateConstellation(){
+
+    currentStar = 0;
+
+    const timer = setInterval(()=>{
+
+        if(currentStar>=stars.length){
+
+            clearInterval(timer);
+
+            drawConstellationLines();
+
+            setTimeout(()=>{
+
+                pulseConstellation();
+
+            },600);
+
+            setTimeout(()=>{
+
+                constellationCompleted();
+
+            },2500);
+
+            return;
+
+        }
+
+        stars[currentStar].classList.add("active");
+
+        currentStar++;
+
+    },250);
+
+}
+
+
+/*======================================
+        PULSA
+======================================*/
+
+function pulseConstellation(){
+
+    stars.forEach(star=>{
+
+        star.classList.add("completed");
+
+    });
+
+}
+
+
+/*======================================
+        TESTI
+======================================*/
+
+function showNarration(text){
+
+    const box = document.getElementById("constellationText");
+
+    box.innerHTML = text;
+
+    box.classList.remove("show");
+
+    setTimeout(()=>{
+
+        box.classList.add("show");
+
+    },30);
+
+}
+
+
+/*======================================
+        AVVIO
+======================================*/
+
+function startConstellation(){
+
+    stopEmojiRain();
+
+    hideEmojis();
+
+    createSky();
+
+    createConstellation();
+
+    showNarration(
+
+        "Ho sempre pensato che il cielo custodisse qualcosa di speciale..."
+
+    );
+
+    animateConstellation();
+
+}
+
+
+/*======================================
+        FINE COSTELLAZIONE
+======================================*/
+
+function constellationCompleted(){
+
+    showNarration(
+
+        "...finché l'universo ha iniziato a cambiare."
+
+    );
+
+    stars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    opacity:1,
+
+                    transform:"translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    opacity:0,
+
+                    transform:`translate(${(Math.random()-.5)*250}px,${(Math.random()-.5)*250}px) scale(.2)`
+
+                }
+
+            ],
+
+            {
+
+                duration:2500,
+
+                fill:"forwards",
+
+                easing:"ease-in"
+
+            }
+
+        );
+
+    });
+
+    document.getElementById("constellationSvg").animate(
+
+        [
+
+            {opacity:1},
+
+            {opacity:0}
+
+        ],
+
+        {
+
+            duration:2500,
+
+            fill:"forwards"
+
+        }
+
+    );
+
+    setTimeout(()=>{
+
+        startUniverseScene();
+
+    },2600);
+
+}
+
+/*======================================
+            UNIVERSO
+======================================*/
+
+const universeCanvas =
+document.getElementById("universeCanvas");
+
+const uctx =
+universeCanvas.getContext("2d");
+
+const eyesImage =
+document.getElementById("eyesImage");
+
+const sofiaTitle =
+document.getElementById("sofiaTitle");
+
+const sofiaQuote =
+document.getElementById("sofiaQuote");
+
+const continueButton =
+document.getElementById("continueButton");
+
+let universeAnimation = null;
+
+let universeStars = [];
+
+let universeTimer = 0;
+
+let eyesOpacity = 0;
+
+let titleOpacity = 0;
+
+let quoteOpacity = 0;
+
+let buttonOpacity = 0;
+
+function resizeUniverse(){
+
+    universeCanvas.width = window.innerWidth;
+
+    universeCanvas.height = window.innerHeight;
+
+}
+
+window.addEventListener("resize",resizeUniverse);
+
+function createUniverse(){
+
+    universeStars = [];
+
+    const cx = universeCanvas.width/2;
+
+    const cy = universeCanvas.height/2;
+
+    for(let i=0;i<850;i++){
+
+        const radius =
+        Math.random()*Math.max(cx,cy);
+
+        const angle =
+        Math.random()*Math.PI*2;
+
+        universeStars.push({
+
+            radius,
+
+            angle,
+
+            size:
+            Math.random()*2+0.3,
+
+            alpha:
+            .3+Math.random()*.7
+
+        });
+
+    }
+
+}
+
+function startUniverseScene(){
+
+    showPage(pages.universeEyes);
+
+    resizeUniverse();
+
+    createUniverse();
+
+    universeTimer = 0;
+
+    eyesOpacity = 0;
+
+    titleOpacity = 0;
+
+    quoteOpacity = 0;
+
+    buttonOpacity = 0;
+
+    eyesImage.style.opacity = 0;
+
+    sofiaTitle.style.opacity = 0;
+
+    sofiaQuote.style.opacity = 0;
+
+    continueButton.style.opacity = 0;
+
+    continueButton.style.pointerEvents = "none";
+
+    if(universeAnimation){
+
+        cancelAnimationFrame(universeAnimation);
+
+    }
+
+    animateUniverse();
+
+}
+
+function animateUniverse(){
+
+    universeTimer++;
+
+    const cx =
+    universeCanvas.width/2;
+
+    const cy =
+    universeCanvas.height/2;
+
+    uctx.clearRect(
+
+        0,
+
+        0,
+
+        universeCanvas.width,
+
+        universeCanvas.height
+
+    );
+
+    universeStars.forEach(star=>{
+
+        star.angle +=
+
+        0.001 +
+
+        1/(star.radius+80)*2;
+
+        const x =
+
+        cx +
+
+        Math.cos(star.angle)*
+
+        star.radius;
+
+        const y =
+
+        cy +
+
+        Math.sin(star.angle)*
+
+        star.radius;
+
+        uctx.beginPath();
+
+        uctx.fillStyle =
+
+        `rgba(255,250,235,${star.alpha})`;
+
+        uctx.shadowBlur = 8;
+
+        uctx.shadowColor="#fff5d8";
+
+        uctx.arc(
+
+            x,
+
+            y,
+
+            star.size,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        uctx.fill();
+
+    });
+
+
+    /*=========================
+            OCCHI
+    =========================*/
+
+    if(universeTimer>250){
+
+        eyesOpacity+=0.006;
+
+        if(eyesOpacity>1){
+
+            eyesOpacity=1;
+
+        }
+
+        eyesImage.style.opacity=eyesOpacity;
+
+        eyesImage.style.visibility="visible";
+
+    }
+
+
+    /*=========================
+            TITOLO
+    =========================*/
+
+    if(universeTimer>430){
+
+        titleOpacity+=0.01;
+
+        if(titleOpacity>1){
+
+            titleOpacity=1;
+
+        }
+
+        sofiaTitle.style.opacity=titleOpacity;
+
+    }
+
+
+    /*=========================
+            FRASE
+    =========================*/
+
+    if(universeTimer>620){
+
+        quoteOpacity+=0.01;
+
+        if(quoteOpacity>1){
+
+            quoteOpacity=1;
+
+        }
+
+        sofiaQuote.style.opacity=quoteOpacity;
+
+    }
+
+
+    /*=========================
+            CONTINUA
+    =========================*/
+
+    if(universeTimer>850){
+
+        buttonOpacity+=0.012;
+
+        if(buttonOpacity>1){
+
+            buttonOpacity=1;
+
+        }
+
+        continueButton.style.opacity=buttonOpacity;
+
+        continueButton.style.pointerEvents="auto";
+
+    }
+
+    universeAnimation =
+
+    requestAnimationFrame(
+
+        animateUniverse
+
+    );
+
+}
+
+continueButton.addEventListener("click",()=>{
+
+    cancelAnimationFrame(universeAnimation);
+
+    showPage(pages.heart);
+
+    initHeart();
+
+});
+
+
+
 
 
 /* =====================================
