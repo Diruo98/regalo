@@ -947,29 +947,28 @@ function createUniverse(){
     universeStars = [];
 
     const cx =
-    universeCanvas.width/2;
+    universeCanvas.width / 2;
 
     const cy =
-    universeCanvas.height/2;
-
+    universeCanvas.height / 2;
 
 
     /*==============================
-      STELLE COSTELLAZIONE
+      STELLE DELLA COSTELLAZIONE
     ==============================*/
 
     constellationShape.forEach((point,index)=>{
 
         const startX =
-        point.x/100*
+        (point.x / 100) *
         universeCanvas.width;
 
         const startY =
-        point.y/100*
+        (point.y / 100) *
         universeCanvas.height;
 
-        const dx = startX-cx;
-        const dy = startY-cy;
+        const dx = startX - cx;
+        const dy = startY - cy;
 
         universeStars.push({
 
@@ -981,7 +980,7 @@ function createUniverse(){
             cy,
 
             radius:
-            Math.sqrt(dx*dx+dy*dy),
+            Math.sqrt(dx*dx + dy*dy),
 
             angle:
             Math.atan2(dy,dx),
@@ -990,7 +989,7 @@ function createUniverse(){
 
             y:startY,
 
-            size:2.5,
+            size:2.6,
 
             alpha:1
 
@@ -999,6 +998,51 @@ function createUniverse(){
     });
 
 
+    /*==============================
+        STELLE GALASSIA
+    ==============================*/
+
+    for(let i=0;i<650;i++){
+
+        const radius =
+        Math.random() *
+        Math.max(cx,cy);
+
+        const angle =
+        Math.random() *
+        Math.PI * 2;
+
+        universeStars.push({
+
+            id:i + 100,
+
+            born:false,
+
+            cx,
+            cy,
+
+            radius,
+
+            angle,
+
+            x:
+            cx +
+            Math.cos(angle) * radius,
+
+            y:
+            cy +
+            Math.sin(angle) * radius,
+
+            size:
+            Math.random() * 1.8 + 0.3,
+
+            alpha:0
+
+        });
+
+    }
+
+}
 
     /*==============================
         GALASSIA
