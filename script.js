@@ -1,5 +1,5 @@
 /* =====================================
-   ELEMENTIIIIIIII
+   ELEMENTI
 ===================================== */
 
 const pages = {
@@ -521,7 +521,7 @@ function animateStar(){
 }
 
 /*======================================
-            UNIVERSO
+        UNIVERSO
 ======================================*/
 
 const universeCanvas =
@@ -530,42 +530,10 @@ document.getElementById("universeCanvas");
 const uctx =
 universeCanvas.getContext("2d");
 
-const eyesImage =
-document.getElementById("eyesImage");
-
-const sofiaTitle =
-document.getElementById("sofiaTitle");
-
-const sofiaQuote =
-document.getElementById("sofiaQuote");
-
-const continueButton =
-document.getElementById("continueButton");
-
-
-let universeStars = [];
-
-let galaxyForce = 0;
-
-/* fase dell'animazione */
-let universePhase = 0;
-
-/* opacità occhi */
-let eyesOpacity = 0;
-
-/* opacità testo */
-let titleOpacity = 0;
-let quoteOpacity = 0;
-let buttonOpacity = 0;
-
-
 function resizeUniverse(){
 
-    universeCanvas.width =
-    window.innerWidth;
-
-    universeCanvas.height =
-    window.innerHeight;
+    universeCanvas.width = window.innerWidth;
+    universeCanvas.height = window.innerHeight;
 
 }
 
@@ -576,197 +544,35 @@ window.addEventListener(
     resizeUniverse
 );
 
-/*======================================
-        START UNIVERSO
-======================================*/
-
 function startUniverseScene(){
+
+    showPage(pages.universeEyes);
 
     resizeUniverse();
 
     createUniverse();
 
-    showPage(pages.universeEyes);
-
-    /* reset animazione */
-
-    galaxyForce = 0;
-
-    eyesOpacity = 0;
-
-    universePhase = 0;
-
-    eyesImage.classList.remove("show");
-
-    sofiaTitle.classList.remove("show");
-
-    sofiaQuote.classList.remove("show");
-
-    continueButton.classList.remove("show");
-
     animateUniverse();
 
 }
 
-/*======================================
-            UNIVERSO
-======================================*/
-
-const universeCanvas =
-document.getElementById("universeCanvas");
-
-const uctx =
-universeCanvas.getContext("2d");
-
-const eyesImage =
-document.getElementById("eyesImage");
-
-const sofiaTitle =
-document.getElementById("sofiaTitle");
-
-const sofiaQuote =
-document.getElementById("sofiaQuote");
-
-const continueButton =
-document.getElementById("continueButton");
-
-
 let universeStars = [];
-
-/* tempo totale della scena */
-let universeTimer = 0;
-
-/* fase dell'animazione */
-let universePhase = 0;
-
-/* opacità occhi */
-let eyesOpacity = 0;
-
-/* opacità testi */
-let titleOpacity = 0;
-let quoteOpacity = 0;
-let buttonOpacity = 0;
-
-
-function resizeUniverse(){
-
-    universeCanvas.width =
-    window.innerWidth;
-
-    universeCanvas.height =
-    window.innerHeight;
-
-}
-
-resizeUniverse();
-
-window.addEventListener(
-    "resize",
-    resizeUniverse
-);
-
-
-/*======================================
-        CREAZIONE UNIVERSO
-======================================*/
 
 function createUniverse(){
 
     universeStars = [];
 
-    const cx =
-    universeCanvas.width/2;
-
-    const cy =
-    universeCanvas.height/2;
-
-
-    /*==============================
-      STELLE DELLA COSTELLAZIONE
-    ==============================*/
-
-    constellationShape.forEach((point,index)=>{
-
-        const startX =
-        (point.x/100)*
-        universeCanvas.width;
-
-        const startY =
-        (point.y/100)*
-        universeCanvas.height;
-
-        const dx = startX-cx;
-        const dy = startY-cy;
+    for(let i=0;i<1800;i++){
 
         universeStars.push({
 
-            id:index,
+            x:Math.random()*universeCanvas.width,
 
-            born:true,
+            y:Math.random()*universeCanvas.height,
 
-            cx,
-            cy,
+            size:Math.random()*2+0.4,
 
-            radius:
-            Math.sqrt(dx*dx+dy*dy),
-
-            angle:
-            Math.atan2(dy,dx),
-
-            x:startX,
-
-            y:startY,
-
-            size:2.6,
-
-            alpha:1
-
-        });
-
-    });
-
-
-    /*==============================
-        STELLE GALASSIA
-    ==============================*/
-
-    for(let i=0;i<650;i++){
-
-        const radius =
-        Math.random()*
-        Math.max(cx,cy);
-
-        const angle =
-        Math.random()*
-        Math.PI*2;
-
-        universeStars.push({
-
-            id:i+100,
-
-            born:false,
-
-            cx,
-            cy,
-
-            radius,
-
-            angle,
-
-            x:
-            cx+
-            Math.cos(angle)*
-            radius,
-
-            y:
-            cy+
-            Math.sin(angle)*
-            radius,
-
-            size:
-            Math.random()*1.8+0.3,
-
-            alpha:0
+            alpha:Math.random()
 
         });
 
@@ -774,14 +580,9 @@ function createUniverse(){
 
 }
 
-
-/*======================================
-        ANIMAZIONE UNIVERSO
-======================================*/
-
 function animateUniverse(){
 
-    universeTimer++;
+   console.log(universeStars.length);
 
     uctx.clearRect(
 
@@ -795,107 +596,7 @@ function animateUniverse(){
 
     );
 
-    const cx =
-    universeCanvas.width/2;
-
-    const cy =
-    universeCanvas.height/2;
-
-
-    /*==============================
-            TIMELINE
-    ==============================*/
-
-    if(universeTimer<400){
-
-        universePhase=0;
-
-    }
-
-    else if(universeTimer<700){
-
-        universePhase=1;
-
-    }
-
-    else if(universeTimer<1000){
-
-        universePhase=2;
-
-    }
-
-    else{
-
-        universePhase=3;
-
-    }
-
-
-    /*==============================
-            NEBULOSA
-    ==============================*/
-
-    let strength = .08;
-
-    if(universePhase===2){
-
-        strength=.14;
-
-    }
-
-    if(universePhase===3){
-
-        strength=.24;
-
-    }
-
-    const pulse =
-    .55+
-    Math.sin(
-        Date.now()*0.0015
-    )*.15;
-
-    const nebula =
-    uctx.createRadialGradient(
-
-        cx,
-        cy,
-        0,
-
-        cx,
-        cy,
-        700
-
-    );
-
-    nebula.addColorStop(
-
-        0,
-
-        `rgba(255,210,120,${
-            strength*pulse
-        })`
-
-    );
-
-    nebula.addColorStop(
-
-        .45,
-
-        "rgba(120,170,255,.05)"
-
-    );
-
-    nebula.addColorStop(
-
-        1,
-
-        "rgba(0,0,0,0)"
-
-    );
-
-    uctx.fillStyle =
-    nebula;
+    uctx.fillStyle="#020611";
 
     uctx.fillRect(
 
@@ -909,253 +610,44 @@ function animateUniverse(){
 
     );
 
-    /* QUI FINISCE IL BLOCCO 1 */
+    universeStars.forEach(star=>{
 
- /*==================================
-        STELLE
-==================================*/
+        uctx.beginPath();
 
-universeStars.forEach(star=>{
+        uctx.fillStyle=
 
-    /*--------------------------
-        VELOCITÀ
-    --------------------------*/
+        `rgba(255,245,220,${star.alpha})`;
 
-    let speed =
-    0.0008 +
-    (1/(star.radius+40))*4;
+        uctx.shadowBlur=10;
 
-    // fase vortice
-    if(universePhase===1){
+        uctx.shadowColor="#fff7d0";
 
-        speed *= 1.45;
+        uctx.arc(
 
-        star.radius *= 0.99965;
+            star.x,
 
-    }
+            star.y,
 
-    // fase dissolvenza
-    if(universePhase>=2){
+            star.size,
 
-        speed *= 0.45;
+            0,
 
-    }
+            Math.PI*2
 
-    star.angle += speed;
+        );
 
+        uctx.fill();
 
-    /*--------------------------
-        POSIZIONE
-    --------------------------*/
+    });
 
-    star.x =
-    star.cx +
-    Math.cos(star.angle) *
-    star.radius;
+    requestAnimationFrame(
 
-    star.y =
-    star.cy +
-    Math.sin(star.angle) *
-    star.radius;
-
-
-    /*--------------------------
-        NASCITA GALASSIA
-    --------------------------*/
-
-    if(!star.born && universePhase>=1){
-
-        star.alpha += 0.004;
-
-        if(star.alpha>1){
-
-            star.alpha=1;
-
-        }
-
-    }
-
-
-    /*--------------------------
-        DISSOLVENZA
-    --------------------------*/
-
-    if(universePhase>=2){
-
-        if(star.born){
-
-            star.alpha *= 0.993;
-
-        }
-
-    }
-
-
-    /*--------------------------
-        SCIA
-    --------------------------*/
-
-    uctx.beginPath();
-
-    uctx.strokeStyle =
-
-    `rgba(255,235,170,${
-        star.alpha*0.18
-    })`;
-
-    uctx.lineWidth =
-    star.size;
-
-    uctx.moveTo(
-
-        star.x-
-        Math.cos(star.angle)*18,
-
-        star.y-
-        Math.sin(star.angle)*18
+        animateUniverse
 
     );
 
-    uctx.lineTo(
-
-        star.x,
-
-        star.y
-
-    );
-
-    uctx.stroke();
-
-
-    /*--------------------------
-        STELLA
-    --------------------------*/
-
-    uctx.beginPath();
-
-    uctx.fillStyle =
-
-    `rgba(255,250,235,${
-        star.alpha
-    })`;
-
-    uctx.shadowBlur =
-    6 + star.alpha*10;
-
-    uctx.shadowColor =
-    "#fff5c0";
-
-    uctx.arc(
-
-        star.x,
-
-        star.y,
-
-        star.size,
-
-        0,
-
-        Math.PI*2
-
-    );
-
-    uctx.fill();
-
-});  
-
-/*==================================
-        OCCHI
-==================================*/
-
-if(universePhase>=2){
-
-    eyesOpacity += 0.0025;
-
-    if(eyesOpacity>0.85){
-
-        eyesOpacity = 0.85;
-
-    }
-
-    eyesImage.style.opacity =
-    eyesOpacity;
-
-    eyesImage.style.visibility =
-    "visible";
-
 }
 
-   /*==================================
-        TESTO FINALE
-==================================*/
-
-if(universePhase>=3){
-
-    titleOpacity += 0.01;
-
-    if(titleOpacity>1){
-
-        titleOpacity = 1;
-
-    }
-
-    sofiaTitle.style.opacity =
-    titleOpacity;
-
-}
-
-
-if(universeTimer>1100){
-
-    quoteOpacity += 0.01;
-
-    if(quoteOpacity>1){
-
-        quoteOpacity = 1;
-
-    }
-
-    sofiaQuote.style.opacity =
-    quoteOpacity;
-
-}
-
-
-if(universeTimer>1350){
-
-    buttonOpacity += 0.01;
-
-    if(buttonOpacity>1){
-
-        buttonOpacity = 1;
-
-    }
-
-    continueButton.style.opacity =
-    buttonOpacity;
-
-}
-
-
-/*==================================
-        CONTINUA
-==================================*/
-
-continueButton.onclick = ()=>{
-
-    showPage(pages.heart);
-
-};
-
-
-/*==================================
-        LOOP
-==================================*/
-
-requestAnimationFrame(
-    animateUniverse
-);
-}
 
 /*======================================
         NUOVA COSTELLAZIONE
@@ -1255,32 +747,34 @@ function createConstellation(){
 /*======================================
       ANIMA COSTELLAZIONE
 ======================================*/
+
 function animateConstellation(){
 
     currentStar = 0;
 
     const timer = setInterval(()=>{
 
-        if(currentStar >= stars.length){
+       if(currentStar >= stars.length){
 
-            clearInterval(timer);
+    clearInterval(timer);
 
-            drawConstellationLines();
+    console.log("STEP 3 FINITO");
 
-            // appena finite le linee,
-            // dopo un secondo parte subito
-            // la trasformazione
+    drawConstellationLines();
 
-            setTimeout(()=>{
+    console.log("LINEE DISEGNATE");
 
-                constellationCompleted();
+    setTimeout(()=>{
 
-            },1000);
+        console.log("PARTO CON constellationCompleted");
 
-            return;
+        constellationCompleted();
 
-        }
+    },3000);
 
+    return;
+
+}
         const star = stars[currentStar];
 
         star.style.opacity = "1";
@@ -1292,8 +786,6 @@ function animateConstellation(){
     },350);
 
 }
-
-
 /*======================================
         COSTELLAZIONE RESPIRA
 ======================================*/
@@ -1444,7 +936,7 @@ function drawConstellationLines(){
 }
 
 /*======================================
-       COSTELLAZIONE COMPLETA
+        COSTELLAZIONE COMPLETATA
 ======================================*/
 
 function constellationCompleted(){
@@ -1455,42 +947,118 @@ function constellationCompleted(){
 
     );
 
-    pulseConstellation();
+    stars.forEach(star=>{
 
-    setTimeout(()=>{
+        star.animate(
 
-        showNarration(
-            "...finché l'universo ha iniziato a cambiare."
+            [
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1.45)"
+
+                },
+
+                {
+
+                    transform:
+                    "translate(-50%,-50%) scale(1)"
+
+                }
+
+            ],
+
+            {
+
+                duration:1800,
+
+                iterations:Infinity,
+
+                easing:"ease-in-out"
+
+            }
+
         );
 
-    },3000);
+    });
 
+   setTimeout(()=>{
+
+    showNarration(
+
+        "...finché l'universo ha iniziato a cambiare."
+
+    );
+
+    stars.forEach(star=>{
+
+        star.animate(
+
+            [
+
+                {
+
+                    opacity:1,
+
+                    transform:"translate(-50%,-50%) scale(1)"
+
+                },
+
+                {
+
+                    opacity:0,
+
+                    transform:
+                    `translate(
+
+                    ${(Math.random()-0.5)*180}px,
+
+                    ${(Math.random()-0.5)*180}px
+
+                    )
+
+                    scale(.2)`
+
+                }
+
+            ],
+
+            {
+
+                duration:2500,
+
+                easing:"ease-in",
+
+                fill:"forwards"
+
+            }
+
+        );
+
+    });
+
+    document
+    .getElementById("constellationSvg")
+    .style.opacity="0";
 
     setTimeout(()=>{
-
-        // spariscono solo le linee
-        document
-        .getElementById("constellationSvg")
-        .style.transition =
-        "opacity 2s ease";
-
-        document
-        .getElementById("constellationSvg")
-        .style.opacity = "0";
-
-    },5000);
-
-
-    setTimeout(()=>{
-
-        // la costellazione lascia il posto
-        // alla galassia
 
         startUniverseScene();
 
-    },6200);
+    },2500);
+
+},3500);
 
 }
+
 
 /* =====================================
    STELLA CADENTE
