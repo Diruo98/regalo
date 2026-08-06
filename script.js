@@ -136,12 +136,6 @@ const fingerprintButton = document.getElementById("fingerprintButton");
 const restart = document.getElementById("restart");
 
 /* =====================================
-        VARIABILI GLOBALI
-===================================== */
-
-let emojiRainInterval = null;
-
-/* =====================================
    LETTERA
 ===================================== */
 
