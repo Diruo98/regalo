@@ -901,6 +901,66 @@ function pulseConstellation(){
 }
 
 /*======================================
+        DISEGNA LINEE COSTELLAZIONE
+======================================*/
+
+function drawConstellationLines(){
+
+    const svg =
+    document.getElementById("constellationSvg");
+
+    const path =
+    document.getElementById("constellationPath");
+
+    const w =
+    window.innerWidth;
+
+    const h =
+    window.innerHeight;
+
+    svg.setAttribute("viewBox",`0 0 ${w} ${h}`);
+
+    let d = "";
+
+    constellationShape.forEach((point,index)=>{
+
+        const x =
+        point.x / 100 * w;
+
+        const y =
+        point.y / 100 * h;
+
+        if(index===0){
+
+            d += `M ${x} ${y}`;
+
+        }else{
+
+            d += ` L ${x} ${y}`;
+
+        }
+
+    });
+
+    path.setAttribute("d",d);
+
+    const length =
+    path.getTotalLength();
+
+    path.style.strokeDasharray = length;
+
+    path.style.strokeDashoffset = length;
+
+    path.getBoundingClientRect();
+
+    path.style.transition =
+    "stroke-dashoffset 2.2s ease";
+
+    path.style.strokeDashoffset = "0";
+
+}
+
+/*======================================
         TESTI
 ======================================*/
 
