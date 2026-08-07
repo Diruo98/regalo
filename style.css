@@ -632,33 +632,6 @@ button:disabled{
 
 }
 
-#universeEyesPage::before {
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        url("galassia.png")
-        center / cover
-        no-repeat;
-
-    opacity:0;
-
-    transition:opacity 3s ease;
-
-    z-index:0;
-
-}
-
-
-#universeEyesPage.galaxyShow::before {
-
-    opacity:1;
-
-}
 
 .galaxyBackground {
     position: absolute;
