@@ -738,10 +738,82 @@ button:disabled{
     pointer-events: none;
 }
 
-#sofiaTitle,
-#sofiaQuote,
-#continueButton{
+#sofiaTitle {
+
+    margin: 0;
+
+    color: white;
+
+    font-size: clamp(3rem, 12vw, 7rem);
+
+    font-weight: 700;
+
+    letter-spacing: .25em;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.8),
+        0 0 30px rgba(255,230,170,.6),
+        0 0 60px rgba(255,220,150,.35);
+
     opacity: 0;
+
+    transition:
+        opacity 2s ease;
+}
+
+#sofiaQuote {
+
+    margin: 15px auto 20px;
+
+    max-width: 650px;
+
+    color: white;
+
+    font-size: 1.15rem;
+
+    line-height: 1.7;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,.3);
+
+    opacity: 0;
+
+    transition:
+        opacity 2s ease;
+}
+
+#continueButton {
+
+    padding: 12px 28px;
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition:
+        opacity 2s ease,
+        background .3s ease,
+        transform .3s ease;
+
+    pointer-events: none;
+}
+
+#continueButton:hover {
+
+    background: rgba(255,255,255,.18);
+
+    transform: scale(1.05);
+
 }
 
 /* ===============================
