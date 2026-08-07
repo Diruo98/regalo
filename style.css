@@ -658,7 +658,7 @@ button:disabled{
     left:50%;
     top:50%;
 
-    transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%) !important;
 
     width:85%;
     max-width:650px;
@@ -667,9 +667,11 @@ button:disabled{
 
     color:white;
 
-    font-size:1.25rem;
-    font-weight: 700;
-    line-height:1.8;
+    font-size:clamp(18px,5vw,32px);
+
+    font-weight:700;
+
+    line-height:1.5;
 
     opacity:0;
 
@@ -681,6 +683,7 @@ button:disabled{
         0 0 15px rgba(255,255,255,.35);
 
 }
+
 
 #universeIntroText.show{
 
