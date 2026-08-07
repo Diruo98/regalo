@@ -896,27 +896,28 @@ function animateConstellation(){
 
     const timer = setInterval(()=>{
 
-       if(currentStar >= stars.length){
+        if(currentStar >= stars.length){
 
-    clearInterval(timer);
+            clearInterval(timer);
 
-    console.log("STEP 3 FINITO");
+            console.log("STEP 3 FINITO");
 
-    drawConstellationLines();
+            drawConstellationLines();
 
-    console.log("LINEE DISEGNATE");
+            console.log("LINEE DISEGNATE");
 
-    setTimeout(()=>{
+            setTimeout(()=>{
 
-        console.log("PARTO CON constellationCompleted");
+                console.log("PARTO CON constellationCompleted");
 
-        constellationCompleted();
+                constellationCompleted();
 
-    },3000);
+            },3000);
 
-    return;
+            return;
 
-}
+        }
+
         const star = stars[currentStar];
 
         star.style.opacity = "1";
