@@ -579,6 +579,12 @@ function startUniverseScene(){
 
     showPage(pages.universeEyes);
 
+   setTimeout(()=>{
+
+    pages.universeEyes.classList.add("galaxyShow");
+
+},100);
+
     resizeUniverse();
 
     createUniverse();
