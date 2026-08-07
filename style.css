@@ -737,7 +737,6 @@ button:disabled{
 
     pointer-events: none;
 
-    transform:translateY(-180px);
 }
 
 #sofiaTitle {
@@ -769,8 +768,6 @@ button:disabled{
 
     margin: 15px auto 20px;
 
-    top: -200px;
-
     max-width: 650px;
 
     color: white;
@@ -791,8 +788,6 @@ button:disabled{
 #continueButton {
 
     padding: 12px 28px;
-
-    top: -200px;
 
     border: 1px solid rgba(255,255,255,.5);
 
