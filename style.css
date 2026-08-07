@@ -704,21 +704,20 @@ button:disabled{
     position: absolute;
 
     left: 50%;
-    top: 50%;
+    top: 48%;
 
-    transform: translate(-50%, -50%) scale(0.85);
+    transform: translate(-50%, -50%);
 
-    width: min(700px, 85vw);
+    width: 75vw;
+    max-width: 700px;
     height: auto;
-
-    opacity: 0;
 
     z-index: 10;
 
-    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
 
-    filter:
-        drop-shadow(0 0 10px rgba(255,255,255,.15));
+    pointer-events: none;
 }
 
 #universeEnding{
