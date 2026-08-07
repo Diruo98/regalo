@@ -23,6 +23,9 @@ const pages = {
 const bgMusic = document.getElementById("bgMusic");
 const voicePlayer = document.getElementById("voicePlayer");
 
+const universeIntroText =
+    document.getElementById("universeIntroText");
+
 const playButton = document.getElementById("playButton");
 const startButton = document.getElementById("start");
 
