@@ -756,7 +756,7 @@ button:disabled{
 
     color: #ffe9a6;
 
-    font-size: clamp(3rem, 12vw, 7rem);
+   font-size: clamp(2rem, 8vw, 7rem);
 
     font-weight: 700;
 
