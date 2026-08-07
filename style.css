@@ -720,30 +720,32 @@ button:disabled{
     pointer-events: none;
 }
 
-#universeEnding{
-    position: absolute;
+/* =====================================
+FINALE UNIVERSO
+===================================== */
 
+#universeEnding {
+    position: absolute;
     inset: 0;
 
     z-index: 10;
 
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
     pointer-events: none;
-
 }
 
+/* =====================================
+SOFIA
+===================================== */
+
 #sofiaTitle {
+    position: absolute;
+
+    left: 50%;
+    top: 38%;
+
+    transform: translate(-50%, -50%);
 
     margin: 0;
-
-    transform:translateY(200px);
 
     color: #ffe39c;
 
@@ -760,15 +762,27 @@ button:disabled{
 
     opacity: 0;
 
-    transition:
-        opacity 2s ease;
+    transition: opacity 2s ease;
+
+    white-space: nowrap;
 }
 
+/* =====================================
+FRASE
+===================================== */
+
 #sofiaQuote {
+    position: absolute;
 
-    margin: 15px auto 20px;
+    left: 50%;
+    top: 53%;
 
+    transform: translate(-50%, -50%);
+
+    width: 90%;
     max-width: 650px;
+
+    margin: 0;
 
     color: white;
 
@@ -776,16 +790,27 @@ button:disabled{
 
     line-height: 1.7;
 
+    text-align: center;
+
     text-shadow:
         0 0 15px rgba(255,255,255,.3);
 
     opacity: 0;
 
-    transition:
-        opacity 2s ease;
+    transition: opacity 2s ease;
 }
 
+/* =====================================
+CONTINUA
+===================================== */
+
 #continueButton {
+    position: absolute;
+
+    left: 50%;
+    top: 64%;
+
+    transform: translate(-50%, -50%);
 
     padding: 12px 28px;
 
@@ -812,11 +837,11 @@ button:disabled{
 }
 
 #continueButton:hover {
-
     background: rgba(255,255,255,.18);
 
-    transform: scale(1.05);
-
+    transform:
+        translate(-50%, -50%)
+        scale(1.05);
 }
 
 /* ===============================
@@ -2853,20 +2878,19 @@ CONTINUA
 
 }
 
-@media (max-width: 600px) {
-
-    #universeEnding {
-
-        top: 68%;
-
-    }
+@media (max-width: 768px) {
 
     #sofiaTitle {
-
-        font-size: 4rem;
-
+        top: 42%;
     }
 
+    #sofiaQuote {
+        top: 58%;
+    }
+
+    #continueButton {
+        top: 70%;
+    }
 }
 
 }
