@@ -692,7 +692,7 @@ function animateUniverse(){
    FINE DEL VORTICE
 ========================== */
 
-if(universeTimer > 600 && !eyesStarted){
+if(universeTimer > 300 && !eyesStarted){
 
     eyesStarted = true;
 
