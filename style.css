@@ -766,22 +766,21 @@ button:disabled{
 
 #universeEnding {
 
-    position: absolute;
+    position:absolute;
 
-    left: 50%;
-    top: 72%;
+    left:50%;
+    top:0;
 
-    transform: translateX(-50%);
+    transform:translateX(-50%);
 
-    width: 90%;
+    width:100%;
+    height:100%;
 
-    text-align: center;
+    z-index:20;
 
-    z-index: 20;
+    pointer-events:none;
 
-    pointer-events: none;
 }
-
 
 /* ===============================
    SOFIA
@@ -819,26 +818,27 @@ button:disabled{
 
 #sofiaQuote {
 
-    position: absolute;
+position:absolute;
 
-    top: 63%;
+top:55%;
 
-    left: 50%;
+left:50%;
 
-    transform: translateX(-50%);
+transform:translateX(-50%);
 
-    width: 85%;
+width:85%;
 
-    text-align: center;
+max-width:700px;
 
-    color: rgba(255,255,255,.9);
+text-align:center;
 
-    font-size: clamp(16px, 4.5vw, 28px);
+color:rgba(255,255,255,.9);
 
-    line-height: 1.4;
+font-size:clamp(16px,4.5vw,28px);
+
+line-height:1.5;
 
 }
-
 
 /* ===============================
    CONTINUA
@@ -848,7 +848,7 @@ button:disabled{
 
     position: absolute;
 
-    top: 82%;
+    top: 72%;
     left: 50%;
 
     transform: translateX(-50%);
@@ -1783,30 +1783,31 @@ button:disabled{
 
 #eyesText{
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
+top:42%;
 
-    display:flex;
+left:50%;
 
-    flex-direction:column;
+transform:translate(-50%,-50%);
 
-    justify-content:center;
+width:90%;
 
-    align-items:center;
+display:flex;
 
-    text-align:center;
+flex-direction:column;
 
-    color:white;
+justify-content:center;
 
-    z-index:20;
+align-items:center;
 
-    opacity:0;
+text-align:center;
 
-    transition:opacity 2s ease;
+color:white;
 
-    text-shadow:
-        0 0 15px rgba(255,255,255,.35);
+z-index:20;
+
+opacity:0;
 
 }
 
