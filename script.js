@@ -552,13 +552,12 @@ function startUniverseScene(){
 
     createUniverse();
 
-     universeTimer = 0;
+    universeTimer = 0;
 
     eyesStarted = false;
 
     eyesImage.style.opacity = "0";
-    eyesImage.style.transform =
-        "translate(-50%, -50%) scale(0.85)";
+    eyesImage.style.visibility = "visible";
 
     animateUniverse();
 
@@ -655,6 +654,18 @@ function animateUniverse(){
            DISEGNO STELLA
         ========================== */
 
+       if(star.fade){
+
+    star.alpha -= 0.01;
+
+    if(star.alpha < 0){
+
+        star.alpha = 0;
+
+    }
+
+}
+       
         uctx.beginPath();
 
         uctx.globalAlpha = star.alpha ?? 1;
@@ -677,13 +688,23 @@ function animateUniverse(){
 
     });
 
-   /* ==========================
-   COMPARSA OCCHI
+/* ==========================
+   FINE DEL VORTICE
 ========================== */
 
-if(!eyesStarted && universeTimer > 300){
+if(universeTimer > 600 && !eyesStarted){
 
     eyesStarted = true;
+
+    /* dissolvenza stelle */
+
+    universeStars.forEach(star => {
+
+        star.fade = true;
+
+    });
+
+    /* comparsa occhi */
 
     eyesImage.style.transition =
         "opacity 3s ease, transform 3s ease";
