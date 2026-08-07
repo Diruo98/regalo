@@ -26,19 +26,6 @@ const voicePlayer = document.getElementById("voicePlayer");
 const universeIntroText =
     document.getElementById("universeIntroText");
 
-const eyesImage =
-    document.getElementById("eyesImage");
-
-const sofiaTitle =
-    document.getElementById("sofiaTitle");
-
-const sofiaQuote =
-    document.getElementById("sofiaQuote");
-
-const continueButton =
-    document.getElementById("continueButton");
-
-
 const playButton = document.getElementById("playButton");
 const startButton = document.getElementById("start");
 
@@ -55,12 +42,9 @@ const heartFill = document.getElementById("heartFill");
 const heartPercent = document.getElementById("heartPercent");
 const heartMessage = document.getElementById("heartMessage");
 
-const fingerprintButton =
-    document.getElementById("fingerprintButton");
+const fingerprintButton = document.getElementById("fingerprintButton");
 
-const restart =
-    document.getElementById("restart");
-
+const restart = document.getElementById("restart");
 
 let emojiRainInterval = null;
 
@@ -565,25 +549,9 @@ window.addEventListener(
 
 let introTextShown = false;
 
-let universeTimer = 0;
-
-let eyesStarted = false;
-
-let titleOpacity = 0;
-
-let quoteOpacity = 0;
-
-let buttonOpacity = 0;
-
 function startUniverseScene(){
 
     showPage(pages.universeEyes);
-
-   setTimeout(()=>{
-
-    pages.universeEyes.classList.add("galaxyShow");
-
-},100);
 
     resizeUniverse();
 
@@ -630,9 +598,10 @@ function createUniverse(){
         ANIMATE UNIVERSE
 ======================================*/
 
+
 function animateUniverse(){
 
-    universeTimer++;
+   universeTimer++;
 
     uctx.clearRect(
         0,
@@ -641,90 +610,76 @@ function animateUniverse(){
         universeCanvas.height
     );
 
-
     const cx = universeCanvas.width / 2;
     const cy = universeCanvas.height / 2;
 
-
     universeStars.forEach(star => {
-
 
         /* ==========================
            MOVIMENTO VORTICOSO
         ========================== */
 
-
         const dx = star.x - cx;
         const dy = star.y - cy;
-
 
         const distance = Math.sqrt(
             dx * dx + dy * dy
         );
 
-
         const angle = Math.atan2(dy, dx);
 
+        /*
+           Più la stella è vicina
+           al centro, più ruota.
+        */
 
         const rotationSpeed =
             0.002 +
             (1 / (distance + 80)) * 0.8;
 
-
         const newAngle =
             angle + rotationSpeed;
 
+        /*
+           Manteniamo la distanza
+           dal centro, così la stella
+           orbita invece di sparire.
+        */
 
         star.x =
             cx +
             Math.cos(newAngle) * distance;
-
 
         star.y =
             cy +
             Math.sin(newAngle) * distance;
 
 
-
-        /* ==========================
-           DISSOLVENZA STELLE
-        ========================== */
-
-
-        if(star.fade){
-
-            star.alpha -= 0.01;
-
-            if(star.alpha < 0){
-
-                star.alpha = 0;
-
-            }
-
-        }
-
-
-
         /* ==========================
            DISEGNO STELLA
         ========================== */
 
+       if(star.fade){
 
+    star.alpha -= 0.01;
+
+    if(star.alpha < 0){
+
+        star.alpha = 0;
+
+    }
+
+}
+       
         uctx.beginPath();
 
-
-        uctx.globalAlpha =
-            star.alpha ?? 1;
-
+        uctx.globalAlpha = star.alpha ?? 1;
 
         uctx.fillStyle = "white";
 
-
         uctx.shadowBlur = 6;
 
-
         uctx.shadowColor = "#fff7d0";
-
 
         uctx.arc(
             star.x,
@@ -734,165 +689,108 @@ function animateUniverse(){
             Math.PI * 2
         );
 
-
         uctx.fill();
-
 
     });
 
+/* ==========================
+   FRASE PRIMA DEGLI OCCHI
+========================== */
 
+if(universeTimer > 360 && !introTextShown){
 
-    /* ==========================
-       FRASE PRIMA DEGLI OCCHI
-    ========================== */
+    introTextShown = true;
 
+    universeIntroText.classList.add("show");
 
-    if(
-        universeTimer > 360 &&
-        !introTextShown
-    ){
+}
 
-        introTextShown = true;
 
-        universeIntroText.classList.add("show");
+/* ==========================
+   OCCHI
+========================== */
 
-    }
+if(universeTimer > 540 && !eyesStarted){
 
+    eyesStarted = true;
 
+    universeIntroText.classList.remove("show");
 
-    /* ==========================
-       OCCHI
-    ========================== */
+    universeStars.forEach(star => {
 
+        star.fade = true;
 
-    if(
-        universeTimer > 540 &&
-        !eyesStarted
-    ){
+    });
 
-        eyesStarted = true;
+    setTimeout(()=>{
 
+        eyesImage.style.transition =
+            "opacity 3s ease, transform 3s ease";
 
-        universeIntroText.classList.remove("show");
+        eyesImage.style.opacity = "1";
 
+        eyesImage.style.transform =
+            "translate(-50%, -50%) scale(1)";
 
-        universeStars.forEach(star => {
+    },1200);
 
-            star.fade = true;
-
-        });
-
-
-        setTimeout(()=>{
-
-
-            eyesImage.style.transition =
-                "opacity 3s ease, transform 3s ease";
-
-
-            eyesImage.style.opacity = "1";
-
-
-            eyesImage.style.transform =
-                "translate(-50%, -50%) scale(1)";
-
-
-        },1200);
-
-    }
-
-
-
-    /* ==========================
-       TITOLO SOFIA
-    ========================== */
-
-
-    if(universeTimer > 850){
-
-        titleOpacity += 0.015;
-
-
-        if(titleOpacity > 1){
-
-            titleOpacity = 1;
-
-        }
-
-
-        sofiaTitle.style.opacity =
-            titleOpacity;
-
-    }
-
-
-
-    /* ==========================
-       FRASE
-    ========================== */
-
-
-    if(universeTimer > 1000){
-
-        quoteOpacity += 0.012;
-
-
-        if(quoteOpacity > 1){
-
-            quoteOpacity = 1;
-
-        }
-
-
-        sofiaQuote.style.opacity =
-            quoteOpacity;
-
-    }
-
-
-
-    /* ==========================
-       PULSANTE CONTINUA
-    ========================== */
-
-
-    if(universeTimer > 1200){
-
-        buttonOpacity += 0.015;
-
-
-        if(buttonOpacity > 1){
-
-            buttonOpacity = 1;
-
-        }
-
-
-        continueButton.style.opacity =
-            buttonOpacity;
-
-
-        continueButton.style.pointerEvents =
-            "auto";
-
-    }
-
-
-
+}
     requestAnimationFrame(
         animateUniverse
     );
 
 }
 
-continueButton.addEventListener("click", () => {
+/* ==================================
+        SOFIA
+================================== */
 
-    showPage(pages.heart);
+if(universeTimer > 850){
 
-    initHeart();
+    titleOpacity += 0.015;
 
-});
+    if(titleOpacity > 1){
+        titleOpacity = 1;
+    }
 
+    sofiaTitle.style.opacity = titleOpacity;
+
+}
+
+
+/* ==================================
+        FRASE
+================================== */
+
+if(universeTimer > 1000){
+
+    quoteOpacity += 0.012;
+
+    if(quoteOpacity > 1){
+        quoteOpacity = 1;
+    }
+
+    sofiaQuote.style.opacity = quoteOpacity;
+
+}
+
+
+/* ==================================
+        CONTINUA
+================================== */
+
+if(universeTimer > 1200){
+
+    buttonOpacity += 0.015;
+
+    if(buttonOpacity > 1){
+        buttonOpacity = 1;
+    }
+
+    continueButton.style.opacity = buttonOpacity;
+    continueButton.style.pointerEvents = "auto";
+
+}
 /*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
