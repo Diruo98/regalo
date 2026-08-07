@@ -704,11 +704,11 @@ button:disabled{
     position: absolute;
 
     left: 50%;
-    top: 48%;
+    top: 60%;
 
     transform: translate(-50%, -50%);
 
-    width: 75vw;
+    width: 90vw;
     max-width: 700px;
     height: auto;
 
