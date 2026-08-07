@@ -564,17 +564,17 @@ function createUniverse(){
 
     universeStars = [];
 
-    for(let i=0;i<1800;i++){
+    for(let i = 0; i < 1800; i++){
 
         universeStars.push({
 
-            x:Math.random()*universeCanvas.width,
+            x: Math.random() * universeCanvas.width,
 
-            y:Math.random()*universeCanvas.height,
+            y: Math.random() * universeCanvas.height,
 
-            size:Math.random()*2+0.4,
+            size: Math.random() * 2 + 0.4,
 
-            alpha:Math.random()
+            alpha: Math.random()
 
         });
 
@@ -589,8 +589,6 @@ function createUniverse(){
 
 function animateUniverse(){
 
-    console.log(universeStars.length);
-
     uctx.clearRect(
         0,
         0,
@@ -598,7 +596,7 @@ function animateUniverse(){
         universeCanvas.height
     );
 
-    universeStars.forEach(star=>{
+    universeStars.forEach(star => {
 
         uctx.beginPath();
 
@@ -624,7 +622,6 @@ function animateUniverse(){
     requestAnimationFrame(animateUniverse);
 
 }
-
 
 /*======================================
         NUOVA COSTELLAZIONE
