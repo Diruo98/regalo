@@ -746,7 +746,7 @@ button:disabled{
 
     transform:translateY(200px);
 
-    color: white;
+    color: #ffe39c;
 
     font-size: clamp(3rem, 12vw, 7rem);
 
