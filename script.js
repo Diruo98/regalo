@@ -878,6 +878,15 @@ function animateUniverse(){
     );
 
 }
+
+continueButton.addEventListener("click", () => {
+
+    showPage(pages.heart);
+
+    initHeart();
+
+});
+
 /*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
