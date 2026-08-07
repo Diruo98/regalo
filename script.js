@@ -740,6 +740,57 @@ if(universeTimer > 540 && !eyesStarted){
     );
 
 }
+
+/* ==================================
+        SOFIA
+================================== */
+
+if(universeTimer > 1500){
+
+    titleOpacity += 0.015;
+
+    if(titleOpacity > 1){
+        titleOpacity = 1;
+    }
+
+    sofiaTitle.style.opacity = titleOpacity;
+
+}
+
+
+/* ==================================
+        FRASE
+================================== */
+
+if(universeTimer > 1650){
+
+    quoteOpacity += 0.012;
+
+    if(quoteOpacity > 1){
+        quoteOpacity = 1;
+    }
+
+    sofiaQuote.style.opacity = quoteOpacity;
+
+}
+
+
+/* ==================================
+        CONTINUA
+================================== */
+
+if(universeTimer > 1850){
+
+    buttonOpacity += 0.015;
+
+    if(buttonOpacity > 1){
+        buttonOpacity = 1;
+    }
+
+    continueButton.style.opacity = buttonOpacity;
+    continueButton.style.pointerEvents = "auto";
+
+}
 /*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
