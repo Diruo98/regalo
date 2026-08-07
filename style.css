@@ -2777,3 +2777,14 @@ CONTINUA
     transform:scale(1);
 
 }
+
+@media (max-width: 600px) {
+
+    #eyesImage {
+        width: 90vw;
+        left: 50%;
+        top: 47%;
+        transform: translate(-50%, -50%);
+    }
+
+}
