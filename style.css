@@ -833,7 +833,7 @@ CONTINUA
         background .3s ease,
         transform .3s ease;
 
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 #continueButton:hover {
