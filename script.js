@@ -745,7 +745,7 @@ if(universeTimer > 540 && !eyesStarted){
         SOFIA
 ================================== */
 
-if(universeTimer > 1500){
+if(universeTimer > 850){
 
     titleOpacity += 0.015;
 
@@ -762,7 +762,7 @@ if(universeTimer > 1500){
         FRASE
 ================================== */
 
-if(universeTimer > 1650){
+if(universeTimer > 1000){
 
     quoteOpacity += 0.012;
 
@@ -779,7 +779,7 @@ if(universeTimer > 1650){
         CONTINUA
 ================================== */
 
-if(universeTimer > 1850){
+if(universeTimer > 1200){
 
     buttonOpacity += 0.015;
 
