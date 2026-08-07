@@ -615,7 +615,7 @@ button:disabled{
         UNIVERSO
 ======================================*/
 
-#universeEyesPage{
+#universeEyesPage {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -623,35 +623,30 @@ button:disabled{
     background: #020611;
 }
 
-.galaxyBackground{
+.galaxyBackground {
     position: absolute;
     inset: 0;
-
-    background-image: url("galaxy.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
     z-index: 0;
+
+    background: url("galaxy.png") center center / cover no-repeat;
 }
 
-.nebulaLayer{
+.nebulaLayer {
     position: absolute;
     inset: 0;
-
     z-index: 1;
 
     pointer-events: none;
 }
 
-#universeCanvas{
+#universeCanvas {
     position: absolute;
     inset: 0;
 
     width: 100%;
     height: 100%;
 
-    z-index: 2;
+    z-index: 5;
 
     pointer-events: none;
 }
