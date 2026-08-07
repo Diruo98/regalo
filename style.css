@@ -737,7 +737,7 @@ button:disabled{
 
     pointer-events: none;
 
-    transform:translateY(80px);
+    transform:translateY(-180px);
 }
 
 #sofiaTitle {
@@ -768,6 +768,8 @@ button:disabled{
 #sofiaQuote {
 
     margin: 15px auto 20px;
+
+ transform:translateY(-220px);
 
     max-width: 650px;
 
