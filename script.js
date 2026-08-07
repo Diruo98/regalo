@@ -544,6 +544,8 @@ window.addEventListener(
     resizeUniverse
 );
 
+let introTextShown = false;
+
 function startUniverseScene(){
 
     showPage(pages.universeEyes);
@@ -689,14 +691,27 @@ function animateUniverse(){
     });
 
 /* ==========================
-   FINE DEL VORTICE
+   FRASE PRIMA DEGLI OCCHI
 ========================== */
 
-if(universeTimer > 300 && !eyesStarted){
+if(universeTimer > 360 && !introTextShown){
+
+    introTextShown = true;
+
+    universeIntroText.classList.add("show");
+
+}
+
+
+/* ==========================
+   OCCHI
+========================== */
+
+if(universeTimer > 540 && !eyesStarted){
 
     eyesStarted = true;
 
-    /* dissolvenza stelle */
+    universeIntroText.classList.remove("show");
 
     universeStars.forEach(star => {
 
@@ -704,18 +719,19 @@ if(universeTimer > 300 && !eyesStarted){
 
     });
 
-    /* comparsa occhi */
+    setTimeout(()=>{
 
-    eyesImage.style.transition =
-        "opacity 3s ease, transform 3s ease";
+        eyesImage.style.transition =
+            "opacity 3s ease, transform 3s ease";
 
-    eyesImage.style.opacity = "1";
+        eyesImage.style.opacity = "1";
 
-    eyesImage.style.transform =
-        "translate(-50%, -50%) scale(1)";
+        eyesImage.style.transform =
+            "translate(-50%, -50%) scale(1)";
+
+    },1200);
 
 }
-
     requestAnimationFrame(
         animateUniverse
     );
