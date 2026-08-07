@@ -616,11 +616,48 @@ button:disabled{
 ======================================*/
 
 #universeEyesPage {
+
     position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: #020611;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    background:
+        #020611
+        url("galassia.png")
+        center / cover
+        no-repeat;
+
+}
+
+#universeEyesPage::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        url("galassia.png")
+        center / cover
+        no-repeat;
+
+    opacity:0;
+
+    transition:opacity 3s ease;
+
+    z-index:0;
+
+}
+
+
+#universeEyesPage.galaxyShow::before {
+
+    opacity:1;
+
 }
 
 .galaxyBackground {
@@ -751,26 +788,28 @@ button:disabled{
 ================================ */
 
 #sofiaTitle {
+    position: absolute;
+
+    top: 12%;
+    left: 50%;
+
+    transform: translateX(-50%);
 
     margin: 0;
 
     color: #ffe9a6;
 
-   font-size: clamp(2rem, 8vw, 7rem);
+    font-size: clamp(2rem, 8vw, 7rem);
 
     font-weight: 700;
 
     letter-spacing: .25em;
 
-  text-shadow:
-        0 0 10px rgba(255,240,180,.9),
-        0 0 30px rgba(255,210,100,.8),
-        0 0 80px rgba(255,180,70,.5);
+    text-align: center;
 
     opacity: 0;
 
-    transition:
-        opacity 2s ease;
+    transition: opacity 2s ease;
 }
 
 
@@ -780,23 +819,24 @@ button:disabled{
 
 #sofiaQuote {
 
-    margin: 15px auto 20px;
+    position: absolute;
 
-    max-width: 650px;
+    top: 63%;
 
-    color: white;
+    left: 50%;
 
-    font-size: 1.15rem;
+    transform: translateX(-50%);
 
-    line-height: 1.7;
+    width: 85%;
 
-    text-shadow:
-        0 0 15px rgba(255,255,255,.3);
+    text-align: center;
 
-    opacity: 0;
+    color: rgba(255,255,255,.9);
 
-    transition:
-        opacity 2s ease;
+    font-size: clamp(16px, 4.5vw, 28px);
+
+    line-height: 1.4;
+
 }
 
 
@@ -806,28 +846,87 @@ button:disabled{
 
 #continueButton {
 
-    padding: 12px 28px;
+    position: absolute;
 
-    border: 1px solid rgba(255,255,255,.5);
+    top: 82%;
+    left: 50%;
 
-    border-radius: 30px;
+    transform: translateX(-50%);
 
-    background: rgba(255,255,255,.08);
+    padding: 14px 38px;
 
-    color: white;
+    border: 1px solid rgba(255, 235, 180, .55);
 
-    font-size: 1rem;
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.18),
+            rgba(255,220,150,.08)
+        );
+
+    color: #fff8e7;
+
+    font-size: clamp(16px, 4vw, 20px);
+
+    font-weight: 600;
+
+    letter-spacing: .08em;
 
     cursor: pointer;
 
     opacity: 0;
 
+    pointer-events: none;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.25),
+        0 0 35px rgba(255,220,150,.25);
+
     transition:
         opacity 2s ease,
-        background .3s ease,
-        transform .3s ease;
+        background .4s ease,
+        transform .3s ease,
+        box-shadow .4s ease;
 
-    pointer-events: none;
+}
+
+
+/* quando compare */
+
+#continueButton:hover {
+
+    background:
+        rgba(255,230,170,.18);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.5),
+        0 0 60px rgba(255,210,120,.45);
+
+    transform:
+        translateX(-50%)
+        scale(1.08);
+
+}
+
+
+/* effetto mobile */
+
+@media(max-width:600px){
+
+    #continueButton {
+
+        top: 68%;
+
+        padding: 12px 30px;
+
+        font-size: 15px;
+
+    }
+
 }
 
 #continueButton:hover {
