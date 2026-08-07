@@ -2871,11 +2871,14 @@ CONTINUA
 
 @media (max-width: 600px) {
 
-    #eyesImage {
-        width: 90vw;
-        left: 50%;
-        top: 47%;
-        transform: translate(-50%, -50%);
+    #universeIntroText {
+
+        top: 50% !important;
+
+        left: 50% !important;
+
+        transform: translate(-50%, -50%) !important;
+
     }
 
 }
