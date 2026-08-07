@@ -598,26 +598,25 @@ function animateUniverse(){
 
     universeStars.forEach(star => {
 
-        uctx.beginPath();
+    uctx.beginPath();
 
-        uctx.fillStyle =
-            `rgba(255,245,220,${star.alpha})`;
+    uctx.globalAlpha = 1;
 
-        uctx.shadowBlur = 10;
+    uctx.fillStyle = "white";
 
-        uctx.shadowColor = "#fff7d0";
+    uctx.shadowBlur = 0;
 
-        uctx.arc(
-            star.x,
-            star.y,
-            star.size,
-            0,
-            Math.PI * 2
-        );
+    uctx.arc(
+        star.x,
+        star.y,
+        star.size,
+        0,
+        Math.PI * 2
+    );
 
-        uctx.fill();
+    uctx.fill();
 
-    });
+});
 
     requestAnimationFrame(animateUniverse);
 
