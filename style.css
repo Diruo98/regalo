@@ -617,10 +617,13 @@ button:disabled{
 
 #universeEyesPage{
 
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
     background:#020611;
 
 }
@@ -631,10 +634,15 @@ button:disabled{
 
     inset:0;
 
-    background:
-    url("galaxy.png")
-    center center / cover
-    no-repeat;
+    background-image:url("galaxy.png");
+
+    background-position:center;
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
+
+    z-index:0;
 
 }
 
