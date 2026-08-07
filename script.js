@@ -598,6 +598,9 @@ function animateUniverse(){
 
     universeStars.forEach(star => {
 
+      star.x += 0.15;
+     star.y += 0.05;
+
     uctx.beginPath();
 
     uctx.globalAlpha = 1;
