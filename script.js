@@ -596,35 +596,82 @@ function animateUniverse(){
         universeCanvas.height
     );
 
+    const cx = universeCanvas.width / 2;
+    const cy = universeCanvas.height / 2;
+
     universeStars.forEach(star => {
 
-      star.x += 0.15;
-     star.y += 0.05;
+        /* ==========================
+           MOVIMENTO VORTICOSO
+        ========================== */
 
-    uctx.beginPath();
+        const dx = star.x - cx;
+        const dy = star.y - cy;
 
-    uctx.globalAlpha = 1;
+        const distance = Math.sqrt(
+            dx * dx + dy * dy
+        );
 
-    uctx.fillStyle = "white";
+        const angle = Math.atan2(dy, dx);
 
-    uctx.shadowBlur = 0;
+        /*
+           Più la stella è vicina
+           al centro, più ruota.
+        */
 
-    uctx.arc(
-        star.x,
-        star.y,
-        star.size,
-        0,
-        Math.PI * 2
+        const rotationSpeed =
+            0.002 +
+            (1 / (distance + 80)) * 0.8;
+
+        const newAngle =
+            angle + rotationSpeed;
+
+        /*
+           Manteniamo la distanza
+           dal centro, così la stella
+           orbita invece di sparire.
+        */
+
+        star.x =
+            cx +
+            Math.cos(newAngle) * distance;
+
+        star.y =
+            cy +
+            Math.sin(newAngle) * distance;
+
+
+        /* ==========================
+           DISEGNO STELLA
+        ========================== */
+
+        uctx.beginPath();
+
+        uctx.globalAlpha = star.alpha ?? 1;
+
+        uctx.fillStyle = "white";
+
+        uctx.shadowBlur = 6;
+
+        uctx.shadowColor = "#fff7d0";
+
+        uctx.arc(
+            star.x,
+            star.y,
+            star.size,
+            0,
+            Math.PI * 2
+        );
+
+        uctx.fill();
+
+    });
+
+    requestAnimationFrame(
+        animateUniverse
     );
 
-    uctx.fill();
-
-});
-
-    requestAnimationFrame(animateUniverse);
-
 }
-
 /*======================================
         NUOVA COSTELLAZIONE
 ======================================*/
