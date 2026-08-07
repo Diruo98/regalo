@@ -552,6 +552,14 @@ function startUniverseScene(){
 
     createUniverse();
 
+     universeTimer = 0;
+
+    eyesStarted = false;
+
+    eyesImage.style.opacity = "0";
+    eyesImage.style.transform =
+        "translate(-50%, -50%) scale(0.85)";
+
     animateUniverse();
 
 }
@@ -588,6 +596,8 @@ function createUniverse(){
 
 
 function animateUniverse(){
+
+   universeTimer++;
 
     uctx.clearRect(
         0,
@@ -666,6 +676,24 @@ function animateUniverse(){
         uctx.fill();
 
     });
+
+   /* ==========================
+   COMPARSA OCCHI
+========================== */
+
+if(!eyesStarted && universeTimer > 300){
+
+    eyesStarted = true;
+
+    eyesImage.style.transition =
+        "opacity 3s ease, transform 3s ease";
+
+    eyesImage.style.opacity = "1";
+
+    eyesImage.style.transform =
+        "translate(-50%, -50%) scale(1)";
+
+}
 
     requestAnimationFrame(
         animateUniverse
