@@ -1726,3 +1726,15 @@ restart.addEventListener("click",()=>{
     location.reload();
 
 });
+
+/* =====================================
+CONTINUA → CUORE
+===================================== */
+
+document.getElementById("continueButton").addEventListener("click", () => {
+
+    document.getElementById("universeEyesPage").classList.add("hidden");
+
+    document.getElementById("heartPage").classList.remove("hidden");
+
+});
