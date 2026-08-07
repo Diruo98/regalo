@@ -557,7 +557,9 @@ function startUniverseScene(){
 }
 
 let universeStars = [];
-
+/*======================================
+        CREAZIONE UNIVERSO
+======================================*/
 function createUniverse(){
 
     universeStars = [];
@@ -580,71 +582,46 @@ function createUniverse(){
 
 }
 
+/*======================================
+        ANIMATE UNIVERSE
+======================================*/
+
+
 function animateUniverse(){
 
-   console.log(universeStars.length);
+    console.log(universeStars.length);
 
     uctx.clearRect(
-
         0,
-
         0,
-
         universeCanvas.width,
-
         universeCanvas.height
-
-    );
-
-    uctx.fillStyle="#020611";
-
-    uctx.fillRect(
-
-        0,
-
-        0,
-
-        universeCanvas.width,
-
-        universeCanvas.height
-
     );
 
     universeStars.forEach(star=>{
 
         uctx.beginPath();
 
-        uctx.fillStyle=
+        uctx.fillStyle =
+            `rgba(255,245,220,${star.alpha})`;
 
-        `rgba(255,245,220,${star.alpha})`;
+        uctx.shadowBlur = 10;
 
-        uctx.shadowBlur=10;
-
-        uctx.shadowColor="#fff7d0";
+        uctx.shadowColor = "#fff7d0";
 
         uctx.arc(
-
             star.x,
-
             star.y,
-
             star.size,
-
             0,
-
-            Math.PI*2
-
+            Math.PI * 2
         );
 
         uctx.fill();
 
     });
 
-    requestAnimationFrame(
-
-        animateUniverse
-
-    );
+    requestAnimationFrame(animateUniverse);
 
 }
 
