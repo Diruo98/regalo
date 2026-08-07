@@ -736,11 +736,15 @@ button:disabled{
     text-align: center;
 
     pointer-events: none;
+
+    transform:translateY(80px);
 }
 
 #sofiaTitle {
 
     margin: 0;
+
+    transform:translateY(100px);
 
     color: white;
 
