@@ -125,7 +125,7 @@ ho pensato a questo piccolo "viaggio", qualcosa da vivere passo passo
 spero tanto che l'idea ti sia piaciuta
 
 Buon compleanno 🤍
-Ti Amo tantissimo! 🤍🤍🤍🤍🤍🤍`;
+Ti Amo tantissimo! 🤍`;
 
 /* =====================================
    EMAILJS
