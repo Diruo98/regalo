@@ -1675,6 +1675,8 @@ skipVoice.addEventListener("click",()=>{
 
     showPage(pages.final);
 
+    showFinal();
+
 });
 
 function initFingerprint(){
