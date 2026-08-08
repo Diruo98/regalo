@@ -498,9 +498,9 @@ sendWish.addEventListener("click", ()=>{
 
         emailjs.send(
 
-            "service_umr8t4k",
+            "service_0qyvyhn",
 
-            "template_ag1927r",
+            "template_6nfrk7m",
 
             {
 
