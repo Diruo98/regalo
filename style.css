@@ -2087,6 +2087,12 @@ CONTINUA
 
 #continueFromLetter{
 
+   position: relative;
+    z-index: 100;
+
+    pointer-events: auto;
+    cursor: pointer;
+
     display:block;
 
     margin:40px auto 0;
@@ -2102,8 +2108,6 @@ CONTINUA
     color:white;
 
     font-size:1rem;
-
-    cursor:pointer;
 
     opacity:0;
 
