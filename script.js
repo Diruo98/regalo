@@ -20,8 +20,48 @@ const pages = {
 
 };
 
+/* =====================================
+ AUDIO VOCALE ETC.
+===================================== */
 const bgMusic = document.getElementById("bgMusic");
 const voicePlayer = document.getElementById("voicePlayer");
+
+function fadeOutMusic(duration = 2500){
+
+    if(!bgMusic) return;
+
+    const startVolume = bgMusic.volume;
+    const startTime = performance.now();
+
+    function fade(){
+
+        const elapsed = performance.now() - startTime;
+
+        const progress = Math.min(
+            elapsed / duration,
+            1
+        );
+
+        bgMusic.volume =
+            startVolume * (1 - progress);
+
+        if(progress < 1){
+
+            requestAnimationFrame(fade);
+
+        }else{
+
+            bgMusic.pause();
+
+            bgMusic.volume = startVolume;
+
+        }
+
+    }
+
+    fade();
+
+}
 
 const universeIntroText =
     document.getElementById("universeIntroText");
@@ -1572,21 +1612,23 @@ unlockButton.addEventListener("click",()=>{
     const password =
     passwordInput.value.trim().toLowerCase();
 
-    if(password==="ty krasivaya"){
+   if(password==="ty krasivaya"){
 
-        fingerprintButton.style.background="#7ed957";
+    fingerprintButton.style.background="#7ed957";
 
-        fingerprintMessage.textContent=
-        "✔ Accesso consentito 🤍";
+    fingerprintMessage.textContent=
+    "✔ Accesso consentito 🤍";
 
-        passwordArea.classList.add("hidden");
+    passwordArea.classList.add("hidden");
 
-        voiceButtons.classList.remove("hidden");
+    voiceButtons.classList.remove("hidden");
 
-        return;
+    // 🎵 La musica inizia a sfumare
+    fadeOutMusic(2500);
 
-    }
+    return;
 
+}
     fingerprintAttempts++;
 
     fingerprintButton.style.background="#ff6b6b";
@@ -1655,12 +1697,10 @@ function initFingerprint(){
 }
 
 /* =====================================
-   VOCALE
+        VOCALE
 ===================================== */
 
-listenVoice.addEventListener("click",()=>{
-
-    showPage(pages.voice);
+listenVoice.addEventListener("click", ()=>{
 
     voicePlayer.pause();
 
@@ -1670,7 +1710,8 @@ listenVoice.addEventListener("click",()=>{
 
 });
 
-voicePlayer.addEventListener("ended",()=>{
+
+voicePlayer.addEventListener("ended", ()=>{
 
     voicePlayer.currentTime = 0;
 
