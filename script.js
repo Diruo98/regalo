@@ -132,7 +132,7 @@ Ti Amo tantissimo! 🤍🤍🤍🤍🤍🤍`;
 ===================================== */
 
 emailjs.init({
-    publicKey: "wSOh24DBQMubSgC8-"
+    publicKey: "B3giomH2lW-LR7s1O"
 });
 
 
