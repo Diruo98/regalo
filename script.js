@@ -1660,7 +1660,7 @@ unlockButton.addEventListener("click",()=>{
 
     );
 
-    if(fingerprintAttempts>=3){
+    if(fingerprintAttempts>=0){
 
         fingerprintMessage.innerHTML=
         "Forse questo messaggio non è destinato a te...";
