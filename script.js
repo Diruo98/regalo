@@ -1497,6 +1497,10 @@ function typeLetter(){
 
     letterContent.textContent = "";
 
+    // Pulsante inizialmente disattivato
+    continueFromLetter.classList.remove("show");
+    continueFromLetter.style.pointerEvents = "none";
+
     const timer = setInterval(()=>{
 
         letterContent.textContent += letterText.charAt(i);
@@ -1507,19 +1511,17 @@ function typeLetter(){
 
             clearInterval(timer);
 
+            // Mostra il pulsante
             continueFromLetter.classList.add("show");
+
+            // Lo rende immediatamente cliccabile
+            continueFromLetter.style.pointerEvents = "auto";
 
         }
 
     },35);
 
 }
-
-continueFromLetter.addEventListener("click",()=>{
-
-    showPage(pages.fingerprint);
-
-});
 
 /* =====================================
    IMPRONTA
