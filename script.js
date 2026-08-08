@@ -78,17 +78,14 @@ const letterContent = document.getElementById("letterContent");
 
 const continueFromLetter = document.getElementById("continueFromLetter");
 
-const letterText = `Cara Sofia,
+const letterText = `Bimba mia bellissima,
 
-oggi non volevo regalarti qualcosa di normale.
+volevo creare qualcosa di diverso per questo giorno speciale,
+ho pensato a questo piccolo "viaggio", qualcosa da vivere passo passo
+spero tanto che l'idea ti sia piaciuta
 
-Volevo regalarti un ricordo.
-
-Un piccolo viaggio.
-
-Per ricordarti quanto sei importante.
-
-Buon compleanno. 🤍`;
+Buon compleanno 🤍
+Ti Amo tantissimo! 🤍🤍🤍🤍🤍🤍`;
 
 /* =====================================
    EMAILJS
