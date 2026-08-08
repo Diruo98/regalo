@@ -885,8 +885,6 @@ let currentStar = 0;
 
 const constellationShape = [
 
-   constellationShape = [
-
     {x:68,y:18},
     {x:54,y:18},
     {x:40,y:18},
@@ -906,8 +904,6 @@ const constellationShape = [
     {x:22,y:76}
 
 ];
-];
-
 
 /*======================================
         CREA CIELO
