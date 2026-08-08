@@ -1732,16 +1732,13 @@ voicePlayer.addEventListener("ended", ()=>{
 const polaroid =
 document.getElementById("polaroid");
 
-const finalLove =
-document.getElementById("finalLove");
-
 const signature =
 document.getElementById("signature");
 
 function showFinal(){
 
     polaroid.classList.add("hidden");
-    finalLove.classList.add("hidden");
+   
     signature.classList.add("hidden");
     restart.classList.add("hidden");
 
@@ -1750,12 +1747,6 @@ function showFinal(){
         polaroid.classList.remove("hidden");
 
     },200);
-
-    setTimeout(()=>{
-
-        finalLove.classList.remove("hidden");
-
-    },1400);
 
     setTimeout(()=>{
 
