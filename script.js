@@ -1700,12 +1700,20 @@ function initFingerprint(){
         VOCALE
 ===================================== */
 
+/* =====================================
+        VOCALE
+===================================== */
+
 listenVoice.addEventListener("click", ()=>{
 
-    voicePlayer.pause();
+    // Vai alla pagina del vocale
+    showPage(pages.voice);
 
+    // Prepara il vocale
+    voicePlayer.pause();
     voicePlayer.currentTime = 0;
 
+    // Parte SOLO dopo il click
     voicePlayer.play().catch(()=>{});
 
 });
@@ -1720,7 +1728,6 @@ voicePlayer.addEventListener("ended", ()=>{
     showFinal();
 
 });
-
 /* =====================================
    FINALE
 ===================================== */
