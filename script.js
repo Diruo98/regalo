@@ -1520,6 +1520,17 @@ function typeLetter(){
 
 }
 
+continueFromLetter.addEventListener("click", (event)=>{
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    console.log("CONTINUA LETTERA CLICCATO");
+
+    showPage(pages.fingerprint);
+
+});
+
 /* =====================================
    IMPRONTA
 ===================================== */
